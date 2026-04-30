@@ -1,0 +1,116 @@
+---
+// src/pages/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { curriculum } from '@/lib/curriculum';
+import { getCollection } from 'astro:content';
+import { statusLabels } from '@/lib/labels';
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const allBooks = await getCollection('books');
+const builtSlugs = new Set(allBooks.map((b) => b.id.replace(/\.md$/, '')));
+
+function statusChipClass(status: string): string {
+  switch (status) {
+    case 'okunuyor': return 'halka-chip-emerald';
+    case 'okundu':   return 'halka-chip';
+    case 'sirada':   return 'halka-chip-carmine';
+    default:         return 'halka-chip';
+  }
+}
+---
+
+<BaseLayout title="Halka">
+  <section class="max-w-4xl mx-auto px-6 pt-16 pb-12">
+    <h1 class="font-sans text-5xl md:text-6xl font-bold tracking-tight text-ink-900 leading-tight">
+      Halka
+    </h1>
+    <p class="mt-3 text-2xl text-ink-700 font-serif italic">
+      Bilim tarihi okuma grubu, halka halka.
+    </p>
+    <p class="mt-8 max-w-prose text-lg text-ink-700">
+      Halka, üniversite öğrencileri ve mezunlarının dört dönemde 21 kitap okuyup tartıştığı bir bilim tarihi okuma grubudur. Bu platform, o okumaların dijital bedenidir: her kitap bir özet değil, içindeki <strong>iddiaların, kişilerin, yerlerin, kavramların ve kaynakların</strong> birbirine bağlandığı bir bilgi grafiğidir.
+    </p>
+    <p class="mt-4 max-w-prose text-lg text-ink-700">
+      Birinci kitabı okuduğunda elinde bir kitap özeti var. Yirmi birinci kitabı bitirdiğinde elinde Türkçe'de bilim tarihi için referans bir kaynak.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3 font-sans text-sm">
+      <a href={`${baseUrl}/kitaplar/starr-kayip-aydinlanma`} class="inline-flex items-center px-4 py-2 bg-emerald text-white no-underline rounded-sm hover:bg-emerald-light">
+        Şu anda okunan: Starr — Kayıp Aydınlanma →
+      </a>
+      <a href="#mufredat" class="inline-flex items-center px-4 py-2 border border-ink-300 text-ink-700 no-underline rounded-sm hover:border-emerald hover:text-emerald">
+        Müfredata göz at
+      </a>
+    </div>
+  </section>
+
+  <section id="mufredat" class="max-w-6xl mx-auto px-6 py-12">
+    <h2 class="font-sans text-3xl font-semibold text-ink-900 mb-2">Müfredat</h2>
+    <p class="text-ink-600 max-w-prose mb-10 font-serif">
+      Dört dönem, 21 kitap. Geçmişte okunanlar geriye dönük doldurulur; sırada bekleyenler okundukça şablonu zenginleşir.
+    </p>
+
+    <div class="space-y-12">
+      {curriculum.map((d) => (
+        <div>
+          <header class="mb-5 pb-3 halka-rule">
+            <h3 class="font-sans text-2xl font-semibold text-ink-900">{d.donem}</h3>
+            <p class="mt-1 text-ink-600 font-serif">{d.description}</p>
+          </header>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {d.books.map((b) => {
+              const isBuilt = builtSlugs.has(b.slug);
+              const href = isBuilt ? `${baseUrl}/kitaplar/${b.slug}` : '#';
+              const Tag = isBuilt ? 'a' : 'div';
+              return (
+                <Tag
+                  href={isBuilt ? href : undefined}
+                  class={`halka-card ${isBuilt ? '' : 'opacity-70 cursor-not-allowed'}`}
+                  style={isBuilt ? '' : 'pointer-events: none;'}
+                >
+                  <div class="flex items-start justify-between gap-3 mb-2">
+                    <span class="font-sans text-xs font-semibold text-ink-400">#{b.sira_no}</span>
+                    <span class={statusChipClass(b.status)}>{statusLabels[b.status]}</span>
+                  </div>
+                  <h4 class="font-sans text-lg font-semibold leading-tight text-ink-900">
+                    {b.title}
+                  </h4>
+                  <p class="mt-1 text-sm text-ink-600 font-serif italic">{b.author}</p>
+                  {!isBuilt && (
+                    <p class="mt-3 text-xs text-ink-400 font-sans">İçerik henüz oluşturulmadı</p>
+                  )}
+                </Tag>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <h2 class="font-sans text-3xl font-semibold text-ink-900 mb-4">Halka neyi farklı yapar?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-serif">
+      <div>
+        <h3 class="font-sans text-base font-semibold text-emerald mb-2">Bilgi grafiği</h3>
+        <p class="text-ink-700">
+          Her kitap atomik birimlere ayrılır: iddialar, kişiler, yerler, kavramlar. Bu birimler kitap sınırlarını aşarak birbirine bağlanır.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-sans text-base font-semibold text-emerald mb-2">Tarihyazımı görünür</h3>
+        <p class="text-ink-700">
+          Her yazarın hangi gelenekten konuştuğu — Eurocentric mi anti-Eurocentric mi, içselci mi dışsalcı mı — birinci sınıf bilgi olarak işlenir.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-sans text-base font-semibold text-emerald mb-2">DH altyapısına bağlı</h3>
+        <p class="text-ink-700">
+          Geçen kişiler tabakat.io'ya, mekânlar islamicatlas.org'a, eserler GAS'a, kavramlar DİA'ya — profesyonel dijital beşeri bilimler ekosistemine köprülenir.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+// src/pages/yerler/[slug].astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const places = await getCollection('places');
+  return places.map((place) => ({
+    params: { slug: place.id.replace(/\.md$/, '') },
+    props: { place },
+  }));
+}
+
+interface Props {
+  place: CollectionEntry<'places'>;
+}
+
+const { place } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const slug = place.id.replace(/\.md$/, '');
+const data = place.data;
+const { Content } = await place.render();
+
+const allBooks = await getCollection('books');
+const referencingBooks = allBooks.filter((b) =>
+  b.data.key_places?.some((p) => p.slug === slug)
+);
+---
+
+<BaseLayout title={data.name} description={data.role ?? data.name}>
+  <article class="max-w-4xl mx-auto px-6 py-12">
+    <a href={`${baseUrl}/yerler`} class="font-sans text-xs text-ink-500 no-underline hover:text-emerald">
+      ← Tüm yerler
+    </a>
+
+    <header class="mt-4 mb-10 pb-6 halka-rule">
+      <h1 class="font-sans text-4xl font-bold text-ink-900 leading-tight">{data.name}</h1>
+      {data.name_modern && data.name_modern !== data.name && (
+        <p class="mt-2 text-lg font-serif italic text-ink-500">{data.name_modern}</p>
+      )}
+      {data.country_modern && (
+        <p class="mt-3 font-sans text-sm text-ink-600">{data.country_modern}</p>
+      )}
+      {data.region_historical && (
+        <p class="mt-1 font-serif text-sm text-ink-500">{data.region_historical}</p>
+      )}
+      {data.coordinates && (
+        <p class="mt-2 font-mono text-xs text-ink-400">
+          {data.coordinates.lat.toFixed(4)}°N, {data.coordinates.lon.toFixed(4)}°E
+        </p>
+      )}
+    </header>
+
+    {referencingBooks.length > 0 && (
+      <section class="mb-10">
+        <h2 class="font-sans text-xl font-semibold text-ink-900 mb-2">Halka müfredatında geçen kitaplar</h2>
+        <div class="space-y-3">
+          {referencingBooks.map((b) => {
+            const bSlug = b.id.replace(/\.md$/, '');
+            const placeRef = b.data.key_places?.find((p) => p.slug === slug);
+            return (
+              <a href={`${baseUrl}/kitaplar/${bSlug}`} class="halka-card no-underline">
+                <div class="font-sans text-sm font-semibold text-ink-900">
+                  {b.data.author} — {b.data.title}
+                </div>
+                {placeRef?.role && (
+                  <p class="mt-1.5 text-sm font-serif text-ink-700">{placeRef.role}</p>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <section class="halka-prose">
+      <Content />
+    </section>
+
+    {(data.islamicatlas_id || data.pleiades_id || data.geonames_id || data.wikidata_id) && (
+      <section class="mt-12 pt-6 halka-rule">
+        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Dış bağlantılar</h2>
+        <div class="flex flex-wrap gap-3 font-sans text-sm">
+          {data.islamicatlas_id && (
+            <a href={`https://islamicatlas.org/places/${data.islamicatlas_id}`} class="halka-chip-emerald no-underline">
+              islamicatlas.org ↗
+            </a>
+          )}
+          {data.pleiades_id && (
+            <a href={`https://pleiades.stoa.org/places/${data.pleiades_id}`} class="halka-chip-emerald no-underline">
+              Pleiades: {data.pleiades_id} ↗
+            </a>
+          )}
+          {data.geonames_id && (
+            <a href={`https://www.geonames.org/${data.geonames_id}`} class="halka-chip-emerald no-underline">
+              GeoNames ↗
+            </a>
+          )}
+          {data.wikidata_id && (
+            <a href={`https://www.wikidata.org/wiki/${data.wikidata_id}`} class="halka-chip-emerald no-underline">
+              Wikidata: {data.wikidata_id} ↗
+            </a>
+          )}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

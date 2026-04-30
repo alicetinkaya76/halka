@@ -1,0 +1,57 @@
+---
+// src/pages/kitaplar/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { statusLabels } from '@/lib/labels';
+
+const baseUrl = import.meta.env.BASE_URL;
+const books = (await getCollection('books')).sort(
+  (a, b) => a.data.halka_metadata.sira_no - b.data.halka_metadata.sira_no
+);
+
+function statusChipClass(status: string): string {
+  switch (status) {
+    case 'okunuyor': return 'halka-chip-emerald';
+    case 'sirada':   return 'halka-chip-carmine';
+    default:         return 'halka-chip';
+  }
+}
+---
+
+<BaseLayout title="Kitaplar">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="font-sans text-4xl font-bold text-ink-900 mb-2">Kitaplar</h1>
+    <p class="text-ink-600 font-serif mb-10">
+      Halka platformunda atomik içeriği üretilmiş kitaplar. Müfredattaki sıradaki kitaplar için <a href={baseUrl} class="no-underline">anasayfaya</a> bakabilirsin.
+    </p>
+
+    <div class="space-y-4">
+      {books.map((b) => {
+        const slug = b.id.replace(/\.md$/, '');
+        return (
+          <a href={`${baseUrl}/kitaplar/${slug}`} class="halka-card flex flex-col md:flex-row md:items-start gap-4 no-underline">
+            <div class="flex flex-col items-start gap-2 md:w-32 shrink-0 font-sans text-xs">
+              <span class="halka-chip">#{b.data.halka_metadata.sira_no}</span>
+              <span class={statusChipClass(b.data.halka_metadata.status)}>
+                {statusLabels[b.data.halka_metadata.status]}
+              </span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="font-sans text-xl font-semibold text-ink-900 leading-tight">{b.data.title}</h2>
+              {b.data.subtitle && (
+                <p class="mt-1 text-base font-serif italic text-ink-600">{b.data.subtitle}</p>
+              )}
+              <div class="mt-2 font-serif text-sm text-ink-700">
+                {b.data.author}
+                {b.data.original_year && <span class="text-ink-400"> · {b.data.original_year}</span>}
+              </div>
+              <p class="mt-3 text-sm font-serif text-ink-700 line-clamp-3">
+                {b.data.historiographical_position.thesis_one_liner}
+              </p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,97 @@
+---
+// src/pages/kavramlar/[slug].astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const concepts = await getCollection('concepts');
+  return concepts.map((concept) => ({
+    params: { slug: concept.id.replace(/\.md$/, '') },
+    props: { concept },
+  }));
+}
+
+interface Props {
+  concept: CollectionEntry<'concepts'>;
+}
+
+const { concept } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const slug = concept.id.replace(/\.md$/, '');
+const data = concept.data;
+const { Content } = await concept.render();
+
+const allBooks = await getCollection('books');
+const referencingBooks = allBooks.filter((b) =>
+  b.data.key_concepts?.some((c) => c.slug === slug)
+);
+---
+
+<BaseLayout title={data.name} description={data.short_description}>
+  <article class="max-w-4xl mx-auto px-6 py-12">
+    <a href={`${baseUrl}/kavramlar`} class="font-sans text-xs text-ink-500 no-underline hover:text-emerald">
+      ← Tüm kavramlar
+    </a>
+
+    <header class="mt-4 mb-10 pb-6 halka-rule">
+      <h1 class="font-sans text-4xl font-bold text-ink-900 leading-tight">{data.name}</h1>
+      {data.name_arabic && (
+        <p class="mt-2 text-2xl font-serif text-ink-500" dir="rtl">{data.name_arabic}</p>
+      )}
+      {data.period && (
+        <p class="mt-3 font-mono text-sm text-ink-500">{data.period}</p>
+      )}
+      {data.geography && (
+        <p class="mt-1 font-serif text-sm text-ink-600">{data.geography}</p>
+      )}
+      <p class="mt-5 font-serif text-lg text-ink-800 leading-snug">{data.short_description}</p>
+    </header>
+
+    {referencingBooks.length > 0 && (
+      <section class="mb-10">
+        <h2 class="font-sans text-xl font-semibold text-ink-900 mb-2">Halka müfredatında geçen kitaplar</h2>
+        <p class="text-sm font-sans text-ink-500 mb-4">
+          Bu kavramı işleyen kitaplar. Faz 2'de farklı tanım/yorumlar otomatik karşılaştırılacak.
+        </p>
+        <div class="space-y-3">
+          {referencingBooks.map((b) => {
+            const bSlug = b.id.replace(/\.md$/, '');
+            const conceptRef = b.data.key_concepts?.find((c) => c.slug === slug);
+            return (
+              <a href={`${baseUrl}/kitaplar/${bSlug}`} class="halka-card no-underline">
+                <div class="font-sans text-sm font-semibold text-ink-900">
+                  {b.data.author} — {b.data.title}
+                </div>
+                {conceptRef?.description && (
+                  <p class="mt-1.5 text-sm font-serif text-ink-700">{conceptRef.description}</p>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <section class="halka-prose">
+      <Content />
+    </section>
+
+    {(data.dia_id || data.wikidata_id) && (
+      <section class="mt-12 pt-6 halka-rule">
+        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Dış bağlantılar</h2>
+        <div class="flex flex-wrap gap-3 font-sans text-sm">
+          {data.dia_id && (
+            <a href={`https://islamansiklopedisi.org.tr/${data.dia_id}`} class="halka-chip-emerald no-underline">
+              DİA ↗
+            </a>
+          )}
+          {data.wikidata_id && (
+            <a href={`https://www.wikidata.org/wiki/${data.wikidata_id}`} class="halka-chip-emerald no-underline">
+              Wikidata: {data.wikidata_id} ↗
+            </a>
+          )}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+// src/pages/kisiler/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const baseUrl = import.meta.env.BASE_URL;
+const people = (await getCollection('people')).sort((a, b) => a.data.name.localeCompare(b.data.name, 'tr'));
+const allBooks = await getCollection('books');
+
+function bookCount(slug: string): number {
+  return allBooks.filter((b) => b.data.key_people?.some((p) => p.slug === slug)).length;
+}
+---
+
+<BaseLayout title="Kişiler">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="font-sans text-4xl font-bold text-ink-900 mb-2">Kişiler</h1>
+    <p class="text-ink-600 font-serif mb-10 max-w-prose">
+      Halka müfredatındaki kitaplarda geçen ve atomik sayfası oluşturulmuş kişiler. Faz 1 ilerledikçe bu liste genişler; Faz 3'te tabakat.io profilleriyle birleşir.
+    </p>
+
+    {people.length === 0 ? (
+      <p class="text-ink-500 font-sans">Henüz kişi sayfası oluşturulmadı.</p>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {people.map((p) => {
+          const slug = p.id.replace(/\.md$/, '');
+          const count = bookCount(slug);
+          return (
+            <a href={`${baseUrl}/kisiler/${slug}`} class="halka-card no-underline">
+              <h2 class="font-sans text-lg font-semibold text-ink-900 leading-tight">{p.data.name}</h2>
+              {p.data.dates && (
+                <p class="mt-1 font-mono text-xs text-ink-400">{p.data.dates}</p>
+              )}
+              {p.data.role && (
+                <p class="mt-2 text-sm font-serif text-ink-700 line-clamp-2">{p.data.role}</p>
+              )}
+              {count > 0 && (
+                <p class="mt-3 text-xs font-sans text-emerald">{count} kitapta geçiyor</p>
+              )}
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>

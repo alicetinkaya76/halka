@@ -1,0 +1,41 @@
+# PDF'ler — telif sebebiyle public repo'ya konmaz
+pdfs/*.pdf
+pdfs/*.epub
+pdfs/*.zip
+
+# macOS sistem dosyaları
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Astro build çıktıları (Faz 0 sonrası eklenecek)
+node_modules/
+dist/
+.astro/
+
+# Ortam değişkenleri (API anahtarları)
+.env
+.env.local
+.env.*.local
+
+# Halka çalışma materyalleri (GitHub'a gitmeyecek — telif + boyut)
+/_archive/
+/pdfs/
+/data/
+/content/
+/assets/
+
+# macOS
+.DS_Store
+
+# Yedekler
+*.bak
+*-backup-*/

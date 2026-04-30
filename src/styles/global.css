@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --halka-paper: #f7f5f0;
+    --halka-ink: #191510;
+    --halka-emerald: #0e6b5e;
+    --halka-emerald-light: #1d8e7a;
+    --halka-carmine: #9c2a3b;
+    --halka-rule: #d6cfbb;
+  }
+
+  html {
+    background-color: var(--halka-paper);
+    color: var(--halka-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  code, pre, kbd {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  a {
+    color: var(--halka-emerald);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(14, 107, 94, 0.4);
+    transition: color 150ms ease, text-decoration-color 150ms ease;
+  }
+
+  a:hover {
+    color: var(--halka-emerald-light);
+    text-decoration-color: var(--halka-emerald-light);
+  }
+}
+
+@layer components {
+  .halka-rule {
+    border-top: 1px solid var(--halka-rule);
+  }
+
+  .halka-chip {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-sans font-medium rounded-sm border;
+    border-color: var(--halka-rule);
+    color: var(--halka-ink);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .halka-chip-emerald {
+    @apply halka-chip;
+    border-color: var(--halka-emerald);
+    color: var(--halka-emerald-light);
+    background-color: rgba(14, 107, 94, 0.05);
+  }
+
+  .halka-chip-carmine {
+    @apply halka-chip;
+    border-color: var(--halka-carmine);
+    color: var(--halka-carmine);
+    background-color: rgba(156, 42, 59, 0.05);
+  }
+
+  .halka-card {
+    @apply block p-5 bg-white border rounded-sm transition-shadow;
+    border-color: var(--halka-rule);
+  }
+
+  .halka-card:hover {
+    box-shadow: 0 2px 8px rgba(25, 21, 16, 0.08);
+  }
+
+  .halka-prose {
+    @apply max-w-prose;
+  }
+
+  .halka-prose p {
+    @apply my-4;
+  }
+
+  .halka-prose h2 {
+    @apply text-2xl mt-10 mb-3;
+  }
+
+  .halka-prose h3 {
+    @apply text-xl mt-7 mb-2;
+  }
+
+  .halka-prose ul, .halka-prose ol {
+    @apply my-4 pl-6;
+  }
+
+  .halka-prose ul {
+    @apply list-disc;
+  }
+
+  .halka-prose ol {
+    @apply list-decimal;
+  }
+
+  .halka-prose li {
+    @apply my-1;
+  }
+
+  .halka-prose blockquote {
+    @apply pl-4 my-4 italic;
+    border-left: 3px solid var(--halka-emerald);
+  }
+
+  .halka-prose strong {
+    @apply font-semibold;
+    color: var(--halka-ink);
+  }
+}

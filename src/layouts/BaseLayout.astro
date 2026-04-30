@@ -1,0 +1,82 @@
+---
+// src/layouts/BaseLayout.astro
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Halka — Bilim Tarihi Okuma Grubu Platformu. Kitapları bilgi grafiğine, müfredatı tarihyazımı haritasına dönüştüren açık dijital beşeri bilimler projesi.' } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <title>{fullTitle}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-ink-200 bg-ink-50/60 backdrop-blur sticky top-0 z-10">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href={baseUrl} class="flex items-center gap-3 no-underline group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.25"
+            class="text-emerald group-hover:text-emerald-light transition-colors"
+            aria-hidden="true"
+          >
+            <circle cx="16" cy="16" r="11" />
+            <circle cx="16" cy="16" r="6" />
+            <circle cx="16" cy="5" r="1.5" fill="currentColor" />
+            <circle cx="27" cy="16" r="1.5" fill="currentColor" />
+            <circle cx="16" cy="27" r="1.5" fill="currentColor" />
+            <circle cx="5"  cy="16" r="1.5" fill="currentColor" />
+          </svg>
+          <span class="font-sans text-xl font-semibold tracking-tight text-ink-900">Halka</span>
+        </a>
+
+        <nav class="font-sans text-sm flex items-center gap-6">
+          <a href={baseUrl} class="no-underline text-ink-700 hover:text-emerald">Müfredat</a>
+          <a href={`${baseUrl}/kitaplar`} class="no-underline text-ink-700 hover:text-emerald">Kitaplar</a>
+          <a href={`${baseUrl}/kisiler`} class="no-underline text-ink-700 hover:text-emerald">Kişiler</a>
+          <a href={`${baseUrl}/yerler`} class="no-underline text-ink-700 hover:text-emerald">Yerler</a>
+          <a href={`${baseUrl}/kavramlar`} class="no-underline text-ink-700 hover:text-emerald">Kavramlar</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="halka-rule mt-16">
+      <div class="max-w-6xl mx-auto px-6 py-8 font-sans text-sm text-ink-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <span class="font-semibold text-ink-700">Halka</span> &middot; Birlikte okuduklarımızı bağlayan bilgi
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/alicetinkaya76/halka" class="no-underline hover:text-emerald">GitHub</a>
+          <span class="text-ink-300">·</span>
+          <span>Kod MIT, içerik CC-BY 4.0</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+---
+// src/pages/kisiler/[slug].astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const people = await getCollection('people');
+  return people.map((person) => ({
+    params: { slug: person.id.replace(/\.md$/, '') },
+    props: { person },
+  }));
+}
+
+interface Props {
+  person: CollectionEntry<'people'>;
+}
+
+const { person } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const slug = person.id.replace(/\.md$/, '');
+const data = person.data;
+const { Content } = await person.render();
+
+// Reverse lookup: which books reference this person?
+const allBooks = await getCollection('books');
+const referencingBooks = allBooks.filter((b) =>
+  b.data.key_people?.some((p) => p.slug === slug)
+);
+---
+
+<BaseLayout title={data.name} description={data.role ?? data.name}>
+  <article class="max-w-4xl mx-auto px-6 py-12">
+    <a href={`${baseUrl}/kisiler`} class="font-sans text-xs text-ink-500 no-underline hover:text-emerald">
+      ← Tüm kişiler
+    </a>
+
+    <header class="mt-4 mb-10 pb-6 halka-rule">
+      <h1 class="font-sans text-4xl font-bold text-ink-900 leading-tight">{data.name}</h1>
+      {data.name_arabic && (
+        <p class="mt-2 text-2xl font-serif text-ink-500" dir="rtl">{data.name_arabic}</p>
+      )}
+      {data.dates && (
+        <p class="mt-3 font-mono text-sm text-ink-500">{data.dates}</p>
+      )}
+      {(data.birth_place || data.death_place) && (
+        <p class="mt-1 font-serif text-sm text-ink-600">
+          {data.birth_place && <>doğum: {data.birth_place}</>}
+          {data.birth_place && data.death_place && ' · '}
+          {data.death_place && <>vefat: {data.death_place}</>}
+        </p>
+      )}
+      {data.fields && data.fields.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-1.5">
+          {data.fields.map((f) => (
+            <span class="halka-chip">{f}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    {data.works && data.works.length > 0 && (
+      <section class="mb-10">
+        <h2 class="font-sans text-xl font-semibold text-ink-900 mb-4">Eserler</h2>
+        <ul class="space-y-2 font-serif">
+          {data.works.map((w) => (
+            <li class="flex items-baseline gap-3 py-1.5 border-b border-ink-100 last:border-0">
+              <span class="font-mono text-xs text-ink-400 w-16 text-right shrink-0">{w.year ?? ''}</span>
+              <span class="flex-1">
+                <span class="text-ink-800">{w.title}</span>
+                {w.type && <span class="ml-2 text-xs text-ink-400">{w.type}</span>}
+                {w.note && <span class="block text-sm text-ink-600 italic">{w.note}</span>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {referencingBooks.length > 0 && (
+      <section class="mb-10">
+        <h2 class="font-sans text-xl font-semibold text-ink-900 mb-2">Halka müfredatında geçen kitaplar</h2>
+        <p class="text-sm font-sans text-ink-500 mb-4">
+          Bu kişinin Halka kitaplarındaki yer alış biçimleri. Faz 2'de farklı vurgular otomatik karşılaştırılacak.
+        </p>
+        <div class="space-y-3">
+          {referencingBooks.map((b) => {
+            const bSlug = b.id.replace(/\.md$/, '');
+            const personRef = b.data.key_people?.find((p) => p.slug === slug);
+            return (
+              <a href={`${baseUrl}/kitaplar/${bSlug}`} class="halka-card no-underline">
+                <div class="font-sans text-sm font-semibold text-ink-900">
+                  {b.data.author} — {b.data.title}
+                </div>
+                {personRef?.role && (
+                  <p class="mt-1.5 text-sm font-serif text-ink-700">{personRef.role}</p>
+                )}
+                {(personRef?.author_emphasis || personRef?.starr_emphasis) && (
+                  <p class="mt-1 text-xs font-sans italic text-emerald-light">
+                    Vurgu: {personRef.author_emphasis ?? personRef.starr_emphasis}
+                  </p>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <section class="halka-prose">
+      <Content />
+    </section>
+
+    {(data.tabakat_io_id || data.dia_id || data.gas_id || data.wikidata_id) && (
+      <section class="mt-12 pt-6 halka-rule">
+        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Dış bağlantılar</h2>
+        <div class="flex flex-wrap gap-3 font-sans text-sm">
+          {data.tabakat_io_id && (
+            <a href={`https://tabakat.io/scholar/${data.tabakat_io_id}`} class="halka-chip-emerald no-underline">
+              tabakat.io ↗
+            </a>
+          )}
+          {data.dia_id && (
+            <a href={`https://islamansiklopedisi.org.tr/${data.dia_id}`} class="halka-chip-emerald no-underline">
+              DİA ↗
+            </a>
+          )}
+          {data.gas_id && (
+            <span class="halka-chip">GAS: {data.gas_id}</span>
+          )}
+          {data.wikidata_id && (
+            <a href={`https://www.wikidata.org/wiki/${data.wikidata_id}`} class="halka-chip-emerald no-underline">
+              Wikidata: {data.wikidata_id} ↗
+            </a>
+          )}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

@@ -1,0 +1,542 @@
+---
+// src/pages/kitaplar/[slug].astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import {
+  claimTypeLabels,
+  bookRelationLabels,
+  statusLabels,
+  eurocentrismLabels,
+  baghdadCentrismLabels,
+  internalistExternalistLabels,
+} from '@/lib/labels';
+import { findBookInCurriculum, curriculum } from '@/lib/curriculum';
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map((book) => ({
+    params: { slug: book.id.replace(/\.md$/, '') },
+    props: { book },
+  }));
+}
+
+interface Props {
+  book: CollectionEntry<'books'>;
+}
+
+const { book } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const data = book.data;
+const slug = book.id.replace(/\.md$/, '');
+const { Content } = await book.render();
+
+// Curriculum context
+const curriculumEntry = findBookInCurriculum(slug);
+const allBookSlugs = new Set(curriculum.flatMap((d) => d.books.map((b) => b.slug)));
+
+// Built atomic entries — to know which links should be active
+const peopleSet = new Set((await getCollection('people')).map((p) => p.id.replace(/\.md$/, '')));
+const placesSet = new Set((await getCollection('places')).map((p) => p.id.replace(/\.md$/, '')));
+const conceptsSet = new Set((await getCollection('concepts')).map((c) => c.id.replace(/\.md$/, '')));
+const booksSet = new Set((await getCollection('books')).map((b) => b.id.replace(/\.md$/, '')));
+
+// Previous / next navigation
+async function getBookTitle(s: string | undefined): Promise<string | null> {
+  if (!s) return null;
+  if (booksSet.has(s)) {
+    const e = await getEntry('books', s);
+    return e?.data.title ?? s;
+  }
+  const cur = curriculum.flatMap((d) => d.books).find((b) => b.slug === s);
+  return cur?.title ?? s;
+}
+const prevTitle = await getBookTitle(data.halka_metadata.onceki_kitap);
+const nextTitle = await getBookTitle(data.halka_metadata.sonraki_kitap);
+
+// Helpers
+function axisPosition(value: string, options: string[]): number {
+  // Returns position 0..1 along the axis
+  const idx = options.indexOf(value);
+  if (idx === -1) return 0.5;
+  return options.length > 1 ? idx / (options.length - 1) : 0.5;
+}
+
+const eurocentrismOptions = ['Eurocentric', 'noteurocentric-but-comparative', 'agnostic', 'anti-Eurocentric'];
+const baghdadOptions = ['Baghdad-centric', 'multipolar', 'agnostic', 'anti-Baghdad-centric'];
+const internalistOptions = ['internalist', 'mixed', 'externalist'];
+
+const hp = data.historiographical_position;
+---
+
+<BaseLayout title={data.title} description={hp.thesis_one_liner}>
+  <article class="max-w-6xl mx-auto px-6 pt-10 pb-16 grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-10">
+    <div class="min-w-0">
+
+      {/* ============== HEADER ============== */}
+      <header class="mb-10">
+        <div class="flex flex-wrap items-center gap-2 mb-5 font-sans text-xs">
+          <a href={baseUrl} class="halka-chip no-underline hover:border-emerald hover:text-emerald">
+            {data.halka_metadata.donem}
+          </a>
+          <span class="halka-chip">#{data.halka_metadata.sira_no}</span>
+          <span class={data.halka_metadata.status === 'okunuyor' ? 'halka-chip-emerald' : 'halka-chip'}>
+            {statusLabels[data.halka_metadata.status]}
+          </span>
+          {data.halka_metadata.okunma_tarihi && (
+            <span class="halka-chip">Halka oturumu: {data.halka_metadata.okunma_tarihi}</span>
+          )}
+        </div>
+
+        <h1 class="font-sans text-4xl md:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
+          {data.title}
+        </h1>
+        {data.subtitle && (
+          <p class="mt-3 text-2xl text-ink-600 font-serif italic leading-snug">
+            {data.subtitle}
+          </p>
+        )}
+
+        <div class="mt-6 font-serif text-lg text-ink-700">
+          <span class="font-semibold">{data.author}</span>
+          {data.original_title && (
+            <span class="text-ink-500"> · <span class="italic">{data.original_title}</span></span>
+          )}
+          {data.original_year && (
+            <span class="text-ink-500"> ({data.original_year})</span>
+          )}
+        </div>
+
+        {(data.turkish_translator || data.turkish_publisher) && (
+          <div class="mt-1 font-serif text-sm text-ink-500">
+            {data.turkish_translator && <>Çev. {data.turkish_translator}</>}
+            {data.turkish_translator && data.turkish_publisher && ' · '}
+            {data.turkish_publisher && <>{data.turkish_publisher}</>}
+            {data.turkish_year && <>, {data.turkish_year}</>}
+            {data.pages && <> · {data.pages} sayfa</>}
+            {data.chapters_count && <> · {data.chapters_count} bölüm</>}
+          </div>
+        )}
+
+        {(prevTitle || nextTitle) && (
+          <div class="mt-6 flex flex-col sm:flex-row sm:justify-between gap-3 text-sm font-sans">
+            {prevTitle ? (
+              <a href={`${baseUrl}/kitaplar/${data.halka_metadata.onceki_kitap}`} class="no-underline text-ink-500 hover:text-emerald">
+                ← {prevTitle}
+              </a>
+            ) : <span></span>}
+            {nextTitle ? (
+              <a href={`${baseUrl}/kitaplar/${data.halka_metadata.sonraki_kitap}`} class="no-underline text-ink-500 hover:text-emerald sm:text-right">
+                {nextTitle} →
+              </a>
+            ) : <span></span>}
+          </div>
+        )}
+      </header>
+
+      {/* ============== ANA TEZ ============== */}
+      <section id="tez" class="mb-12 p-6 border-l-4 border-emerald bg-white/60 rounded-sm">
+        <div class="font-sans text-xs uppercase tracking-wider text-emerald mb-2">Yazarın ana tezi</div>
+        <p class="font-serif text-xl leading-snug text-ink-900">
+          {hp.thesis_one_liner}
+        </p>
+      </section>
+
+      {/* ============== TARİHYAZIMI POZİSYONU ============== */}
+      <section id="tarihyazimi" class="mb-14">
+        <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-5">Tarihyazımı pozisyonu</h2>
+        <div class="space-y-5 font-sans text-sm">
+          <div>
+            <div class="flex justify-between text-xs text-ink-500 mb-1">
+              <span>Eurocentric</span>
+              <span>Anti-Eurocentric</span>
+            </div>
+            <div class="relative h-1.5 bg-ink-100 rounded-full">
+              <div
+                class="absolute top-1/2 w-3.5 h-3.5 -mt-1.5 -ml-1.5 rounded-full bg-emerald border-2 border-white shadow"
+                style={`left: ${axisPosition(hp.eurocentrism_axis, eurocentrismOptions) * 100}%;`}
+                title={eurocentrismLabels[hp.eurocentrism_axis]}
+              ></div>
+            </div>
+            <div class="text-xs text-emerald-light mt-1 text-right">{eurocentrismLabels[hp.eurocentrism_axis]}</div>
+          </div>
+
+          {hp.baghdad_centrism_axis && (
+            <div>
+              <div class="flex justify-between text-xs text-ink-500 mb-1">
+                <span>Bağdat-merkezci</span>
+                <span>Anti-Bağdat</span>
+              </div>
+              <div class="relative h-1.5 bg-ink-100 rounded-full">
+                <div
+                  class="absolute top-1/2 w-3.5 h-3.5 -mt-1.5 -ml-1.5 rounded-full bg-emerald border-2 border-white shadow"
+                  style={`left: ${axisPosition(hp.baghdad_centrism_axis, baghdadOptions) * 100}%;`}
+                  title={baghdadCentrismLabels[hp.baghdad_centrism_axis]}
+                ></div>
+              </div>
+              <div class="text-xs text-emerald-light mt-1 text-right">{baghdadCentrismLabels[hp.baghdad_centrism_axis]}</div>
+            </div>
+          )}
+
+          <div>
+            <div class="flex justify-between text-xs text-ink-500 mb-1">
+              <span>İçselci</span>
+              <span>Dışsalcı</span>
+            </div>
+            <div class="relative h-1.5 bg-ink-100 rounded-full">
+              <div
+                class="absolute top-1/2 w-3.5 h-3.5 -mt-1.5 -ml-1.5 rounded-full bg-emerald border-2 border-white shadow"
+                style={`left: ${axisPosition(hp.internalist_externalist, internalistOptions) * 100}%;`}
+                title={internalistExternalistLabels[hp.internalist_externalist]}
+              ></div>
+            </div>
+            <div class="text-xs text-emerald-light mt-1 text-right">{internalistExternalistLabels[hp.internalist_externalist]}</div>
+          </div>
+
+          {hp.declensionist !== undefined && (
+            <div class="flex items-center gap-2 pt-2 text-ink-700">
+              <span class="text-ink-500">Çöküşçü mü?</span>
+              <span class={hp.declensionist ? 'halka-chip-carmine' : 'halka-chip'}>
+                {hp.declensionist ? 'Evet' : 'Hayır'}
+              </span>
+            </div>
+          )}
+
+          {hp.geographical_emphasis && (
+            <div class="flex items-center gap-2 text-ink-700">
+              <span class="text-ink-500">Coğrafi vurgu:</span>
+              <span class="font-medium">{hp.geographical_emphasis}</span>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ============== ANALİTİK ÖZET (markdown body) ============== */}
+      <section id="ozet" class="mb-14 halka-prose">
+        <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Analitik özet</h2>
+        <Content />
+      </section>
+
+      {/* ============== ATOMIC CLAIMS ============== */}
+      {data.key_claims && data.key_claims.length > 0 && (
+        <section id="iddialar" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-1">
+            Atomik iddialar <span class="text-base text-ink-400 font-normal">({data.key_claims.length})</span>
+          </h2>
+          <p class="text-sm text-ink-500 font-sans mb-6">
+            Kitabın yaptığı atomik önermeler. Çatışan ve destekleyen iddialar Faz 2'de otomatik olarak başka kitaplarla bağlanacak.
+          </p>
+          <div class="space-y-4">
+            {data.key_claims.map((c) => (
+              <div class="halka-card">
+                <div class="flex items-start justify-between gap-4 mb-2">
+                  <code class="font-mono text-xs text-ink-400">{c.id}</code>
+                  <span class="halka-chip-emerald">{claimTypeLabels[c.type] ?? c.type}</span>
+                </div>
+                <p class="font-serif text-lg leading-snug text-ink-900">{c.claim}</p>
+                {c.note && (
+                  <p class="mt-2 text-sm text-ink-500 italic">{c.note}</p>
+                )}
+                {(c.conflicts_with?.length || c.supports?.length || c.cites?.length || c.debate_with?.length) && (
+                  <div class="mt-3 pt-3 halka-rule space-y-1.5 font-sans text-xs">
+                    {c.conflicts_with?.map((t) => (
+                      <div class="flex items-center gap-2 text-carmine">
+                        <span class="font-semibold">⚔ çelişiyor:</span>
+                        <code class="font-mono text-ink-600">{t}</code>
+                      </div>
+                    ))}
+                    {c.supports?.map((t) => (
+                      <div class="flex items-center gap-2 text-emerald">
+                        <span class="font-semibold">✓ destekliyor:</span>
+                        <code class="font-mono text-ink-600">{t}</code>
+                      </div>
+                    ))}
+                    {c.debate_with?.map((t) => (
+                      <div class="flex items-center gap-2 text-ink-600">
+                        <span class="font-semibold">↔ tartışma:</span>
+                        <code class="font-mono">{t}</code>
+                      </div>
+                    ))}
+                    {c.cites?.map((t) => (
+                      <div class="flex items-center gap-2 text-ink-600">
+                        <span class="font-semibold">↪ atıf:</span>
+                        <code class="font-mono">{t}</code>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ============== KEY PEOPLE ============== */}
+      {data.key_people && data.key_people.length > 0 && (
+        <section id="kisiler" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-1">
+            Kişiler <span class="text-base text-ink-400 font-normal">({data.key_people.length})</span>
+          </h2>
+          <p class="text-sm text-ink-500 font-sans mb-6">
+            Kitabın merkezi figürleri. Tıklanabilir olanların atomik sayfası mevcut; diğerleri Faz 1'de açılacak.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data.key_people.map((p) => {
+              const built = peopleSet.has(p.slug);
+              const Tag = built ? 'a' : 'div';
+              return (
+                <Tag
+                  href={built ? `${baseUrl}/kisiler/${p.slug}` : undefined}
+                  class={`halka-card ${built ? '' : 'opacity-75'}`}
+                >
+                  <div class="flex items-baseline justify-between gap-3 mb-1">
+                    <h3 class="font-sans text-base font-semibold text-ink-900">{p.name}</h3>
+                    {p.dates && <span class="font-mono text-xs text-ink-400">{p.dates}</span>}
+                  </div>
+                  {p.place && (
+                    <div class="text-xs font-sans text-ink-500 mb-2">{p.place}</div>
+                  )}
+                  <p class="text-sm font-serif text-ink-700">{p.role}</p>
+                  {(p.author_emphasis || p.starr_emphasis) && (
+                    <p class="mt-2 text-xs font-sans italic text-emerald-light">
+                      Yazarın vurgusu: {p.author_emphasis ?? p.starr_emphasis}
+                    </p>
+                  )}
+                </Tag>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ============== KEY PLACES ============== */}
+      {data.key_places && data.key_places.length > 0 && (
+        <section id="yerler" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-6">
+            Yerler <span class="text-base text-ink-400 font-normal">({data.key_places.length})</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data.key_places.map((p) => {
+              const built = placesSet.has(p.slug);
+              const Tag = built ? 'a' : 'div';
+              return (
+                <Tag
+                  href={built ? `${baseUrl}/yerler/${p.slug}` : undefined}
+                  class={`halka-card ${built ? '' : 'opacity-75'}`}
+                >
+                  <div class="flex items-baseline justify-between gap-3 mb-1">
+                    <h3 class="font-sans text-base font-semibold text-ink-900">{p.name}</h3>
+                    {p.modern && <span class="font-mono text-xs text-ink-400">{p.modern}</span>}
+                  </div>
+                  <p class="text-sm font-serif text-ink-700">{p.role}</p>
+                </Tag>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ============== KEY CONCEPTS ============== */}
+      {data.key_concepts && data.key_concepts.length > 0 && (
+        <section id="kavramlar" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-6">
+            Kavramlar <span class="text-base text-ink-400 font-normal">({data.key_concepts.length})</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data.key_concepts.map((c) => {
+              const built = conceptsSet.has(c.slug);
+              const Tag = built ? 'a' : 'div';
+              return (
+                <Tag
+                  href={built ? `${baseUrl}/kavramlar/${c.slug}` : undefined}
+                  class={`halka-card ${built ? '' : 'opacity-75'}`}
+                >
+                  <h3 class="font-sans text-base font-semibold text-ink-900 mb-1.5">{c.name}</h3>
+                  <p class="text-sm font-serif text-ink-700">{c.description}</p>
+                </Tag>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ============== CHAPTERS ============== */}
+      {data.chapters && data.chapters.length > 0 && (
+        <section id="bolumler" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-6">İçindekiler</h2>
+          <ol class="space-y-1 font-serif">
+            {data.chapters.map((ch) => (
+              <li class="flex items-baseline gap-3 py-1.5 border-b border-ink-100 last:border-0">
+                <span class="font-mono text-xs text-ink-400 w-6 text-right shrink-0">{ch.number}</span>
+                <span class="text-ink-800 flex-1">{ch.title}</span>
+                {ch.page && <span class="font-mono text-xs text-ink-400">s. {ch.page}</span>}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {/* ============== RELATIONSHIPS TO OTHER BOOKS ============== */}
+      {data.relationships_to_other_books && data.relationships_to_other_books.length > 0 && (
+        <section id="diger-kitaplar" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-1">
+            Müfredattaki diğer kitaplarla ilişki
+          </h2>
+          <p class="text-sm text-ink-500 font-sans mb-6">
+            Halka müfredatındaki kitapların bu kitapla nasıl konuştuğu.
+          </p>
+          <div class="space-y-3">
+            {data.relationships_to_other_books.map((r) => {
+              const built = booksSet.has(r.book) || allBookSlugs.has(r.book);
+              const cur = curriculum.flatMap((d) => d.books).find((b) => b.slug === r.book);
+              const Tag = built ? 'a' : 'div';
+              return (
+                <Tag
+                  href={booksSet.has(r.book) ? `${baseUrl}/kitaplar/${r.book}` : undefined}
+                  class={`halka-card flex flex-col sm:flex-row sm:items-start gap-3 ${booksSet.has(r.book) ? '' : 'opacity-90'}`}
+                >
+                  <span class="halka-chip-emerald shrink-0">{bookRelationLabels[r.relation] ?? r.relation}</span>
+                  <div class="min-w-0 flex-1">
+                    <div class="font-sans text-sm font-semibold text-ink-900">
+                      {cur ? `${cur.author} — ${cur.title}` : r.book}
+                    </div>
+                    {r.note && (
+                      <p class="mt-1 text-sm font-serif text-ink-700">{r.note}</p>
+                    )}
+                  </div>
+                </Tag>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ============== DISCUSSION QUESTIONS ============== */}
+      {data.discussion_questions && data.discussion_questions.length > 0 && (
+        <section id="sorular" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-1">
+            Tartışma soruları <span class="text-base text-ink-400 font-normal">({data.discussion_questions.length})</span>
+          </h2>
+          <p class="text-sm text-ink-500 font-sans mb-6">
+            Halka oturumunda kullanılmak üzere hazırlanmış. Hepsini bir oturuma sığdırmak gerekmez — 3-4 tanesini önceden seçmek genelde yeterlidir.
+          </p>
+          <ol class="space-y-4">
+            {data.discussion_questions.map((q, i) => (
+              <li class="flex gap-4 font-serif">
+                <span class="font-sans font-semibold text-emerald shrink-0 w-8">{i + 1}.</span>
+                <span class="text-ink-800">{q}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {/* ============== CRITICAL READING NOTES ============== */}
+      {data.critical_reading_notes && data.critical_reading_notes.length > 0 && (
+        <section id="elestirel-notlar" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-1">Eleştirel okuma notları</h2>
+          <p class="text-sm text-ink-500 font-sans mb-6">
+            Kitabı okurken aklında tutulması gereken metodolojik uyarılar.
+          </p>
+          <ul class="space-y-3">
+            {data.critical_reading_notes.map((n) => (
+              <li class="flex gap-3 font-serif text-ink-800">
+                <span class="text-carmine font-bold mt-1.5 shrink-0">▸</span>
+                <span>{n}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* ============== FURTHER READING ============== */}
+      {data.further_reading && (data.further_reading.primary?.length || data.further_reading.scholarly?.length) && (
+        <section id="ilerigi-okuma" class="mb-14">
+          <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-6">İleri okuma</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {data.further_reading.primary && data.further_reading.primary.length > 0 && (
+              <div>
+                <h3 class="font-sans text-sm font-semibold uppercase tracking-wider text-emerald mb-3">
+                  Birincil kaynaklar
+                </h3>
+                <ul class="space-y-2 font-serif text-ink-700">
+                  {data.further_reading.primary.map((s) => (
+                    <li class="flex gap-2">
+                      <span class="text-ink-300">·</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {data.further_reading.scholarly && data.further_reading.scholarly.length > 0 && (
+              <div>
+                <h3 class="font-sans text-sm font-semibold uppercase tracking-wider text-emerald mb-3">
+                  Akademik literatür
+                </h3>
+                <ul class="space-y-2 font-serif text-ink-700">
+                  {data.further_reading.scholarly.map((s) => (
+                    <li class="flex gap-2">
+                      <span class="text-ink-300">·</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ============== TAGS ============== */}
+      {data.tags && data.tags.length > 0 && (
+        <section class="mb-8">
+          <div class="flex flex-wrap gap-2">
+            {data.tags.map((t) => (
+              <span class="halka-chip">#{t}</span>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+
+    {/* ============== STICKY TOC (right sidebar) ============== */}
+    <aside class="hidden lg:block">
+      <nav class="sticky top-24 font-sans text-sm">
+        <div class="text-xs uppercase tracking-wider text-ink-400 mb-3">İçerik</div>
+        <ul class="space-y-2.5 border-l border-ink-200 pl-4">
+          <li><a href="#tez" class="no-underline text-ink-600 hover:text-emerald">Ana tez</a></li>
+          <li><a href="#tarihyazimi" class="no-underline text-ink-600 hover:text-emerald">Tarihyazımı</a></li>
+          <li><a href="#ozet" class="no-underline text-ink-600 hover:text-emerald">Analitik özet</a></li>
+          {data.key_claims?.length && (
+            <li><a href="#iddialar" class="no-underline text-ink-600 hover:text-emerald">İddialar <span class="text-ink-300">({data.key_claims.length})</span></a></li>
+          )}
+          {data.key_people?.length && (
+            <li><a href="#kisiler" class="no-underline text-ink-600 hover:text-emerald">Kişiler <span class="text-ink-300">({data.key_people.length})</span></a></li>
+          )}
+          {data.key_places?.length && (
+            <li><a href="#yerler" class="no-underline text-ink-600 hover:text-emerald">Yerler <span class="text-ink-300">({data.key_places.length})</span></a></li>
+          )}
+          {data.key_concepts?.length && (
+            <li><a href="#kavramlar" class="no-underline text-ink-600 hover:text-emerald">Kavramlar <span class="text-ink-300">({data.key_concepts.length})</span></a></li>
+          )}
+          {data.chapters?.length && (
+            <li><a href="#bolumler" class="no-underline text-ink-600 hover:text-emerald">İçindekiler</a></li>
+          )}
+          {data.relationships_to_other_books?.length && (
+            <li><a href="#diger-kitaplar" class="no-underline text-ink-600 hover:text-emerald">Diğer kitaplar</a></li>
+          )}
+          {data.discussion_questions?.length && (
+            <li><a href="#sorular" class="no-underline text-ink-600 hover:text-emerald">Tartışma <span class="text-ink-300">({data.discussion_questions.length})</span></a></li>
+          )}
+          {data.critical_reading_notes?.length && (
+            <li><a href="#elestirel-notlar" class="no-underline text-ink-600 hover:text-emerald">Eleştirel notlar</a></li>
+          )}
+          {data.further_reading && (data.further_reading.primary?.length || data.further_reading.scholarly?.length) && (
+            <li><a href="#ilerigi-okuma" class="no-underline text-ink-600 hover:text-emerald">İleri okuma</a></li>
+          )}
+        </ul>
+      </nav>
+    </aside>
+  </article>
+</BaseLayout>

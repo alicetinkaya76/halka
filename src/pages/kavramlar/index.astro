@@ -1,0 +1,42 @@
+---
+// src/pages/kavramlar/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const baseUrl = import.meta.env.BASE_URL;
+const concepts = (await getCollection('concepts')).sort((a, b) => a.data.name.localeCompare(b.data.name, 'tr'));
+const allBooks = await getCollection('books');
+
+function bookCount(slug: string): number {
+  return allBooks.filter((b) => b.data.key_concepts?.some((c) => c.slug === slug)).length;
+}
+---
+
+<BaseLayout title="Kavramlar">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="font-sans text-4xl font-bold text-ink-900 mb-2">Kavramlar</h1>
+    <p class="text-ink-600 font-serif mb-10 max-w-prose">
+      Halka müfredatındaki kitaplarda işlenen ve atomik sayfası oluşturulmuş kavramlar — fikirler, akımlar, kurumlar.
+    </p>
+
+    {concepts.length === 0 ? (
+      <p class="text-ink-500 font-sans">Henüz kavram sayfası oluşturulmadı.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {concepts.map((c) => {
+          const slug = c.id.replace(/\.md$/, '');
+          const count = bookCount(slug);
+          return (
+            <a href={`${baseUrl}/kavramlar/${slug}`} class="halka-card no-underline">
+              <h2 class="font-sans text-lg font-semibold text-ink-900">{c.data.name}</h2>
+              <p class="mt-2 text-sm font-serif text-ink-700 line-clamp-3">{c.data.short_description}</p>
+              {count > 0 && (
+                <p class="mt-3 text-xs font-sans text-emerald">{count} kitapta işleniyor</p>
+              )}
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>
