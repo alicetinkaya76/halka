@@ -26,6 +26,9 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+
+    {/* Pagefind UI — F1.1 */}
+    <link rel="stylesheet" href={`${baseUrl}/pagefind/pagefind-ui.css`} />
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="border-b border-ink-200 bg-ink-50/60 backdrop-blur sticky top-0 z-10">
@@ -52,12 +55,29 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
           <span class="font-sans text-xl font-semibold tracking-tight text-ink-900">Halka</span>
         </a>
 
-        <nav class="font-sans text-sm flex items-center gap-6">
-          <a href={baseUrl} class="no-underline text-ink-700 hover:text-emerald">Müfredat</a>
+        <nav class="font-sans text-sm flex items-center gap-4 sm:gap-6">
+          <a href={baseUrl} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Müfredat</a>
           <a href={`${baseUrl}/kitaplar`} class="no-underline text-ink-700 hover:text-emerald">Kitaplar</a>
-          <a href={`${baseUrl}/kisiler`} class="no-underline text-ink-700 hover:text-emerald">Kişiler</a>
-          <a href={`${baseUrl}/yerler`} class="no-underline text-ink-700 hover:text-emerald">Yerler</a>
-          <a href={`${baseUrl}/kavramlar`} class="no-underline text-ink-700 hover:text-emerald">Kavramlar</a>
+          <a href={`${baseUrl}/kisiler`} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Kişiler</a>
+          <a href={`${baseUrl}/yerler`} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Yerler</a>
+          <a href={`${baseUrl}/kavramlar`} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Kavramlar</a>
+
+          {/* Arama butonu — F1.1 */}
+          <button
+            id="halka-search-trigger"
+            type="button"
+            class="flex items-center gap-2 px-3 py-1.5 rounded-sm border border-ink-200 bg-white/60 hover:border-emerald hover:text-emerald text-ink-500 transition-colors"
+            aria-label="Halka'da ara (⌘K)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="hidden sm:inline">Ara</span>
+            <kbd class="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-ink-400 border border-ink-200 rounded-sm bg-ink-50">
+              ⌘K
+            </kbd>
+          </button>
         </nav>
       </div>
     </header>
@@ -65,6 +85,138 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
     <main class="flex-1">
       <slot />
     </main>
+
+    {/* Arama modal — F1.1 */}
+    <div
+      id="halka-search-modal"
+      class="hidden fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-ink-900/40 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Halka'da ara"
+    >
+      <div class="w-full max-w-2xl bg-white rounded-sm shadow-xl border border-ink-200 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-sans text-lg font-semibold text-ink-900">Halka'da ara</h2>
+          <button
+            id="halka-search-close"
+            type="button"
+            class="text-ink-400 hover:text-carmine"
+            aria-label="Aramayı kapat (Esc)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <p class="text-xs text-ink-500 font-sans mb-4">
+          Kitap, kişi, yer, kavram ve atomik iddialarda arar. Türkçe karakterler desteklenir.
+        </p>
+        <div id="halka-search"></div>
+      </div>
+    </div>
+
+    {/* Pagefind UI script — search modal'ı initialize eder, Cmd+K kısayolu */}
+    <script type="module" is:inline define:vars={{ baseUrl }}>
+      const trigger = document.getElementById('halka-search-trigger');
+      const modal = document.getElementById('halka-search-modal');
+      const closeBtn = document.getElementById('halka-search-close');
+      let pagefindInitialized = false;
+
+      async function openSearch() {
+        modal.classList.remove('hidden');
+        if (!pagefindInitialized) {
+          try {
+            const { default: PagefindUI } = await import(`${baseUrl}/pagefind/pagefind-ui.js`);
+            new PagefindUI({
+              element: '#halka-search',
+              showSubResults: true,
+              showImages: false,
+              translations: {
+                placeholder: 'Ara: kitap, kişi, yer, kavram…',
+                clear_search: 'Temizle',
+                load_more: 'Daha fazla',
+                search_label: 'Halka site araması',
+                filters_label: 'Filtreler',
+                zero_results: 'Sonuç bulunamadı: [SEARCH_TERM]',
+                many_results: '[COUNT] sonuç: [SEARCH_TERM]',
+                one_result: '[COUNT] sonuç: [SEARCH_TERM]',
+                alt_search: 'Bulunamadı: [SEARCH_TERM]. Şu sonuçlar gösteriliyor:',
+                search_suggestion: 'Sonuç bulunamadı: [SEARCH_TERM]. Şu aramaları deneyin:',
+                searching: 'Aranıyor: [SEARCH_TERM]…',
+              },
+            });
+            pagefindInitialized = true;
+          } catch (e) {
+            // Dev modda pagefind/ klasörü yoktur (sadece prod build'den sonra var)
+            document.getElementById('halka-search').innerHTML =
+              '<p class="text-sm text-ink-500 font-sans p-4 border border-dashed border-ink-200 rounded-sm">Arama indeksi sadece <code>npm run build</code> sonrasında üretiliyor. Dev modda göremezsiniz; deploy edilmiş sürümde çalışır.</p>';
+            pagefindInitialized = true;
+          }
+        }
+        // Focus the search input after modal opens
+        setTimeout(() => {
+          const input = modal.querySelector('input');
+          if (input) input.focus();
+        }, 50);
+      }
+
+      function closeSearch() {
+        modal.classList.add('hidden');
+      }
+
+      trigger?.addEventListener('click', openSearch);
+      closeBtn?.addEventListener('click', closeSearch);
+
+      // Modal dışına tıklayınca kapat
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeSearch();
+      });
+
+      // Cmd+K / Ctrl+K kısayolu
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (modal.classList.contains('hidden')) openSearch();
+          else closeSearch();
+        }
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeSearch();
+        }
+      });
+    </script>
+
+    {/* Pagefind UI override — Halka design system'e uyum */}
+    <style is:global>
+      :root {
+        --pagefind-ui-scale: 0.9;
+        --pagefind-ui-primary: var(--halka-emerald);
+        --pagefind-ui-text: var(--halka-ink);
+        --pagefind-ui-background: white;
+        --pagefind-ui-border: var(--halka-rule);
+        --pagefind-ui-tag: rgba(14, 107, 94, 0.05);
+        --pagefind-ui-border-width: 1px;
+        --pagefind-ui-border-radius: 2px;
+        --pagefind-ui-image-border-radius: 2px;
+        --pagefind-ui-image-box-ratio: 3 / 2;
+        --pagefind-ui-font: 'Inter', system-ui, sans-serif;
+      }
+      .pagefind-ui__search-input {
+        font-family: 'Inter', system-ui, sans-serif !important;
+      }
+      .pagefind-ui__result-title a {
+        color: var(--halka-ink) !important;
+        text-decoration: none !important;
+      }
+      .pagefind-ui__result-title a:hover {
+        color: var(--halka-emerald) !important;
+      }
+      .pagefind-ui__result-excerpt mark {
+        background: rgba(14, 107, 94, 0.15);
+        color: var(--halka-ink);
+        padding: 0 2px;
+      }
+    </style>
 
     <footer class="halka-rule mt-16">
       <div class="max-w-6xl mx-auto px-6 py-8 font-sans text-sm text-ink-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -74,7 +226,7 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
         <div class="flex items-center gap-4">
           <a href="https://github.com/alicetinkaya76/halka" class="no-underline hover:text-emerald">GitHub</a>
           <span class="text-ink-300">·</span>
-          <span>Kod MIT, içerik CC-BY 4.0</span>
+          <span>Kod MIT, içerik CC-BY-SA 4.0</span>
         </div>
       </div>
     </footer>
