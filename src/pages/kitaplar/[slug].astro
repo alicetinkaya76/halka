@@ -94,6 +94,88 @@ const readingLevelChipClass =
   data.reading_level === 'kolay' ? 'halka-chip-emerald'
   : data.reading_level === 'zor' ? 'halka-chip-carmine'
   : 'halka-chip';
+
+// ============================================================
+// F1.3 — Tarihyazımı 2D scatter: tüm Halka kitaplarının konumları
+// ============================================================
+interface BookScatterPoint {
+  slug: string;
+  short: string;
+  title: string;
+  sira_no: number;
+  x: number;
+  y: number;
+  declensionist: boolean;
+  isCurrent: boolean;
+  yOffset: number;
+}
+
+const eurXMap: Record<string, number> = {
+  'Eurocentric': 0,
+  'noteurocentric-but-comparative': 0.33,
+  'agnostic': 0.67,
+  'anti-Eurocentric': 1,
+};
+const bagYMap: Record<string, number> = {
+  'Baghdad-centric': 0,
+  'multipolar': 0.5,
+  'agnostic': 0.5,
+  'anti-Baghdad-centric': 1,
+};
+
+const shortLabel = (s: string, author: string): string => {
+  // Aynı yazarın iki kitabı varsa ayırt et
+  if (s.startsWith('goody-batidaki')) return 'Goody-BD';
+  if (s.startsWith('goody-rones')) return 'Goody-R';
+  return author.split(/\s+/).pop() ?? '?';
+};
+
+const allBooksForScatter = await getCollection('books');
+const rawPoints: BookScatterPoint[] = allBooksForScatter.map((b) => {
+  const s = b.id.replace(/\.md$/, '');
+  const hpb = b.data.historiographical_position;
+  return {
+    slug: s,
+    short: shortLabel(s, b.data.author),
+    title: b.data.title,
+    sira_no: b.data.halka_metadata.sira_no,
+    x: eurXMap[hpb.eurocentrism_axis] ?? 0.5,
+    y: bagYMap[hpb.baghdad_centrism_axis ?? 'multipolar'] ?? 0.5,
+    declensionist: hpb.declensionist ?? false,
+    isCurrent: s === slug,
+    yOffset: 0,
+  };
+});
+
+// Çakışan noktaları vertical jitter ile ayır
+const buckets = new Map<string, BookScatterPoint[]>();
+for (const p of rawPoints) {
+  const key = `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
+  if (!buckets.has(key)) buckets.set(key, []);
+  buckets.get(key)!.push(p);
+}
+for (const bucket of buckets.values()) {
+  if (bucket.length === 1) continue;
+  bucket.sort((a, b) => a.sira_no - b.sira_no);
+  const N = bucket.length;
+  const SPACING = 30;
+  bucket.forEach((p, i) => {
+    p.yOffset = (i - (N - 1) / 2) * SPACING;
+  });
+}
+const bookPositions = rawPoints;
+
+// SVG koordinat dönüşümleri
+const SVG_W = 600;
+const SVG_H = 420;
+const PAD_L = 70;
+const PAD_R = 50;
+const PAD_T = 50;
+const PAD_B = 70;
+const dataW = SVG_W - PAD_L - PAD_R;
+const dataH = SVG_H - PAD_T - PAD_B;
+const xToSvg = (x: number) => PAD_L + x * dataW;
+const yToSvg = (y: number) => PAD_T + y * dataH;
 ---
 
 <BaseLayout title={data.title} description={hp.thesis_one_liner}>
@@ -102,75 +184,107 @@ const readingLevelChipClass =
 
       {/* ============== HEADER ============== */}
       <header class="mb-10">
-        <div class="flex flex-wrap items-center gap-2 mb-5 font-sans text-xs">
-          <a href={baseUrl} class="halka-chip no-underline hover:border-emerald hover:text-emerald">
-            {data.halka_metadata.donem}
-          </a>
-          <span class="halka-chip">#{data.halka_metadata.sira_no}</span>
-          <span class={data.halka_metadata.status === 'okunuyor' ? 'halka-chip-emerald' : 'halka-chip'}>
-            {statusLabels[data.halka_metadata.status]}
-          </span>
-          <span
-            class={readingLevelChipClass}
-            title={data.accessibility_note ?? undefined}
-          >
-            {readingLevelLabels[data.reading_level]}
-          </span>
-          {data.halka_metadata.okunma_tarihi && (
-            <span class="halka-chip">Halka oturumu: {data.halka_metadata.okunma_tarihi}</span>
-          )}
-        </div>
+        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8">
 
-        <h1 class="font-sans text-4xl md:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
-          {data.title}
-        </h1>
-        {data.subtitle && (
-          <p class="mt-3 text-2xl text-ink-600 font-serif italic leading-snug">
-            {data.subtitle}
-          </p>
-        )}
-
-        <div class="mt-6 font-serif text-lg text-ink-700">
-          <span class="font-semibold">{data.author}</span>
-          {data.original_title && (
-            <span class="text-ink-500"> · <span class="italic">{data.original_title}</span></span>
-          )}
-          {data.original_year && (
-            <span class="text-ink-500"> ({data.original_year})</span>
-          )}
-        </div>
-
-        {(data.turkish_translator || data.turkish_publisher) && (
-          <div class="mt-1 font-serif text-sm text-ink-500">
-            {data.turkish_translator && <>Çev. {data.turkish_translator}</>}
-            {data.turkish_translator && data.turkish_publisher && ' · '}
-            {data.turkish_publisher && <>{data.turkish_publisher}</>}
-            {data.turkish_year && <>, {data.turkish_year}</>}
-            {data.pages && <> · {data.pages} sayfa</>}
-            {data.chapters_count && <> · {data.chapters_count} bölüm</>}
+          {/* Cover slot — F1.4 yer tutucusu */}
+          <div class="shrink-0 w-32 sm:w-40">
+            {data.cover_image ? (
+              <figure class="m-0">
+                <img
+                  src={data.cover_image}
+                  alt={`${data.title} kapağı`}
+                  class="w-full h-auto rounded-sm shadow-md border border-ink-100"
+                  loading="lazy"
+                />
+                {data.cover_credit && (
+                  <figcaption class="mt-1.5 text-[10.5px] text-ink-400 font-sans italic leading-tight">
+                    {data.cover_credit}
+                  </figcaption>
+                )}
+              </figure>
+            ) : (
+              <div class="w-full aspect-[2/3] flex items-center justify-center bg-white/40 border border-dashed border-ink-200 rounded-sm" title="Kapak görselinin yer tutucusu — frontmatter'a cover_image eklendiğinde görüntülenir">
+                <span class="text-xs font-sans text-ink-400 italic text-center leading-tight px-2">
+                  Kapak<br/>yakında
+                </span>
+              </div>
+            )}
           </div>
-        )}
 
-        {data.accessibility_note && (
-          <p class="mt-3 font-sans text-xs text-ink-500 italic max-w-prose leading-relaxed">
-            <span class="font-semibold not-italic text-ink-600">Akıcılık notu:</span> {data.accessibility_note}
-          </p>
-        )}
+          {/* Header content */}
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-5 font-sans text-xs">
+              <a href={baseUrl} class="halka-chip no-underline hover:border-emerald hover:text-emerald">
+                {data.halka_metadata.donem}
+              </a>
+              <span class="halka-chip">#{data.halka_metadata.sira_no}</span>
+              <span class={data.halka_metadata.status === 'okunuyor' ? 'halka-chip-emerald' : 'halka-chip'}>
+                {statusLabels[data.halka_metadata.status]}
+              </span>
+              <span
+                class={readingLevelChipClass}
+                title={data.accessibility_note ?? undefined}
+              >
+                {readingLevelLabels[data.reading_level]}
+              </span>
+              {data.halka_metadata.okunma_tarihi && (
+                <span class="halka-chip">Halka oturumu: {data.halka_metadata.okunma_tarihi}</span>
+              )}
+            </div>
 
-        {(prevTitle || nextTitle) && (
-          <div class="mt-6 flex flex-col sm:flex-row sm:justify-between gap-3 text-sm font-sans">
-            {prevTitle ? (
-              <a href={`${baseUrl}/kitaplar/${data.halka_metadata.onceki_kitap}`} class="no-underline text-ink-500 hover:text-emerald">
-                ← {prevTitle}
-              </a>
-            ) : <span></span>}
-            {nextTitle ? (
-              <a href={`${baseUrl}/kitaplar/${data.halka_metadata.sonraki_kitap}`} class="no-underline text-ink-500 hover:text-emerald sm:text-right">
-                {nextTitle} →
-              </a>
-            ) : <span></span>}
+            <h1 class="font-sans text-4xl md:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
+              {data.title}
+            </h1>
+            {data.subtitle && (
+              <p class="mt-3 text-2xl text-ink-600 font-serif italic leading-snug">
+                {data.subtitle}
+              </p>
+            )}
+
+            <div class="mt-6 font-serif text-lg text-ink-700">
+              <span class="font-semibold">{data.author}</span>
+              {data.original_title && (
+                <span class="text-ink-500"> · <span class="italic">{data.original_title}</span></span>
+              )}
+              {data.original_year && (
+                <span class="text-ink-500"> ({data.original_year})</span>
+              )}
+            </div>
+
+            {(data.turkish_translator || data.turkish_publisher) && (
+              <div class="mt-1 font-serif text-sm text-ink-500">
+                {data.turkish_translator && <>Çev. {data.turkish_translator}</>}
+                {data.turkish_translator && data.turkish_publisher && ' · '}
+                {data.turkish_publisher && <>{data.turkish_publisher}</>}
+                {data.turkish_year && <>, {data.turkish_year}</>}
+                {data.pages && <> · {data.pages} sayfa</>}
+                {data.chapters_count && <> · {data.chapters_count} bölüm</>}
+              </div>
+            )}
+
+            {data.accessibility_note && (
+              <p class="mt-3 font-sans text-xs text-ink-500 italic max-w-prose leading-relaxed">
+                <span class="font-semibold not-italic text-ink-600">Akıcılık notu:</span> {data.accessibility_note}
+              </p>
+            )}
+
+            {(prevTitle || nextTitle) && (
+              <div class="mt-6 flex flex-col sm:flex-row sm:justify-between gap-3 text-sm font-sans">
+                {prevTitle ? (
+                  <a href={`${baseUrl}/kitaplar/${data.halka_metadata.onceki_kitap}`} class="no-underline text-ink-500 hover:text-emerald">
+                    ← {prevTitle}
+                  </a>
+                ) : <span></span>}
+                {nextTitle ? (
+                  <a href={`${baseUrl}/kitaplar/${data.halka_metadata.sonraki_kitap}`} class="no-underline text-ink-500 hover:text-emerald sm:text-right">
+                    {nextTitle} →
+                  </a>
+                ) : <span></span>}
+              </div>
+            )}
           </div>
-        )}
+
+        </div>
       </header>
 
       {/* ============== ANA TEZ ============== */}
@@ -230,43 +344,104 @@ const readingLevelChipClass =
         </section>
       )}
 
-      {/* ============== TARİHYAZIMI POZİSYONU ============== */}
+      {/* ============== TARİHYAZIMI POZİSYONU — F1.3 2D SCATTER ============== */}
       <section id="tarihyazimi" class="mb-14">
-        <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-5">Tarihyazımı pozisyonu</h2>
-        <div class="space-y-5 font-sans text-sm">
-          <div>
-            <div class="flex justify-between text-xs text-ink-500 mb-1">
-              <span>Eurocentric</span>
-              <span>Anti-Eurocentric</span>
-            </div>
-            <div class="relative h-1.5 bg-ink-100 rounded-full">
-              <div
-                class="absolute top-1/2 w-3.5 h-3.5 -mt-1.5 -ml-1.5 rounded-full bg-emerald border-2 border-white shadow"
-                style={`left: ${axisPosition(hp.eurocentrism_axis, eurocentrismOptions) * 100}%;`}
-                title={eurocentrismLabels[hp.eurocentrism_axis]}
-              ></div>
-            </div>
-            <div class="text-xs text-emerald-light mt-1 text-right">{eurocentrismLabels[hp.eurocentrism_axis]}</div>
-          </div>
+        <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-2">Tarihyazımı pozisyonu</h2>
+        <p class="text-sm text-ink-500 font-sans mb-6 max-w-prose leading-relaxed">
+          Halka müfredatındaki kitapların iki ana tarihyazımı ekseninde konumu.
+          Bu kitap büyük emerald nokta olarak vurgulanmıştır; çöküşçü tezler kırmızı kenarlıdır.
+          Üçüncü boyut (içselci-dışsalcı) ve coğrafi vurgu aşağıda metin olarak verilir.
+        </p>
 
-          {hp.baghdad_centrism_axis && (
-            <div>
-              <div class="flex justify-between text-xs text-ink-500 mb-1">
-                <span>Bağdat-merkezci</span>
-                <span>Anti-Bağdat</span>
-              </div>
-              <div class="relative h-1.5 bg-ink-100 rounded-full">
-                <div
-                  class="absolute top-1/2 w-3.5 h-3.5 -mt-1.5 -ml-1.5 rounded-full bg-emerald border-2 border-white shadow"
-                  style={`left: ${axisPosition(hp.baghdad_centrism_axis, baghdadOptions) * 100}%;`}
-                  title={baghdadCentrismLabels[hp.baghdad_centrism_axis]}
-                ></div>
-              </div>
-              <div class="text-xs text-emerald-light mt-1 text-right">{baghdadCentrismLabels[hp.baghdad_centrism_axis]}</div>
-            </div>
-          )}
+        <div class="bg-white/40 rounded-sm border border-ink-100 p-4 mb-5">
+          <svg
+            viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-full h-auto"
+            role="img"
+            aria-label="Tarihyazımı pozisyonu — Avrupamerkezcilik × Bağdat-merkezcilik 2D dağılım grafiği"
+          >
+            {/* Çeyrek arka planları — sağ alt en koyu (anti-Eurocentric + anti-Bağdat) */}
+            <rect x={PAD_L} y={PAD_T} width={dataW/2} height={dataH/2} fill="rgba(14, 107, 94, 0.025)" />
+            <rect x={PAD_L + dataW/2} y={PAD_T} width={dataW/2} height={dataH/2} fill="rgba(14, 107, 94, 0.05)" />
+            <rect x={PAD_L} y={PAD_T + dataH/2} width={dataW/2} height={dataH/2} fill="rgba(14, 107, 94, 0.045)" />
+            <rect x={PAD_L + dataW/2} y={PAD_T + dataH/2} width={dataW/2} height={dataH/2} fill="rgba(14, 107, 94, 0.08)" />
 
-          <div>
+            {/* Çerçeve */}
+            <rect x={PAD_L} y={PAD_T} width={dataW} height={dataH} fill="none" stroke="var(--halka-rule)" stroke-width="1" />
+
+            {/* Merkez crosshair */}
+            <line x1={PAD_L + dataW/2} y1={PAD_T} x2={PAD_L + dataW/2} y2={PAD_T + dataH} stroke="var(--halka-rule)" stroke-dasharray="3 5" opacity="0.7" />
+            <line x1={PAD_L} y1={PAD_T + dataH/2} x2={PAD_L + dataW} y2={PAD_T + dataH/2} stroke="var(--halka-rule)" stroke-dasharray="3 5" opacity="0.7" />
+
+            {/* X ekseni etiketleri */}
+            <text x={PAD_L} y={SVG_H - 42} font-family="Inter, sans-serif" font-size="13" fill="#191510" opacity="0.65">Eurocentric →</text>
+            <text x={SVG_W - PAD_R} y={SVG_H - 42} text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#191510" opacity="0.65">← Anti-Eurocentric</text>
+            <text x={SVG_W/2} y={SVG_H - 18} text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#191510" opacity="0.55" letter-spacing="0.08em">AVRUPAMERKEZCİLİK EKSENİ</text>
+
+            {/* Y ekseni etiketleri (rotated) */}
+            <text x={PAD_L - 16} y={PAD_T + 4} font-family="Inter, sans-serif" font-size="13" fill="#191510" opacity="0.65" text-anchor="end">↑ Bağdat-merkezci</text>
+            <text x={PAD_L - 16} y={PAD_T + dataH} font-family="Inter, sans-serif" font-size="13" fill="#191510" opacity="0.65" text-anchor="end">↓ Anti-Bağdat</text>
+            <text x={20} y={PAD_T + dataH/2} text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#191510" opacity="0.55" letter-spacing="0.08em" transform={`rotate(-90 20 ${PAD_T + dataH/2})`}>BAĞDAT-MERKEZCİLİK</text>
+
+            {/* Veri noktaları */}
+            {bookPositions.map((b) => {
+              const cx = xToSvg(b.x);
+              const cy = yToSvg(b.y) + b.yOffset;
+              const r = b.isCurrent ? 11 : 6;
+              const labelOnLeft = b.x > 0.65;
+              const labelX = labelOnLeft ? cx - r - 6 : cx + r + 6;
+              const textAnchor = labelOnLeft ? 'end' : 'start';
+              const fillColor = b.isCurrent ? 'var(--halka-emerald)' : 'rgba(14, 107, 94, 0.55)';
+              const strokeColor = b.declensionist ? 'var(--halka-carmine)' : 'white';
+              const strokeWidth = b.declensionist ? 2.5 : 2;
+              return (
+                <g>
+                  <circle
+                    cx={cx} cy={cy} r={r}
+                    fill={fillColor}
+                    stroke={strokeColor}
+                    stroke-width={strokeWidth}
+                  >
+                    <title>{`${b.short} #${b.sira_no} — ${b.title}${b.declensionist ? ' (çöküşçü)' : ''}`}</title>
+                  </circle>
+                  <text
+                    x={labelX} y={cy + 4}
+                    text-anchor={textAnchor}
+                    font-family="Inter, sans-serif"
+                    font-size={b.isCurrent ? 13 : 11.5}
+                    font-weight={b.isCurrent ? 600 : 500}
+                    fill="#191510"
+                    opacity={b.isCurrent ? 1 : 0.78}
+                  >
+                    {b.short} #{b.sira_no}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+        {/* Lejant */}
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs font-sans text-ink-600 mb-6">
+          <span class="flex items-center gap-2">
+            <span class="inline-block w-3.5 h-3.5 rounded-full" style="background: var(--halka-emerald); box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(0,0,0,0.08);"></span>
+            <span>Bu kitap</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="inline-block w-2.5 h-2.5 rounded-full" style="background: rgba(14, 107, 94, 0.55); box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(0,0,0,0.08);"></span>
+            <span>Diğer Halka kitabı</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="inline-block w-2.5 h-2.5 rounded-full" style="background: rgba(14, 107, 94, 0.55); box-shadow: 0 0 0 2.5px var(--halka-carmine);"></span>
+            <span>Çöküşçü tez</span>
+          </span>
+        </div>
+
+        {/* Üçüncü boyut: İçselci-Dışsalcı (2D'ye sığmayan eksen) */}
+        <div class="space-y-4 font-sans text-sm">
+          <div class="border-l-2 border-emerald/30 pl-4">
+            <div class="text-xs uppercase tracking-wider text-ink-500 mb-2">Üçüncü boyut — yöntemsel duruş</div>
             <div class="flex justify-between text-xs text-ink-500 mb-1">
               <span>İçselci</span>
               <span>Dışsalcı</span>
@@ -278,11 +453,13 @@ const readingLevelChipClass =
                 title={internalistExternalistLabels[hp.internalist_externalist]}
               ></div>
             </div>
-            <div class="text-xs text-emerald-light mt-1 text-right">{internalistExternalistLabels[hp.internalist_externalist]}</div>
+            <div class="text-xs text-emerald-light mt-1.5 text-right font-medium">
+              Bu kitap: {internalistExternalistLabels[hp.internalist_externalist]}
+            </div>
           </div>
 
           {hp.declensionist !== undefined && (
-            <div class="flex items-center gap-2 pt-2 text-ink-700">
+            <div class="flex items-center gap-2 text-ink-700">
               <span class="text-ink-500">Çöküşçü mü?</span>
               <span class={hp.declensionist ? 'halka-chip-carmine' : 'halka-chip'}>
                 {hp.declensionist ? 'Evet' : 'Hayır'}
@@ -291,8 +468,8 @@ const readingLevelChipClass =
           )}
 
           {hp.geographical_emphasis && (
-            <div class="flex items-center gap-2 text-ink-700">
-              <span class="text-ink-500">Coğrafi vurgu:</span>
+            <div class="text-ink-700 leading-relaxed">
+              <span class="text-ink-500">Coğrafi vurgu: </span>
               <span class="font-medium">{hp.geographical_emphasis}</span>
             </div>
           )}
