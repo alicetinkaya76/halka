@@ -13,6 +13,9 @@ isbn: "978-975-08-2048-7"
 pages: 315
 chapters_count: 13
 
+reading_level: "zor"
+accessibility_note: "Polemik tonlu, IR (Uluslararası İlişkiler) teorisi terminolojisi yoğun; 315 sayfalık argümantasyon zinciri sonuna kadar takip etmek isteyen okuyuculardan istikrar bekler. Kapanış bölümleri özellikle yapısal Avrupamerkezcilik ve biricikçilik tezi üzerine yoğunlaşır — bu kavramların ön çözümlemesi yararlı olur. Halka 1. dönem'inin yöntemsel olarak en talepkâr kitabıdır."
+
 period_covered:
   start: 500
   end: 1850
@@ -496,7 +499,9 @@ Bu argümanlar Türk popüler bilim tarihinde nadir görülür. Hobson'un katkı
 
 Eleştirel okuma için: bu çerçeve Doğu'yu fazla kurbanlaştırma ve Batı'yı fazla suçlamış olma riski taşır mı? Doğu'nun kendi içsel zayıflıklarının — Starr'ın anlattığı türden — rolünü minimize eder mi?
 
-## Halka müfredatındaki yeri
+## Halka için stratejik okuma
+
+*— Müfredattaki yer*
 
 Hobson, 1. dönemin (Bilim Tarihinin Çerçevesi) **kapanış kitabıdır**. Önceki üç kitap (Fara, Goody x2) genel çerçeveyi kurmuştu; Hobson polemik tarafı keskinleştirir ve 2. döneme (Doğu Bilim Geleneği) hazırlar. 2. döneme girildiğinde — Freely #5 ile başlayıp Starr #6 ile devam ederek — Hobson'un kavramsal aparatı (Oryantal küreselleşme, kaynak değerleri, yapısal Avrupamerkezcilik) okuyucunun çantasındadır.
 

@@ -15,6 +15,9 @@ isbn: "978-975-7635-01-3"
 pages: 663
 chapters_count: 15
 
+reading_level: "orta"
+accessibility_note: "Mâveraünnehir bölgesel yoğunluğu zaman zaman ardışık şehir-isim-figür dökümlerine dönüyor; 663 sayfa ve 15 bölüm bu kitabın boyutunu belirgin yapar. Halka için seçici okuma stratejisi uygulanır — çekirdek bölümler 'Halka için stratejik okuma' bölümünde işaretli."
+
 period_covered:
   start: 750
   end: 1500

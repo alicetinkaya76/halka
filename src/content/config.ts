@@ -132,6 +132,19 @@ const books = defineCollection({
     pages: z.number().int().optional(),
     chapters_count: z.number().int().optional(),
 
+    // ---- UX & erişilebilirlik metaverisi (Faz 2 Kol A — F1.7) ----
+    // reading_level: subjektif kalibrasyon (Ali'nin yargısı). Halka grup deneyimi
+    // sonrası gözden geçirilebilir. accessibility_note: 1-2 cümlelik kalibrasyon
+    // gerekçesi (çeviri kalitesi, terminoloji yoğunluğu, ölçek vb.).
+    reading_level: z.enum(['kolay', 'orta', 'zor']),
+    accessibility_note: z.string().optional(),
+
+    // ---- Kapak görseli (Faz 2 Kol A — F1.4) ----
+    // cover_image: public/covers/ altındaki dosyaya göreli yol (ör. '/halka/covers/fara-bilim-dort-bin-yillik.jpg')
+    // cover_credit: "Yayıncı görseli — Metis Yayınları" gibi atıf metni (FSEK m.32 çerçevesinde tanıtım amaçlı kullanım)
+    cover_image: z.string().optional(),
+    cover_credit: z.string().optional(),
+
     period_covered: z.object({
       start: z.number().int(),
       end: z.number().int(),

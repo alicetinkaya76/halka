@@ -1,0 +1,60 @@
+# İçerik Lisansı — Creative Commons Atıf-AynıLisanslaPaylaş 4.0 Uluslararası (CC BY-SA 4.0)
+
+Halka deposundaki **içerik** dosyaları — `src/content/` altındaki tüm `.md`
+dosyaları (kitap analitik özetleri, atomik kişi/yer/kavram dosyaları,
+claim/discussion kayıtları), `HALKA-FEEDBACK-vN.md` dosyaları ve `README.md` —
+**Creative Commons Atıf-AynıLisanslaPaylaş 4.0 Uluslararası** lisansı altında
+dağıtılır.
+
+Tam yasal metin: <https://creativecommons.org/licenses/by-sa/4.0/legalcode.tr>
+
+Özet (yasal değildir, hızlı bakış için):
+<https://creativecommons.org/licenses/by-sa/4.0/deed.tr>
+
+## Kapsam dışı dosyalar
+
+- **Kod dosyaları** (`*.astro`, `*.ts`, `*.tsx`, `*.js`, `*.mjs`, `*.cjs`,
+  `*.css`, `astro.config.mjs`, `tailwind.config.mjs`, vs.) MIT Lisansı altında.
+  Bkz. [`LICENSE`](LICENSE).
+- **Kapak görselleri** (`public/covers/` altında) yayıncıların tanıtım
+  malzemesidir; telif sahibi yayıncılardır. FSEK m.32 çerçevesinde tanıtım
+  amaçlı kullanım.
+
+## Atıf nasıl yapılır?
+
+CC BY-SA 4.0 türev kullanım için **atıf zorunludur**. Önerilen biçim:
+
+> "Halka — Bilim Tarihi Okuma Grubu Platformu" (Ali Çetinkaya, 2026), CC BY-SA 4.0,
+> kaynak: https://github.com/alicetinkaya76/halka
+
+Belirli bir kitap analitik özetinden alıntı için:
+
+> "[Kitap başlığı] — Halka analitik özeti" (Ali Çetinkaya, 2026), CC BY-SA 4.0,
+> kaynak: https://alicetinkaya76.github.io/halka/kitaplar/[slug]
+
+Türev eserler aynı lisans (CC BY-SA 4.0) altında paylaşılmalıdır.
+
+## CC BY-SA 4.0'ın kısa özeti
+
+Şunları **yapabilirsiniz**:
+
+- **Paylaşma** — eseri herhangi bir ortam veya formatta kopyalayabilir ve yeniden dağıtabilirsiniz
+- **Uyarlama** — eseri yeniden karıştırabilir, dönüştürebilir ve eserden türetebilirsiniz
+- Herhangi bir amaç için, ticari amaçlar dahil
+
+Aşağıdaki koşullar geçerlidir:
+
+- **Atıf** — Uygun bir krediyi belirtmeli, lisansa bir bağlantı sağlamalı ve
+  değişiklik yapılıp yapılmadığını belirtmelisiniz. Bunu makul bir şekilde
+  yapabilir, ancak lisans verenin sizi veya kullanımınızı onayladığını
+  düşündüren bir biçimde değil.
+- **AynıLisanslaPaylaş** — Eseri yeniden karıştırır, dönüştürür veya eserden
+  türetirseniz, katkılarınızı orijinaliyle aynı lisans altında dağıtmalısınız.
+- **Ek kısıtlamalar yok** — Lisans tarafından izin verilen şeyleri başkalarının
+  yapmasını yasal olarak kısıtlayan yasal koşullar veya teknolojik önlemler
+  uygulayamazsınız.
+
+## Sorular
+
+Bu lisanslama hakkında soruları için ([Issue açın](https://github.com/alicetinkaya76/halka/issues))
+veya yürütücü ile iletişime geçin (Ali Çetinkaya, ORCID 0000-0002-7747-6854).

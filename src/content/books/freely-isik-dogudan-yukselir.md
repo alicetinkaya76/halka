@@ -14,6 +14,9 @@ isbn: "978-605-09-0692-9"
 pages: 266
 chapters_count: 19
 
+reading_level: "orta"
+accessibility_note: "Süleymaniye-Beytü'l-Hikme açılışı ve Bağdat-Maraga sahne kurulumu erişilebilir; ama Tusi-Urdi-Şâtır-Kopernik teknik vakaları geometri ve matematiksel astronomi terminolojisi gerektiriyor — bu bölümler daha yavaş okunabilir. Halka için teknik vakaları atlamadan tahlil stratejisi önerilir; geometri şekillerine zaman ayırın."
+
 period_covered:
   start: -3000
   end: 1996
@@ -659,7 +662,9 @@ Freely'nin sembolik dönüm noktası **22 Ocak 1580'de İstanbul Rasathanesi'nin
 
 Bölüm 19'un sonuna doğru Freely modern dönemi kapsar. Mühendishane-i Cedide (1793) Sultan III. Selim döneminde topçu zabitleri için kurulur; başhocası Hüseyin Rıfkı Tamani astronomi öğretimini hâlâ Ptolemaios modeline dayandırır. 1830'da başa geçen İshak Efendi (1774-1836) Avrupa'daki çağdaş bilimsel bilginin dört ciltlik araştırmasını yazar; dördüncü ciltte Kopernik kuramının üstünlüğünü savunur. 1834 İstanbul'da, 1845 Kahire'de basılır. Darülfünun (1869, sonra İstanbul Üniversitesi 1933) ve Mühendishane'nin İstanbul Teknik Üniversitesi'ne (1944) dönüşmesi modern Türk bilim kurumsallığının kuruluşudur. Kitap nihayet Abdus Salam ile (1926-1996, Pakistan) kapanır: Cambridge eğitimli, Imperial College profesörü, 1979 fizik Nobel'ini paylaşan ilk Müslüman; Pakistan Atom Enerjisi Kurumu ve Uzay Araştırma Komitesi'nin kurucusu; 1964'te Trieste'de Uluslararası Kuramsal Fizik Merkezi'ni (ICTP) kuran kişi. Salam'ın felsefesi — *bilimsel düşünce insanlığın ortak ve paylaşılan mirasıdır* — Freely'nin son cümlelerinde döngüyü kapatır: Bağdat'ın Beytü'l-Hikme'sinde Bilad-ı Rum'a ait yazmaların Arapçaya tercüme edildiği yolculuk, modern bir İslam-Batı sentezine dönüş yaparak son bulur.
 
-## Halka müfredatındaki yeri: dört anti-Eurocentric kitabın iç birliği
+## Halka için stratejik okuma
+
+*— Dört anti-Eurocentric kitabın iç birliği*
 
 *Light from the East* Halka müfredatının **5. sırasındadır** ve bu yer dört kitabın (Goody-BD #2, Goody-R #3, Hobson #4, Freely #5) bir kavramsal blok oluşturmasının kapanış halkasıdır. Önceki üç kitap *kategorilerin*, *kanonun* ve *küresel ekonominin* anti-Eurocentric eleştirilerini inşa eder; Freely bu eleştirileri İslam bilim tarihinin somut sahnesine taşır. Bu konum aynı zamanda 2. dönemin (Doğu Bilim Geleneği) önündeki en doğal köprüdür: Lyons #9, Gutas #10 ve Pedersen Freely'nin bıraktığı yerden derinleşir.
 

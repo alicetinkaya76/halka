@@ -15,6 +15,9 @@ isbn: "978-625-449-518-2"
 pages: 412
 chapters_count: 8
 
+reading_level: "orta"
+accessibility_note: "Yapısal-karşılaştırmacı sosyoloji yazımı; Tunç Devri-Antik referansları ve Weber-Marx-Polanyi tartışmasının yoğun olduğu bölümler ön bilgi ister. Türkçe çeviri (Alfa 2022) genel olarak takip edilebilir; ama akademik tonu ödünç vermeyen bir kitaptır."
+
 period_covered:
   start: -2000
   end: 1850
@@ -493,7 +496,9 @@ Bu, Goody'nin "binarism" eleştirisinin (Bölüm 1 sonu, ss. 22-23) somut bir uy
 
 Bu, kitabın Halka için en önemli yöntemsel mirasıdır. Goody-Rönesanslar (#3) aynı eleştiriyi "rönesans" kavramına uygular ("tek bir rönesans değil, çoklu rönesanslar"); Hobson (#4) "Doğu/Batı" ikiliğini polemik olarak parçalar; Starr (#6) Mâveraünnehir altın çağını "İslam tek bir hikâye değil, bölgesel birçok hikâye" diyerek karmaşıklaştırır. Halka müfredatının anti-Eurocentric kampının ortak metodolojik kalbi Goody'nin binarism eleştirisidir.
 
-## Halka müfredatındaki yeri ve Goody-Hobson-Starr üçgeni
+## Halka için stratejik okuma
+
+*— Müfredattaki yer ve Goody-Hobson-Starr üçgeni*
 
 Goody, 1. dönemin ikinci sırasında durur — Fara'nın generalist çerçevesinden hemen sonra, kendisi gibi anti-Eurocentric çerçeveyi farklı bir cephede taşıyacak Goody-Rönesanslar (#3) ve Hobson'dan (#4) önce. Bu yer, kavramsal-metodolojik altyapıyı kuran bir yerdir: Goody okumadan Hobson'a geçen okuyucu, Hobson'un Weber-Marx eleştirisini niçin "yapısal Avrupamerkezcilik" gibi bir kavrama ihtiyacı duyduğunu anlamaz; Goody okumadan Starr'a geçen okuyucu, Starr'ın "altın çağ" anlatısının niçin daha geniş bir Avrasya çerçevesinde okunması gerektiğini görmez.
 

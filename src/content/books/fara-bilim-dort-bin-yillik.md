@@ -14,6 +14,9 @@ isbn: "978-975-342-878-1"
 pages: 509
 chapters_count: 51
 
+reading_level: "kolay"
+accessibility_note: "Akıcı çeviri (Aysun Babacan, Metis 2012) ve panoramik anlatım; popüler-akademik dengesi başarılı. 4000 yıllık ölçek yer yer hızlı geçer ama hiçbir vaka derin teknik terminoloji gerektirmez. Halka 1. dönem'inin en akıcı kitabıdır."
+
 period_covered:
   start: -2000
   end: 2009
@@ -704,7 +707,7 @@ relationships_to_other_books:
 
   - book: "pedersen-erken-fizik-ve-astronomi"
     relation: "tematik_tamamlayici"
-    note: "Pedersen'in *Early Physics and Astronomy* (1974, 2. baskı 1993) ortaçağ Avrupa fizik-astronomi tarihinin akademik kanonik sentezidir. Fara generalist-panoramik çerçeve sunar, Pedersen ortaçağ Avrupa derinleşmesi. Fara'nın 'Aristotelesçilik İslam'da ve Hıristiyan ortaçağda kurumsallaştı' tezi (Bölüm II.6) Pedersen'in kanonik anlatısının panoramik karşılığıdır. Halka'da Pedersen #7 — 2. dönem'in açılış kitabı; Fara #1 → Pedersen #7 sıralaması Fara'nın panoramik çerçevesinin Pedersen'in derinleşmesi için zemin hazırlamasıdır."
+    note: "Olaf Pedersen'in *Early Physics and Astronomy* (Cambridge UP 1974, 2. baskı 1993) ortaçağ Avrupa fizik-astronomi tarihinin akademik kanonik sentezidir. Fara generalist-panoramik çerçeve sunar, Pedersen ortaçağ Avrupa derinleşmesi. Fara'nın 'Aristotelesçilik İslam'da ve Hıristiyan ortaçağda kurumsallaştı' tezi (Bölüm II.6) Pedersen'in kanonik anlatısının panoramik karşılığıdır. NOT: Bu kitap Halka müfredatında DEĞİLDİR; müfredattaki Pedersen #7 farklı bir yazara aittir — Johannes Pedersen'in *İslam Dünyasında Kitabın Tarihi* (Arabist, 1946). Olaf Pedersen (1920-1997, bilim tarihçisi) ile Johannes Pedersen (1883-1977, Arabist) iki ayrı Danimarkalı akademisyendir; slug'lar başlık ile ayrıştırılmıştır. Olaf Pedersen Fara'nın akademik tematik tamamlayıcısı olarak burada kayıtlıdır, ileride Halka'ya katılabilir."
 
   - book: "lyons-hikmet-evi"
     relation: "tematik_tamamlayici"
@@ -848,7 +851,9 @@ Bu pasaj iki düzeyde işler. Yüzeyde, 17. yy bilimsel sınıflandırma denemel
 Halka okuyucusu için bu pasajın iki yüzü vardır. Bir yandan epistemolojik açıklık — "modern Batı bilimi mutlak hakikat değildir" — yerel bilgi geleneklerinin (geleneksel tıp, halk astronomisi, manevi kozmolojiler) modern bilime alternatif olabileceğini ima eder; bu, Türk-İslam akademisinin "Batı bilim hegemonyası" karşısında bir kavramsal silah olabilir. Öte yandan aynı açıklık "her şey eşit derecede geçerlidir" relativizmine de açar; bilim-pseudoscience sınırının silikleşmesi, Holokost-inkârcılığı, anti-aşı hareketleri, iklim-değişikliği inkârcılığı gibi modern epistemolojik kötüye-kullanımların kapı aralayıcısı olabilir. Fara bu iki yüz arasındaki dengeyi açıkça çözmez; bu, Halka grubunun tartışma masasına bıraktığı kavramsal mirastır.
 
 
-## Halka müfredatındaki yeri: Generalist açılışın dört yöntemsel köşeyle ilişkisi
+## Halka için stratejik okuma
+
+*— Generalist açılışın dört yöntemsel köşeyle ilişkisi*
 
 Fara'nın Halka 1. dönem'inin açılış kitabı olması rastlantı değildir. 21 kitaplık müfredatın açılışı için bir "panoramik-yöntemsel çapa" kitabı gerekiyordu — sonraki yirmi kitabın okunmasını kavramsal olarak hazırlayacak, anti-Eurocentric duruşu yöntemsel olarak temellendirecek, "biliminsanı"/"bilim devrimi"/"altın çağ"/"gerileme" gibi anahtar kavramların tarihselliğini önceden işaretleyecek bir metin. Fara bu işlevi tam olarak gerçekleştirir; özellikle Halka'nın 1. dönem'inde Fara'dan sonra gelen beş kitabın (Goody-BD, Goody-R, Hobson, Freely, Starr) dört farklı yöntemsel köşesini Fara'nın panoramik çerçevesi önceden hazırlar.
 
