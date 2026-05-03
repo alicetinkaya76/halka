@@ -39,3 +39,4 @@ dist/
 # Yedekler
 *.bak
 *-backup-*/
+src/content/books.zip
