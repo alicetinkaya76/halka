@@ -1,0 +1,41 @@
+---
+// src/components/Analytics.astro
+// ─────────────────────────────────────────────────────────────
+// Google Analytics 4 — Halka projesi
+//
+// Stream:        bilimtarihi_halka
+// URL:           https://alicetinkaya76.github.io/halka/
+// Stream ID:     14792315417
+// Measurement:   G-MCPRZC51CR
+//
+// NOT: Sadece production build'de (npm run build) aktif olur.
+//      Dev mode (npm run dev) ve preview lokalinde çıkmaz, böylece
+//      lokal geliştirme trafiği GA4 raporlarını kirletmez.
+//
+// KVKK / GDPR: anonymize_ip: true ile IP anonimleştirme açık.
+// İleride rıza banner'ı eklenecekse `gtag('consent', 'default', ...)`
+// çağrısı bu component'e eklenebilir.
+// ─────────────────────────────────────────────────────────────
+
+const GA_MEASUREMENT_ID = 'G-MCPRZC51CR';
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && (
+  <>
+    {/* Google tag (gtag.js) — async olarak yüklenir, FCP'yi bloklamaz */}
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+    ></script>
+    <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID, {
+        anonymize_ip: true
+      });
+    </script>
+  </>
+)}

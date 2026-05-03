@@ -43,9 +43,9 @@ export const curriculum: CurriculumDonem[] = [
       { slug: 'starr-kayip-aydinlanma', title: 'Kayıp Aydınlanma', author: 'S. Frederick Starr', status: 'okunuyor', sira_no: 6 },
       { slug: 'pedersen-islam-dunyasinda-kitabin-tarihi', title: 'İslam Dünyasında Kitabın Tarihi', author: 'Johannes Pedersen', status: 'sirada', sira_no: 7 },
       { slug: 'sezgin-islamda-bilim-ve-teknik', title: 'İslam\'da Bilim ve Teknik', author: 'Fuat Sezgin', status: 'sirada', sira_no: 8 },
-      { slug: 'lyons-hikmet-evi', title: 'Hikmet Evi', author: 'Jonathan Lyons', status: 'planlanan', sira_no: 9 },
-      { slug: 'gutas-yunan-dusuncesi-arap-kulturu', title: 'Yunan Düşüncesi, Arap Kültürü', author: 'Dimitri Gutas', status: 'planlanan', sira_no: 10 },
-      { slug: 'berkey-ortacag-kahirede-bilgi-intikali', title: 'Ortaçağ Kahire\'de Bilgi İntikali', author: 'Jonathan Berkey', status: 'planlanan', sira_no: 11 },
+      { slug: 'lyons-hikmet-evi', title: 'Hikmet Evi', author: 'Jonathan Lyons', status: 'sirada', sira_no: 9 },
+      { slug: 'gutas-yunan-dusuncesi-arap-kulturu', title: 'Yunan Düşüncesi, Arap Kültürü', author: 'Dimitri Gutas', status: 'sirada', sira_no: 10 },
+      { slug: 'berkey-ortacag-kahirede-bilgi-intikali', title: 'Ortaçağ Kahire\'de Bilgi İntikali', author: 'Jonathan Berkey', status: 'sirada', sira_no: 11 },
     ],
   },
   {
