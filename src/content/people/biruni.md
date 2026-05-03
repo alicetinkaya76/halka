@@ -1,112 +1,59 @@
 ---
-name: "Ebu Reyhan el-Bîrûnî"
-name_arabic: "أبو الريحان البيروني"
-name_full: "Ebu Reyhan Muhammed b. Ahmed el-Bîrûnî"
-name_aliases: ["el-Bîrûnî", "Alberonius (Latince)", "Beruni"]
-dates: "973-1048"
+name: "Ebū Reyḥān el-Bīrūnī"
+name_arabic: "أَبُو الرَّيْحَان البِيرُونِي"
+name_full: "Ebū Reyḥān Muḥammed b. Aḥmed el-Bīrūnī"
+name_aliases: ["el-Bîrûnî", "al-Bīrūnī", "Alberonius"]
+dates: "362-440 / 973-1048"
 birth_year: 973
 death_year: 1048
-birth_place: "Kâs (Harezm) — bugünkü Beruni, Özbekistan"
-death_place: "Gazne — bugünkü Gazni, Afganistan"
-fields:
-  - "astronomi"
-  - "matematik"
-  - "jeodezi"
-  - "tarih"
-  - "antropoloji"
-  - "ilaç bilimi (saydaliyye)"
-  - "mineraloji"
-  - "kronoloji"
-  - "Hint dilbilimi"
-
-# DH altyapı bağlantıları (Faz 3)
-tabakat_io_id: "biruni"
-dia_id: "biruni"
-gas_id: "GAS-VI-261"
-wikidata_id: "Q11826"
+birth_place: "Kâs (Hârezm)"
+death_place: "Gazne"
+place: "Kâs (Hârezm) → Cürcân → Gazne"
+fields: ["matematik", "astronomi", "coğrafya", "mineraloji", "kıyaslı din çalışmaları", "tarih", "filoloji"]
+role: "10.-11. yy Hârezmli polymath. Tahkîkü mâ li'l-Hind (Hint medeniyeti monografisi, ilk modern karşılaştırmalı din çalışması), Kanûn el-Mes'ûdî (Selçuklu astronomi külliyatı), el-Cemâhir fî Ma'rifeti'l-Cevâhir (mineraloji-cevherbilim), Asâr el-Bâkıye (kronoloji ve takvim sistemleri). Sezgin Cilt I metodolojik açılış mottosunun kaynağı: 'öncellerini minnettarlıkla karşılamak, yanlışlarını ürkmeden doğrultmak'. Halka'da en zengin atomik cross-ref (4 kitap slug-eşleşmesi) — Mâveraünnehir aydınlanmasının (Starr) ve Avrupa Latince transmisyonunun (Freely) ana figürü."
 
 works:
-  - title: "el-Âsâr el-Bâkiye an'il-Kurûn el-Hâliye"
-    type: "kronoloji"
-    year: 1000
-    note: "Geçmiş Asırların İzleri — farklı kültürlerin takvim sistemleri."
-  - title: "Tahdîdü Nihâyâti'l-Emâkin"
-    type: "jeodezi"
-    year: 1025
-    note: "Coğrafi mesafe ölçümü; Yer'in çapına dair Bîrûnî yöntemi."
-  - title: "Kitâbü't-Tefhîm li-Evâili Sınâati't-Tencîm"
-    type: "ders kitabı"
-    year: 1029
-    note: "Astronomi ve matematik ders kitabı."
-  - title: "Tahkîku mâ li'l-Hind"
-    type: "antropoloji / din bilimi"
+  - title: "Tahkîkü mâ li'l-Hind"
+    type: "kıyaslı-din-monografi"
     year: 1030
-    note: "Hindistan'ın dini ve felsefi sistemleri üzerine — alanın ilk karşılaştırmalı çalışması."
-  - title: "el-Kanûnü'l-Mes'ûdî"
-    type: "astronomi"
-    year: 1037
-    note: "Sultan Mes'ud'a ithaf edilen büyük astronomi sistematiği."
-  - title: "Kitâbü's-Saydane fi't-Tıb"
-    type: "ilaç bilimi"
-    year: 1048
-    note: "Yaşamının son eseri; bilinen ilaçların ansiklopedik dökümü."
+    note: "Hint medeniyeti monografisi; modern karşılaştırmalı din çalışmalarının atası. Bîrûnî'nin Sanskritçe öğrenip kaynaklara doğrudan erişim metodolojisi 11. yy için olağanüstü."
+  - title: "el-Kânûn el-Mesʿûdî fi'l-Heyʾa ve'n-Nücûm"
+    type: "astronomi-kulliyat"
+    note: "11 ciltlik Selçuklu astronomi külliyatı; Sezgin'e göre zamanına kadar yazılmış en kapsamlı astronomi eseri."
+  - title: "el-Cemâhir fî Maʿrifeti'l-Cevâhir"
+    type: "mineraloji"
+    note: "Yoğunluk-ölçümüne dayalı mineraloji çalışması; mineral özgül-ağırlık tablolarının erken örnekleri."
+  - title: "el-Âsâr el-Bâkıye ʿan el-Kurûni'l-Hâliye"
+    type: "kronoloji-takvim"
+    note: "Farklı uygarlıkların takvim sistemlerinin karşılaştırmalı analizi; tarihyazımının metodolojik atası."
 
 influenced_by:
-  - "Ebu Nasr Mansur b. Ali Irak (hocası, matematikçi)"
-  - "el-Hârizmî (kavramsal)"
+  - "ibn-el-heysem"
 
-influenced:
-  - "Nasîrüddin Tûsî"
-  - "İbn Sînâ (mektuplaşma yoluyla, çağdaş)"
-
-tags:
-  - hezarfen
-  - harezm
-  - gazneli-sarayi
-  - karsilastirmalı-din-bilimi
-  - jeodezi
+tags: ["mavera-aydinlanmasi", "polymath", "kıyaslı-din", "11yy-bilim", "halka-coklu-kitap-cross-ref", "metodolojik-motto", "hindistan-monografisi"]
 ---
 
-## Genel çerçeve
+> **Versiyon notu:** Bu dosya v0.4'te eklendi (Hobson sonrası ilk atomik dalga). v0.10.1'de Sezgin #8 cross-ref'i eklendi, Sezgin metodolojik motto vakası gövdeye işlendi, atomik graf değeri yeniden konumlandırıldı.
 
-Bîrûnî, Orta Asya bilim geleneğinin kritik figürüdür ve Halka müfredatında birden fazla kitabın merkezi karakteridir. Starr için "antik çağ ile Avrupa Rönesansı arasındaki en büyük bilim düşünürü"; Sezgin için Müslüman bilim insanları arasında en sistematik metodolojinin sahibi; Goody için Doğu-Batı bilgi dolaşımının somut bir örneği.
+## Atomik özet
 
-Halka platformunda Bîrûnî sayfası, **birden fazla kitabın aynı kişi etrafında nasıl farklı vurgular yaptığını** görmenin testidir. Aşağıdaki özet sadece Starr'ın anlatısının başlangıcıdır; Faz 1'de Sezgin, Lyons, Hobson, Goody'nin Bîrûnî hakkındaki söyledikleri otomatik olarak bu sayfanın altında listelenecektir.
+**Bîrûnî, Halka atomik atlasının en zengin tek atomik düğümüdür** — dört kitabın (Fara, Freely, Starr, Sezgin) frontmatter slug-eşleşmesinde merkezî yer alır. Onun çalışmasının disipliner çeşitliliği — matematik, astronomi, coğrafya, mineraloji, karşılaştırmalı din çalışmaları, tarih, filoloji — herhangi bir tek-kategori ile sınırlandırılamaz. Modern bilim tarihçileri (George Sarton, Edward Sachau, Sezgin) onu **"İslam'ın en evrensel bilim adamı"** olarak konumlandırır.
 
-## Hayat çizgisi
+**Hârezm-Cürcân-Gazne hattı.** Bîrûnî'nin biyografisi 11. yy Mâveraünnehir-Horasan-Afganistan ekseninin entelektüel coğrafyasını çizer: Kâs'ta (Hârezm) doğdu, Cürcân'da Ziyârî sarayında çalıştı, Gazneli Mahmud'un seferleriyle Hindistan'a gitti, Gazne'de öldü. Bu güzergâh, **Starr'ın *Kayıp Aydınlanma*'da merkezî olarak işaretlediği bölgesel coğrafyadır** — Bîrûnî, Starr'ın anlatısının insan-vakasıdır.
 
-Kâs'ta (Harezm) doğdu, 973. Erken yaşta hocası Ebu Nasr Mansur sayesinde matematik ve astronomi eğitimi aldı. Genç yaşta Cürcaniye'de (Ürgenç) Memuni Akademisi'nde çalıştı; bu, 1000-1017 arasında Harezmşah Ebu Abbas'ın sarayında toplanan döneminin en parlak düşünür halkasıydı. İbn-i Sînâ ile mektuplaşması (998-999) bu döneme aittir.
+**Hint monografisi.** *Tahkîkü mâ li'l-Hind* (1030), Bîrûnî'nin Gazneli ordusuyla Hindistan'a giderken Sanskritçe öğrenip Hint kaynaklarına **doğrudan erişimle** yazdığı karşılaştırmalı din-felsefe-bilim monografisidir. Bu metodoloji — kaynağa kendi dilinden ulaşma, önyargıdan arındırma çabası, sistematik karşılaştırma — modern karşılaştırmalı din çalışmalarının atasıdır. 11. yy için olağanüstü.
 
-Memuni Akademisi 1017'de Gazneli Mahmut'un yağmasıyla sona erdi. Bîrûnî Mahmut tarafından Gazne'ye götürüldü — yarı esir, yarı saraylı bilim adamı statüsünde. Mahmut'un Hint seferleri sırasında uzun süre Hindistan'da kaldı; Sanskritçe öğrendi, Hint dini ve felsefi sistemlerini yerinde inceledi. Bunun ürünü olan *Tahkîku mâ li'l-Hind* (1030), Avrupa'da karşılaştırmalı din biliminin ancak 19. yüzyılda erişeceği bir metodolojik olgunluğu temsil eder.
+**Sezgin'in metodolojik mottosu.** Sezgin'in Cilt I'in açılış bölümünde Bîrûnî'den seçtiği motto Halka için kritiktir: **"Öncellerini minnettarlıkla karşılamak, yanlışlarını ürkmeden doğrultmak."** Bu, Sezgin'in projesinin (GAS — *Geschichte des Arabischen Schrifttums*, 1967-2015) formel mottosudur. Bîrûnî'nin bu sözü, modern bilim tarihinin metodolojik prensibini 11. yy'dan formüle eder: bilim hem **kümülatif** hem de **eleştirel** olmalıdır.
 
-Yaşamının son evresinde Sultan Mes'ud'un himayesinde *el-Kanûnü'l-Mes'ûdî*'yi yazdı; ölüm döşeğindeyken son eseri *Kitâbü's-Saydane*'yi tamamladı. 1048'de Gazne'de öldü.
+**Yoğunluk-ölçümüne dayalı mineraloji.** *el-Cemâhir fî Maʿrifeti'l-Cevâhir* eserinde Bîrûnî, deneysel ölçüme dayalı özgül-ağırlık tabloları geliştirdi. Bu, Sezgin'in **"deney-ölçüm-matematik üçlüsü"** vurgusunun (İbn el-Heysem'den önce gelen) ikinci ana figürüdür. Modern mineraloji-fizik geleneğinin 11. yy'da zaten kurulmuş olan yöntemsel zemini.
 
-## Bilimsel katkılar — kısa profil
+## Halka müfredatında geçer
 
-- **Yer'in çevresinin ölçümü:** Hindistan'da bir dağdan ufkun açısını ölçerek Yer'in çapını yaklaşık 6.339 km (gerçek: 6.371 km) olarak hesapladı — Eratosthenes'ten beri en hassas ölçüm.
-- **Trigonometri:** Sinüs cetvellerini geliştirdi; sinüs, kosinüs ve tanjant arasındaki ilişkilere yeni teoremler ekledi.
-- **Astronomi:** *el-Kanûnü'l-Mes'ûdî*'de geliştirdiği gezegen hareketleri modeli, Ptolemaios sistemine birçok teknik düzeltme getirir.
-- **Karşılaştırmalı kronoloji:** *el-Âsâr el-Bâkiye*'de Yahudi, Hıristiyan, Zerdüşt, Sâbiî, Pers, eski Mezopotamya takvimlerini karşılaştırdı.
-- **Antropolojik metodoloji:** *Tahkîku mâ li'l-Hind*'in girişinde, başka bir dini kendi içsel mantığıyla anlamadan eleştirmenin yanlışlığını metodolojik bir ilke olarak savundu.
-- **Mineraloji:** Spesifik gravite ölçümlerinde modern değerlere çok yakın sonuçlar elde etti.
+Halka müfredatının **en zengin cross-ref ağına sahip atomik figürü** — dört kitap slug-eşleşmeli olarak işaretler:
 
-## Halka müfredatındaki yeri
+- **Sezgin #8'de:** Bîrûnî, Sezgin'in Cilt I metodolojik açılış mottosunun kaynağı — yani Sezgin'in tüm projesinin (GAS) formel mottosunun figürü. Cilt I'in 4./10. ve 5./11. yy bölümünde merkezî yer. Frankfurt Enstitüsü rekonstrüksiyon programının tarihsel-figüral öncülü; modern bilim tarihi metodolojisinin atası. (Sezgin author_emphasis'inde: "Bîrûnî'nin bilim tarihçiliği etiği Sezgin'in projesinin formatik mottosudur.")
+- **Starr #6'da:** Bîrûnî, *Kayıp Aydınlanma*'nın **merkezî figürlerinden** — Mâveraünnehir-Hârezm aydınlanma kuşağının insan-vakası. Starr'ın 1100/Gazzâlî sonrası çöküş tezinin **kuluçka-dönem** baş figürü. Bu, Halka'da Sezgin ile Starr arasındaki `kismen_celisir` ilişkisinin ironik bir zemini olur: aynı figür, Starr için kuluçka-dönem zirvesi; Sezgin için ise zirve-sonrası 500 yıllık yaratıcılık eğrisinin başlangıç noktasıdır.
+- **Freely #5'te:** Bîrûnî, *Işık Doğu'dan Yükselir*'in birinci yarısında merkezî sahnelerden — Avrupa Latince transmisyonu öncesi İslam bilim altyapısının zirvesi olarak tanıtılır. Freely'nin popüler-anlatı tonu Bîrûnî'yi "rönesans-tipi polymath" çerçevesinde sunar.
+- **Fara #1'de:** *Bilim: Dört Bin Yıllık Tarih*'in panoramik anlatısında Bîrûnî 11. yy İslam bilim bölümünün merkezî adlarından. Fara'nın panoramik ölçeği, Sezgin'in disiplin-temelli derinliğiyle olcek_karsitligi ilişkisinin altını çizer — ama Bîrûnî gibi figürlerde her iki ölçek de aynı önem-sırasına işaret eder.
 
-Bîrûnî şu kitaplarda merkezi figür olarak geçer:
-
-- **Starr — Kayıp Aydınlanma:** kitabın açılış sahnesi (İbn-i Sînâ ile mektuplaşma) ve "antik çağ ile Avrupa Rönesansı arasındaki en büyük bilim düşünürü" değerlendirmesi.
-- **(Bekleniyor)** Sezgin — İslam'da Bilim ve Teknik: ansiklopedik teknik döküm, Bîrûnî'nin matematik-astronomi-jeodezi katkıları.
-- **(Bekleniyor)** Goody — Batıdaki Doğu: Bîrûnî'nin Hint çalışmalarının Doğu-Batı bilgi dolaşımındaki yeri.
-- **(Bekleniyor)** Hobson — Batı Medeniyetinin Doğulu Kökenleri: Avrupa'nın Bîrûnî'den haberdar olmasının erken kanıtları.
-
-Bu sayfanın aşağısında, Faz 2'de bu kitapların Bîrûnî hakkındaki iddiaları otomatik olarak yan yana listelenecek; çelişen değerlendirmeler işaretlenecektir.
-
-## Açık sorular (Halka tartışması için)
-
-- Bîrûnî'nin "kendi başına büyük" olarak okunabilmesi için Starr'ın "Avrupa Rönesansı ile karşılaştırmalı" çerçevesinden nasıl çıkılabilir?
-- Bîrûnî'nin Hindistan çalışmaları "antropolojinin atası" olarak değerlendirilebilir mi, yoksa bu çağdaş bir geri-okuma mı?
-- Bîrûnî ile İbn-i Sînâ'nın mektuplaşması: iki büyük zihin arasındaki gerçek bir entelektüel diyalog mu, yoksa öncelik mücadelesi mi?
-
----
-
-*Bu sayfa Halka platformunun atomik kişi şablonunun ilk uygulamasıdır. Faz 1 ilerledikçe, müfredattaki diğer kitapların Bîrûnî'ye dair iddiaları bu sayfaya otomatik olarak bağlanacaktır (Faz 2 cross-reference motoru).*
+**Atomik graf değeri:** Bîrûnî, Halka atomik atlasının **dört-kitap-slug-eşleşmeli ilk atomiği**dir ve bu konumunu 3.-4. dönem boyunca koruyacak. Sezgin'in metodolojik motto kaynağı olması, atomik graf'ın salt veri-düğümü değil **felsefi-metodolojik düğüm** olabileceğinin kanıtıdır. Halka'nın "kümülatif bilgi ağı, hem kümülatif hem eleştirel" tezinin Bîrûnî atomiği aracılığıyla pedagojik-formel zemini kurulur.

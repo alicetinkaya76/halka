@@ -1,63 +1,44 @@
 ---
 name: "Tercüme Hareketi"
-name_arabic: "حركة الترجمة"
-name_aliases: ["Translation Movement", "Greek-Arabic Translation Movement", "Beytülhikme tercüme faaliyetleri"]
-short_description: "8.-10. yüzyıl Abbâsî Bağdat'ında yoğunlaşan, Yunan-Sanskrit-Süryâni-Pehlevi metinlerin Arapçaya sistematik olarak çevrilmesi süreci. Halife Memûn (813-833) döneminde zirveye ulaştı; Bermekî ve diğer Orta Asya kökenli vezirlerin himayesinde gelişti."
-period: "8.-10. yy (zirve: 813-833)"
-geography: "Bağdat (merkez); Cündişâpûr, Harran, Antakya (kaynaklar)"
+name_arabic: "حَرَكَة التَّرْجَمَة"
+name_aliases: ["The Translation Movement", "Greco-Arabic Translation Movement"]
+short_description: "8.-10. yy'da Yunan, Süryânice, Pehlevî, Sanskritçe metinlerin Arapça'ya kazandırılması. Bermekîler ve Memûn döneminde zirve. Antik Yunan-Hint-Pers bilim mirasının İslam dünyasına sistematik ve ölçekli aktarımı; pek çok Yunan eserinin Arapça aracılığıyla bugüne ulaşması."
+period: "750-950 (Erken Abbasî dönemi)"
+geography: "Bağdat merkezli; Şam, Cündişâpûr ve Trabzon-Bizans güzergâhı"
 related_concepts:
-  - "memuni-akademisi"
-  - "memun-akilciligi"
-  - "samani-himayesi"
+  - "warraqun"
+  - "kagit-devrimi-793"
+  - "beytulhikme"
 
-dia_id: "tercume-tarihi"
-wikidata_id: "Q649765"
-
-tags:
-  - tercume
-  - bilim-tarihi
-  - bagdat
-  - bermekiler
-  - memun
-  - islam-bilim-temelleri
+tags: ["abbasi-baskenti", "bilgi-aktarimi", "yunan-felsefe-bilim", "halka-coklu-kitap-cross-ref", "kagit-tercume-bagi"]
 ---
 
-## Genel çerçeve
+> **Versiyon notu:** Bu dosya v0.4'te eklendi (Hobson sonrası ilk atomik dalga, ağırlıklı olarak Hobson çerçevesinde). v0.10.1'de Pedersen kâğıt-tercüme bağı (claim-001) ve Sezgin teknik-içerik perspektifi gövdeye işlendi; cross-ref bloğu 4 kitaba genişletildi.
 
-Tercüme Hareketi, İslam altın çağının entelektüel önkoşuludur ve Halka müfredatındaki neredeyse her kitabın doğrudan ya da dolaylı olarak konu ettiği bir süreçtir. Kavramın tartışmalı olduğu nokta **kim hareketin asıl mimarıydı** sorusudur:
+## Atomik özet
 
-- **Klasik Bağdat-merkezci anlatı (Goitein, Lyons):** Halife Memûn ve Beytülhikme; "İslam'ın Yunan mirasını alıp koruduğu" çerçevesi.
-- **Gutas-Starr revizyonu:** Bermekî vezirler (Orta Asya, Belh kökenli), Memûn'un Mu'tezile danışmanları, ve Sâmânî/Harezm idari sınıfının sistematik desteği belirleyiciydi. Bu, Hareketi salt bir "Bağdat olayı" olmaktan çıkarıp Orta Asya kökenli bir entelektüel projenin Bağdat'ta gerçekleşmesi olarak yeniden tanımlar.
+**Tercüme Hareketi**, 8.-10. yy'da Yunan, Süryânice, Pehlevî ve Sanskritçe yazılı bilim, felsefe ve tıp eserlerinin Arapça'ya **sistematik ve devlet-finansmanlı** aktarımıdır. Bermekîler vezirliğinde başlar, Halife Memûn (813-833) döneminde zirveye ulaşır, 10. yy ortasına kadar yoğunluğunu korur. **Bilim tarihindeki en büyük tek bilgi-aktarım dalgası** olarak kabul edilir — Avrupa'nın 12.-13. yy'daki Latince çevirilerden önceki tek karşılaştırılabilir vakası Helenistik dönem İskenderiye Kütüphanesi-merkezli aktarımdır.
 
-Halka platformunda bu kavram sayfası, **aynı süreç hakkında birden fazla kitabın farklı sebep-failler önermesinin** somut bir vakasıdır. Faz 2'de Starr, Lyons, Sezgin, Hobson, Goody, Pedersen'in Tercüme Hareketi'ne dair iddiaları yan yana listelenecek; çelişen değerlendirmeler işaretlenecektir.
+**Üç ana akış:**
 
-## Üç dalga (genel kabul)
+1. **Yunanca → Arapça (Süryânice ara-dilli).** En büyük akış. Galen (tıp), Aristoteles (felsefe-mantık), Eukleides (matematik), Ptoleme (astronomi), Arşimet (mekanik), Hipokrat (tıp). Aktarımı genelde Süryânice-Hıristiyan mütercimler (Hunayn b. İshak ve oğlu İshak b. Hunayn, Sabit b. Kurra) yapar — ya doğrudan Yunancadan, ya da daha sık olarak Süryânice ara-çeviri üzerinden.
+2. **Pehlevî → Arapça.** Sasanî mirası: astronomi (Zîc-i Şâhi), siyaset (Kitâbü't-Tâc), tıp ve etik literatürü.
+3. **Sanskritçe → Arapça.** Hint mirası: astronomi-matematik (Sindhind, sıfır ve yer-değerli sayı sistemi), tıp (Süsruta), edebiyat (Kelîle ve Dimne, Bidpai masalları).
 
-1. **Erken dalga (Mansur dönemi, 754-775):** Esas olarak astronomi ve astroloji metinleri; pratik amaçlı (takvim, navigasyon, tıp).
-2. **Orta dalga (Harun Reşid + Bermekîler, 786-803):** Sistematik tercüme faaliyeti, kütüphane kurma, atölye organizasyonu. Bermekî vezir ailesi (Belh çıkışlı) bu dalganın ana motorudur.
-3. **Geç dalga (Memûn, 813-833):** Mu'tezile teolojisinin kurumsal desteğiyle birlikte felsefe ve mantık ağırlıklı tercümeler. Beytülhikme'nin sistematik tercüme atölyesi olarak çalıştığı dönem (bu noktada bile Beytülhikme'nin tam olarak ne kadar bir "kurum" olduğu Gutas tarafından sorgulanmıştır).
+**Pedersen'in kritik vurgusu (claim-001):** Tercüme Hareketi'nin **maddî mümkünlük koşulu** 793 kâğıt devrimidir. Papirüs ekonomisi, Tercüme Hareketi'nin gerektirdiği hacmi karşılayamazdı — bir tek Galen külliyatının Arapça versiyonu binlerce sayfalık metin gerektirir, papirüs maliyeti+kırılganlığı bunu olanaksız kılardı. **Kâğıt teknolojisi → ölçeklenebilir kopyalama → ölçeklenebilir tercüme**: Pedersen'in *İslam Dünyasında Kitabın Tarihi*'nin merkezî argüman zinciri.
 
-## Kaynak diller ve hacim
+**Sezgin'in tamamlayıcı vurgusu:** Tercüme Hareketi salt aktarım değildir; Yunan-Pers-Hint mirasının **eleştirel-eklemeli** dönüşümüdür. Aktarılan eser, Arapça'da çoğu zaman daha sistemli, daha matematik-disiplinli, daha pratik-gözleme bağlı bir versiyona dönüşür. Hârezmî'nin cebri Hint sayı sistemini Mezopotamya hesap geleneğiyle birleştirir; İbn el-Heysem'in optiği Eukleides ve Ptoleme'yi deney-yöntemiyle aşar. **Tercüme = aktarım + eleştirel-eklemeli dönüşüm.**
 
-- **Yunanca → Arapça:** Aristoteles külliyatının neredeyse tamamı; Galen, Hippokrates; Ptolemaios *Almagest*; Eukleides *Elementler*; Plotinos.
-- **Süryânice → Arapça (köprü dil):** Yunanca metinlerin önemli bir kısmı önce Süryâniceye, sonra Arapçaya çevrildi. Cündişâpûr akademisi (Pers) ve Süryâni Hıristiyan tercümanlar (en ünlüsü Huneyn b. İshak) burada belirleyici.
-- **Pehlevi (Orta Farsça) → Arapça:** Sasani edebi ve idari mirası; *Kelîle ve Dimne*'nin Arapçaya geçişi.
-- **Sanskrit → Arapça:** Hint matematiği (özellikle ondalık sayı sistemi), astronomi (*Sûrya Siddhânta*), bazı tıp metinleri.
+**Hobson'un tamamlayıcı vurgusu (v0.4'ten):** Tercüme Hareketi salt entelektüel olay değil, **küresel iktisadi-kültürel ağın** bir öğesidir. Bağdat'ın Abbasî-merkezli ekonomik gücünün entelektüel uzantısı; "Doğu'nun Batı'yı yapışkan bağlarla beslemesi" tezinin 8.-10. yy somut vakası.
 
-## Halka müfredatındaki yeri
+## Halka müfredatında geçer
 
-- **Starr — Kayıp Aydınlanma:** Bölüm 5 (Bağdat'ta Doğu Rüzgarı) tamamen bu konuya ayrılmıştır. Starr Gutas'ı izleyerek Orta Asyalı yetkililerin sistematik desteğini öne çıkarır.
-- **(Bekleniyor)** Lyons — Hikmet Evi: Beytülhikme'nin merkezi rolüne ağırlık veren klasik anlatı.
-- **(Bekleniyor)** Sezgin — İslam'da Bilim ve Teknik: tercümelerin teknik içerik dökümü.
-- **(Bekleniyor)** Goody — Batıdaki Doğu: tercüme hareketinin sonradan Batı'ya transferiyle bağlantısı.
-- **(Doğrudan kaynak)** Gutas — *Greek Thought, Arabic Culture* (1998): modern tartışmanın temel referansı.
+Halka müfredatının atomik atlasında **dört-kitap-slug-eşleşmesi** ile en zengin kavramsal cross-ref'lerden biri:
 
-## Açık sorular (Halka tartışması için)
+- **Pedersen #7'de:** Tercüme Hareketi, Pedersen'in claim-001 (kâğıt-tercüme-warraqun zinciri) tezinin **maddî altyapı** koşulu. Pedersen'in argümanında Tercüme Hareketi'nin **maddî mümkünlük koşulu** kâğıt devrimidir — yani bilgi-içerik akışı için maddi-teknik altyapı koşuldur.
+- **Sezgin #8'de:** Tercüme Hareketi (frontmatter slug-eşleşmesi yok ama gövde-içi merkezi) Sezgin Cilt I'in 3./9. yy bölümünün **teknik-içerik** tarafını oluşturur. Sezgin Hârezmî, Hunayn b. İshak ve İbn el-Heysem zinciri üzerinden Tercüme Hareketi'nin eleştirel-eklemeli dönüşüm karakterini vurgular. Pedersen ile Sezgin arasındaki `dogrudan_kaynak` cross-ref (v0.10) Tercüme Hareketi atomiğinde kesişir.
+- **Freely #5'te:** Tercüme Hareketi, *Işık Doğu'dan Yükselir*'in popüler-anlatı tonunda merkezî dramatik sahnelerden biri — Beytü'l-Hikme dramı. Freely'nin tonu Pedersen'in maddî altyapı tasvirinin **insanî-duygusal yüzeyi**.
+- **Starr #6'da:** Tercüme Hareketi, *Kayıp Aydınlanma*'nın 9.-12. yy Mâveraünnehir aydınlanmasının **bilgi-aktarım altyapısı** olarak işaretlenir. Starr Tercüme Hareketi'ni Bağdat-merkezli değil, **Bağdat-Mâveraünnehir** dağıtık ağ olarak okur.
+- **Hobson #4'te (v0.4 cross-ref'i, korundu):** Tercüme Hareketi, Hobson'un 'Doğu'nun Batı'yı yapışkan-bağlarla beslemesi' tezinin (claim-001) 8.-10. yy somut vakası. Hobson'un teorik çerçevesi + Pedersen'in maddî altyapısı + Sezgin'in teknik-içerik perspektifi Tercüme Hareketi atomiğinde **üç farklı yöntemsel pencere** olarak görünür.
 
-- Bermekî vezirlerin Bağdat'taki etkisi gerçekten "Orta Asya etkisi" olarak okunabilir mi, yoksa zamanla tamamen Abbâsî kurumlarının içine eridiler mi?
-- Tercüme Hareketi'nin "Müslüman idarecilerin Yunan düşmanlığı" anlatısını yıkması, çağdaş İslam savunmacı söyleminde nasıl bir yere oturuyor?
-- Süryânice köprü dilinin önemi pedagojik olarak yeterince vurgulanıyor mu? "Müslümanlar Yunan düşüncesini doğrudan aldı" anlatısının zayıf yanı budur.
-
----
-
-*Bu sayfa Halka platformunun atomik kavram şablonunun ilk uygulamasıdır.*
+**Atomik graf değeri:** Tercüme Hareketi, **Bîrûnî yanında Halka atomik atlasının dört-kitap-slug-eşleşmeli ikinci atomiğidir**. Halka'nın "kümülatif bilgi ağı" tezinin pedagojik özünü taşır: aynı tarihsel olay, dört farklı kitap-yöntemsel-pencerenin kesişiminde durur — Pedersen'in kâğıt-altyapı çerçevesi, Sezgin'in teknik-eleştirel dönüşüm çerçevesi, Freely'nin dramatik-popüler çerçevesi, Starr'ın bölgesel-dağıtık-ağ çerçevesi, Hobson'un küresel-iktisadi-ağ çerçevesi.
