@@ -164,3 +164,52 @@ Kol A v0.8.2 deploy olduğunda, Halka WhatsApp grubunda **birinci katılımcıya
 - **Mutabakat dosyası bir kez yazılınca otomatik şablon olur:** Sonraki tur feedback (Pedersen sonrası, v0.9+) geldiğinde aynı yapı (durum tablosu + yeni öncelik listesi + iletişim eylemi) uygulanır.
 - **Versiyon-isimlendirme sürtünmesi gerçek:** Major sürüm (v0.X) içerik milestone'u; minor (v0.X.Y) polish/altyapı. Kol A naturally v0.8.2 (polish), v0.9 Pedersen için saklı. Bu disiplin grand plan'da (§11) yansıtıldı.
 - **NotebookLM red kararı şeffaf belgelendi:** Reddetme açık gerekçe ile (tez çelişkisi); böylece yorumcuya cevap savunulabilir, gelecekte geri açılırsa argümanın güncellendiğini kaydetmek kolay.
+
+---
+
+## 8. Pedersen v0.9 sonrası durum güncellemesi (3 Mayıs 2026)
+
+> **Bağlam:** v0.9 Pedersen #7 book.md eklendi. Bu §7'deki "v0.8.2 sonrası mutabakat" tablosunun **ikinci aşaması** — Faz 2 polish'i v0.8.4'te tamamlanmıştı, şimdi içerik milestone (Pedersen) deploy edildi. Bu §, v0.8 feedback turunun birikmiş etkisini Pedersen üzerinde test eder ve yeni feedback turuna geçişi hazırlar.
+
+### 8.1 v0.8 feedback turunun Pedersen üzerinde birikmiş etkisi
+
+| Feedback maddesi | Kol A/B'de uygulanması | Pedersen'de tatbikat |
+|---|---|---|
+| **F1.6** stratejik okuma her kitaba | v0.8.2'de canonical heading (`## Halka için stratejik okuma`) | ✅ Pedersen'de canonical heading var; çekirdek bölümler (Bölüm 2/3/6/7) işaretli; tematik gruplama + önce-sonra çerçeveleme + 1. dönem cross-ref'leri 4 alt-paragrafa bölünmüş |
+| **F1.7** akıcılık etiketi | v0.8.2'de 3-renkli chip + tooltip | ✅ Pedersen `reading_level: orta` + `accessibility_note` (kitap kısa ama yoğun teknik terminoloji uyarısı, Bloom 2001 önokuma önerisi) |
+| **F1.8** içindekiler ilk kısımda | v0.8.2'de sayfa düzeni | ✅ Pedersen 7 bölümlü chapters (her bölümde 2-3 cümlelik summary) — `[slug].astro`'nun TOC sıralaması ana içerikle eşleşmiş halde otomatik render edilir |
+| **F2.5** sorular tahlilden önce göz at | v0.8.2'de uyarı kutusu | ✅ Pedersen 10 discussion_questions tahlil bölümünden önce render edilir, uyarı kutusu standardı geçerli |
+| **F1.3** tarihyazımı 2D scatter | v0.8.3'te SVG dağılım | ✅ Pedersen (anti-Eurocentric + Baghdad-centric + non-declensionist) scatter algoritmasına otomatik girer; deterministik sort ile yeni nokta middle-right bölgeye düşer (Freely ile aynı X'te ama farklı Y bucket — vertical jitter ile ayrışır); çöküşçü kenar **YOK** (Pedersen non-declensionist) → emerald kenar |
+| **F1.4** kapak yer tutucusu | v0.8.3'te dashed-border placeholder | ⏳ Pedersen `cover_image` boş, bu nedenle dashed-border placeholder render edilir ("Kapak yakında" italic ink-400) — kapak Klasik Yayınları edisyonundan toplanınca otomatik yerleşir |
+| **F1.1** Pagefind static search | v0.8.4'te canlı | ✅ Pedersen içeriği yeni indeksleme turunda eklenir (~3000+ ek kelime); test sorguları: "warraqun", "793", "Suk al-Warraqin", "İbn Mukla", "Johannes Pedersen", "kâğıt devrimi" — hiçbiri 1. dönem'de yoktu, hepsi yeni indekslenmeli |
+| **F1.5** NotebookLM özet | REJECTED | (geçerli değil — Pedersen'de de aynı tez çelişkisi sürer) |
+| **F1.2** donut chart | DEFERRED | (mevcut text-list yeterli, Pedersen'de de aynı çözüm çalışır) |
+
+**Skor:** 7 DONE + 1 PARTIAL (kapak görseli bekliyor) + 1 DEFERRED + 1 REJECTED. **v0.8 feedback turunun bütünü Pedersen üzerinde test edildi ve geçti** — şablon disiplini ile feedback uyumu çelişmiyor.
+
+### 8.2 Müfredat ilerlemesi
+
+- **v0.8 sonrası:** 1. dönem 4/4 (100%), toplam 6/21 (29%); 2. dönem 2/7 (Freely+Starr).
+- **v0.9 sonrası:** 1. dönem 4/4 (100%), toplam **7/21 (33%)**; **2. dönem 3/7 (43%)** — Pedersen kanonik metodolojik açılışı ekledi.
+- **2. dönem ilerlemesi:** Freely (#5, okundu — v0.7) → Starr (#6, okunuyor — v0.8) → **Pedersen (#7, sirada — v0.9 BU TUR)** → Sezgin (#8, sirada — v0.10?) → Lyons (#9) → Gutas (#10) → Berkey (#11).
+
+### 8.3 Yeni feedback turuna hazırlık (HALKA-FEEDBACK-v0.9.md)
+
+Pedersen Halka grup okumasına başlayınca (status: `sirada` → `okunuyor` geçişi), yeni feedback turunun önündeki sorular hazır olmalı. v0.9 turunda öne çıkacak muhtemel feedback alanları:
+
+- **Pedersen-Starr declensionism gerilimi** — Halka grubunda Starr'ı okuyanlar Pedersen'in non-declensionist tutumunu nasıl deneyimleyecek? "Aynı sahnede iki ayrı tarih okuması" felsefesi (5-2 dengeli) yorumcuya nasıl iletilecek? `discussion_questions` #6 bu gerilimi doğrudan açıyor.
+- **Atomik dosya talep edilebilir** — Pedersen'in 20 kişi + 10 yer + 12 kavramı şu an stub render edilir (v0.6'dan beri pattern: book.md'de slug var ama atomik dosya yok); yorumcular "İbn Mukla'nın hayatı detaylı görmek istedim, kart açtım, içerik yoktu" derse, Pedersen atomik dosyaları ilk dalga adayı olur (K3 deklarasyonu: book.md önce + atomik toplu sonra, Pedersen sonrası tetiklenebilir).
+- **Türkçe çeviri metadata eksiği** — kapak + ISBN + sayfa + çevirmen + yayıncı + yıl alanları boş; Halka grup okumasına başlayınca Klasik Yayınları edisyonundan toplanmalı (Faz 2 Kol B kapak turuyla aynı momentumda).
+- **Hat ve cilt görselleri** — Pedersen'in özgünlüğü hat ekolleri ve cilt teknolojisinde; visual destek (Kufi/Maghribi/Naskhi/Thuluth/Diwani örnekleri, Memlûk cildi fotoğrafları) eklenebilir mi? Mevcut sistem öyle bir frontend slot'u yok — yeni feature olur.
+
+### 8.4 İletişim eylemi (yapılması gereken — v0.9 deploy sonrası)
+
+WhatsApp grubunda kısa bilgi:
+
+> *"v0.9 deploy edildi: Pedersen *İslam Dünyasında Kitabın Tarihi* book.md eklendi, 2. dönem kanonik olarak açıldı. Geçen turdaki feedback'lerinizin (akıcılık etiketi, stratejik okuma, içindekiler yukarı, tarihyazımı görseli, arama butonu) Pedersen üzerinde de tatbikatte olduğunu görebilirsiniz — yeni kitap aynı şablonla, sıfır şema değişikliği ile eklendi. Pedersen non-declensionist (Starr declensionist), bu gerilim discussion_questions #6'da merkezi soru — okumaya başlayınca yorumlarınız Halka'nın 5-2 declensionism dengesini test edecek. İyi okumalar."*
+
+### 8.5 Süreç dersi (v0.9'dan)
+
+- **Şablon disiplini içerik turunda da test edildi:** Faz 2 Kol A + Kol B sonrası ilk içerik milestone'u (Pedersen) sıfır şema değişikliği ile eklendi — UX-feedback ile şema kararlığı arasında ödün gerekmedi. Bu, "Hobson'dan beri 7 kitap" disiplininin ampirik kanıtıdır.
+- **Cross-ref omurgası önceden hazırlanırsa yeni kitap teknik olarak ucuza gelir:** Sezgin/Lyons/Gutas/Berkey için Pedersen'den ileri-cross-ref deklarasyonları yapıldı — bu kitaplar eklendiğinde Pedersen'e geri-bağ kurmak zaten yarı-iş halinde olacak. v0.7-v0.8 örüntüsü (önceden ileri-cross-ref ekleme) v0.9'da pekişti.
+- **Disambiguation diliği maliyetli ama gerekli:** "Halka'da Johannes Pedersen #7" cümle uzunluğunu 3 kelime artırır ama 2 farklı Pedersen ihtimali nedeniyle gerekçeli — bu disiplin §12.2'de kayıt altında, gelecek kitaplarda (Robinson?, Berkey?) aynı kalıp uygulanır.
