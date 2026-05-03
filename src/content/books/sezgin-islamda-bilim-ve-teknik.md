@@ -16,8 +16,6 @@ isbn: "978-975-17-3253-8"
 reading_level: "zor"
 accessibility_note: "Eserin Türkçe Halka edisyonu beş cilttir; yüklenen ve Halka tarafından baz alınan Cilt I (Arap-İslam Bilimleri Tarihine Giriş, ~242 sayfa) tüm külliyatın metodolojik açılışıdır — 1./7.-10./16. yy panoraması, Avrupa'ya geçiş yolları, duraklama tezi ve bibliyografya bu ciltte toplanır. Diğer dört cilt disiplin-temelli teknik dökümdür (Cilt II Astronomi; Cilt III Coğrafya/Denizcilik/Saatler/Geometri/Optik; Cilt IV Tıp/Kimya/Mineraller; Cilt V Fizik-Teknik/Mimari/Savaş Tekniği/Antik Objeler/Camlar) ve Frankfurt Enstitüsü tarafından inşa edilen ~800 alet replikasının kataloğu olarak işler. Cilt I tek başına okunabilir ama Halka tartışmasında Cilt II (Astronomi), Cilt IV (Tıp+Kimya) ve Cilt V (Fizik-Teknik) seçili pasajlarına başvuru gerekecektir. Teknik terminoloji yoğun: rasathane (raṣadḫāne), usturlap (asṭurlāb), Ptoleme aequans'ı, dış-merkezlilik (eksantriklik), epikür-modeli, sekant çizelgesi, vektör (yörünge geometrisi), dik küresel astronomi, gözlem (raṣad) etiği, kıraet halkası, sema-icaze, vb. Pedersen #7 ile birlikte okumak terminolojik girişi yumuşatır; Freely #5 (Cilt I'de geçen Tusi-Şâtır-Kopernik vakasının fikir-katmanını verir) önokuma olarak kuvvetle önerilir."
 
-cover_image:
-cover_credit:
 
 period_covered:
   start: 622
