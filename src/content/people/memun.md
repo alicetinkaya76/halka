@@ -24,15 +24,15 @@ works:
     note: "Bağdat'ta dirhem-dinar para birimlerinin standartlaştırılması; halifelik ekonomik egemenliğinin merkezîleştirilmesinin somut göstergesi"
   - title: "Bizans'tan kitap-heyetleri talepleri"
     type: "diplomatik-akademik proje"
-    year: "yak. 820-833"
+    year: 820
     note: "Bizans imparatorlarına gönderilen heyetler eliyle Yunanca el yazmalarının Bağdat'a getirilmesi; Gutas'a göre salt akademik istek değil, Bizans'ın Yunan-mirasını kaybettiğini ve Müslümanların gerçek mirasçısı olduğunu kanıtlama emperyal politikasının cephesi"
   - title: "Bağdat İmparatorluk Akademisi (Beytü'l-Hikme'nin olgun kurumsallaşması)"
     type: "akademik-kurumsal patronaj"
-    year: "yak. 819-833"
+    year: 819
     note: "Hunayn b. İshak atölyesi, Banû Mûsâ kardeşler, el-Hârezmî, el-Kindî çevresi — hepsi Memun'un sistematik halife-bütçesi desteğiyle çalışmıştır"
   - title: "Tedmir Çölü astronomik gözlemleri"
     type: "bilim projesi"
-    year: "yak. 829-832"
+    year: 829
     note: "Yer-meridyeni ölçümü için Tedmir-Sincar arası iki ekipli alan-çalışması; el-Hârezmî ve Banû Mûsâ liderliğinde"
   - title: "Tahirîler hanedanını Horasan'da kurma"
     type: "siyasi-idari reform"
