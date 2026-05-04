@@ -40,3 +40,4 @@ dist/
 *.bak
 *-backup-*/
 src/content/books.zip
+src.zip
