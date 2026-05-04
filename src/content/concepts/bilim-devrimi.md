@@ -1,0 +1,49 @@
+---
+name: "Bilim Devrimi (16-17. yy)"
+name_aliases: ["Scientific Revolution", "Bilimsel Devrim", "17. yüzyıl Bilim Devrimi", "La révolution scientifique"]
+short_description: "Halka 3. dönem'in tanım-kavramı: 16-17. yüzyıl Avrupa'sında Aristotelesçi-skolastik-fizikten Galilei-Newtonyen-matematiksel-fiziğe kavramsal-felsefi-yöntemsel kopuşun kanonik adlandırması. Kavramın akademik-kullanımı 1939'da Alexandre Koyré'nin *Études galiléennes* eseriyle yaygınlaşmış, 1949'da Herbert Butterfield'ın *The Origins of Modern Science* dersleriyle popüler-akademik-konuma yükselmiştir. Halka için kritik soru: Bilim Devrimi tek-eşsiz Avrupa-içsel olay mıdır (Koyré, Westfall, Cohen-içselci okuma), yoksa İslam-Doğu-bilim-zincirinin doğal uzantısı mıdır (Sezgin, Saliba, Hobson dışsalcı okuma)?"
+period: "1543-1687 (Kopernik *De Revolutionibus*'tan Newton *Principia*'ya); 1300-1700 (Yenidendoğuş öncüllerini içeren geniş tanım)"
+geography: "Avrupa-merkezli (İtalya-İngiltere-Fransa-Almanya-Hollanda) ama Bizans-İtalya transmisyon zinciri üzerinden İslam-astronomi-aksiyomatik öncülleriyle"
+related_concepts:
+  - "matematiksellestirme"
+  - "icselci-tarihyazimi"
+  - "tusi-couple"
+  - "kopernik-satir-ay-modeli"
+
+tags: ["halka-3-donem-tanim-kavrami", "koyre-merkez-tezi", "tarihyazimi-tartisma-merkezi", "anti-eurocentric-test-zemini", "scientific-revolution"]
+---
+
+## Atomik özet
+
+**"Bilim Devrimi" (16-17. yy), Halka 3. dönem'in tanım-kavramıdır** ve Halka'nın atomik-atlasında v0.15 turuyla açıldığı anda **dönem-tanım-rolüyle** konumlanır. Kavramın akademik-tarihi kendisi tarihseldir: 18. yy'da Diderot-d'Alembert *Encyclopédie*'sinde "moderne bilim Galileo'dan Newton'a doğdu" formülü vardır ama "Bilim Devrimi" terim-kullanımı yoktur. 19. yy pozitivist-bilim-tarihi (William Whewell *History of the Inductive Sciences* 1837, sonra Auguste Comte) "yeni-bilim-yöntemi" çerçevesinde kavramı zımnen kullanır. Akademik-kanonik-kullanımın momenti **1939 Alexandre Koyré *Études galiléennes*** eseridir; Koyré bu üç-kitap-bir-eserde Galileo'nun matematiksel-fiziğinin felsefi-zemin-değişimi olduğunu sistematik-tezli formüle eder ve "kavramsal-kopuş" (rupture conceptuelle) olarak adlandırır. 1949'da Herbert Butterfield Cambridge derslerini *The Origins of Modern Science* (Bell, 1949) olarak yayımlar; Butterfield "Bilim Devrimi" terim-kullanımını popülerleştirir ve "Hıristiyanlık'ın yükselişinden beri Avrupa'nın gördüğü en büyük dönüşüm" tezini formüle eder. Halka 3. dönem'in 6 kitabı (Gleick-Newton, Wulf-Humboldt, Isaacson-Franklin, Westfall, Isaacson-Einstein, Wootton) ve 4. dönem'in Kuhn (#18) açılışı bu kavramsal-tarihin farklı yönelimleridir; Koyré ek-kategoride bilim-tarihçilik kanonu olarak çerçeveyi anchor'lar.
+
+**Kavramın akademik-içselci kullanımı.** Koyré-Butterfield-Westfall-Cohen geleneğinde "Bilim Devrimi" kavramı şu yapısal-iddialarla yüklüdür: (1) **tek-eşsiz olay** — insanlık tarihinde Bilim Devrimi gibi başka bir kavramsal-paradigma-değişimi yoktur (Butterfield: "Hıristiyanlık'tan beri en büyük dönüşüm"); (2) **Avrupa-içsel** — coğrafi olarak İtalya-Fransa-İngiltere-Hollanda-Almanya'da olup-biten, kültürel olarak Yenidendoğuş-Reformasyon-Aydınlanma zincirinin parçası; (3) **kavramsal-felsefi-zemin değişimi** — yeni-deneysel-yöntem değil, Aristotelesçi-niteliksel-fizikten Platonik-niceliksel-geometrik-fiziğe kopuş (Koyré'nin matematikselleştirme tezi); (4) **17. yy ile sınırlı** — 16. yy'da Kopernik-Brahe-Kepler hazırlığı, 17. yy'da Galileo-Descartes-Huygens-Boyle-Newton zinciri Bilim Devrimi'nin kanonik dönemidir. Halka için bu çerçeve Koyré'nin Cilt 1'inde **doğrudan-tezli okuma**dır.
+
+**Kavramın akademik-dışsalcı eleştirisi.** 1970'lerden itibaren akademik-tarihyazımında "Bilim Devrimi" kavramı **çoğul-eleştirilere** maruz kalır. Steven Shapin *The Scientific Revolution* (Chicago UP 1996) eserinin ilk cümlesi paradoks-açılış olarak ünlüdür: "Bilim Devrimi diye bir şey yoktu, ve bu kitap onun hakkındadır" — Shapin'in tezi: kavramın tek-eşsiz-olay yapısı akademik-kurgu, gerçek 16-17. yy Avrupa-bilim-pratikleri çoğul-coğrafi-kurumsal-yapısal-zincirler içinde gerçekleşti. Hobson #4 anti-Eurocentric kampta kavramın **Avrupa-içsel-olay** iddiasını reddeder: Doğu-medeniyetlerinin (Çin, İslam, Hint) küresel-tarih-üreticiliği Avrupa-Bilim-Devrimi'nin maddî-altyapısını sağlar (sıfır kavramı, kâğıt, mekanik-saat, dövme demir, barut). George Saliba *Islamic Science and the Making of the European Renaissance* (MIT 2007) eserinde Tûsî couple ve Şâtır Ay modelinin Kopernik 1543 ile birebir matematik-özdeşliğini gösterir; Bilim Devrimi'nin matematiksel-aksiyomatik-zemini İslam-astronomi-zincirinin doğal-uzantısıdır. Joseph Needham *Science and Civilisation in China* (Cambridge UP 1954-) Çin-bilim-tarihinin Avrupa-Bilim-Devrimi-paralel olduğunu sistematik-belgelemeyle gösterir; "Niçin Çin Bilim Devrimi'ni yapmadı" sorusu (Needham sorusu) tam da kavramın tek-Avrupa-içsel-yapısına meydan okuyan akademik-kanonik problemdir.
+
+**Halka'nın çift-yorum çerçevesi.** Halka tezsel-olarak Bilim Devrimi kavramını **reddetmez ama çoğullaştırır**. Halka için Bilim Devrimi (a) tarihsel-olarak gerçekleşmiş bir akademik-momentin adıdır (16-17. yy Avrupa'da Galileo-Newton ekseninde matematiksel-mekanik-fiziğin sistematik-aksiyomatik formülasyonu); (b) ama akademik-tarihçilik-kategorisi olarak **çoğul-zincirlerin sonunda** durur — antik Pythagoras-Platon felsefesi, İslam-astronomi-aksiyomatik geleneği (Tûsî, Şâtır, Maraga), Bizans-İtalya transmisyon yolu (Bessarion, Padova-Bologna), Yenidendoğuş Floransa-Platonculuğu (Ficino), Padova-Aristotelesçilik karşıt-zemini (Cremonini-Galileo) çoklu-zincirin Erken-Modern Avrupa'da kesişme-momenti. Halka'nın Gutas iddiası — "Yunanca-Arapça çeviri-hareketi de Bilim Devrimi kategorisindedir" (Gutas claim-010) — kavramın çoğullaştırılmasının Halka-içsel akademik-formülasyonudur. Goody-Rönesanslar tezi — "her medeniyetin yapı-içsel rönesans-dönemleri olur" — paralel-okumadır.
+
+## Halka müfredatında geçer
+
+Bilim Devrimi atomiği v0.15 turuyla açıldığı anda Halka'nın atomik-atlasında **3-kitap düğümü** oluşturur ve gelecek 8-9 turda **dönem-merkez-kavram** olarak çoklu-cross-ref-potansiyeli taşır:
+
+- **Koyré #12'de (v0.15 turu, MERKEZ-AÇILIŞ):** Cilt 1'in #8 makalesi "Galileo ve XVII. Yüzyılın Bilimsel Devrimi" başlık-kavramı bu atomiğe denk düşer. #4 "Çağcıl Bilimin Kaynakları (Yeni Bir Yorum)" makalesi kavramın Yenidendoğuş-öncülleriyle birlikte tarihsel-kapsamını işler. #11 "Bilim Tarihine Yaklaşımlar" methodolojik çerçeveyi sunar.
+
+- **Gutas #10'da (geri-bağ, çatışma):** Gutas claim-010 "Yunanca-Arapça çeviri-hareketi 16-17. yy Bilim Devrimi'yle aynı kategoride yer alır" — kavramın **kategori-genişletmesinin** Halka'daki ilk akademik-formülasyonu. Koyré'nin tek-Bilim-Devrimi-içsel-anlatısının doğrudan-akademik-itirazı.
+
+- **Goody-Rönesanslar #3'de (geri-bağ, çatışma):** Goody'nin 'çoklu rönesanslar' tezi Bilim Devrimi'nin tek-Avrupa-içsel-eşsiz-olay yapısının teorik-reddidir. Çoklu-rönesans çerçevesinde 16-17. yy Avrupa-Bilim-Devrimi bir-vakadır, tek-vaka değil.
+
+- **Sezgin #8'de (geri-bağ, teknik-çatışma):** Sezgin'in 5-noktalı Kopernik-paraleli (Tûsî couple, Şâtır Ay modeli) Bilim Devrimi'nin matematiksel-aksiyomatik-cephesinin İslam-zincirine bağlandığını gösterir. Bilim Devrimi'nin **teknik-cephesinin** İslam-Avrupa-zincirine açılma argümanı.
+
+- **Hobson #4'de (geri-bağ, makro-çatışma):** Hobson'un 'Doğu-medeniyetlerinin küresel-tarih-üreticiliği' tezi Bilim Devrimi'nin Avrupa-içsel-yapısını makro-iktisadi-zemininde reddeder.
+
+**İleri-cross-ref (Halka 3.-4. dönem hazırlığı):**
+- **Gleick-Newton #12 (Halka 3. dönem-açılışı):** Newton biyografisi Bilim Devrimi'nin zirve-figürünün popüler-anlatısı. Bilim Devrimi kavramının somut-figürel-uzantısı. 4-kitap düğüm.
+- **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın klasik-içselci anlatısının başlık-konusu Bilim Devrimi'dir; Koyré-Cohen ekolünün akademik-zirve-formülasyonu. 5-kitap düğüm.
+- **Wootton #17 (Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi) — REVİZYONİST OKUMA:** Wootton'ın 2015 yayını Bilim Devrimi kavramının akademik-revizyonunu sunar; "Bilim Devrimi 1572-1704 daha-uzun ve daha-çoklu-figürlü bir süreçtir" tezi Koyré-Westfall klasik-içselci anlatısının daraltıcılığına dolaylı eleştiri. Halka grup-okumasında Koyré-Westfall vs. Wootton kuşaklar-arası tarihyazımı karşılaşması. 6-kitap düğüm.
+- **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Kuhn'un 'paradigma-değişimi' formülasyonunun **kanonik kullanım-vakası** Bilim Devrimi'dir. *Yapı*'nın 1962 baskısı Bilim Devrimi'ni paradigma-değişiminin somut-tarihsel-örneği olarak işler. Koyré'nin doğrudan-akademik-mirasçısı. 7-kitap düğüm.
+- **Sarton #19, Gavroglu #20, Ronan #21:** 4. dönem-bilim-tarihçiliği bağlamında Bilim Devrimi kavramının yöntem-cephesinde (Sarton: bilim-tarihçilik metodu; Gavroglu: eleştirel-eklemlenme; Ronan: panoramik-kültür-okuması) ek-cross-ref alır.
+
+**Ek-kategori bağı:** Burke #23 (Bilginin Toplumsal Tarihi) Bilim Devrimi kavramını bilgi-sosyolojisi cephesinde — Koyré'nin ek-kategori-yan-akademik konumlanmasıyla yan-yana okunur; Whitfield #25 (Batı Biliminin Dönüm Noktaları) Bilim Devrimi'nin görsel-kanonik anlatısını sunar.
+
+**Atomik graf değeri:** Bilim Devrimi atomiği, Halka'nın atomik-atlasının **dönem-tanım-rolündeki tek-kavramı**. Halka müfredatının 3. ve 4. dönemlerini kavramsal olarak çerçeveler; gelecek 9 turda her birinde merkez-veya-yan-figür olarak yer alır. Halka'nın "kümülatif bilgi ağı" tezinin akademik-merkez-kavramının test-edileceği alandır — Halka 3. dönem'in pedagojik özü Bilim Devrimi kavramının çoğul-yorum-zincirini grup-okumasında somutlaştırmaktır.

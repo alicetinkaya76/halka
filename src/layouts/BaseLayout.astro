@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import '@/styles/global.css';
 import Analytics from '@/components/Analytics.astro';
+import ProgressBar from '@/components/ProgressBar.astro';
 
 interface Props {
   title: string;
@@ -64,6 +65,12 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
           <a href={`${baseUrl}/yerler`} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Yerler</a>
           <a href={`${baseUrl}/kavramlar`} class="no-underline text-ink-700 hover:text-emerald hidden sm:inline">Kavramlar</a>
 
+          {/* v0.14: Görsel-pedagojik katmanlar */}
+          <span class="hidden md:inline text-ink-300" aria-hidden="true">·</span>
+          <a href={`${baseUrl}/harita`} class="no-underline text-ink-700 hover:text-emerald hidden md:inline" title="Coğrafi katman — dünya haritası">Harita</a>
+          <a href={`${baseUrl}/zaman-cizelgesi`} class="no-underline text-ink-700 hover:text-emerald hidden lg:inline" title="Kronolojik katman — zaman çizelgesi">Zaman</a>
+          <a href={`${baseUrl}/etki-agi`} class="no-underline text-ink-700 hover:text-emerald hidden lg:inline" title="Etki ağı — graph görselleştirme">Etki Ağı</a>
+
           {/* Arama butonu — F1.1 */}
           <button
             id="halka-search-trigger"
@@ -83,6 +90,9 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
         </nav>
       </div>
     </header>
+
+    {/* v0.14: İlerleme çubuğu — header altında sticky değil ama her sayfada */}
+    <ProgressBar />
 
     <main class="flex-1">
       <slot />

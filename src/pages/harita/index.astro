@@ -1,0 +1,38 @@
+---
+// src/pages/harita/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WorldMap from '@/components/WorldMap.astro';
+---
+
+<BaseLayout title="Harita">
+  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+    <h1 class="font-sans text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+      Atomik Atlasın Coğrafyası
+    </h1>
+    <p class="mt-3 max-w-prose text-lg text-ink-700 font-serif">
+      Halka müfredatındaki kitapların geçtiği yerlerin Türkiye'ye göre haritası.
+      Bilginin yolculuğu — Antik Yunan'dan Bağdat'a, oradan Endülüs'e ve Avrupa'ya
+      — şehir-merkezli düğümler üzerinden okunur. Her marker'ın boyutu o yere
+      kaç kitabın referans verdiğini gösterir: <strong>Bağdat</strong> 7 kitapla
+      Halka'nın merkezi düğümü, <strong>Kâhire</strong> Berkey ile yeni eklenen
+      atomik.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <WorldMap />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Pedagojik konum</h2>
+    <p class="font-serif text-ink-700 max-w-prose">
+      Bu harita, Halka'nın "atomik atlas çoklu pencere" tezinin <em>coğrafi
+      katmanı</em>dır. Her yer-atomiği bir kitabın özetlenmiş bir geçişi değil,
+      birden fazla kitap tarafından farklı yöntemsel açılardan okunabilir bir
+      düğümdür. <strong>Bağdat</strong>, Pedersen'in kitap-kültürü, Sezgin'in
+      bilim-tarihi, Lyons'un anlatı-tarih ve Gutas'ın çeviri-hareketi
+      perspektiflerinin tek noktada kesiştiği bir yer-atomiğidir; harita bu
+      kesişimi yatay olarak görünür kılar.
+    </p>
+  </section>
+</BaseLayout>

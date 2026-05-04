@@ -1,0 +1,231 @@
+---
+// src/components/Halka21Chain.astro
+//
+// 21-halka zinciri — Halka müfredatının görsel-marka somutlaşması.
+// Ceyhun Hoca öneri #8 → "Ana sayfada 21 halkadan oluşan bir zincir,
+// ilk halkaya tıklandığında Patricia Fara'nın dünyasına girilsin."
+//
+// Bu komponent saf SVG'dir — istemci JS bundle'ına eklenmez.
+// Her halka:
+//   - dolum opaklığı: status'a göre (okundu/okunuyor/sirada/planlanan)
+//   - renk: dönem'e göre (4 dönem palet)
+//   - tıklama: book.md mevcut → /kitaplar/[slug] linki, yoksa disabled
+//   - hover: tooltip (kitap title + yazar + status)
+
+import { curriculum } from '@/lib/curriculum';
+import { getCollection } from 'astro:content';
+import { DONEM_COLORS, getStatusStyle } from '@/lib/halka-context';
+import { statusLabels } from '@/lib/labels';
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const allBooks = await getCollection('books');
+const builtSlugs = new Set(allBooks.map((b) => b.id.replace(/\.md$/, '')));
+
+// Tüm kitapları tek diziye düz, dönem bilgisi de iliştir
+const flatBooks = curriculum.flatMap((d) =>
+  d.books.map((b) => ({
+    ...b,
+    donem: d.donem,
+    donemShort: d.short,
+    donemColor: DONEM_COLORS[d.donem],
+    isBuilt: builtSlugs.has(b.slug),
+    style: getStatusStyle(b.status),
+  })),
+);
+
+// SVG geometri parametreleri
+const RING_COUNT = 21;
+const RING_RADIUS = 18;
+const GAP = 4;                       // halkalar arası boşluk
+const STEP = 2 * RING_RADIUS + GAP;  // halka merkezleri arası mesafe (40)
+const PADDING = 20;
+const VIEWBOX_W = PADDING * 2 + RING_COUNT * STEP - GAP;
+const VIEWBOX_H = 60;
+const CENTER_Y = VIEWBOX_H / 2;
+---
+
+<div class="halka-21-chain-wrapper" role="navigation" aria-label="21 halka müfredat zinciri">
+  <svg
+    viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`}
+    xmlns="http://www.w3.org/2000/svg"
+    class="halka-21-chain-svg"
+    role="list"
+    aria-label="Müfredat — 4 dönem, 21 kitap"
+  >
+    {/* Bağlantı çizgileri (önce çiziyoruz ki halkaların ardında kalsın) */}
+    {flatBooks.slice(0, -1).map((b, i) => {
+      const x1 = PADDING + i * STEP + RING_RADIUS;
+      const x2 = PADDING + (i + 1) * STEP + RING_RADIUS;
+      // Aynı dönem mi farklı dönem mi? Farklı dönemde kalın çizgi
+      const next = flatBooks[i + 1];
+      const sameDonem = next.donem === b.donem;
+      return (
+        <line
+          x1={x1}
+          y1={CENTER_Y}
+          x2={x2}
+          y2={CENTER_Y}
+          stroke="var(--halka-rule)"
+          stroke-width={sameDonem ? 1 : 2}
+          stroke-dasharray={sameDonem ? '' : '4 2'}
+        />
+      );
+    })}
+
+    {/* Halkalar */}
+    {flatBooks.map((b, i) => {
+      const cx = PADDING + i * STEP + RING_RADIUS;
+      const href = b.isBuilt ? `${baseUrl}/kitaplar/${b.slug}` : null;
+      const tooltipText = `#${b.sira_no} · ${b.title} — ${b.author} · ${statusLabels[b.status]}${
+        b.isBuilt ? '' : ' (henüz oluşturulmadı)'
+      }`;
+      return (
+        <a
+          href={href ?? undefined}
+          class:list={['halka-21-ring', { 'is-disabled': !b.isBuilt, 'is-pulse': b.style.pulse }]}
+          aria-label={tooltipText}
+          aria-disabled={!b.isBuilt}
+          role="listitem"
+        >
+          <title>{tooltipText}</title>
+          {/* Dış halka — dönem rengiyle stroke */}
+          <circle
+            cx={cx}
+            cy={CENTER_Y}
+            r={RING_RADIUS}
+            fill={b.donemColor.fill}
+            fill-opacity={b.style.fillOpacity}
+            stroke={b.donemColor.stroke}
+            stroke-width={b.style.strokeWidth}
+            stroke-dasharray={b.style.strokeDasharray}
+          />
+          {/* İç sıra-numarası */}
+          <text
+            x={cx}
+            y={CENTER_Y + 4}
+            text-anchor="middle"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="11"
+            font-weight="600"
+            fill={b.style.fillOpacity > 0.5 ? 'white' : 'var(--halka-ink)'}
+            style="pointer-events: none;"
+          >
+            {b.sira_no}
+          </text>
+        </a>
+      );
+    })}
+  </svg>
+
+  {/* Lejant: 4 dönem rengi + 4 status açıklaması */}
+  <div class="halka-21-legend">
+    <div class="halka-21-legend-row">
+      {Object.entries(DONEM_COLORS).map(([donem, c], i) => (
+        <span class="halka-21-legend-item">
+          <svg width="14" height="14" aria-hidden="true">
+            <circle cx="7" cy="7" r="6" fill={c.fill} fill-opacity="0.85" stroke={c.stroke} stroke-width="1.5" />
+          </svg>
+          <span class="halka-21-legend-label">{i + 1}. {c.label}</span>
+        </span>
+      ))}
+    </div>
+    <div class="halka-21-legend-row halka-21-legend-secondary">
+      <span class="halka-21-legend-item">
+        <svg width="14" height="14" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="var(--halka-emerald)" fill-opacity="0.85" stroke="var(--halka-emerald)" stroke-width="1.5" />
+        </svg>
+        <span>okundu</span>
+      </span>
+      <span class="halka-21-legend-item">
+        <svg width="14" height="14" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="var(--halka-emerald)" fill-opacity="0.4" stroke="var(--halka-emerald)" stroke-width="2" />
+        </svg>
+        <span>okunuyor</span>
+      </span>
+      <span class="halka-21-legend-item">
+        <svg width="14" height="14" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="var(--halka-emerald)" fill-opacity="0.08" stroke="var(--halka-emerald)" stroke-width="1.5" />
+        </svg>
+        <span>sırada</span>
+      </span>
+      <span class="halka-21-legend-item">
+        <svg width="14" height="14" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="none" stroke="var(--halka-rule)" stroke-width="1.5" stroke-dasharray="3 3" />
+        </svg>
+        <span>planlanan</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .halka-21-chain-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+  }
+  .halka-21-chain-svg {
+    width: 100%;
+    min-width: 880px;       /* küçük ekranda yatay scroll */
+    height: auto;
+    display: block;
+  }
+  .halka-21-ring {
+    cursor: pointer;
+    transition: transform 150ms ease, filter 150ms ease;
+    text-decoration: none;
+    display: inline;
+  }
+  .halka-21-ring:hover:not(.is-disabled) {
+    filter: drop-shadow(0 0 4px rgba(14, 107, 94, 0.4));
+  }
+  .halka-21-ring:hover:not(.is-disabled) circle {
+    transform-origin: center;
+  }
+  .halka-21-ring.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  .halka-21-ring.is-pulse circle {
+    animation: halka-pulse 2s ease-in-out infinite;
+  }
+  @keyframes halka-pulse {
+    0%, 100% { fill-opacity: 0.4; }
+    50%      { fill-opacity: 0.7; }
+  }
+
+  .halka-21-legend {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .halka-21-legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: var(--halka-ink);
+  }
+  .halka-21-legend-secondary {
+    color: var(--halka-ink);
+    opacity: 0.75;
+  }
+  .halka-21-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .halka-21-legend-label {
+    white-space: nowrap;
+  }
+
+  /* Erişilebilirlik: prefers-reduced-motion → animasyon kapanır */
+  @media (prefers-reduced-motion: reduce) {
+    .halka-21-ring.is-pulse circle {
+      animation: none;
+    }
+  }
+</style>

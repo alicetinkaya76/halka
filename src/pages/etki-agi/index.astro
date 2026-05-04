@@ -1,0 +1,57 @@
+---
+// src/pages/etki-agi/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import InfluenceGraph from '@/components/InfluenceGraph.astro';
+---
+
+<BaseLayout title="Etki Ağı">
+  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+    <h1 class="font-sans text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+      Atomik Atlasın Etki Ağı
+    </h1>
+    <p class="mt-3 max-w-prose text-lg text-ink-700 font-serif">
+      "Kim kimden etkilendi? El-Hârezmî'nin cebir çalışmaları Batı'da kimin
+      yolunu açtı? Tûsî-Şâtır-Kopernik teknik silahı nasıl bir zincir oluşturdu?"
+      Bu graf, Halka'nın atomik atlasındaki kitap-kitap, kişi-kişi ve kitap-kişi
+      ilişkilerinin doğrudan görselleşmesidir.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <InfluenceGraph />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Graph okuma rehberi</h2>
+    <div class="font-serif text-ink-700 max-w-prose space-y-3">
+      <p>
+        <strong>Düğümler iki tipte:</strong> emerald yeşili kitap düğümleri,
+        carmine kırmızısı kişi düğümleri. Kişi düğümlerinin büyüklüğü kaç
+        kitapta atomik atlas dosyasıyla referans verildiğini gösterir.
+      </p>
+      <p>
+        <strong>Kenarlar üç tipte:</strong> emerald yeşil çizgi → kitap-kitap
+        ilişkisi (tematik tamamlayıcı, kısmen çelişir, çoğul revizyon vb.).
+        Carmine kırmızı çizgi → kişi-kişi etkileşimi (etkiledi/etkilendi).
+        Bej kesik çizgi → kitap-kişi mansubı (kitap atomik atlas dosyası olan
+        kişiyi zikrediyor).
+      </p>
+      <p>
+        Bir düğümün üzerine geldiğinizde komşu olmayan tüm düğümler ve kenarlar
+        soluklaşır → o düğümün <em>etki çevresi</em> izole edilir. Düğüme
+        tıklayınca ilgili sayfa açılır.
+      </p>
+      <p>
+        <strong>Pedagojik konum:</strong> bu graph Halka'nın "kümülatif bilgi
+        ağı" tezinin somut göstergesidir. Cross-ref ilişkileri tablo-formatında
+        kalmak yerine topolojik bir yapıda görünür hâle gelir; merkezi düğümler
+        (yoğun bağlanmış kişiler/kitaplar) Halka anlatısının kavşak noktalarıdır.
+      </p>
+      <p class="text-sm text-ink-500">
+        <strong>Not:</strong> Graph yoğunluğu kitap içeriği eklendikçe organik
+        olarak büyür. Şu anda 11/21 kitap, 13 kişi atomik dosyası mevcut;
+        v0.15+ turlarında yeni kitaplarla bu graph zenginleşecek.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

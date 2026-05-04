@@ -1,16 +1,17 @@
 ---
 name: "Kâhire"
+name_modern: "Kahire"
+name_aliases: ["el-Kâhire", "Cairo", "el-Mui'zziyye"]
 name_arabic: "الْقَاهِرَة"
-name_aliases: ["el-Kâhire", "Cairo", "Kahire", "el-Mui'zziyye"]
-modern_location: "Kahire (Mısır)"
-short_description: "Mısır'ın 969'da Fâtımî halifesi el-Mui'z li-Dîn-illâh tarafından Fustat'ın kuzey-doğusunda kurulan başkenti; Eyyubî (1171-1250) ve Memlûk (1250-1517) dönemlerinde İslam dünyasının en büyük şehirlerinden ve klasik İslam-eğitim-aktarımının zirve-merkezlerinden biri olmuştur. Halka müfredatında Berkey #11'in coğrafi-anchoru: Memlûk Kâhire'si (1250-1517) İslamî bilgi-aktarımının prosopografik analizinin ana-mekânsal sahnesi. Halka atomik atlasında Bağdat-rekorunun (7-kitap) yanına eklenen ikinci-büyük yer-atomiği — 'çoklu-merkez İslam-bilim-tarihi' tezinin yapı-içsel ön-koşulu."
-period: "969 (Fâtımî kuruluşu) → günümüz; Halka odağında Eyyubî-Memlûk dönemi (1171-1517)"
-geography: "Mısır'ın kuzeyinde, Nil Deltası'nın güney-ucu; Fustat (Eski Kâhire, 641 Müslüman fethinde Amr b. el-Âs eliyle kurulan ilk Mısır-başkenti) ile Fâtımî-Eyyubî-Memlûk Kâhire'si yan-yana iki şehir-katmanı"
-related_concepts:
-  - "medrese"
-  - "memluk-patronaji"
-  - "ulema"
-  - "vakfiye"
+country_modern: "Mısır"
+region_historical: "Mısır / Nil Deltası güney-ucu (Fustat–Kâhire–Kal'a üç-katman)"
+coordinates:
+  lat: 30.0444
+  lon: 31.2357
+role: "Mısır'ın 969'da Fâtımî halifesi el-Mui'z li-Dîn-illâh tarafından Fustat'ın kuzey-doğusunda kurulan başkenti; Eyyubî (1171-1250) ve Memlûk (1250-1517) dönemlerinde İslam dünyasının en büyük şehirlerinden ve klasik İslam-eğitim-aktarımının zirve-merkezlerinden biri. Halka müfredatında Berkey #11'in coğrafi-anchoru: Memlûk Kâhire'si (1250-1517) İslamî bilgi-aktarımının prosopografik analizinin ana-mekânsal sahnesi. Halka atomik atlasında Bağdat-rekorunun (7-kitap) yanına eklenen ikinci-büyük yer-atomiği — 'çoklu-merkez İslam-bilim-tarihi' tezinin yapı-içsel ön-koşulu."
+flourished: "969 (Fâtımî kuruluşu) → günümüz; Halka odağında Eyyubî-Memlûk dönemi (1171-1517)"
+
+wikidata_id: "Q85"
 
 tags: ["kahire", "memluk-baskenti", "eyyubi-baskenti", "fatimi-kurulus", "islam-egitim-merkezi", "halka-yer-atomigi"]
 ---

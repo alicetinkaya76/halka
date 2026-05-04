@@ -1,0 +1,48 @@
+---
+name: "Padova"
+name_modern: "Padova (İtalyanca), Padua (İngilizce)"
+name_aliases: ["Padua", "Patavium (Latince)"]
+country_modern: "İtalya"
+region_historical: "Veneto (Venedik Cumhuriyeti, 1405-1797)"
+coordinates:
+  lat: 45.4064
+  lon: 11.8768
+role: "Veneto bölgesinde, Venedik'in 30 km batısında, Bacchiglione Nehri kıyısında kurulu üniversite-şehri. M.Ö. 1183-89'a tarihlenen Latin kuruluşu (Patavium); 1222'de Padova Üniversitesi (Università degli Studi di Padova) kuruldu — Bologna'dan (1088) sonra İtalya'nın en eski ve Avrupa'nın 5. en eski üniversitesi. 1405'te Venedik Cumhuriyeti hâkimiyetine girdi ve Cumhuriyet'in akademik-merkezi olarak yapısal-koruma altına alındı. Padova Üniversitesi 14. yy'dan beri **Latin İbn Rüşdcülüğünün ve Aristotelesçiliğin Avrupa-merkezi**: Pietro d'Abano (1257-1316), Marsilio da Padova (1275-1342), Pietro Pomponazzi (1462-1525), Cesare Cremonini (1550-1631), Jacopo Zabarella (1533-1589) Padova-Aristotelesçi ekolünün başlıca temsilcileridir. Aynı zamanda Galileo Galilei'nin 1592-1610 arası 18 yıllık matematik-kürsüsü hocalığı dönemi; tıp tarihinde Vesalius (anatomi-devrimi 1543) ve Harvey (kan-dolaşımı keşfi öncülü) için akademik-yetişme-yeri. Halka için: anti-Eurocentric kampın somut-coğrafi anchor'ı — Bizans-İtalya transmisyon zincirinin İslam-astronomi-yazmalarının Padua-Bologna üniversitelerinde erişilebilir olması (Saliba 2007) Kopernik'in Frauenburg'a-uzanan akademik-yolunun ön-zeminidir."
+flourished: "M.Ö. 1183 (Latin Patavium) - 1797 (Venedik Cumhuriyeti yıkılışı); akademik-merkez konumunda 1222-günümüz"
+
+wikidata_id: "Q641"
+
+tags: ["bilim-devrimi-cografi-anchor", "padova-aristotelescilik", "halka-ilk-avrupa-yer-atomik", "galileo-padova-donemi", "ibn-rusdculuk-latin-merkezi", "anti-eurocentric-teknik-silah-coğrafi", "transmisyon-yolu-anchor", "venedik-cumhuriyeti-akademik-merkez"]
+---
+
+## Atomik özet
+
+**Padova, Halka'nın atomik-atlasında v0.15 turuyla açılan ilk Avrupa yer-atomiğidir** ve simgesel önem taşır: Halka'nın v0.14 sonu 7 yer-atomiği (Bağdat, Beytülhikme, Buhârâ, Kâhire, Marâga, Şam, Semerkant) tamamen İslam dünyası coğrafyasındaydı; Padova bu coğrafyanın Avrupa'ya açılışını işaretler. Açılışın gerekçesi tek-kitap-merkezli (Koyré #12) değil, **çoklu-tematik kavşak** olmasıdır — Padova, Halka'nın anti-Eurocentric teknik-silahlarının (Tûsî couple, Şâtır Ay modeli, Maraga astronomisi) Avrupa-Bilim-Devrimi'ne ulaşma yolunun **somut-coğrafi anchor'ıdır**.
+
+**Padova Üniversitesi'nin akademik-tarihi.** 1222'de Bologna Üniversitesi'nden ayrılan bir hoca-öğrenci grubunun Padova'ya göçüyle kuruldu; bu, Avrupa Ortaçağ-üniversite-tarihinin "secessio" (akademik-bölünme) tipik-modelinin örneğidir. 1405'ten itibaren Venedik Cumhuriyeti hâkimiyetinde Cumhuriyet'in tek üniversitesi olarak yapısal-konumda; Venedik Senatosu üniversitenin akademik-bağımsızlığını koruma politikası izler — bu, Galileo gibi Engizisyon'un bir-an-önce hedefe çevirdiği isimlerin Padova'da güvenli-akademik-konum bulabilmesinin yapısal koşuludur. Üniversitenin akademik-disiplinleri: tıp (en eski ve en güçlü), hukuk (civil ve canon), felsefe-sanatlar (artes), teoloji (geç-eklenen, Bologna-Paris geleneği akademik-otoritesi).
+
+**Padova-Aristotelesçilik.** 14. yy'dan itibaren Padova **Latin İbn Rüşdcülüğünün** Avrupa-merkezi konumundadır. İbn Rüşd'ün (Averroes, 1126-1198) Aristoteles-şerhleri 12.-13. yy'da Toledo çevirmen-okulunda (Gerard of Cremona, Mikael Scotus) Latince'ye kazandırılır; Paris Üniversitesi'nde 13. yy'da Latin İbn Rüşdcülüğü (Brabant'lı Siger, Boethius of Dacia) önce öne çıkar ama 1277 Tempier yasaklamasıyla Paris'te bastırılır. Padova bu yasaklamanın Avrupa'da geçerli olmadığı tek üniversite olarak Latin İbn Rüşdcülüğünün **devamını** sağlar. Pietro d'Abano (1257-1316) Padova-Aristotelesçiliğinin ilk büyük figürü; Pietro Pomponazzi (1462-1525) ruhun-ölümsüzlüğü tezi üzerine doğalcı-materyalist okuma; Cesare Cremonini (1550-1631) Galileo'nun çağdaşı ve akademik-rakibi (Cremonini Galileo'nun teleskopundan bakmayı reddeder, Aristotelesçi göksel-yetkinlik aksiyomunu korur); Jacopo Zabarella (1533-1589) Aristotelesçi mantık-metodolojisinin (regressus methodus) Erken-Modern Avrupa'ya aktarımının kritik figürü.
+
+**Galileo'nun Padova dönemi (1592-1610).** Galileo, Pisa Üniversitesi'nde matematik kürsüsünden 1592'de ayrılarak Padova'ya geçer; Venedik Cumhuriyeti'nin yüksek-akademik-ücreti ve daha güvenli-akademik-konumu (Venedik'in Roma-Engizisyonu'na göreli-bağımsızlığı) bu geçişin ekonomik-politik gerekçeleridir. 18 yıl boyunca matematik kürsüsünde Öklid-geometrisi, askeri-mühendislik, perspektif, sıvı-mekaniği gibi dersler verir; **bu dönemde Galileo'nun matematiksel-fizik-projesi olgunlaşır**. *De motu* (1590'lar elyazması, yayımlanmadı), askeri-pergel keşfi (1606), teleskopik gözlemler (1609 Padova'da yapılan ilk teleskop), *Sidereus Nuncius* yayını (Mart 1610) Padova-döneminin akademik-meyvalarıdır. 1610 Eylül'ünde Galileo Floransa'ya geçer (Medici-himayesi, "Baş Matematikçi-Filozof" unvanı); ama Padova'daki 18 yıl onun matematiksel-fizik-projesinin olgunlaşma-dönemidir, Floransa-Roma-Arcetri sonrasında olanları-yapacakları **Padova'da tasarlanmıştır**.
+
+**Halka için kritik: Padova-İslam-bilim-zinciri.** Halka anti-Eurocentric kampının teknik-silah-koleksiyonu (`tusi-couple`, `kopernik-satir-ay-modeli` mevcut atomikleri) Padova'da somut-coğrafi-anchor kazanır. George Saliba 2007 (*Islamic Science and the Making of the European Renaissance*, MIT Press) gösterir ki: (1) Bizans Kardinali Bessarion (Trabzon-doğumlu, ö. 1472) Yunan-Arabî astronomi-yazmalarının koleksiyonunu İtalya'ya taşır ve sonradan Venedik Marciana Kütüphanesi'ne bağışlar; (2) Padua-Bologna üniversitelerinde 15.-16. yy'larda Trebizond (Trabzon-doğumlu) ve Bizans-bağlantılı bilginlerin elinde Tûsî, Şâtır ve Maraga ekibinin yazmaları erişilebilir; (3) Kopernik'in Bologna'da Domenico Maria Novara ile çalışması (1496-1500) ve Padua'da kısa süreli kaldığı dönemde (1501-1503 tıp eğitimi) bu yazmalara maruz kalmış olması yapısal-mümkün; (4) Krakow Üniversitesi'nde (Kopernik'in lisans okulu, 1491-1495) ve Bologna-Padua eksenindeki yazma-koleksiyonlarında Tûsî couple geometrisinin matematik-aksiyomatik formülasyonu erişilebilir. Bu zincirin sonucu: Kopernik'in *De Revolutionibus* (1543) ile Şâtır'ın 1350'ler Şam Ay modeli arasındaki **birebir matematik özdeşlik** rastlantısal değil, transmisyon-yoluyla açıklanabilir bir akademik-aktarım sonucudur.
+
+**Halka tezsel okumada Padova'nın çift-rolü.** Padova bir yandan **Aristotelesçi-skolastik-felsefenin Avrupa-merkezi** olarak Galileo'nun matematiksel-Platonik kopuşunun **karşı-aldığı akademik-ortam** (Cremonini'nin teleskoptan bakmayı reddi tipik-vakası); öbür yandan **İslam-astronomi-yazmalarının Avrupa'ya ulaştığı akademik-düğüm** olarak Galileo'nun ve Kopernik'in matematiksel-fizik-projelerinin teknik-zemini. Bu çift-rol Halka'nın çoklu-pencere-yaklaşımının somutlaştığı yerdir: Koyré'nin içselci-okuması (Galileo'nun Aristotelesçi-Padova ortamına karşı verdiği matematiksel-Platonik kopuş) ile Sezgin-Saliba dışsalcı-okuması (Padova'nın İslam-astronomi-yazmalarına erişim sağlayan akademik-düğümü) Padova'da çatışmaz, **birlikte var olur**.
+
+## Halka müfredatında geçer
+
+Padova v0.15 turuyla açıldığı anda doğrudan **3-kitap-üstü düğüm** olur:
+
+- **Koyré #12'de (v0.15 turu, MERKEZ-AÇILIŞ):** Cilt 1'in #2 ve #7 makaleleri Padova-Aristotelesçi-ortamını Galileo'nun karşı-aldığı akademik-zemin olarak işaret eder. #8 "Galileo ve XVII. Yüzyılın Bilimsel Devrimi" makalesinde Galileo'nun Padova-dönemi matematiksel-fizik-projesinin olgunlaşma-coğrafyası olarak konumlanır.
+
+- **Lyons #9'da (geri-bağ):** *Hikmet Evi* — Latin İbn Rüşdcülüğü çerçevesinde Toledo-Paris-Padova zincirinde Padova'nın akademik-konumu işlenir. Halka grup-okumasında bu zincirde Padova somut-coğrafi-anchor'dır.
+
+**Atomik-cross-ref `tusi-couple` ve `kopernik-satir-ay-modeli` üzerinden:** Mevcut iki konsept-atomiği zaten "Padua-Bologna üniversitelerinde Trebizond/Bizans yazma kullanımı" notunu içerir; Padova yer-atomiği bu gizli-cross-ref'i somut-coğrafi düğüme dönüştürür. Halka'nın anti-Eurocentric teknik-silahları artık Avrupa-coğrafi-zeminine sahiptir.
+
+**İleri-cross-ref (Halka 3.-4. dönem hazırlığı):**
+- **Gleick-Newton #12 (Halka 3. dönem-açılışı):** Padova-Galileo zincirinin Newton'a uzanması (Galileo'nun *Discorsi* matematiksel-mekanik aksiyomatiklerinin Newton *Principia*'sındaki uzantısı) Gleick'in Newton biyografisinde Galileo-Newton matematik-fizik mirası bağlamında görünür.
+- **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın Bilim Devrimi anlatısının başlangıç-coğrafyalarından biri Padova'dır; Galileo'nun Padova-dönemi (1592-1610) Westfall'da merkezi yer tutar. Padova atomiği Westfall turunda 3-kitap düğüme yükselebilir.
+- **Wootton #17 (Bilimin İcadı):** Wootton'ın revizyonist okumasında Padova-Pisa-Roma çoğul-akademik-ortam çerçevesinde işlenir; Galileo'nun Padova-dönemi tek-merkez olmaktan çıkıp 17. yy Avrupa-akademik-ağının çoğul-düğümlerinden biri olarak görünür.
+- **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Galilei-paradigmasının coğrafi-doğum-yeri olarak Padova; Aristotelesçi-paradigmaya karşı çıkışın akademik-ortamı. Kuhn'un 'bilimsel-topluluk' kavramının somut-coğrafi-vakası.
+
+**Atomik graf değeri:** Padova, açıldığı anda Halka'nın **çift-tezli-okuma** atomiğidir: hem Bilim Devrimi'nin Avrupa-coğrafi-anchor'ı (Koyré-içselci okuma), hem İslam-bilim-Avrupa-transmisyon zincirinin Avrupa-tarafı düğümü (Sezgin-Saliba dışsalcı okuma). Halka'nın 'aynı coğrafyanın çoğul-yöntemsel pencerelerden okunması' tezinin **Avrupa-cephesindeki** ilk somut yer-örneğidir; Halka'nın atomik-atlasının kapsamını Avrupa'ya genişletmesinin akademik-meşru kapısıdır.

@@ -1,0 +1,50 @@
+---
+// src/pages/zaman-cizelgesi/index.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Timeline from '@/components/Timeline.astro';
+---
+
+<BaseLayout title="Zaman Çizelgesi">
+  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+    <h1 class="font-sans text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+      Atomik Atlasın Kronolojisi
+    </h1>
+    <p class="mt-3 max-w-prose text-lg text-ink-700 font-serif">
+      Halka müfredatındaki kitapların kapsadığı tarih aralıkları (üst) ve atomik
+      atlasta yer alan kişilerin yaşam yılları (alt) tek bir yatay zaman ekseninde.
+      Bu çizelge, "kafamızda hem tarihleri hem olayları oturtmak" için tasarlanmıştır:
+      Hunayn b. İshak'ı (808–873) hem Cahız'ın (776–868) çağdaşı, hem Tûsî'nin
+      (1201–1274) dört yüzyıl öncesi olarak görme imkânı verir.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <Timeline />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Eksen kararları hakkında</h2>
+    <div class="font-serif text-ink-700 max-w-prose space-y-3">
+      <p>
+        Eksen <strong>parçalı</strong>dır: M.Ö. 3000–0 sıkıştırılmış, M.S. 0–1500 ve
+        1500–2026 normal ölçek. Bu, lineer eksende Antikçağı sıkışması ve Doğu
+        Bilim Geleneği'nin (8.–13. yy yoğun) okunamaz hâle gelmesini engellemek
+        için yapılan bir Halka tasarım kararıdır.
+      </p>
+      <p>
+        Bilinmeyen doğum yılı olan kişiler (örn. Yâkût el-Mustasimi, Cezerî,
+        Urdî) için ölüm yılından 60-yıl öncesi varsayılır ve çubuk
+        <em>kesik-çizgili</em> + <em>?</em> işaretiyle gösterilir. Bu yaklaşık
+        bir görselleştirmedir — kesin tarih için kişinin atomik dosyasına
+        gidiniz.
+      </p>
+      <p>
+        Pedagojik konum: bu kronoloji, "neden o dönemde bilim orada gelişti?"
+        sorusunun bir cevabı değil, sorunun <em>görselleşmiş hâli</em>dir.
+        Eş zamanlı kişi yoğunluklarını okumak — Memun (786–833) Bağdat'ında
+        Hunayn ile Cahız'ın çağdaşlığını görmek — Halka okuma grubunun çekirdek
+        deneyimine doğrudan eklenir.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
