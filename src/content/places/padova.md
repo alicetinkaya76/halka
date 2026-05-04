@@ -39,8 +39,10 @@ Padova v0.15 turuyla açıldığı anda doğrudan **3-kitap-üstü düğüm** ol
 
 **Atomik-cross-ref `tusi-couple` ve `kopernik-satir-ay-modeli` üzerinden:** Mevcut iki konsept-atomiği zaten "Padua-Bologna üniversitelerinde Trebizond/Bizans yazma kullanımı" notunu içerir; Padova yer-atomiği bu gizli-cross-ref'i somut-coğrafi düğüme dönüştürür. Halka'nın anti-Eurocentric teknik-silahları artık Avrupa-coğrafi-zeminine sahiptir.
 
+**Aktif Halka cross-ref'leri (v0.16 turu sonrası):**
+- **Gleick-Newton #12 (Halka 3. dönem-açılışı, v0.16 turu, AKTİF):** Padova-Galileo zincirinin Newton'a uzanması Gleick'in biyografi-anlatısında Bölüm 4 "Two Great Orbs" Kopernik-Kepler-Galileo-Newton akademik-zincirinde işlenir. Galileo'nun Padova-dönemi matematiksel-fizik-projesinin Newton-aksiyomatik-mekaniğindeki nihai-formülasyonu Halka çerçevesinde Padova ↔ Cambridge Trinity College mekânsal-zinciri olarak somutlaşır; iki yer Halka 3. dönem'in iki-büyük-akademik-mekânsal-anchor'ıdır (Padova Galileo-1592-1610 dönemi, Cambridge Trinity Newton-1661-1696 dönemi). `cambridge-trinity-college` ve `royal-society-londra` yer-atomikleri Padova ile birlikte Halka 3. dönem'in Avrupa-coğrafi-mimarisinin üç-büyük-anchor'ını oluşturur.
+
 **İleri-cross-ref (Halka 3.-4. dönem hazırlığı):**
-- **Gleick-Newton #12 (Halka 3. dönem-açılışı):** Padova-Galileo zincirinin Newton'a uzanması (Galileo'nun *Discorsi* matematiksel-mekanik aksiyomatiklerinin Newton *Principia*'sındaki uzantısı) Gleick'in Newton biyografisinde Galileo-Newton matematik-fizik mirası bağlamında görünür.
 - **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın Bilim Devrimi anlatısının başlangıç-coğrafyalarından biri Padova'dır; Galileo'nun Padova-dönemi (1592-1610) Westfall'da merkezi yer tutar. Padova atomiği Westfall turunda 3-kitap düğüme yükselebilir.
 - **Wootton #17 (Bilimin İcadı):** Wootton'ın revizyonist okumasında Padova-Pisa-Roma çoğul-akademik-ortam çerçevesinde işlenir; Galileo'nun Padova-dönemi tek-merkez olmaktan çıkıp 17. yy Avrupa-akademik-ağının çoğul-düğümlerinden biri olarak görünür.
 - **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Galilei-paradigmasının coğrafi-doğum-yeri olarak Padova; Aristotelesçi-paradigmaya karşı çıkışın akademik-ortamı. Kuhn'un 'bilimsel-topluluk' kavramının somut-coğrafi-vakası.

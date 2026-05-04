@@ -58,8 +58,10 @@ Galileo, Halka'nın v0.15 turuyla atomik-atlasa giren ilk Avrupa-Bilim-Devrimi f
 
 - **Koyré #12'de (v0.15 turu, MERKEZ):** Galileo Cilt 1'in en yoğun cross-ref-aldığı figürüdür. 3 makale doğrudan Galileo'ya başfigür, 2 makalede merkezi figür. Koyré'nin matematiksel-Platonik Bilim Devrimi tezinin somut-tarihsel-figürü.
 
+**Aktif Halka cross-ref'leri (v0.16 turu sonrası):**
+- **Gleick-Newton #12 (Halka 3. dönem-açılışı, v0.16 turu, AKTİF):** Galileo'nun matematiksel-mekanik-fiziği Newton'un *Principia*'sının doğrudan-öncülüdür; Gleick'in Newton biyografisinde (Bölüm 4 "Two Great Orbs") Galileo Newton-mirasının kurucu-figürü olarak işlenir. Galileo-Newton zinciri Halka çerçevesinde **somut 2-kitap düğüm** olarak kanonikleşir; `matematiksel-mekanik`, `tumel-cekim`, `matematiksellestirme` kavram-atomikleri bu zincirin somutlaştırıcı kavramsal-bağlarıdır. Gleick için Galileo: *Discorsi* (1638) sabit-ivmeli serbest-düşme yasası ve eğik-atış parabolü Newton-aksiyomatik-mekaniğinin yersel-uçtaki ön-örneğidir; Newton'un akademik-mimarisi Galileo'nun yersel-mekaniğini Kepler'in göksel-gözlem-yasalarıyla birleştirip tek-aksiyomatik-yapıda sunar.
+
 **İleri-cross-ref (Halka 3.-4. dönem hazırlığı):**
-- **Gleick-Newton #12 (Halka 3. dönem-açılışı):** Galileo'nun matematiksel-mekanik-fiziği Newton'un *Principia*'sının doğrudan-öncülüdür; Gleick'in Newton biyografisinde Galileo Newton-mirasının kurucu-figürü olarak işlenir. Galileo-Newton matematiksel-fizik zinciri 2-kitap düğüm.
 - **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın Bilim Devrimi anlatısının ilk-yarısının baş figürü; Galileo'nun mekanik-fizik aksiyomatiklerinin modern-bilime uzantısı. 3-kitap düğüm potansiyeli.
 - **Wootton #17 (Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi):** Wootton'ın revizyonist okumasında Galileo merkez-figür olmaktan çıkar; Tycho-Galileo-Boyle çoğul-figürlü bir Bilim Devrimi anlatısının parçası olur. Klasik-Koyré-Galileo-merkezliliğin akademik-eleştirisi.
 - **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Galileo Kuhn'un 'paradigma-değişimi' tezinin temel örnek-vakasıdır; Aristotelesçi-paradigma → Galilei-Newtonyen-paradigma geçişi Kuhn'un 'devrim' kavramının kanonik örneği. Galileo atomiği Kuhn turunda 4-kitap düğüm olur.
