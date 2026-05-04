@@ -1,0 +1,50 @@
+---
+name: "Deneysel Felsefe"
+name_aliases: ["experimental philosophy", "deneyci-mekanik felsefe", "Bacon-Boyle-Newton ekseni", "Royal Society yöntemi"]
+short_description: "17. yüzyıl ortasında Bacon'ın *Novum Organum* (1620) çağrısıyla tohumlanan, Boyle ve Hooke'un Royal Society laboratuvar-pratiğiyle kurumlaşan ve Newton'un *Opticks* (1704) eki 'Hypotheses non fingo' mottosuyla aksiyom-statüsüne yükselen yöntem-disiplini: doğa-bilgisinin spekülatif-skolastik-Aristotelesçi tümdengelimden değil, ölçülmüş-deneysel-veriden ve bu veriden matematiksel-aksiyomlar yoluyla tümevarım-tümdengelim çift-yönlü çıkarımdan üretilmesi gerektiği akademik-konumu."
+period: "1620 (Bacon Novum Organum) – 1704 (Newton Opticks); kurumsal-zirve 1660 (Royal Society kuruluşu) – 1687 (Newton Principia)"
+geography: "İngiltere (Royal Society Londra, Cambridge Trinity College, Oxford) — Bacon-Boyle-Hooke-Newton akademik-zincirinin coğrafyası; Fransa (Académie des Sciences 1666) ile paralel-kurumsal-gelişim"
+related_concepts:
+  - "matematiksel-mekanik"
+  - "matematiksellestirme"
+  - "icselci-tarihyazimi"
+  - "bilim-devrimi"
+
+wikidata_id: "Q1153234"
+
+tags: ["royal-society-yontem", "newton-opticks-motto", "bacon-boyle-newton-zincir", "halka-3-donem-yontem-kavram", "hypotheses-non-fingo", "nullius-in-verba"]
+---
+
+## Atomik özet
+
+**Deneysel felsefe, Halka #12 Gleick-Newton turunun yöntem-omurga-kavramıdır** ve Bilim Devrimi'nin akademik-mimarisinin kurumsal-yöntemsel zeminidir. Tanımı sıkı tutmak gerekirse: deneysel felsefe, doğa-bilgisinin **spekülatif-skolastik-Aristotelesçi tümdengelimden** (büyük-aksiyomlardan başlayan deduktif-akıl yürütme) değil, **ölçülmüş-tekrarlanabilir deneysel-veriden** ve bu veriden matematiksel-aksiyomlar yoluyla tümevarım-tümdengelim çift-yönlü çıkarımdan üretilmesi gerektiği yöntem-disiplinidir. "Felsefe" terimi 17. yüzyılda günümüzdeki dar-anlamından farklıdır: o dönemde "natural philosophy" (doğa felsefesi) bizim "doğa bilimi" dediğimiz alanı kapsar, "experimental philosophy" da bu doğa felsefesinin deney-merkezli yöntem-pratiğine işaret eder.
+
+**Bacon-Boyle-Newton akademik-zinciri.** Deneysel felsefenin akademik-soykütüğü Francis Bacon'ın *Novum Organum Scientiarum* (1620) eserine dayanır; Bacon Aristoteles'in *Organon*'una ("akıl-aletleri") karşılık olarak yeni bir akıl-yürütme-disiplini önerir: dört-idol-eleştirisi (kabile, mağara, çarşı, tiyatro idolleri = ön-yargı türleri) ve sistematik-tümevarım metodolojisi. Bacon'ın çağrısı somut-akademik-pratiğe dönüşmesi için 40 yıl bekler; 1660'larda Royal Society çevresinde Bacon-mirasının fiilî-uygulayıcıları ortaya çıkar. Robert Boyle (1627-1691) bu zincirin Newton-öncesi anchor-figürüdür: *The Sceptical Chymist* (1661) simyacıların "gizli-allegorik-dil"ini eleştirir, ölçülmüş-deneysel-veriye dayalı kimya-pratiği önerir; *New Experiments Physico-Mechanical, Touching the Spring of the Air* (1660) hava-pompası deneyleriyle vakum-mümkünlüğünü ve gaz-basınç ilişkisini (sonradan "Boyle yasası") deneysel-zeminde gösterir. Newton'un Boyle'a-borcu çift-katmanlıdır: bir yandan Boyle'un atomistik-felsefe-uyarlaması (corpuscular philosophy) Newton'un *Opticks*'teki ışık-parçacık tezinin ön-modeli; öbür yandan Boyle'un deneysel-felsefe-yöntem-pratiği Newton'un akademik-üslubunun temel-modelidir.
+
+**Royal Society'nin "Nullius in verba" mottosu ve kurumsal-mimarisi.** Royal Society 28 Kasım 1660'ta Londra'da kuruldu; II. Charles'ın 1662 royal-charter'ıyla resmi-statü kazandı. Mottosu Latince "Nullius in verba" — Horatius'un Epistulae I.1.14 dizesinden (*nullius addictus iurare in verba magistri* = "hiçbir hocanın sözüne yemin etmek üzere bağlanmadım") çıkarılmıştır; Royal Society bu mottoyu "kimsenin sözüne körü körüne inanmayız" anlamında benimsedi — Aristoteles-skolastik-otoritesinin akademik-reddinin sembolü. Royal Society'nin örgütsel-mimarisi deneysel-felsefe-pratiğini akademik-kurumsal-zemine oturtur: haftalık toplantılarda Curator of Experiments (1662-1703 Robert Hooke) **canlı-deney** sergiler, üyeler bunu birlikte-gözlemler, sonuçlar Henry Oldenburg sekretaryasının yönettiği *Philosophical Transactions* (1665'te yayın hayatı, dünyanın ilk-akademik-süreli-yayını) dergisinde yayımlanır. Bu kurumsal-mimaride iki akademik-yenilik vardır: birincisi **kolektif-tanıklık** (deneysel-sonuçlar tek-bir-bilginin değil, tanık-kollektifin doğrulamasıyla geçerli sayılır); ikincisi **yayın-zorunluluğu** (akademik-bilgi gizli-elyazmalarda değil basılı-süreli-yayında dolaşır).
+
+**Newton'un *Opticks* (1704) ve "Hypotheses non fingo" mottosunun aksiyomatik-konumu.** Newton'un deneysel-felsefe-pratiğine akademik-formülasyonu *Opticks*'in (1704, Royal Society etiketiyle Londra'da basıldı) ek-bölümünde ve sonraki baskılarda eklediği "Queries" bölümünde yer alır. Newton'un kanonik-mottosu "Hypotheses non fingo" (Latince "hipotez-üretmem") *Principia*'nın 2. baskısının (1713) Genel Yorum'unda (Scholium Generale) yer alır: "Olguların fenomenlerinden çekim-kuvvetinin nedenlerini henüz türetemedim ve hipotez-üretmem. Çünkü fenomenden çıkarılmayan her-şey hipotez olarak adlandırılmalıdır; ve hipotezler — ister metafizik, ister fiziksel, ister gizli-niteliklere ait, ister mekanik olsun — deneysel-felsefede yer almaz." Bu cümle deneysel-felsefenin Newton-aşamasındaki radikal-formülasyonudur: doğa-bilgisi olgu-deneyden başlar, ölçülmüş-veriden matematiksel-yasaya yükselir, ama yasanın **arkasındaki neden-spekülasyonuna** girilmez. Halka için akademik-konum: Newton'un çekim-yasasını sunarken çekim-kuvvetinin **mekanik-doğasını** (eter-titreşimi, parçacık-itme, vs.) açıklamayı reddetmesi deneysel-felsefe-pratiğinin disiplin-noktasıdır. Voltaire'in (Halka #12 Gleick'te alıntılandığı gibi) Newton'u Descartes'a-karşı-savunusu tam-da bu noktaya odaklanır: Cartezyenler "her-şey kavradığım kadar-net-olmalı" der; Newtoncular "deneysel-veri ne diyorsa o" der, mekanik-açıklamadan vazgeçmek-bile-mümkündür.
+
+**Hypothesis-tartışmasının iç-tutarsızlığı.** Newton'un "hipotez-üretmem" mottosunun akademik-konumu eleştiriden uzak değildir. Newton'un kendisi *Opticks*'in "Queries" bölümünde 31 soru-formatında çok-sayıda hipotez ortaya atar: ışığın parçacık-doğası, eterin niteliği, kimyasal-affinite-mekaniği, gizli-kuvvetler. Bu çelişki Halka için Westfall-Wootton-Kuhn turlarına hazırlık-noktasıdır: Newton'un "hipotez-üretmem" mottosu retorik-aksiyomdur, akademik-pratikte Newton'un kendisi hipotez-üretiminden vazgeçmez. "Hypotheses non fingo" mottosunun akademik-işlevi şudur: rakip-akademik-konumların (Cartezyen mekanizmi, Leibniz teleolojizmi) hipotez-niteliği vurgulanır, Newton-konumunun aksiyom-niteliği savunulur. Halka çerçevesinde bu, Koyré'nin (Halka ek #22) işlediği "akademik-yöntem-savunularının retorik-yapısı" konusunun somut-Newton-vakasıdır.
+
+**Halka için kritik: deneysel felsefe ↔ İslam-bilim-yöntem-zinciri.** Halka 1.-2. dönem'inin işlediği İslam-bilim-zincirinde (Bîrûnî, İbn el-Heysem, Tûsî, Şâtır, Takiyüddin) deneysel-yöntem-pratiği zaten vardır: İbn el-Heysem'in *Kitāb al-Manāẓir* (Optik Kitabı, ~1021) optik-deneylerin sistematik-tümevarım metodolojisi; Bîrûnî'nin *Taḥdīd Nihāyāt al-Amākin* (Yerlerin Konumlarının Tayini) jeodezik-deneysel ölçümleri; Takiyüddin'in İstanbul Rasathanesi (1577-1580) astronomik-gözlemleri. Halka çerçevesinde **akademik-konum-sorusu** şudur: Royal Society-mimarisi ve Newton-aksiyomları deneysel-felsefenin **kurumsal-tarihsel ilki** midir, yoksa İslam-bilim-zincirinde zaten var-olan deneysel-yöntem-pratiklerinin Avrupa-uçundaki **kurumsal-formülasyonu** mudur? Sezgin #9'un sergilediği İslam-bilim-yöntem-zinciri ile Bacon-Boyle-Newton ekseninin akademik-soykütüğü arasındaki ilişki Halka 3. dönem-okumasının yöntem-tartışma noktasıdır. Saliba 2007 (*Islamic Science and the Making of the European Renaissance*) tam-bu zincirin aktarım-yollarını işler; Halka için Newton-aşaması bu zincirin nihai-akademik-sorusu olur.
+
+## Halka müfredatında geçer
+
+Deneysel felsefe, Halka'nın atomik-atlasında v0.16 turuyla açılan kavramdır:
+
+- **Gleick-Newton #12 (Halka 3. dönem-açılışı, MERKEZ-AÇILIŞ):** Gleick'in biyografi-anlatısının yöntem-omurgası. Bölüm 5 "Bodys & Senses" Newton'un kendi-gözüne iğne sokarak ışık-renk algı-deneyleri (auto-deneysel-felsefe pratiğinin sınır-örnekleri); Bölüm 7 "Reluctancy and Reaction" 1672 *Philosophical Transactions* ışık-prizma makalesi ve Hooke-Newton akademik-tartışmasının yöntem-konumları; Bölüm 8 "In the Midst of a Whirlwind" Newton'un Boyle ile akademik-tanışması ve corpuscular-felsefe konumu.
+
+**Önceki Halka turlarına geri-bağ:**
+- **Sezgin #9 ↔ Gleick #12 üzerinden deneysel felsefe:** İslam-bilim-yöntem-zincirinin (İbn el-Heysem optik-deneyleri, Bîrûnî jeodezi, Takiyüddin İstanbul Rasathanesi) Avrupa-Royal Society yöntem-pratiğine zincir-bağı Halka grup-okumasının akademik-tartışma noktası.
+- **Lyons #10 ↔ Gleick #12 üzerinden deneysel felsefe:** *Hikmet Evi*'nin işlediği İbn el-Heysem optik-yöntem-mirasının Bacon-Boyle-Newton zincirindeki akademik-konumu — Lyons'un Latin İbn-Heysem-aktarımı (Witelo, Pecham, Roger Bacon) tezinin Newton-aşamasındaki nihai-uzantısı.
+
+**İleri-cross-ref:**
+
+- **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın deneysel-felsefe akademik-monografisi Newton'un yöntem-pratiğini *Principia* ve *Opticks*'in ikili-yapısı içinde işler.
+
+- **Wootton #17 (Bilimin İcadı):** Wootton'ın revizyonist okumasında "deneysel felsefe" tek-Newton-aksiyomu olmaktan çıkar, Bacon-Boyle-Hooke-Newton-Huygens çoğul-akademik-pratiğinin sentezi olarak işlenir.
+
+- **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Kuhn'un "normal-bilim" kavramı deneysel-felsefe-pratiğinin paradigmatik-yorumudur; akademik-topluluğun kabul-ettiği yöntem-aksiyomlar ile günlük-bilim-emeğinin ilişkisi Kuhn'un teorik-modelinin merkezi.
+
+**Atomik graf değeri:** Deneysel felsefe, Halka'nın çoklu-pencere-yaklaşımında bilim-yönteminin akademik-tarihselliği atomudur. Bacon-Boyle-Newton kanonik-Avrupa-zinciri ile İslam-bilim-yöntem-zinciri (İbn el-Heysem-Bîrûnî-Takiyüddin) Halka çerçevesinde çatışmaz; deneysel-felsefe atomiği bu iki zincirin akademik-konum-tartışmasının somut-kavram-zemini olur.
