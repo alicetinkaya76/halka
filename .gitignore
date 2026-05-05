@@ -41,3 +41,4 @@ dist/
 *-backup-*/
 src/content/books.zip
 src.zip
+src.*-backup/
