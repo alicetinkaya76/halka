@@ -12,6 +12,7 @@ related_concepts:
 
 wikidata_id: "Q1153234"
 
+sep_slug: "experimental-philosophy"
 tags: ["royal-society-yontem", "newton-opticks-motto", "bacon-boyle-newton-zincir", "halka-3-donem-yontem-kavram", "hypotheses-non-fingo", "nullius-in-verba"]
 ---
 

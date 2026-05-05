@@ -13,6 +13,7 @@ role: "İrlandalı-İngiliz doğa-filozofu ve akademik-cemiyet-kurucusu; Royal S
 
 wikidata_id: "Q170607"
 
+sep_slug: "boyle"
 works:
   - title: "New Experiments Physico-Mechanical, Touching the Spring of the Air, and its Effects"
     type: "fizik-pnömatik"

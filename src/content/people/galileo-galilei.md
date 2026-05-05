@@ -13,6 +13,7 @@ role: "İtalyan matematikçi-fizikçi-astronom; 17. yüzyıl Bilim Devrimi'nin K
 
 wikidata_id: "Q307"
 
+sep_slug: "galileo"
 works:
   - title: "Sidereus Nuncius"
     type: "astronomi-gözlem"

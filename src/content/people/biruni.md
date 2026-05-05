@@ -31,6 +31,7 @@ influenced_by:
   - "ibn-el-heysem"
 
 tags: ["mavera-aydinlanmasi", "polymath",  "kıyaslı-din",  "11yy-bilim",  "halka-coklu-kitap-cross-ref",  "metodolojik-motto", "hindistan-monografisi"]
+dia_id: "biruni"
 ---
 
 > **Versiyon notu:** Bu dosya v0.4'te eklendi (Hobson sonrası ilk atomik dalga). v0.10.1'de Sezgin #8 cross-ref'i eklendi, Sezgin metodolojik motto vakası gövdeye işlendi, atomik graf değeri yeniden konumlandırıldı.

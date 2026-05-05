@@ -13,6 +13,7 @@ role: "Alman matematikçi-filozof-diplomat; 17. yüzyıl sonu Avrupa'sının ço
 
 wikidata_id: "Q9047"
 
+sep_slug: "leibniz"
 works:
   - title: "Nova Methodus pro Maximis et Minimis"
     type: "matematik"

@@ -35,6 +35,7 @@ influenced:
   - "ali-kuscu"
 
 tags: ["maraga-ekibi", "tusi-couple",  "anti-eurocentric-teknik-silah",  "13yy-astronomi", "pers-polymath"]
+dia_id: "tusi-nasiruddin"
 ---
 
 ## Atomik özet

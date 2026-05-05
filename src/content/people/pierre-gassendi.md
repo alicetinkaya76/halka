@@ -13,6 +13,7 @@ role: "Fransız Katolik rahip, filozof, gökbilimci ve matematikçi. Pierre-Simo
 
 wikidata_id: "Q221054"
 
+sep_slug: "gassendi"
 works:
   - title: "Exercitationes Paradoxicae adversus Aristoteleos"
     type: "felsefe-elestiri"
