@@ -9,10 +9,11 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Halka — Bilim Tarihi Okuma Grubu Platformu. Kitapları bilgi grafiğine, müfredatı tarihyazımı haritasına dönüştüren açık dijital beşeri bilimler projesi.' } = Astro.props;
+const { title, description = "Halka: Doğu'dan Batı'ya Bilimin Yolculuğu — Halka Türkiye umbrella'sının bilim tarihi akademik-okuma-programı. Kitapları bilgi grafiğine, müfredatı tarihyazımı haritasına dönüştüren açık dijital beşeri bilimler projesi." } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
-const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
+const SITE_TITLE_FULL = "Halka: Doğu'dan Batı'ya Bilimin Yolculuğu";
+const fullTitle = title === 'Halka' ? SITE_TITLE_FULL : `${title} · Halka`;
 ---
 
 <!doctype html>
@@ -55,7 +56,10 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
             <circle cx="16" cy="27" r="1.5" fill="currentColor" />
             <circle cx="5"  cy="16" r="1.5" fill="currentColor" />
           </svg>
-          <span class="font-sans text-xl font-semibold tracking-tight text-ink-900">Halka</span>
+          <span class="flex flex-col leading-none">
+            <span class="font-sans text-xl font-semibold tracking-tight text-ink-900">Halka</span>
+            <span class="font-sans text-[10px] uppercase tracking-wider text-ink-400 mt-0.5">Halka Türkiye</span>
+          </span>
         </a>
 
         <nav class="font-sans text-sm flex items-center gap-4 sm:gap-6">
@@ -70,6 +74,8 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
           <a href={`${baseUrl}/harita`} class="no-underline text-ink-700 hover:text-emerald hidden md:inline" title="Coğrafi katman — dünya haritası">Harita</a>
           <a href={`${baseUrl}/zaman-cizelgesi`} class="no-underline text-ink-700 hover:text-emerald hidden lg:inline" title="Kronolojik katman — zaman çizelgesi">Zaman</a>
           <a href={`${baseUrl}/etki-agi`} class="no-underline text-ink-700 hover:text-emerald hidden lg:inline" title="Etki ağı — graph görselleştirme">Etki Ağı</a>
+          <span class="hidden lg:inline text-ink-300" aria-hidden="true">·</span>
+          <a href={`${baseUrl}/programlar`} class="no-underline text-ink-700 hover:text-emerald hidden lg:inline" title="Halka Türkiye umbrella'sının kardeş-programları">Programlar</a>
 
           {/* Arama butonu — F1.1 */}
           <button
@@ -233,9 +239,11 @@ const fullTitle = title === 'Halka' ? title : `${title} · Halka`;
     <footer class="halka-rule mt-16">
       <div class="max-w-6xl mx-auto px-6 py-8 font-sans text-sm text-ink-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <span class="font-semibold text-ink-700">Halka</span> &middot; Birlikte okuduklarımızı bağlayan bilgi
+          <span class="font-semibold text-ink-700">Halka Türkiye</span>'nin <em class="not-italic font-medium text-ink-700">Doğu'dan Batı'ya Bilimin Yolculuğu</em> programı
         </div>
         <div class="flex items-center gap-4">
+          <a href={`${baseUrl}/programlar`} class="no-underline hover:text-emerald">Programlar</a>
+          <span class="text-ink-300">·</span>
           <a href="https://github.com/alicetinkaya76/halka" class="no-underline hover:text-emerald">GitHub</a>
           <span class="text-ink-300">·</span>
           <span>Kod MIT, içerik CC-BY-SA 4.0</span>

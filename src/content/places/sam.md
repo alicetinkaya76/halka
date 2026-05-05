@@ -12,6 +12,7 @@ role: "Pre-Bağdat Emevî başkenti (661-750), post-Bağdat dönem Eyyûbî-Meml
 flourished: "661-750 (Emevî); 13.-15. yy (Eyyûbî, Memlûk)"
 
 tags: ["emevi-baskenti", "memluk-kitap-merkezi", "satir-ay-modeli", "muvakkithane", "halka-iki-kitap-kesisimi"]
+dia_id: "sam--suriye"
 ---
 
 ## Atomik özet
@@ -34,3 +35,7 @@ Tarihsel-yapısal olarak Şam, **iki ayrı bilim-merkezi-rolü dönemini** birbi
 - **Sezgin #8'de:** Şam, **astronomi-muvakkıthâne** merkezi olarak. İbn eş-Şâtır'ın Emevî Camii görevi (1350'ler), el-Urdî'nin Maraga öncesi şehri (13. yy başı). Sezgin'in 5 noktalı Kopernik karşılaştırmasının üçüncü ve dördüncü maddesinin (Şâtır Ay + Merkür modelleri = Kopernik) coğrafi doğum noktası. Anti-Eurocentric teknik silahın **Maraga'dan sonra** ikinci üretim merkezi.
 
 **Atomik graf değeri:** Şam, Halka atomik atlasında **disipliner çift-yorum** vakasının ilk net örneğidir. Pedersen Şam'ı kitap-edebiyat-fıkıh perspektifinden okur; Sezgin Şam'ı astronomi-teknik perspektifinden okur. Aynı şehir, iki farklı disiplin haritasında merkez. Bu, atomik graf tezinin "aynı atom, çoklu disipliner pencere" modunun pedagojik özüdür — wiki tarzı tek-yorumlu girdiden ayrılan en açık vaka.
+
+## Halka Türkiye umbrella-konumlama: Riyâzu's-Sâlihîn cross-program-zinciri (v0.19+)
+
+13. yy Şam'ında hadis-fıkıh-akademik-disiplin-figürlerinin merkezi-isimlerinden **İmam Nevevî** (Yahyâ b. Şeref en-Nevevî, 631-676 H / **1233-1277 M**) klasik hadis-mecmuası *Riyâzu's-Sâlihîn*'i bu şehirde derlemiştir; eser Halka Türkiye umbrella'sının dördüncü kardeş-okuma-programının (**Halka: Riyâzu's-Sâlihîn**) merkez-eseridir. Halka Bilim Tarihi-programının Şam-akademik-coğrafi-zincirinde (yukarıda Sezgin'in muvakkıthâne-perspektifi ve Pedersen'in kitap-merkezi-perspektifi) konumlanan bu şehir, **aynı dönem Maraga-rasathanesi-Tûsî akademik-bilim-zincirinin (Nasîrüddîn et-Tûsî, 1201-1274 M) ve Şam-İbn-eş-Şâtır akademik-astronomi-zincirinin (1304-1375 M) yan-yana-akademik-konumlanmasıyla birlikte**, 13.-14. yy İslam-coğrafyasında akademik-disiplin-zincirin çoğul-konumlamasının somut-akademik-vakasıdır. Halka Türkiye-bağlamında bu yapısal-akademik-paralel — Şam-hadis-akademisi (Nevevî 1233-1277) ile Maraga-Şam astronomi-akademisi (Tûsî 1201-1274 / Şâtır 1304-1375) arasında — Halka Türkiye'nin kardeş-program-akademik-zincir-cross-ref-fırsatının somut-akademik-örneğidir: tek-bir-coğrafi-merkez (Şam), iki-farklı-Halka-programının (bilim tarihi + Riyâzu's-Sâlihîn) akademik-okuma-zincirinde-aynı-anda-konumlanır. Tam-cross-program-cross-ref-mekanizmasının atomik-atlas-zemininde-yapılaşması v0.20+ turlarına bırakılmıştır.

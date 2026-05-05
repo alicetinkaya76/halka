@@ -13,6 +13,7 @@ role: "Antik Yunan filozofu; Klasik Yunan felsefesinin Sokrates-sonrası zirve-f
 
 wikidata_id: "Q859"
 
+sep_slug: "plato"
 works:
   - title: "Politeia (Devlet)"
     type: "siyaset-felsefesi"

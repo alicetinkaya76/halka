@@ -13,6 +13,7 @@ role: "Alman edebiyat-figür-kanonik-merkezi; aynı zamanda akademik-doğa-bilim
 
 wikidata_id: "Q5879"
 
+sep_slug: "goethe"
 works:
   - title: "Die Leiden des jungen Werthers (Genç Werther'in Acıları)"
     type: "edebi-roman-Sturm-und-Drang"

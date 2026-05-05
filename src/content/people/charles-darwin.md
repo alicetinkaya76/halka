@@ -13,6 +13,7 @@ role: "İngiliz doğa-bilim-figürü; modern evrim-biyolojisinin akademik-mimar�
 
 wikidata_id: "Q1035"
 
+sep_slug: "darwin"
 works:
   - title: "Journal and Remarks 1832-1836 (sonra Voyage of the Beagle olarak yeniden-yayınlandı)"
     type: "saha-seyahat-akademik-anlati"

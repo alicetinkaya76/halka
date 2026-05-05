@@ -11,6 +11,7 @@ related_concepts:
   - "kopernik-satir-ay-modeli"
 
 tags: ["halka-3-donem-tanim-kavrami", "koyre-merkez-tezi", "tarihyazimi-tartisma-merkezi", "anti-eurocentric-test-zemini", "scientific-revolution"]
+sep_slug: "scientific-revolutions"
 ---
 
 ## Atomik özet

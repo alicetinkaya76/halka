@@ -13,6 +13,7 @@ role: "Antik Yunan filozofu; Klasik Yunan felsefesinin Platon-sonrası zirve-fig
 
 wikidata_id: "Q868"
 
+sep_slug: "aristotle"
 works:
   - title: "Organon (Mantık külliyatı)"
     type: "felsefe-mantik"

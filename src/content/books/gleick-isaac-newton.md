@@ -210,6 +210,10 @@ chapters:
     summary: "Newton'un son yılları, 1727 Mart ölümü, Westminster Abbey devlet-cenazesi (İngiltere'nin akademik-figüre verdiği ilk devlet-cenazesi). Lord Chancellor + iki düka + üç earl tabutu taşır; Royal Society'nin büyük-bölümü cenaze-alayında. Mezar-yazıtı Latince: 'strength of mind almost divine' ve 'mathematical principles peculiarly his own.' Voltaire'in (1738 *Eléments de la philosophie de Newton*) ve Pope'un (1730 epigraf 'Nature and Nature's laws lay hid in night: God said, Let Newton be! and all was light') Aydınlanma-Newton-mitolojisinin akademik-kanonikleştirmesi. Bölüm-başlığı Wordsworth'tan: '...the marble index of a mind for ever / Voyaging through strange seas of Thought, alone.'"
 
 relationships_to_other_books:
+  - book: "westfall-modern-bilimin-olusumu"
+    relation: "teknik_tamamlayici"
+    note: "Westfall #15 *Modern Bilimin Oluşumu* (Halka 3. dönem-on-beşinci-kitap, TÜBİTAK 1994) ile **yapısal-akademik-tamamlayıcı-pedagojik-pencere** kurar: Gleick figür-anlatı-katmanını (popüler-akademik biyografi-üslubunda) verir, Westfall aynı 17. yy zeminin **akademik-derinlik-tezleştirilmesini** (Pythagorasçı-matematiksel × mekanikçi-felsefe iki-akımın yapısal-sentez-tezi, Newton-Principia 1687-zenith-konumlaması) sunar. Halka 3. dönem-müfredat-tasarımının pedagojik-mimarisinde Gleick #12 ↔ Westfall #15 yapısal-akademik-tamamlayıcı-pencere modelinin somut-vakası: aynı figür-zemininin (Newton 17. yy bilimsel-devrimi-akademik-zenith-figürü) iki-katmanlı-akademik-okuma-konumlaması. Halka grup-okumasında Gleick'in *Isaac Newton* (#12) ile Westfall'ın *Modern Bilimin Oluşumu* (#15) arasında akademik-okuma-yumuşatılma-zincirinde-yapısal-zenginleşme vakası kurulur — figür-merkezli-popüler-akademik biyografi (Gleick) ile akademik-derinlik-tezleştirme-monografi (Westfall) iki-yan-yana-akademik-konum-katmanı."
+
   - book: "berkey-ortacag-kahirede-bilgi-intikali"
     relation: "tematik_tamamlayici"
     note: "Berkey'in (Halka #11, 2. dönem-kapanışı) Memlûk-Kâhire 1250-1517 eğitim-canlı-süreklilik tezi ile Gleick'in 17. yy İngiliz-bilim-canlanışı anlatısı arasında zaman-coğrafya kontrastı: Kâhire'de eğitim-medreseleri canlı-sürdürürken Avrupa'da Bilim Devrimi-içsel-mantığı işliyor — 'çift-coğrafyalı eş-zamanlılık' Halka için akademik-tartışma noktası. Halka 2. dönem'den 3. dönem'e geçişin pedagojik-zincir-anchor'ı: ana-müfredat-sırasında Berkey #11 → Gleick-Newton #12 doğrudan-zincir."
@@ -241,6 +245,10 @@ relationships_to_other_books:
   - book: "freely-isik-dogudan-yukselir"
     relation: "kismen_celisir"
     note: "Freely'nin (Halka #5, 1. dönem) popüler-anti-Eurocentric Doğu-Batı bilim-zincirinin (8.-15. yy İslam → 12.-13. yy Latin Avrupa → 16.-17. yy Bilim Devrimi) çift-yönlü okuması Gleick'in Avrupa-içsel-Newton-anlatısı ile makro-zemin-kavgası içinde. Halka çoklu-pencere-yaklaşımı: Freely zincirin Avrupa-meyva-fazını teslim ederken Newton-kanonikleştirmesinin akademik-yokluğunu eleştirir; Gleick figür-merkezli kanonu sürdürür."
+
+  - book: "westfall-modern-bilimin-olusumu"
+    relation: "teknik_tamamlayici"
+    note: "Westfall'ın (Halka #15, 3. dönem) akademik-derinlik-monografi-disiplini Gleick'in popüler-akademik biyografi-üslubuyla yapısal-akademik-tamamlayıcı-pedagojik-pencere kurar: Gleick figür-anlatı-katmanını verir, Westfall aynı 17. yy zeminin akademik-derinlik-tezleştirilmesini sunar. Halka 3. dönem-müfredat-tasarımının figür-merkezli-popüler-akademik biyografi katmanı (Gleick #12, Wulf #13, Isaacson #14) ile akademik-derinlik-tezleştirme-katmanın (Westfall #15) yan-yana-akademik-pedagojik-konumlamasının somut-vakası. Westfall'ın kendi-akademik-konumlaması Gleick'in temel-akademik-kaynaklarından biridir; *Never at Rest* (1980) Gleick'in Newton-akademik-biyografi-zincirinin akademik-derinlik-zemininde durur."
 
 tags:
   - "halka-3-donem-acilis-kitabi"
