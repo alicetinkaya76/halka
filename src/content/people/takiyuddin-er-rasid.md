@@ -8,7 +8,7 @@ birth_year: 1521
 death_year: 1585
 birth_place: "Şam"
 place: "Şam → Mısır → İstanbul"
-fields: ["astronomi", "saatçilik", "mekanik", "matematik", "optik"]
+fields: ["astronomi", "saatçilik",  "mekanik",  "matematik", "optik"]
 role: "16. yy Osmanlı baş astronomu (müneccimbaşı). 1577'de İstanbul Tophane'de Avrupa'nın aynı dönem Tycho Brahe rasathanesi (Uraniborg, 1576) ile **çağdaş** bir rasathane kurdu. Saatleri astronomik gözlem aletleri arasına ilk sokan astronom (bingām raṣadī). 953/1546 tarihli eṭ-Ṭuruḳ es-Seniyye fî el-Âlât er-Rûhâniyye eserinde 6 pistonlu su pompası — Cezerî'nin 350 yıl önce 2 pistonlu sisteminin gelişimi, Avrupa'da Agricola (1556) ve Ramelli (1588) öncesi. Sultan III. Murad'ın rasathaneyi 1580'de yıkmasıyla projesi kesintiye uğradı. Sezgin'in '16. yy ortasında duraklama' tezinin somut limit-figürü."
 
 works:
@@ -28,7 +28,7 @@ influenced_by:
   - "ali-kuscu"
   - "mustafa-el-muvakkit"
 
-tags: ["istanbul-tophane-rasathane", "16yy-osmanli-bilim", "tycho-paraleli", "saat-mekanigi", "duraklama-limiti", "halka-yaraticilik-zirve-vakasi"]
+tags: ["istanbul-tophane-rasathane", "16yy-osmanli-bilim",  "tycho-paraleli",  "saat-mekanigi",  "duraklama-limiti", "halka-yaraticilik-zirve-vakasi"]
 ---
 
 ## Atomik özet

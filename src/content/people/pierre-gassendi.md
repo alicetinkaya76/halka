@@ -8,7 +8,7 @@ death_year: 1655
 birth_place: "Champtercier (Provence, Fransa)"
 death_place: "Paris (Fransa)"
 place: "Champtercier → Aix-en-Provence → Digne → Paris"
-fields: ["felsefe", "astronomi", "matematik", "ilahiyat"]
+fields: ["felsefe", "astronomi",  "matematik", "ilahiyat"]
 role: "Fransız Katolik rahip, filozof, gökbilimci ve matematikçi. Pierre-Simon de Laplace'a kadar uzanan Fransız bilim-felsefe geleneğinin 17. yy köprüsü. Antik atomistik (Demokritos-Epikuros) felsefenin Hıristiyan-uyumlu yeniden-formülasyonu (Syntagma Philosophicum, ölümünden sonra 1658), Aristotelesçi-skolastik felsefeye karşı sistematik eleştiri (Exercitationes Paradoxicae 1624), Tycho Brahe-Galileo-Kepler astronomisinin Fransız akademik-ortamına aktarımı. Koyré'nin Cilt 1'in #10 makalesinde ('Gassendi ve Çağının Bilimi', s. 227) merkezi figür: Galileo-Newton ekseninin yan-figürü olarak mekanik-felsefe ve atomizmin yeniden-canlanmasının Newton-öncesi temsilcisi."
 
 wikidata_id: "Q221054"
@@ -41,7 +41,7 @@ influenced:
   - "boyle"
   - "locke"
 
-tags: ["mekanik-felsefe", "atomizm", "newton-oncesi", "koyre-yan-figur", "fransiz-bilim-akademik-gelenegi", "skolastik-elestiri"]
+tags: ["mekanik-felsefe", "atomizm",  "newton-oncesi",  "koyre-yan-figur",  "fransiz-bilim-akademik-gelenegi", "skolastik-elestiri"]
 ---
 
 ## Atomik özet

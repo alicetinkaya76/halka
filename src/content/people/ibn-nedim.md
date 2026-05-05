@@ -6,7 +6,7 @@ name_aliases: ["İbn en-Nedîm", "Ibn al-Nadīm", "el-Verrâk"]
 dates: "ö. 380/990"
 death_year: 990
 place: "Bağdat"
-fields: ["bibliyografya", "kitap-piyasası", "edebiyat", "warrâklık"]
+fields: ["bibliyografya", "kitap-piyasası",  "edebiyat", "warrâklık"]
 role: "10. yy Bağdatlı warrâk (kâğıtçı-kopisyonist-kitap satıcısı) ve bibliyografyacı. *Kitâbü'l-Fihrist* (987) yazarı — 10. yy sonuna kadar Arapça'da yazılmış ya da çevrilmiş bütün kitapların ansiklopedik dökümü, 10 ana bölüm, binlerce başlık. Modern bibliyografya yönteminin İslam'daki erken örneği. Pedersen'in *İslam Dünyasında Kitabın Tarihi* eserinin baştan sona birincil kaynak-çapası."
 
 works:
@@ -15,7 +15,7 @@ works:
     year: 987
     note: "10. yy sonuna kadar Arapça'da yazılmış ya da çevrilmiş bütün kitapların ansiklopedik dökümü; modern İslam bibliyografyasının atası, 10 ana bölüm yapısı."
 
-tags: ["fihrist", "warrâk", "bibliyografya", "10yy-bagdat", "halka-pedersen-kaynak-capasi"]
+tags: ["fihrist", "warrâk",  "bibliyografya",  "10yy-bagdat", "halka-pedersen-kaynak-capasi"]
 ---
 
 ## Atomik özet

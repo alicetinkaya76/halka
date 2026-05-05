@@ -2,14 +2,14 @@
 name: "Hunayn ibn İshak el-İbâdî"
 name_arabic: "حُنَيْن بْن إِسْحَاق الْعِبَادِيّ"
 name_full: "Ebu Zeyd Hunayn ibn İshak el-İbâdî"
-name_aliases: ["Hunayn ibn Ishaq", "Johannitius (Latin)", "Hunain", "Hunayn al-'Ibadi"]
+name_aliases: ["Hunayn ibn Ishaq", "Johannitius (Latin)",  "Hunain", "Hunayn al-'Ibadi"]
 dates: "yak. 808-873"
 birth_year: 808
 death_year: 873
 birth_place: "Hîre (Irak, Kûfe yakınları)"
 death_place: "Bağdat"
 place: "Hîre → Cündişapur (eğitim) → İskenderiye (Yunanca eğitimi seyahati) → Bağdat"
-fields: ["tıp", "ceviri", "filoloji", "Yunanca-Süryânice-Arapça paralel-metin"]
+fields: ["tıp", "ceviri",  "filoloji", "Yunanca-Süryânice-Arapça paralel-metin"]
 role: "Süryânî Hıristiyan Nasturî hekim-mütercim, çeviri hareketinin teknik-filolojik zirvesi olan Hunayn atölyesinin başı. el-Mütevekkil dönemine kadar bütün halifelere baş hekim ve baş mütercim olarak hizmet etmiştir. Galen, Hipokrat, Aristoteles, Ptolemaios çevirilerinin pek çoğu Hunayn ya da atölyesi (oğlu İshak ibn Hunayn, yeğeni Hubeyş ibn el-Hasan) eliyle Yunanca → Süryânice → Arapça çift-aşamalı protokolle yapılmıştır. Tıp-felsefe-mantık-astronomi alanlarında Yunan-mirasının İslam dünyasına aktarımının teknik-akademik kişiliği."
 wikidata_id: "Q310781"
 
@@ -38,7 +38,7 @@ related_concepts:
   - "memun"
   - "bermekiler"
 
-tags: ["mutercim", "hekim", "suryani-hiristiyan", "yunanca-arapca-ceviri", "ceviri-atolyesi", "galen-aktarimi", "halka-4-kitap-dugumu"]
+tags: ["mutercim", "hekim",  "suryani-hiristiyan",  "yunanca-arapca-ceviri",  "ceviri-atolyesi",  "galen-aktarimi", "halka-4-kitap-dugumu"]
 ---
 
 > **Atomik dosya v0.13 (Berkey turu) inşası**: Hunayn ibn İshak, Halka atomik atlasında **4-kitap düğüm**: Pedersen #7 + Sezgin #8 + Lyons #9 + Gutas #10. v0.12 Gutas turunda Berkey #11'e ertelenmişti — atomik dosyası canlı repoda mevcut değildi, yeni-inşa ile tamamlanmıştır. Berkey'in odağı 13.-15. yy Memlûk Kâhire olduğu için Hunayn (9. yy figür) Berkey'de yer almaz; bu yüzden Berkey eklenmesi yapılmadı, Halka rekor-atomiği `bagdat` (7-kitap) değişmez kaldı.

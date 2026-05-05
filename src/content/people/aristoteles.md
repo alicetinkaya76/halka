@@ -8,7 +8,7 @@ death_year: -322
 birth_place: "Stagira (Khalkidikí, Makedonya)"
 death_place: "Khalkis (Eğriboz Adası, Yunanistan)"
 place: "Stagira → Atina (Akademi) → Assos → Lesbos → Pella (Makedonya sarayı) → Atina (Lykeion) → Khalkis"
-fields: ["felsefe", "mantik", "metafizik", "fizik", "biyoloji", "etik", "siyaset", "estetik"]
+fields: ["felsefe", "mantik",  "metafizik",  "fizik",  "biyoloji",  "etik",  "siyaset", "estetik"]
 role: "Antik Yunan filozofu; Klasik Yunan felsefesinin Platon-sonrası zirve-figürü, Batı felsefesinin kanonik figürlerinden biri. M.Ö. 367-347 arasında Atina'da Platon'un Akademisi'nde öğrenci ve hoca. M.Ö. 343-340 Pella'da geleceğin Büyük İskender'inin hocası. M.Ö. 335-323 arasında Atina'da kendi okulu Lykeion'u kurar (peripatos: gezinti-yolu, peripatetik okul adının kaynağı). Halka müfredatında v0.15 turuyla **ilk antik-figür-atomiği** olarak açılır; konumu çoklu-katmanlıdır: (1) Hunayn b. İshak'ın 9. yy Bağdat çeviri-hareketinin merkez-müelliflerinden, (2) İslam-felsefesi (Fârâbî, İbn Sînâ, İbn Rüşd) ve Hıristiyan-skolastik felsefenin (Albertus Magnus, Aquinolu Thomas) felsefi-omurgası, (3) Padova-Aristotelesçilik üzerinden Erken-Modern Avrupa-bilim-tarihinin geri-plan-otoritesi, (4) Galileo'nun matematiksel-Platonik fiziğinin **karşı-aldığı düşman-figür** — Koyré'nin Cilt 1'in #2 makalesi 'Ortaçağ Felsefesinde Aristotelesçilik ile Platonculuk' (s. 13) merkez-figür."
 
 wikidata_id: "Q868"
@@ -45,7 +45,7 @@ influenced:
   - "aquinolu-thomas"
   - "cremonini"
 
-tags: ["antik-yunan-filozofu", "halka-cok-pencere-figur", "padova-aristotelescilik-otoritesi", "galileo-karsi-aldigi-figur", "halka-ilk-antik-atomik", "islam-felsefe-omurgasi"]
+tags: ["antik-yunan-filozofu", "halka-cok-pencere-figur",  "padova-aristotelescilik-otoritesi",  "galileo-karsi-aldigi-figur",  "halka-ilk-antik-atomik", "islam-felsefe-omurgasi"]
 ---
 
 ## Atomik özet

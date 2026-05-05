@@ -9,7 +9,7 @@ death_year: 1048
 birth_place: "Kâs (Hârezm)"
 death_place: "Gazne"
 place: "Kâs (Hârezm) → Cürcân → Gazne"
-fields: ["matematik", "astronomi", "coğrafya", "mineraloji", "kıyaslı din çalışmaları", "tarih", "filoloji"]
+fields: ["matematik", "astronomi",  "coğrafya",  "mineraloji",  "kıyaslı din çalışmaları",  "tarih", "filoloji"]
 role: "10.-11. yy Hârezmli polymath. Tahkîkü mâ li'l-Hind (Hint medeniyeti monografisi, ilk modern karşılaştırmalı din çalışması), Kanûn el-Mes'ûdî (Selçuklu astronomi külliyatı), el-Cemâhir fî Ma'rifeti'l-Cevâhir (mineraloji-cevherbilim), Asâr el-Bâkıye (kronoloji ve takvim sistemleri). Sezgin Cilt I metodolojik açılış mottosunun kaynağı: 'öncellerini minnettarlıkla karşılamak, yanlışlarını ürkmeden doğrultmak'. Halka'da en zengin atomik cross-ref (4 kitap slug-eşleşmesi) — Mâveraünnehir aydınlanmasının (Starr) ve Avrupa Latince transmisyonunun (Freely) ana figürü."
 
 works:
@@ -30,7 +30,7 @@ works:
 influenced_by:
   - "ibn-el-heysem"
 
-tags: ["mavera-aydinlanmasi", "polymath", "kıyaslı-din", "11yy-bilim", "halka-coklu-kitap-cross-ref", "metodolojik-motto", "hindistan-monografisi"]
+tags: ["mavera-aydinlanmasi", "polymath",  "kıyaslı-din",  "11yy-bilim",  "halka-coklu-kitap-cross-ref",  "metodolojik-motto", "hindistan-monografisi"]
 ---
 
 > **Versiyon notu:** Bu dosya v0.4'te eklendi (Hobson sonrası ilk atomik dalga). v0.10.1'de Sezgin #8 cross-ref'i eklendi, Sezgin metodolojik motto vakası gövdeye işlendi, atomik graf değeri yeniden konumlandırıldı.

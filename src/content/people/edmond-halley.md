@@ -8,7 +8,7 @@ death_year: 1742
 birth_place: "Haggerston (Londra yakını, Shoreditch parokisi, İngiltere)"
 death_place: "Greenwich (Greenwich Royal Observatory'nin Astronomer Royal konutu, İngiltere)"
 place: "Londra (1656-1673) → Queen's College Oxford (1673-1676) → St. Helena Adası (1676-1678, güney-yarımküre yıldız-katalogu) → Londra ve Oxford akademik-yıllar (1678-1696) → Chester Mint Comptroller (1696-1698, Newton-Mint dönemi) → Atlantik bilim-keşif-yolculukları (1698-1701, gemi-komutan) → Oxford Savilian Chair of Geometry (1704-1742) → Astronomer Royal Greenwich (1720-1742)"
-fields: ["astronomi", "matematik", "jeofizik", "demografi", "navigasyon"]
+fields: ["astronomi", "matematik",  "jeofizik",  "demografi", "navigasyon"]
 role: "İngiliz astronom-matematikçi-akademik-yönetici; Halley kuyrukluyıldızının (1705'te dönüşünü öngörür, 1758-1759'da gerçek-dönüşüyle Newton-mekaniğinin akademik-zaferini sembolleştirir) akademik-isim-figürü. **Halka için merkezi-yapısal-rol:** Newton'un *Philosophiæ Naturalis Principia Mathematica* (1687) eserinin akademik-yayın-itici-gücü. Ağustos 1684'te Cambridge Trinity College'da Newton'u ziyaret edip 'ters-kare çekim varsayılırsa gezegen-yörüngeleri ne olur' sorusunu sorması, Newton'un 'elips' cevabını alıp Newton'un *De Motu Corporum in gyrum* (1684 Kasım) elyazmasının üretilmesine yol açması, sonraki 18 ayda Newton'un *Principia*'yı yazma sürecinde Halley'in akademik-editör ve maddi-finansör rolü, Royal Society'nin yayın-organizasyonu — tüm bu zincir Newton-Halley akademik-dostluğunun yapısal-meyvasıdır. Akademik-trajektorisi: Queen's College Oxford öğrenciliği (1673-1676), St. Helena Adası'nda 1676-1678 yıllarında güney-yarımküre yıldız-katalogu çıkarması (akademik-tarihte ilk-sistematik güney-yarımküre astronomik-katalog), Royal Society Fellow seçimi (1678, 22 yaşında), Royal Society Clerk pozisyonu (1685-1696), Atlantik-Yolculuğu HMS Paramore gemisinin komutanı olarak jeomanyetik-değişim haritalama (1698-1701, ilk-bilim-amaçlı deniz-yolculuklarından biri), Oxford Savilian Chair of Geometry (1704-1742), Astronomer Royal pozisyonu (1720'de John Flamsteed'in ölümü sonrası, 22 yıl). Halka için: Halley Newton-akademik-müttefik-figürünün kanonik-örneği; akademik-dostluğun bilim-üretimini yapısal-tetiklemesinin somut-vakası; *Principia* yayın-organizasyonunun maddi-akademik koşullarının figür-örneği."
 
 wikidata_id: "Q7747"
@@ -35,7 +35,7 @@ influenced:
   - "leonhard-euler"
   - "pierre-simon-laplace"
 
-tags: ["newton-akademik-muttefik", "principia-yayin-itici-gucu", "halley-kuyrukluyildizi", "halka-3-donem-akademik-cemiyet-figur", "astronomer-royal", "royal-society-clerk", "guney-yildiz-katalog", "1684-cambridge-ziyareti"]
+tags: ["newton-akademik-muttefik", "principia-yayin-itici-gucu",  "halley-kuyrukluyildizi",  "halka-3-donem-akademik-cemiyet-figur",  "astronomer-royal",  "royal-society-clerk",  "guney-yildiz-katalog", "1684-cambridge-ziyareti"]
 ---
 
 ## Atomik özet

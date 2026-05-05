@@ -1,14 +1,14 @@
 ---
 name: "Isaac Newton"
 name_full: "Sir Isaac Newton (Lucasian Professor; Master of the Royal Mint; President of the Royal Society)"
-name_aliases: ["Newton", "Sir Isaac Newton", "Isaacus Neuutonus (Latin akademik-imza)", "Jeova sanctus unus (anti-Trinitarian simya-pseudonimi)"]
+name_aliases: ["Newton", "Sir Isaac Newton",  "Isaacus Neuutonus (Latin akademik-imza)", "Jeova sanctus unus (anti-Trinitarian simya-pseudonimi)"]
 dates: "1642-1727"
 birth_year: 1642
 death_year: 1727
 birth_place: "Woolsthorpe Manor (Woolsthorpe-by-Colsterworth, Lincolnshire, İngiltere)"
 death_place: "Kensington (Londra, İngiltere; cenazesi Westminster Abbey'de devlet-cenazesi olarak gerçekleştirildi)"
 place: "Woolsthorpe (1642-1655) → Grantham King's School (1655-1660) → Woolsthorpe çiftlik-yöneticilik dönemi (1659-1660 zorunluluk, başarısız) → Cambridge Trinity College (1661-1696) → Londra (Royal Mint, 1696-1727)"
-fields: ["matematik", "fizik", "astronomi", "optik", "simya", "teoloji", "kronoloji", "akademik-yönetim"]
+fields: ["matematik", "fizik",  "astronomi",  "optik",  "simya",  "teoloji",  "kronoloji", "akademik-yönetim"]
 role: "İngiliz matematikçi-fizikçi-astronom-simyacı-teolog; Bilim Devrimi'nin kanonik-figürü ve modern matematiksel-mekaniğin akademik-mimarı. *Philosophiæ Naturalis Principia Mathematica* (1687, Royal Society etiketiyle Londra'da basıldı, Halley'in yayın-finansörlüğüyle) ile üç hareket-yasası ve evrensel-çekim aksiyomunu sunarak göksel ve yersel hareketin Aristoteles'ten beri süregelen ontolojik-ayrımını matematiksel-aksiyomatik birleştirme içinde çözdü; *Opticks* (1704) ile beyaz-ışığın bileşik-doğası ve renklerin ışığın temel-özelliği olduğu tezlerini Royal Society yayın-pratiği aracılığıyla akademik-kanona soktu. **Halka için ikiz-konum:** matematiksel-bilimin akademik-figürü ve gizli-simyacı-teolog (anti-Trinitarian heretik). Akademik-trajektorisi: Cambridge Trinity College sizar (1661) → BA (1665) → annus mirabilis Woolsthorpe-emeği (1665-1667) → minor fellow (1667) → major fellow (1668) → Lucasian Chair of Mathematics (1669-1702) → Royal Society Fellow (1672) → *Principia* (1687) → Konvansiyon Parlamentosu Cambridge Üniversitesi temsilciliği (1689-1690) → Royal Mint Warden (1696) → Master of the Mint (1699-1727) → Royal Society President (1703-1727) → Şövalye payesi 'Sir Isaac' (1705, II. Anne tarafından, Cambridge ziyaretinde) → ölüm ve Westminster Abbey devlet-cenazesi (1727 Mart). Akademik-rakipleri: Robert Hooke (optik 1672 ve gravitasyon 1679 öncelik-tartışmaları), Gottfried Wilhelm Leibniz (calculus 1711-1722 öncelik-tartışması, Royal Society 'tarafsız' komite-süreci), John Flamsteed (Astronomer Royal, kuyrukluyıldız ve Ay-veri-yarışı). Akademik-müttefikleri: Edmond Halley (Principia yayın-itici-gücü), Robert Boyle (corpuscular-felsefe ve simya akademik-mentor), John Locke (Mint-reform akademik-müttefik). Heretik-teolojik konum: anti-Trinitarian (1675'te ordained-papazlık-zorunluluğundan kralın özel-affı ile muaf). Ölümünden sonra Voltaire'in (1738) ve Pope'un (1730 epigraf) Aydınlanma-Newton-mitolojisinin akademik-kanonikleştirilmesi."
 
 wikidata_id: "Q935"
@@ -51,7 +51,7 @@ influenced:
   - "pierre-simon-laplace"
   - "tüm-modern-fizik"
 
-tags: ["bilim-devrimi-merkez-figur", "halka-3-donem-merkez", "newton-cift-yuz-akademik", "matematiksel-mekanik-mimar", "lucasian-chair", "royal-society-baskan", "anti-trinitarian-heretik", "simya-emegi-buyuk", "westfall-gleick-monografi-figur", "halka-12-merkez-figur"]
+tags: ["bilim-devrimi-merkez-figur", "halka-3-donem-merkez",  "newton-cift-yuz-akademik",  "matematiksel-mekanik-mimar",  "lucasian-chair",  "royal-society-baskan",  "anti-trinitarian-heretik",  "simya-emegi-buyuk",  "westfall-gleick-monografi-figur", "halka-12-merkez-figur"]
 ---
 
 ## Atomik özet
@@ -87,5 +87,7 @@ Newton, Halka #12 Gleick-Newton turunun merkez-figürüdür ve doğrudan **çok-
 - **Kuhn #18 (Bilimsel Devrimlerin Yapısı):** Newton-paradigmasının Aristotelesçi-paradigmadan kopuşu Kuhn'un kavramsal-incommensurability tezinin temel-örneği. 5-kitap düğüm.
 
 - **Burke ek #23 (Bilginin Toplumsal Tarihi):** Newton'un Royal Society-Cambridge-Mint kurumsal-mimarisinin akademik-pratik-zeminindeki yapısal-konumu Burke-bilgi-sosyolojisi-tezinin somut-vakası.
+
+**v0.17 turunda aktifleşen Newton-Humboldt akademik-paradigma-zinciri (Halka #13 Wulf-Humboldt):** Halka v0.17 turuyla açılan Wulf-Humboldt #13 turu, Newton-aksiyomatik-matematiksel-mekanik-figürü ile Humboldt-saha-tümevarım-organik-bütünlük-figürü arasındaki **akademik-paradigma-yumuşatılmasının köprü-zincirini** Halka 3. dönem-akademik-figür-tartışmasının yapısal-omurgasına yerleştirir. Newton-figürünün matematiksel-aksiyomatik-tümdengelim modeli (Principia 1687) ile Humboldt-figürünün saha-tümevarım-organik-bütünlük modeli (Naturgemälde 1807, Cosmos 1845-1862) arasındaki yapısal-akademik-konum-değişimi Halka 3. dönem-müfredat-tasarımının pedagojik-omurgasıdır; iki-figür-arası akademik-konum-değişiminin yapısal-iki-kutbu Halka okuyucusu için akademik-figür-derinleşmesinin yapısal-test-zeminidir. `matematiksel-mekanik` ↔ `ekoloji-doga-butunluk` kavram-atomiklerin akademik-paradigma-yumuşatılma-vakasının somut-zemini.
 
 **Atomik graf değeri:** Newton, Halka'nın atomik-atlasında 3. dönem'in merkez-figürü olarak çoklu-pencereli-akademik-konumlamanın test-figürüdür. Matematiksel-mekanik-mimar (kanonik-Aydınlanma-figür) ile gizli-simyacı-anti-Trinitarian-heretik (Westfall-Gleick-vurgusu) çift-yüzlü-akademik-figürün biyografik-derinliği Halka 3. dönem-figür-merkezli müfredat-tasarımının pedagojik-meşrulaştırma-noktasıdır.

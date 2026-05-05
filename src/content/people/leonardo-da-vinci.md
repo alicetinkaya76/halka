@@ -8,7 +8,7 @@ death_year: 1519
 birth_place: "Vinci köyü (Toskana, Floransa Cumhuriyeti)"
 death_place: "Clos Lucé, Amboise (Fransa)"
 place: "Vinci → Floransa → Milano → Roma → Amboise"
-fields: ["resim", "mühendislik", "anatomi", "mekanik", "doğa-bilimleri", "hidrolik"]
+fields: ["resim", "mühendislik",  "anatomi",  "mekanik",  "doğa-bilimleri", "hidrolik"]
 role: "İtalyan ressam-mühendis-doğa-bilimci; Yenidendoğuş'un (Rinascimento) çok-yönlü-deha (uomo universale) örneğinin kanonik figürü. Koyré'nin Cilt 1'in #6 makalesinde ('500 Yıl Sonra Leonardo da Vinci') merkezi figür: bilim-sanat kavşağında 'Yenidendoğuş'un teknik-bilim ön-örneği', ama Galileo'nun matematiksel-Platonik kopuşunu **henüz gerçekleştirmemiş** ara-figür. Anlamlı bir paradoks: Leonardo 5000+ sayfalık not-defterleri (Codex Atlanticus, Codex Madrid, Manuscript A) ile 16. yy'ın en kapsamlı teknik-bilim arşivini bırakır, ama bu arşivin sistematik yayını yapılmadan Galileo-Newton ekseni Bilim Devrimi'ni gerçekleştirir."
 
 wikidata_id: "Q762"
@@ -33,7 +33,7 @@ influenced_by:
 influenced:
   - "galileo-galilei"
 
-tags: ["yenidendogus-teknik-bilim", "uomo-universale", "koyre-arada-figur", "italyan-yenidendogus", "leonardo-not-defterleri"]
+tags: ["yenidendogus-teknik-bilim", "uomo-universale",  "koyre-arada-figur",  "italyan-yenidendogus", "leonardo-not-defterleri"]
 ---
 
 ## Atomik özet

@@ -41,6 +41,8 @@ Deneysel felsefe, Halka'nın atomik-atlasında v0.16 turuyla açılan kavramdır
 
 **İleri-cross-ref:**
 
+- **Wulf-Humboldt #13 (Halka 3. dönem-ikinci-kitap, v0.17 turu, AKTİF):** Wulf-Humboldt turu deneysel-felsefe-yöntem-zincirin yapısal-akademik-yumuşatılma-aşamasının somut-vakasıdır. Bacon-Boyle-Newton kanonik-aksiyomatik-tümdengelim-deneysel-felsefe-zincirinin (1620 *Novum Organum* → 1661 *Sceptical Chymist* → 1687 *Principia* → 1704 *Opticks* zinciri) Halka 3. dönem-ikinci-kitap-aşamasında Humboldt-saha-tümevarım-organik-bütünlük-akademik-yöntem-zincirine yumuşatılması Halka humboldt-bilim-yontemi atomiğinin akademik-doğum-vakasıdır. Aksiyomatik-laboratuvar-deneysel-felsefe ile saha-tümevarım-akademik-yöntem-zincirinin yapısal-akademik-konum-değişimi 17. yy ortası → 19. yy başı akademik-yöntem-evrim-zincirin somut-vakası.
+
 - **Westfall #15 (Modern Bilimin Oluşumu):** Westfall'ın deneysel-felsefe akademik-monografisi Newton'un yöntem-pratiğini *Principia* ve *Opticks*'in ikili-yapısı içinde işler.
 
 - **Wootton #17 (Bilimin İcadı):** Wootton'ın revizyonist okumasında "deneysel felsefe" tek-Newton-aksiyomu olmaktan çıkar, Bacon-Boyle-Hooke-Newton-Huygens çoğul-akademik-pratiğinin sentezi olarak işlenir.

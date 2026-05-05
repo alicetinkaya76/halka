@@ -2,14 +2,14 @@
 name: "Halife el-Memun (Ebu'l-Abbas Abdullah ibn Hârun er-Reşid)"
 name_arabic: "أَبُو الْعَبَّاس عَبْد الله الْمَأْمُون بْن هَارُون الرَّشِيد"
 name_full: "Abdullah ibn Hârun er-Reşid el-Memun"
-name_aliases: ["el-Memun", "El-Me'mun", "al-Ma'mun", "Memun the Great"]
+name_aliases: ["el-Memun", "El-Me'mun",  "al-Ma'mun", "Memun the Great"]
 dates: "786-833"
 birth_year: 786
 death_year: 833
 birth_place: "Bağdat"
 death_place: "Tarsus (Bizans seferi sırasında)"
 place: "Bağdat / Merv"
-fields: ["siyaset", "kelam", "patronaj-bilim", "askerî-emperyal-strateji"]
+fields: ["siyaset", "kelam",  "patronaj-bilim", "askerî-emperyal-strateji"]
 role: "Yedinci Abbasi halifesi (sal. 813-833), Hârun er-Reşid'in oğlu. Kardeşi Emin'i 813'te yendikten sonra altı yıl Merv'de (Horasan) iktidarda kalıp 819'da Bağdat'a yerleşmiş; Tercüme Hareketi ve Beytü'l-Hikme kurumsallaşmasının resmî zirvesi onun döneminde gerçekleşmiştir. Mihne'nin (yaratılmış [mahluk] Kuran doktrininin resmî kurumsallaştırılması, 833) mimarı; Tahir ibnü'l-Hüseyn komutasındaki Bizans karşıtı emperyal seferin başlatıcısı; sikke reformuyla para birliği sağlayan, kadılar üzerinde sıkı denetim kuran, Ali er-Rıza'yı varis ilan etmiş (sonradan vazgeçmiş) merkezîleştirici halife. Lyons'un popüler-anlatı Memun-merkezli Beytü'l-Hikme dramının sembolik-dramatik figürü; Gutas'ın akademik-philological politik-ideolojik çerçevesinde ise Sasani Pehlevî imparatorluk ideolojisinin İslam'a uyarlanmasının en sistematik uygulayıcısı."
 wikidata_id: "Q239197"
 
@@ -54,7 +54,7 @@ influenced:
   - "el-Hârezmî (matematik-astronomi atölye patronu)"
   - "Mu'tezile mezhebi (resmî halifelik mezhebi olarak kurumsal-statü kazandı)"
 
-tags: ["abbasi-halifesi", "mihne", "mu-tezile", "tercume-hareketi-zirve", "bizans-karsiti-emperyal", "merv-bagdat-eksen", "sasani-pehlevi-mirasi", "halka-4-kitap-ust-dugum"]
+tags: ["abbasi-halifesi", "mihne",  "mu-tezile",  "tercume-hareketi-zirve",  "bizans-karsiti-emperyal",  "merv-bagdat-eksen",  "sasani-pehlevi-mirasi", "halka-4-kitap-ust-dugum"]
 ---
 
 > **Atomik dosya v0.12 (Gutas turu) inşası**: Memun, Halka atomik atlasında **4-kitap üst-düğüm**: Pedersen #7 + Sezgin #8 + Lyons #9 + Gutas #10. Halka'nın 2. dönem zirvesinin sembolik-tarihsel figürü; popüler-anlatı kahramanlığından (Lyons) akademik-philological politik-ideolojik çerçeveye (Gutas) süzülen halife.

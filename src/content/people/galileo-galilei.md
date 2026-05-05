@@ -8,7 +8,7 @@ death_year: 1642
 birth_place: "Pisa (Toskana, İtalya)"
 death_place: "Arcetri (Floransa yakını, İtalya)"
 place: "Pisa → Padova → Floransa → Arcetri"
-fields: ["fizik", "astronomi", "matematik", "mühendislik"]
+fields: ["fizik", "astronomi",  "matematik", "mühendislik"]
 role: "İtalyan matematikçi-fizikçi-astronom; 17. yüzyıl Bilim Devrimi'nin Koyré-okumasında merkezi figür. Pisa Üniversitesi (1589-1592), ardından Padova Üniversitesi'nde matematik kürsüsü hocası (1592-1610) — Koyré'nin Aristotelesçi-Padova ortamında matematiksel-Platonik kopuşu olarak okuduğu en üretken dönemi. 1610 sonrası Floransa'da Medici Sarayı'nın 'Baş Matematikçi-Filozofu'; teleskopik gözlemleri (Sidereus Nuncius 1610), Diyalog (1632) ve İki Yeni Bilim Üzerine Konuşmalar (Discorsi 1638) ile çağcıl bilimin kurucu figürü. 1633 Engizisyon davasından sonra Arcetri'de ölünceye kadar tutuklu kaldı."
 
 wikidata_id: "Q307"
@@ -41,7 +41,7 @@ influenced:
   - "torricelli"
   - "cavalieri"
 
-tags: ["bilim-devrimi", "matematiksellestirme", "padova-aristotelescilik-karsiti", "koyre-merkez-figur", "halka-3-donem-merkez", "italyan-bilim-devrimi"]
+tags: ["bilim-devrimi", "matematiksellestirme",  "padova-aristotelescilik-karsiti",  "koyre-merkez-figur",  "halka-3-donem-merkez", "italyan-bilim-devrimi"]
 ---
 
 ## Atomik özet

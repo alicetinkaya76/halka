@@ -6,7 +6,7 @@ name_aliases: ["al-Jazarī", "Cezeri"]
 dates: "ö. 602/1206'dan sonra"
 death_year: 1206
 place: "Cezîre (Diyâr Bekr) — Artuklu sarayı"
-fields: ["mühendislik", "mekanik", "saatçilik", "otomata", "hidrolik"]
+fields: ["mühendislik", "mekanik",  "saatçilik",  "otomata", "hidrolik"]
 role: "12.-13. yy Diyârbakır Artuklu sarayı baş mühendisi. el-Câmi' beyne'l-İlm ve'l-Amel en-Nâfi' fî Sınâʿati'l-Hiyel (Faydalı Bilim ile Pratik Arasında Toplayan, 1206) eseri 50 mekanik cihazın çizimli + adım-adım açıklamalı kataloğu (su saatleri, otomata, kan alma araçları, hareket transmisyonu, dişli sistemleri, su pompaları). Sezgin Cilt V (Fizik ve Teknik) bölümünün ana referansı. Frankfurt müzesinde rekonstrüksiyon edilen ~30 alet doğrudan Cezerî kitabından geliştirildi. Halka teknolojik-anti-Eurocentric kanıt zincirinin merkez figürü."
 
 works:
@@ -18,7 +18,7 @@ works:
 influenced:
   - "takiyuddin-er-rasid"
 
-tags: ["mekanik-muhendisligi", "otomata", "su-saatleri", "frankfurt-rekonstruksiyon", "hobson-cross-ref-ana-figur", "12yy-teknoloji", "hareket-transmisyonu"]
+tags: ["mekanik-muhendisligi", "otomata",  "su-saatleri",  "frankfurt-rekonstruksiyon",  "hobson-cross-ref-ana-figur",  "12yy-teknoloji", "hareket-transmisyonu"]
 ---
 
 ## Atomik özet

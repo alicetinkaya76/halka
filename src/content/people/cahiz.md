@@ -9,7 +9,7 @@ death_year: 868
 birth_place: "Basra"
 death_place: "Basra"
 place: "Basra → Bağdat"
-fields: ["edebiyat", "kelam", "edebî-kuram", "doğa-tarihi", "etnografi"]
+fields: ["edebiyat", "kelam",  "edebî-kuram",  "doğa-tarihi", "etnografi"]
 role: "9. yy Basra-Bağdat ekseninin baş edebî-entelektüel figürü. Mu'tezilî kelamcı, edebî kuramcı, doğa tarihçisi. *Kitâbü'l-Hayevân* (Hayvanlar Kitabı, 7 cilt — 350+ hayvan türü üzerine gözlem ve felsefi yorumlar), *el-Beyân ve't-Tebyîn* (retorik kuram), *Kitâbü'l-Buhalâ* (Cimriler Kitabı, sosyal etnografi), *Risâle fî Menâkıbi't-Türk* (Türklerin meziyetleri üzerine, Abbasî ordusunun Türk askerî tabakasının ilk ciddi etnografi-analizi). Pedersen'in warraqun ekonomisinin **iç tanığı** olarak en sık alıntıladığı isimlerden — Câhız kendi kitaplarının kopyalanması, ücretlendirilmesi ve dağıtımı süreçlerini eserlerinde anlatır."
 
 works:
@@ -23,7 +23,7 @@ works:
     type: "sosyal-etnografi"
     note: "Cimriler ve cimrilik üzerine sosyal-edebî etnografi; 9. yy Bağdat-Basra-Merv toplumsal yaşam tasviri."
 
-tags: ["mu-tezile", "9yy-bagdat-basra", "edebi-kuram", "doga-tarihi", "halka-pedersen-warraqun-ic-tanik", "abbasi-ordusu-etnografi"]
+tags: ["mu-tezile", "9yy-bagdat-basra",  "edebi-kuram",  "doga-tarihi",  "halka-pedersen-warraqun-ic-tanik", "abbasi-ordusu-etnografi"]
 ---
 
 ## Atomik özet
