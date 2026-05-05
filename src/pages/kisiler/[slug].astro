@@ -1,6 +1,7 @@
 ---
 // src/pages/kisiler/[slug].astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AcademicSourceLinks from '@/components/AcademicSourceLinks.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -110,18 +111,20 @@ const referencingBooks = allBooks.filter((b) =>
       <Content />
     </section>
 
-    {(data.tabakat_io_id || data.dia_id || data.gas_id || data.wikidata_id) && (
+    {/* v0.18: akademik-otoritatif-kaynak-zinciri rozeti — atomik-özet
+        sonrasında, dış-bağlantılar/Wikidata öncesinde render edilir. */}
+    <AcademicSourceLinks
+      diaId={data.dia_id}
+      sepSlug={data.sep_slug}
+    />
+
+    {(data.tabakat_io_id || data.gas_id || data.wikidata_id) && (
       <section class="mt-12 pt-6 halka-rule">
-        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Dış bağlantılar</h2>
+        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Diğer dış bağlantılar</h2>
         <div class="flex flex-wrap gap-3 font-sans text-sm">
           {data.tabakat_io_id && (
             <a href={`https://tabakat.io/scholar/${data.tabakat_io_id}`} class="halka-chip-emerald no-underline">
               tabakat.io ↗
-            </a>
-          )}
-          {data.dia_id && (
-            <a href={`https://islamansiklopedisi.org.tr/${data.dia_id}`} class="halka-chip-emerald no-underline">
-              DİA ↗
             </a>
           )}
           {data.gas_id && (

@@ -1,6 +1,7 @@
 ---
 // src/pages/yerler/[slug].astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AcademicSourceLinks from '@/components/AcademicSourceLinks.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -77,9 +78,15 @@ const referencingBooks = allBooks.filter((b) =>
       <Content />
     </section>
 
+    {/* v0.18: akademik-otoritatif-kaynak-zinciri rozeti */}
+    <AcademicSourceLinks
+      diaId={data.dia_id}
+      sepSlug={data.sep_slug}
+    />
+
     {(data.islamicatlas_id || data.pleiades_id || data.geonames_id || data.wikidata_id) && (
       <section class="mt-12 pt-6 halka-rule">
-        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Dış bağlantılar</h2>
+        <h2 class="font-sans text-sm uppercase tracking-wider text-ink-400 mb-3">Diğer dış bağlantılar</h2>
         <div class="flex flex-wrap gap-3 font-sans text-sm">
           {data.islamicatlas_id && (
             <a href={`https://islamicatlas.org/places/${data.islamicatlas_id}`} class="halka-chip-emerald no-underline">

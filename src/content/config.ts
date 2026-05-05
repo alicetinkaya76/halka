@@ -252,11 +252,23 @@ const people = defineCollection({
 
     // DH altyapısı bağlantıları (Faz 3)
     tabakat_io_id: z.string().optional(),
+    // dia_id: Türkiye Diyanet Vakfı İslam Ansiklopedisi (DİA) slug'ı.
+    // URL yapısı: https://islamansiklopedisi.org.tr/{dia_id}
+    // Halka 1.-2. dönem (İslam-bilim-zinciri) figürleri için birincil-Türkçe
+    // akademik-otoritatif-kaynak. v0.18'de yeniden-amaçlandı: tarihsel
+    // 'id' isimlendirmesi korunmakla birlikte semantik 'dia-slug'tır.
     dia_id: z.string().optional(),
     gas_id: z.string().optional(),
     gal_id: z.string().optional(),
     wikidata_id: z.string().regex(/^Q\d+$/).optional(),
     viaf_id: z.string().optional(),
+
+    // sep_slug: Stanford Encyclopedia of Philosophy slug'ı (v0.18 eklenti).
+    // URL yapısı: https://plato.stanford.edu/entries/{sep_slug}/
+    // Halka 3. dönem ve sonrası felsefi-figürler için birincil-İngilizce
+    // akademik-otoritatif-kaynak. İslam-bilim-figürleri için SEP'te giriş
+    // mevcutsa (örn. ibn-rushd, ibn-sina, al-farabi) yine eklenebilir.
+    sep_slug: z.string().regex(/^[a-z0-9-]+$/, 'sep_slug formatı: kebab-case (örn. aristotle, scientific-revolutions)').optional(),
 
     works: z.array(z.object({
       title: z.string(),
@@ -296,6 +308,13 @@ const places = defineCollection({
     islamicatlas_id: z.string().optional(),
     pleiades_id: z.string().optional(),
     geonames_id: z.string().optional(),
+    // dia_id: DİA slug'ı (yer için). v0.18 eklenti — Halka 1.-2. dönem
+    // İslam-bilim-coğrafyası yerleri (Bağdat, Maraga, Buhara, Semerkant)
+    // için akademik-otoritatif-Türkçe-kaynak link-out'u sağlar.
+    dia_id: z.string().optional(),
+    // sep_slug: SEP slug'ı (yer için, az kullanılır — örn. SEP'te bir
+    // şehir/kurum entry'si varsa). v0.18 eklenti.
+    sep_slug: z.string().regex(/^[a-z0-9-]+$/, 'sep_slug formatı: kebab-case').optional(),
     wikidata_id: z.string().regex(/^Q\d+$/).optional(),
 
     tags: z.array(z.string()).optional(),
@@ -317,7 +336,13 @@ const concepts = defineCollection({
     geography: z.string().optional(),
     related_concepts: z.array(z.string()).optional(),
 
+    // dia_id: DİA slug'ı (kavram için). v0.18'de yeniden-amaçlandı — semantik
+    // olarak 'dia-slug', tarihsel 'id' isimlendirmesi korundu.
+    // URL: https://islamansiklopedisi.org.tr/{dia_id}
     dia_id: z.string().optional(),
+    // sep_slug: SEP slug'ı (kavram için, v0.18 eklenti). Felsefi-bilimsel
+    // kavramlar için (örn. scientific-revolutions, enlightenment).
+    sep_slug: z.string().regex(/^[a-z0-9-]+$/, 'sep_slug formatı: kebab-case').optional(),
     wikidata_id: z.string().regex(/^Q\d+$/).optional(),
 
     tags: z.array(z.string()).optional(),

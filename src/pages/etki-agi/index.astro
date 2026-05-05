@@ -1,11 +1,15 @@
 ---
 // src/pages/etki-agi/index.astro
+//
+// Halka v0.18 — Etki Ağı sayfası, sıfırdan-rewrite component'le yeniden-yapılandırıldı.
+// Önceki versiyonda `max-w-6xl` sınırı vardı; v0.18 component-mimarisi (75-25 split,
+// sağ-panel-bağlantı-listesi) için daha-geniş bir konteyner kullanılıyor.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import InfluenceGraph from '@/components/InfluenceGraph.astro';
 ---
 
 <BaseLayout title="Etki Ağı">
-  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+  <section class="max-w-7xl mx-auto px-6 pt-10 pb-6">
     <h1 class="font-sans text-4xl font-bold tracking-tight text-ink-900 leading-tight">
       Atomik Atlasın Etki Ağı
     </h1>
@@ -13,44 +17,58 @@ import InfluenceGraph from '@/components/InfluenceGraph.astro';
       "Kim kimden etkilendi? El-Hârezmî'nin cebir çalışmaları Batı'da kimin
       yolunu açtı? Tûsî-Şâtır-Kopernik teknik silahı nasıl bir zincir oluşturdu?"
       Bu graf, Halka'nın atomik atlasındaki kitap-kitap, kişi-kişi ve kitap-kişi
-      ilişkilerinin doğrudan görselleşmesidir.
+      ilişkilerinin doğrudan görselleşmesidir — akademik-disiplin-paralel
+      bir bilgi-coğrafyası katmanı olarak okunmalı.
     </p>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 pb-16">
+  <section class="max-w-7xl mx-auto px-6 pb-16">
     <InfluenceGraph />
   </section>
 
   <section class="max-w-4xl mx-auto px-6 pb-16">
-    <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Graph okuma rehberi</h2>
+    <h2 class="font-sans text-2xl font-semibold text-ink-900 mb-3">Graf okuma rehberi</h2>
     <div class="font-serif text-ink-700 max-w-prose space-y-3">
       <p>
-        <strong>Düğümler iki tipte:</strong> emerald yeşili kitap düğümleri,
-        carmine kırmızısı kişi düğümleri. Kişi düğümlerinin büyüklüğü kaç
-        kitapta atomik atlas dosyasıyla referans verildiğini gösterir.
+        <strong>Düğümler iki tipte:</strong> kare-yuvarlatılmış kitap düğümleri
+        (üzerinde Halka sıra-numarası rozeti), daire-formlu kişi düğümleri.
+        Kitap-düğümünün büyüklüğü kitap-kitap-bağ-derinliği, kişi-düğümünün
+        büyüklüğü kaç kitapta atomik atlas dosyasıyla referans verildiğiyle
+        ölçeklenir. Renk-kodu Halka 4-dönem-paletinden gelir: 1. dönem
+        koyu-emerald, 2. dönem açık-emerald, 3. dönem carmine, 4. dönem
+        koyu-vurgu. Kişi düğümleri ilk-referans-eden-kitabın dönem-rengini alır
+        (akademik-bağ-zincirinin dönem-yansıması).
       </p>
       <p>
-        <strong>Kenarlar üç tipte:</strong> emerald yeşil çizgi → kitap-kitap
-        ilişkisi (tematik tamamlayıcı, kısmen çelişir, çoğul revizyon vb.).
-        Carmine kırmızı çizgi → kişi-kişi etkileşimi (etkiledi/etkilendi).
-        Bej kesik çizgi → kitap-kişi mansubı (kitap atomik atlas dosyası olan
-        kişiyi zikrediyor).
+        <strong>Kenarlar üç tipte ve yön-belirten ok-uçlu:</strong> emerald
+        kitap-kitap (tematik tamamlayıcı, kısmen çelişir, çoğul revizyon vb.
+        ZOD-enum-tipleri), carmine kişi-kişi (etkiledi/etkilendi yönü), bej
+        kesik-çizgi kitap-kişi (kitap atomik atlas dosyası olan kişiyi zikrediyor).
+        Sağ-panel "Bağlantı Listesi" her bir bağ için ilişki-tipi-rozeti ve
+        kaynak→hedef-okumasını gösterir.
       </p>
       <p>
-        Bir düğümün üzerine geldiğinizde komşu olmayan tüm düğümler ve kenarlar
-        soluklaşır → o düğümün <em>etki çevresi</em> izole edilir. Düğüme
-        tıklayınca ilgili sayfa açılır.
+        <strong>Etkileşim:</strong> Bir düğüme <em>tıklayın</em> → komşu olmayan
+        tüm düğüm ve kenarlar soluklaşır, o düğümün etki-çevresi izole edilir.
+        <em>Çift-tıklayın</em> → ilgili sayfa yeni sekmede açılır. Sağ-paneldeki
+        bir bağlantı-kartına <em>tıklayın</em> → grafda iki-düğüm-arası-bağ
+        izole edilir. Üst-bardaki <em>Düğüm Ara</em> kutusuna yazın → adı
+        veya isim-takma-adı eşleşen düğümler süzülür. Üstteki <em>Dönem
+        tab'ları</em> ile graf'ı tek-bir-Halka-dönemine sınırlayabilirsiniz.
       </p>
       <p>
-        <strong>Pedagojik konum:</strong> bu graph Halka'nın "kümülatif bilgi
+        <strong>Pedagojik konum:</strong> Bu graf Halka'nın "kümülatif bilgi
         ağı" tezinin somut göstergesidir. Cross-ref ilişkileri tablo-formatında
         kalmak yerine topolojik bir yapıda görünür hâle gelir; merkezi düğümler
-        (yoğun bağlanmış kişiler/kitaplar) Halka anlatısının kavşak noktalarıdır.
+        (yoğun bağlanmış kişi/kitaplar) Halka anlatısının kavşak noktalarıdır.
+        Graf yoğunluğu yeni atomikler eklendikçe organik olarak büyür.
       </p>
       <p class="text-sm text-ink-500">
-        <strong>Not:</strong> Graph yoğunluğu kitap içeriği eklendikçe organik
-        olarak büyür. Şu anda 11/21 kitap, 13 kişi atomik dosyası mevcut;
-        v0.15+ turlarında yeni kitaplarla bu graph zenginleşecek.
+        <strong>Sürüm notu (v0.18):</strong> Etki Ağı, Cytoscape.js'den D3.js v7
+        force-simulation altyapısına yeniden-taşındı; islamicatlas.org
+        modeline yapısal-paralel bir akademik-disiplinli-UI uygulandı (75-25
+        split, sağ-panel-bağlantı-listesi, dönem-tab'ları, varlık-tipi/bağlantı-türü
+        filtreleri, tooltip-zengin, click-to-focus, responsive layout).
       </p>
     </div>
   </section>
