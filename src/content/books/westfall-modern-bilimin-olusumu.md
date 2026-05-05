@@ -252,6 +252,12 @@ further_reading:
     - "I. Bernard Cohen, *The Newtonian Revolution* — Cambridge University Press, 1980; Newton-akademik-mirasının 18. yy akademik-aktarım-zincirinin akademik-disiplin-vakası. Türkçe çeviri yok."
     - "David Wootton, *The Invention of Science: A New History of the Scientific Revolution* — Allen Lane, 2015; akademik-yeniden-yapılandırma-konumlamasında Westfall-akademik-zincirinin akademik-revizyonist-akademik-uzantısı. Halka 3. dönem-müfredat-planında #17 olarak konumlanmaktadır."
 
+cross_program_links:
+  - program_slug: "ideolojiler-ve-toplumsal-devrimler"
+    program_name: "Halka: İdeolojiler ve Toplumsal Devrimler"
+    item: "Peter N. Stearns — Sanayi Devrimi Tarihi"
+    thematic_axis: "Bilim Devrimi-akademik-zincirin toplumsal-tarihsel-paralel-vakası: Westfall'un Bilim Devrimi-internalist-aksiyomatik-derinlik-okumasının (16-17. yy bilim-içi-yapısal-zincir) Stearns'in Sanayi Devrimi-externalist-toplumsal-tarih-okumasıyla (18-19. yy üretim-toplum-zincir) yan-yana-konumlandırılması; bilim-üretim-modernite-akademik-zincirin iç-yapısal ve toplumsal-cephe-okumalarının yapısal-tamamlayıcılığı."
+
 tags:
   - "akademik-derinlik-monografi"
   - "bilim-devrimi"

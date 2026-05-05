@@ -13,6 +13,12 @@ related_concepts:
 wikidata_id: "Q83267"
 sep_slug: "enlightenment"
 
+cross_program_links:
+  - program_slug: "ideolojiler-ve-toplumsal-devrimler"
+    program_name: "Halka: İdeolojiler ve Toplumsal Devrimler"
+    item: "Eric Hobsbawm — Devrim Çağı 1789-1848"
+    thematic_axis: "Aydınlanma-akademik-zincirin politik-tarihsel-uzantısı: Bilim Tarihi-perspektifinde (1727-1826 ABD-uçtaki Franklin/Jefferson/Adams/Madison-zinciri) işlenen Aydınlanma-figür-yapısının Hobsbawm'da ikili-devrim-tezi içinde post-Aydınlanma toplumsal-politik-konumlamayla yan-yana-okunması."
+
 tags:
   - "aydinlanma"
   - "amerikan-akademik-tarih"

@@ -2,6 +2,7 @@
 // src/pages/kavramlar/[slug].astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AcademicSourceLinks from '@/components/AcademicSourceLinks.astro';
+import CrossProgramBadge from '@/components/CrossProgramBadge.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -76,6 +77,9 @@ const referencingBooks = allBooks.filter((b) =>
     <section class="halka-prose">
       <Content />
     </section>
+
+    {/* v0.20 — UI-B: kardeş-program-zincir-rozeti */}
+    <CrossProgramBadge links={data.cross_program_links ?? []} />
 
     {/* v0.18: akademik-otoritatif-kaynak-zinciri rozeti */}
     <AcademicSourceLinks

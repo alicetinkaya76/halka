@@ -10,6 +10,12 @@ related_concepts:
   - "urdi-lemma"
   - "ptoleme-aequans-elestirisi"
 
+cross_program_links:
+  - program_slug: "40-eserde-islam-dusuncesi"
+    program_name: "Halka: 40 Eserde İslam Düşüncesi"
+    item: "Nakîb el-Attâs — İslâm, Sekülerizm ve Geleceğin Felsefesi (3. Kademe)"
+    thematic_axis: "Akademik-Eurocentric-konum eleştirisinin yapısal-paralel-vakası: Sezgin'in Şâtır-Kopernik matematik-özdeşlik teknik-silahının (1350-1543) anti-Eurocentric-tarihyazımı-zincirinin İslam-felsefe-cephesindeki akrabası — Attâs'ın 'Batı-bilim-felsefe-paradigmasının evrenselliği eleştirisi'nin teknik-astronomi-tarafındaki somut-akademik-yansıması."
+
 tags: ["matematik-ozdeslik", "anti-eurocentric-teknik-silah", "ay-modeli", "halka-en-sert-teknik-silah", "14-16yy-astronomi", "transmisyon-yollari"]
 ---
 

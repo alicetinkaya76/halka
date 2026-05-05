@@ -13,6 +13,12 @@ related_concepts:
   - "tabakat"
   - "anti-institutionalism-berkey"
 
+cross_program_links:
+  - program_slug: "40-eserde-islam-dusuncesi"
+    program_name: "Halka: 40 Eserde İslam Düşüncesi"
+    item: "Ebu'l Hasen Ali En-Nedvî — Müslümanların Gerilemesiyle Dünya Neler Kaybetti (4. Kademe)"
+    thematic_axis: "İslam-bilim-akademik-zincirin tarihsel-akademik-konum-tartışmasının somut-vakası: medresenin (Bağdat 1067 → Şam-Kâhire) Sünnî-ortodoks-eğitim-yapısının yayılım haritasının Berkey-anti-institutionalist okumasının, Nedvi'nin İslam-akademik-mirasın-gerileme-tezinin yan-yana-akademik-tartışma-zemini."
+
 tags: ["medrese", "sunni-egitim", "vakfiye-temelli", "anti-institutionalism", "memluk-kahire", "nizamiyye-prototipi", "halka-3-kitap-dugumu"]
 ---
 

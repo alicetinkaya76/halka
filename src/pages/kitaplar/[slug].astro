@@ -18,6 +18,7 @@
 //   14. Tags
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import CrossProgramBadge from '@/components/CrossProgramBadge.astro';
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import {
   claimTypeLabels,
@@ -660,6 +661,18 @@ const yToSvg = (y: number) => PAD_T + y * dataH;
         </section>
       )}
 
+      {/* ============== CROSS-PROGRAM BADGE (v0.20 — UI-B) ============== */}
+      {/* Kardeş-program-zincir-konumlanması varsa "Müfredattaki diğer
+          kitaplarla ilişki" sonrasında, "Eleştirel okuma notları" öncesinde
+          render edilir — yapısal-akademik-paralel: aynı-program-içi-zincir
+          (relationships_to_other_books) ile yan-yana, ardından kardeş-
+          program-zinciri (cross_program_links). */}
+      {data.cross_program_links && data.cross_program_links.length > 0 && (
+        <section id="kardes-program" class="mb-14">
+          <CrossProgramBadge links={data.cross_program_links} />
+        </section>
+      )}
+
       {/* ============== CRITICAL READING NOTES ============== */}
       {data.critical_reading_notes && data.critical_reading_notes.length > 0 && (
         <section id="elestirel-notlar" class="mb-14">
@@ -758,6 +771,9 @@ const yToSvg = (y: number) => PAD_T + y * dataH;
           )}
           {data.relationships_to_other_books?.length && (
             <li><a href="#diger-kitaplar" class="no-underline text-ink-600 hover:text-emerald">Diğer kitaplar</a></li>
+          )}
+          {data.cross_program_links?.length && (
+            <li><a href="#kardes-program" class="no-underline text-ink-600 hover:text-emerald">Kardeş-program</a></li>
           )}
           {data.critical_reading_notes?.length && (
             <li><a href="#elestirel-notlar" class="no-underline text-ink-600 hover:text-emerald">Eleştirel notlar</a></li>

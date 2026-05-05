@@ -46,12 +46,16 @@ const flatBooks = curriculum.flatMap((d) =>
 );
 const builtBookData = books.map((b) => {
   const slug = b.id.replace(/\.md$/, '');
+  const hp = b.data.historiographical_position;
   return {
     slug,
     start: b.data.period_covered?.start ?? null,
     end: b.data.period_covered?.end ?? null,
     eraName: b.data.period_covered?.era_name ?? '',
     siraNo: b.data.halka_metadata.sira_no,
+    // v0.20 — UI-D: tarihçi-yorum-rozetleri için historiographical_position aktarımı
+    eurAxis: hp.eurocentrism_axis,
+    ieAxis: hp.internalist_externalist,
   };
 });
 const builtBookMap = new Map(builtBookData.map((b) => [b.slug, b]));
@@ -66,10 +70,37 @@ const timelineBooks = flatBooks
       start: built.start!,
       end: built.end!,
       eraName: built.eraName,
+      // v0.20 — UI-D: tarihyazımı-konum-rozetleri
+      eurAxis: built.eurAxis,
+      ieAxis: built.ieAxis,
     };
   })
   // Görsel düzen: start yılına göre sırala (en eski → en yeni)
   .sort((a, b) => a.start - b.start);
+
+// v0.20 — UI-D: Tarihyazımı-rozet-renk-paleti
+// Eurocentrism rozet-renkleri: anti-Eurocentric=emerald-vurgu (eleştirel-konum),
+// Eurocentric=carmine (klasik-merkez), noteurocentric-but-comparative=amber
+// (orta-yol), agnostic=ink-warm-gri (yorum-konumlamasız).
+const EUR_PALETTE: Record<string, { color: string; label: string }> = {
+  'anti-Eurocentric':                 { color: '#0e6b5e', label: 'anti-Eurocentric' },
+  'Eurocentric':                      { color: '#9c2a3b', label: 'Eurocentric' },
+  'noteurocentric-but-comparative':   { color: '#ba7517', label: 'karşılaştırmalı (Eurocentric değil)' },
+  'agnostic':                         { color: '#888780', label: 'agnostik' },
+};
+// Internalist/externalist rozet-renkleri: internalist=mor (bilim-içi-okuma),
+// externalist=koyu-turuncu (toplumsal-bağlam-okuma), mixed=amber (hibrit).
+const IE_PALETTE: Record<string, { color: string; label: string }> = {
+  'internalist': { color: '#534ab7', label: 'internalist (bilim-içi)' },
+  'externalist': { color: '#d85a30', label: 'externalist (toplumsal-bağlam)' },
+  'mixed':       { color: '#bb900c', label: 'karma' },
+};
+
+// v0.20 — UI-D: Filtre-bar dropdown-seçeneklerinin gerçek-veriden-türetilmesi.
+// Yapısal-disiplin: dropdown sadece datada gerçekten geçen ekstem-değerleri
+// gösterir; "Eurocentric" filtresi 0 sonuç döndürmesin.
+const presentEurValues = Array.from(new Set(timelineBooks.map((b) => b.eurAxis))).sort();
+const presentIeValues  = Array.from(new Set(timelineBooks.map((b) => b.ieAxis))).sort();
 
 // Veriyi normalize et — kişiler
 const timelinePeople = people
@@ -105,7 +136,7 @@ const PEOPLE_Y0 = TITLE_H + BOOKS_BLOCK_H + 30 + SUBTITLE_H;
 const AXIS_Y0 = H - AXIS_H + 10;
 ---
 
-<div class="halka-timeline-wrapper">
+<div class="halka-timeline-wrapper" id="halka-timeline-root">
   <div class="halka-timeline-meta" role="region" aria-label="Timeline lejantı">
     <p class="halka-timeline-meta-title">Atomik Atlas — kronolojik katman</p>
     <p class="halka-timeline-meta-desc">
@@ -115,7 +146,37 @@ const AXIS_Y0 = H - AXIS_H + 10;
       1500–2026 normal ölçek (Doğu Bilim Geleneği yoğunluğu görünür kalsın diye).
       Kişi çubuklarındaki <em>?</em> işareti doğum yılı bilinmediği için ölüm
       yılından 60-yıl öncesi varsayıldığını gösterir.
+      <br />
+      <strong>v0.20 UI-D:</strong> Her kitap-bantın solunda iki minik-rozet,
+      kitabın <em>tarihyazımı-konumunu</em> gösterir: <strong>iç-rozet</strong>
+      Eurocentrism-aksisi (anti-Eurocentric=emerald, Eurocentric=carmine,
+      karşılaştırmalı=amber, agnostik=gri); <strong>dış-rozet</strong>
+      internalist/externalist-aksisi (mor=bilim-içi, turuncu=toplumsal-bağlam,
+      amber=karma). Aşağıdan filtreleyebilirsiniz.
     </p>
+    {/* v0.20 — UI-D: Tarihyazımı-konum-filtresi */}
+    <div class="halka-timeline-filter">
+      <label class="halka-timeline-filter-label">
+        <span>Eurocentrism-aksisi:</span>
+        <select id="hp-filter-eur" class="halka-timeline-filter-select">
+          <option value="">— tümü —</option>
+          {presentEurValues.map((v) => (
+            <option value={v}>{EUR_PALETTE[v]?.label ?? v}</option>
+          ))}
+        </select>
+      </label>
+      <label class="halka-timeline-filter-label">
+        <span>İnternalist/externalist-aksisi:</span>
+        <select id="hp-filter-ie" class="halka-timeline-filter-select">
+          <option value="">— tümü —</option>
+          {presentIeValues.map((v) => (
+            <option value={v}>{IE_PALETTE[v]?.label ?? v}</option>
+          ))}
+        </select>
+      </label>
+      <button id="hp-filter-reset" class="halka-timeline-filter-reset" type="button">Sıfırla</button>
+      <span id="hp-filter-counter" class="halka-timeline-filter-counter" aria-live="polite"></span>
+    </div>
   </div>
 
   <div class="halka-timeline-scroll">
@@ -162,12 +223,39 @@ const AXIS_Y0 = H - AXIS_H + 10;
         const y = BOOKS_Y0 + i * (BAND_H + BAND_GAP);
         const w = Math.max(2, x2 - x1);
         const labelText = `#${b.sira_no} ${b.author.split(' ').pop()}`;
+        // v0.20 — UI-D: tarihyazımı-rozet renkleri
+        const eurMeta = EUR_PALETTE[b.eurAxis];
+        const ieMeta = IE_PALETTE[b.ieAxis];
+        const cy = y + BAND_H / 2;
         return (
           <a
             href={`${baseUrl}/kitaplar/${b.slug}`}
             class="halka-timeline-book"
+            data-eur={b.eurAxis}
+            data-ie={b.ieAxis}
           >
-            <title>{`#${b.sira_no} · ${b.title} — ${b.author} · ${b.start} → ${b.end}${b.eraName ? '\n' + b.eraName.split(';')[0] : ''}`}</title>
+            <title>{`#${b.sira_no} · ${b.title} — ${b.author} · ${b.start} → ${b.end}\nTarihyazımı: ${eurMeta?.label ?? b.eurAxis} · ${ieMeta?.label ?? b.ieAxis}${b.eraName ? '\n' + b.eraName.split(';')[0] : ''}`}</title>
+            {/* v0.20 UI-D: Tarihyazımı-konum-rozetleri (sabit-sol-kolon, x=10 ve x=24) */}
+            <circle
+              cx={10}
+              cy={cy}
+              r={4}
+              fill={eurMeta?.color ?? 'transparent'}
+              stroke={eurMeta?.color ?? 'var(--halka-rule)'}
+              stroke-width="1"
+              opacity={eurMeta ? 0.85 : 0.3}
+              class="halka-timeline-rozet halka-timeline-rozet-eur"
+            />
+            <circle
+              cx={24}
+              cy={cy}
+              r={4}
+              fill={ieMeta?.color ?? 'transparent'}
+              stroke={ieMeta?.color ?? 'var(--halka-rule)'}
+              stroke-width="1"
+              opacity={ieMeta ? 0.85 : 0.3}
+              class="halka-timeline-rozet halka-timeline-rozet-ie"
+            />
             <rect
               x={x1}
               y={y}
@@ -397,4 +485,147 @@ const AXIS_Y0 = H - AXIS_H + 10;
     fill-opacity: 0.85;
     stroke-width: 2;
   }
+
+  /* v0.20 — UI-D: Tarihyazımı-rozet hover-vurgusu */
+  .halka-timeline-book:hover .halka-timeline-rozet {
+    opacity: 1;
+    stroke-width: 1.5;
+  }
+
+  /* v0.20 — UI-D: Filtre-bar tasarım-sistemine uyumlu */
+  .halka-timeline-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.1rem;
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--halka-rule);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.78rem;
+  }
+  .halka-timeline-filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--halka-ink);
+  }
+  .halka-timeline-filter-label > span {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--halka-emerald);
+  }
+  .halka-timeline-filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    font-size: 0.78rem;
+    padding: 0.28rem 1.6rem 0.28rem 0.55rem;
+    border: 1px solid var(--halka-rule);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.85);
+    background-image: linear-gradient(45deg, transparent 50%, var(--halka-emerald) 50%),
+                      linear-gradient(135deg, var(--halka-emerald) 50%, transparent 50%);
+    background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: var(--halka-ink);
+    cursor: pointer;
+    transition: border-color 150ms ease;
+  }
+  .halka-timeline-filter-select:hover,
+  .halka-timeline-filter-select:focus {
+    border-color: var(--halka-emerald);
+    outline: none;
+  }
+  .halka-timeline-filter-reset {
+    font-family: inherit;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--halka-rule);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--halka-ink);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .halka-timeline-filter-reset:hover {
+    border-color: var(--halka-emerald);
+    color: var(--halka-emerald);
+  }
+  .halka-timeline-filter-counter {
+    margin-left: auto;
+    color: var(--halka-ink);
+    opacity: 0.65;
+    font-size: 0.72rem;
+    font-style: italic;
+  }
+
+  /* Filtreyle eşleşmeyen bantlar dim-state. Tıklamayı da pasifleştir
+     (pointer-events:none) ki yanlışlıkla saklı-bant tıklanmasın. */
+  .halka-timeline-book.is-dim {
+    opacity: 0.12;
+    pointer-events: none;
+  }
 </style>
+
+{/* v0.20 — UI-D: Filtre-bar JS (vanilla, 0 bağımlılık).
+    JS yüklenmezse her şey normal görünür — graceful-degradation. */}
+<script is:inline>
+  (function () {
+    'use strict';
+    function init() {
+      var root = document.getElementById('halka-timeline-root');
+      if (!root) return;
+      var eurSel = document.getElementById('hp-filter-eur');
+      var ieSel  = document.getElementById('hp-filter-ie');
+      var reset  = document.getElementById('hp-filter-reset');
+      var counter = document.getElementById('hp-filter-counter');
+      if (!eurSel || !ieSel) return;
+      var bands = root.querySelectorAll('.halka-timeline-book');
+      var total = bands.length;
+
+      function apply() {
+        var eur = eurSel.value;
+        var ie  = ieSel.value;
+        var visible = 0;
+        for (var i = 0; i < bands.length; i++) {
+          var el = bands[i];
+          var elEur = el.getAttribute('data-eur');
+          var elIe  = el.getAttribute('data-ie');
+          var match = (!eur || elEur === eur) && (!ie || elIe === ie);
+          if (match) {
+            el.classList.remove('is-dim');
+            visible++;
+          } else {
+            el.classList.add('is-dim');
+          }
+        }
+        if (counter) {
+          if (eur || ie) {
+            counter.textContent = visible + ' / ' + total + ' kitap';
+          } else {
+            counter.textContent = '';
+          }
+        }
+      }
+
+      eurSel.addEventListener('change', apply);
+      ieSel.addEventListener('change', apply);
+      if (reset) {
+        reset.addEventListener('click', function () {
+          eurSel.value = '';
+          ieSel.value = '';
+          apply();
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
