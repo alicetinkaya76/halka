@@ -36,6 +36,7 @@ halka_metadata:
   sira_no: 13
   status: "sirada"
   onceki_kitap: "gleick-isaac-newton"
+  sonraki_kitap: "isaacson-benjamin-franklin"
 
 historiographical_position:
   eurocentrism_axis: "noteurocentric-but-comparative"

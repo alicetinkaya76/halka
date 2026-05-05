@@ -1,0 +1,252 @@
+---
+// src/components/AcademicSourceLinks.astro
+//
+// Halka v0.18 — Akademik-otoritatif-kaynak-zinciri bağlantıları.
+//
+// Atomik-detail-sayfalarında (kişi, yer, kavram) atomik-özet sonrasında
+// akademik-otoritatif-kaynaklara link-out rozeti olarak render edilir.
+//
+// İki rozet:
+//   1. DİA  — Türkiye Diyanet Vakfı İslam Ansiklopedisi
+//             URL: https://islamansiklopedisi.org.tr/{dia_id}
+//             Halka 1.-2. dönem-İslam-bilim-zinciri için birincil-Türkçe
+//             akademik-otoritatif-kaynak.
+//   2. SEP  — Stanford Encyclopedia of Philosophy
+//             URL: https://plato.stanford.edu/entries/{sep_slug}/
+//             Halka 3. dönem ve sonrası felsefi-figürler ve kavramlar için
+//             birincil-İngilizce akademik-otoritatif-kaynak.
+//
+// Mimari ilke: telif-açısından sıfır-risk, kullanıcıyı kaynağa yönlendirir;
+// graceful-degradation — slug yoksa rozet render edilmez.
+//
+// Kullanım:
+//   <AcademicSourceLinks
+//     diaId={data.dia_id}
+//     sepSlug={data.sep_slug}
+//   />
+
+interface Props {
+  diaId?: string | null;
+  sepSlug?: string | null;
+  /** Eğer true ise rozet wrapper'ı section etiketiyle sarılır. Varsayılan true. */
+  asSection?: boolean;
+}
+
+const { diaId, sepSlug, asSection = true } = Astro.props;
+
+const hasDia = typeof diaId === 'string' && diaId.length > 0;
+const hasSep = typeof sepSlug === 'string' && sepSlug.length > 0;
+
+// Hiçbir akademik-kaynak-bağlantısı yoksa render etme — graceful-degradation.
+const shouldRender = hasDia || hasSep;
+
+const diaUrl = hasDia ? `https://islamansiklopedisi.org.tr/${diaId}` : null;
+const sepUrl = hasSep ? `https://plato.stanford.edu/entries/${sepSlug}/` : null;
+---
+
+{shouldRender && (
+  asSection ? (
+    <section class="halka-asl" aria-label="Akademik otoritatif kaynaklar">
+      <h2 class="halka-asl-heading">Akademik otoritatif kaynaklar</h2>
+      <p class="halka-asl-context">
+        Bu atomiğin içeriği Halka grup-okuma-disiplinin akademik-yorumlamasını
+        sunar. Akademik-otoritatif-kaynak-zincirinin doğrudan-yetkili-girişlerine
+        aşağıdaki rozetlerle ulaşabilirsiniz:
+      </p>
+      <div class="halka-asl-row">
+        {hasDia && (
+          <a
+            href={diaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="halka-asl-badge halka-asl-dia"
+            aria-label="DİA — Diyanet İslam Ansiklopedisi'nde oku (yeni sekmede açılır)"
+          >
+            <span class="halka-asl-badge-mark">DİA</span>
+            <span class="halka-asl-badge-label">
+              <strong>Diyanet İslam Ansiklopedisi'nde oku</strong>
+              <span class="halka-asl-badge-sub">islamansiklopedisi.org.tr</span>
+            </span>
+            <span class="halka-asl-badge-arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+        {hasSep && (
+          <a
+            href={sepUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="halka-asl-badge halka-asl-sep"
+            aria-label="SEP — Stanford Encyclopedia of Philosophy'de oku, İngilizce (yeni sekmede açılır)"
+          >
+            <span class="halka-asl-badge-mark">SEP</span>
+            <span class="halka-asl-badge-label">
+              <strong>Stanford Encyclopedia of Philosophy'de oku</strong>
+              <span class="halka-asl-badge-sub">plato.stanford.edu · İngilizce</span>
+            </span>
+            <span class="halka-asl-badge-arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+      </div>
+    </section>
+  ) : (
+    <div class="halka-asl halka-asl-inline">
+      <div class="halka-asl-row">
+        {hasDia && (
+          <a href={diaUrl} target="_blank" rel="noopener noreferrer" class="halka-asl-badge halka-asl-dia">
+            <span class="halka-asl-badge-mark">DİA</span>
+            <span class="halka-asl-badge-label"><strong>Diyanet İslam Ansiklopedisi</strong></span>
+            <span class="halka-asl-badge-arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+        {hasSep && (
+          <a href={sepUrl} target="_blank" rel="noopener noreferrer" class="halka-asl-badge halka-asl-sep">
+            <span class="halka-asl-badge-mark">SEP</span>
+            <span class="halka-asl-badge-label"><strong>Stanford Encyclopedia of Philosophy</strong></span>
+            <span class="halka-asl-badge-arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+      </div>
+    </div>
+  )
+)}
+
+<style>
+  .halka-asl {
+    margin: 2.5rem 0 1.5rem;
+    padding: 1.25rem 1.4rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(247, 245, 240, 0.4),
+      rgba(247, 245, 240, 0.7)
+    );
+    border-left: 3px solid var(--halka-rule, rgba(26, 23, 20, 0.18));
+    border-radius: 0 4px 4px 0;
+  }
+  .halka-asl-inline {
+    margin: 1rem 0;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .halka-asl-heading {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--halka-ink-500, #6b6258);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.55rem;
+  }
+  .halka-asl-context {
+    font-family: 'Crimson Pro', 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--halka-ink-700, #4a4137);
+    margin: 0 0 1rem;
+    max-width: 60ch;
+  }
+
+  .halka-asl-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  /* --- Rozet temel stili --- */
+  .halka-asl-badge {
+    display: inline-flex;
+    align-items: stretch;
+    gap: 0;
+    text-decoration: none;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    transition: transform 160ms ease, box-shadow 200ms ease;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: white;
+    color: var(--halka-ink, #1a1714);
+    max-width: 100%;
+  }
+  .halka-asl-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  .halka-asl-badge:focus-visible {
+    outline: 2px solid var(--halka-emerald, #0e6b5e);
+    outline-offset: 2px;
+  }
+
+  .halka-asl-badge-mark {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.85rem;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: white;
+    flex-shrink: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .halka-asl-badge-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.55rem 0.8rem 0.55rem 0.95rem;
+    line-height: 1.25;
+    min-width: 0;
+  }
+  .halka-asl-badge-label strong {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--halka-ink, #1a1714);
+  }
+  .halka-asl-badge-sub {
+    font-size: 0.68rem;
+    color: var(--halka-ink-400, #8a8279);
+    margin-top: 2px;
+    letter-spacing: 0.01em;
+  }
+  .halka-asl-badge-arrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.85rem 0 0;
+    font-size: 0.95rem;
+    color: var(--halka-ink-400, #8a8279);
+    transition: transform 200ms ease;
+  }
+  .halka-asl-badge:hover .halka-asl-badge-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  /* --- DİA mavi-rozet --- */
+  .halka-asl-dia .halka-asl-badge-mark {
+    background: linear-gradient(135deg, #1e5a8e 0%, #2972a8 100%);
+  }
+
+  /* --- SEP kırmızı-rozet --- */
+  .halka-asl-sep .halka-asl-badge-mark {
+    background: linear-gradient(135deg, #8b1a1a 0%, #a82929 100%);
+  }
+
+  /* Inline mod — sub satırı gizle, daha kompakt */
+  .halka-asl-inline .halka-asl-badge-sub {
+    display: none;
+  }
+  .halka-asl-inline .halka-asl-badge-label {
+    padding: 0.35rem 0.75rem;
+  }
+  .halka-asl-inline .halka-asl-badge-label strong {
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 540px) {
+    .halka-asl-row {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .halka-asl-badge {
+      width: 100%;
+    }
+  }
+</style>

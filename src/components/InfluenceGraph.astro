@@ -1,138 +1,292 @@
 ---
 // src/components/InfluenceGraph.astro
 //
-// Halka v0.14 — Etki ağı (Ceyhun Hoca öneri #6).
-// "Kim kimden etkilendi? El-Harezmi'nin cebir çalışmaları Batı'da
-// kimin yolunu açtı?" sorusunun graph-visualizasyonu.
+// Halka v0.18 — Etki Ağı sıfırdan-rewrite.
+// =====================================================================
 //
-// Düğümler:
-//   - Kitaplar (mavi-yeşil emerald, daha büyük) — referans-derinliğine göre
-//   - Kişiler (carmine, küçük) — atomik atlas dosyası olanlar
+// v0.14-v0.17 turlarında Cytoscape.js + CDN-lazy-load + <script type="application/json">
+// kombinasyonu kullanıldı. Production GitHub Pages'te canvas-boş-render
+// bug-vakası (bkz. v0.18 önhazırlık screenshot) Cytoscape-yüklenme-race-condition
+// + Astro static-build JSON-escape kombinasyonundan kaynaklandı. v0.18 turunda
+// component sıfırdan modern-D3 v7 force-simulation API'sine yeniden-yazıldı;
+// veri-aktarımı `<script type="application/json">` yerine `data-graph-json`
+// HTML-attribute'üyle yapılır (Astro static-build escape-güvenli).
 //
-// Kenarlar:
-//   - book → book: relationships_to_other_books (relation tipine göre renk)
-//   - person → person: influenced_by/influenced
-//   - book → person: key_people (kitap içinde geçen kişi — opsiyonel,
-//     graph kalabalığını önlemek için varsayılan olarak gizli, toggle ile açılır)
+// Akademik-disiplin-modeli: islamicatlas.org-paralel-yapı.
+// (Önhazırlık screenshot'larından türetilmiş yapısal-paralel; bkz. v0.18
+//  SONRAKI-OTURUM-PROMPT-v0.18.md §3-A.)
 //
-// Cytoscape.js CDN'den lazy-load — sadece bu sayfa için yüklenir.
+//  Yatay-mimari (büyük ekran):
+//    +-------------------------------------------------------------+
+//    | Üst-bar: title + sayaç + filtreler + arama                  |
+//    +---------------------------------------------+---------------+
+//    | %75 graf-canvas (force-simulation SVG)      | %25 sağ-panel |
+//    |                                             | bağlantı-list |
+//    |                                             | scroll        |
+//    +---------------------------------------------+---------------+
+//    | Lejant + dönem-sürgüsü + akademik-açıklama                  |
+//    +-------------------------------------------------------------+
+//
+//  Filtre-mekanizmaları:
+//    - Varlık tipi: Tümü / Kitap / Kişi
+//    - Bağlantı türü: Tümü / Kitap-kitap / Kişi-kişi / Kitap-kişi
+//    - Dönem-tab'ları: 1./2./3./4. dönem (DONEM_COLORS-paralel renk-kodu)
+//    - Search-box: düğüm-adı arama (substring + name_aliases dahil)
+//
+//  Etkileşim:
+//    - Hover-tooltip: kişi → ad+dates+role+ref-count;
+//                     kitap → title+author+halka-#+donem+status
+//    - Click-to-focus: seçilen-düğüm + komşuları vurgulanır, gerisi soluklaşır
+//    - Çift-tık: ilgili-detay-sayfasına git (yeni sekmede)
+//    - Sağ-panel-kart-tıklama: ilgili-iki-düğümü vurgular
+//
+// Mimari ilke: tüm graph-data server-side (build-time) hesaplanır, istemciye
+// JSON-attribute'üyle aktarılır; D3 v7 sadece görselleştirme katmanı.
 
 import { getCollection } from 'astro:content';
-import { countBookReferences, countPersonReferences } from '@/lib/halka-context';
+import { countPersonReferences } from '@/lib/halka-context';
+import { curriculum } from '@/lib/curriculum';
+import { statusLabels } from '@/lib/labels';
 
 const baseUrl = import.meta.env.BASE_URL;
 
 const books = await getCollection('books');
 const people = await getCollection('people');
 
-// --- Düğümler ---
+// --- Dönem-renk-paleti (DONEM_COLORS-paralel; istemcide CSS-var ile uygulanır) ---
+// Uyarı: halka-context.ts'deki DONEM_COLORS curriculum.ts'deki uzun-isimleri
+// kullanır; ZOD-enum'daki kısa-isimler buradan farklı. Bu yüzden burada
+// kısa-isim → renk haritalaması ayrıca kuruyoruz (build-stabil).
+const PERIOD_PALETTE: Record<string, { fill: string; label: string; key: string }> = {
+  '1. Dönem - Bilim Tarihinin Çerçevesi':
+    { fill: '#0e6b5e', label: '1. Dönem · Çerçeve',         key: 'p1' },
+  '2. Dönem - Doğu Bilim Geleneği ve İslam Bilimi':
+    { fill: '#1d8e7a', label: '2. Dönem · Doğu & İslam',    key: 'p2' },
+  '3. Dönem - Batı Bilim Devrimi':
+    { fill: '#9c2a3b', label: '3. Dönem · Bilim Devrimi',   key: 'p3' },
+  '4. Dönem - Karşılaştırmalı Sentezler':
+    { fill: '#5b3a47', label: '4. Dönem · Sentezler',       key: 'p4' },
+};
+const PERSON_DEFAULT_COLOR = '#7a6a55'; // dönem-bağlamsız kişiler için ink-warm
 
-const bookNodes = books.map((b) => {
+// --- 1) Düğümler ---
+
+type GraphNode = {
+  id: string;
+  slug: string;
+  label: string;
+  type: 'book' | 'person';
+  color: string;
+  periodKey: string | null;
+  refCount: number;
+  // Tooltip-zengin alanlar
+  title?: string;
+  author?: string;
+  siraNo?: number;
+  donemLabel?: string;
+  status?: string;
+  dates?: string;
+  role?: string;
+  aliases?: string[];
+};
+
+const bookNodes: GraphNode[] = books.map((b) => {
   const slug = b.id.replace(/\.md$/, '');
+  const donem = b.data.halka_metadata.donem;
+  const palette = PERIOD_PALETTE[donem];
   return {
-    data: {
-      id: `book:${slug}`,
-      slug,
-      label: b.data.author.split(' ').pop() ?? b.data.author,
-      title: b.data.title,
-      author: b.data.author,
-      type: 'book',
-      siraNo: b.data.halka_metadata.sira_no,
-      donem: b.data.halka_metadata.donem,
-    },
+    id: `book:${slug}`,
+    slug,
+    type: 'book',
+    label: b.data.author.split(' ').pop() ?? b.data.author,
+    color: palette?.fill ?? '#0e6b5e',
+    periodKey: palette?.key ?? null,
+    refCount: (b.data.relationships_to_other_books ?? []).length,
+    title: b.data.title,
+    author: b.data.author,
+    siraNo: b.data.halka_metadata.sira_no,
+    donemLabel: palette?.label ?? donem,
+    status: b.data.halka_metadata.status,
   };
 });
 
-const personNodes = people.map((p) => {
+// Kişi düğümlerinin dönem-türetimi: ilk-referans-eden-kitabın dönemi.
+// Bir kişi birden çok dönemde geçiyorsa en-küçük-sıra-no'lu dönem alınır.
+function derivePersonPeriod(personSlug: string): { donem: string | null; key: string | null; color: string } {
+  let earliestSira = Infinity;
+  let donem: string | null = null;
+  for (const b of books) {
+    if (b.data.key_people?.some((p) => p.slug === personSlug)) {
+      const s = b.data.halka_metadata.sira_no;
+      if (s < earliestSira) {
+        earliestSira = s;
+        donem = b.data.halka_metadata.donem;
+      }
+    }
+  }
+  if (!donem) return { donem: null, key: null, color: PERSON_DEFAULT_COLOR };
+  const palette = PERIOD_PALETTE[donem];
+  return { donem, key: palette?.key ?? null, color: palette?.fill ?? PERSON_DEFAULT_COLOR };
+}
+
+const personNodes: GraphNode[] = people.map((p) => {
   const slug = p.id.replace(/\.md$/, '');
   const refCount = countPersonReferences(slug, books as any);
+  const period = derivePersonPeriod(slug);
   return {
-    data: {
-      id: `person:${slug}`,
-      slug,
-      label: p.data.name,
-      type: 'person',
-      refCount,
-      role: p.data.role ?? '',
-    },
+    id: `person:${slug}`,
+    slug,
+    type: 'person',
+    label: p.data.name,
+    color: period.color,
+    periodKey: period.key,
+    refCount,
+    dates: p.data.dates ?? '',
+    role: p.data.role ?? '',
+    donemLabel: period.donem ? PERIOD_PALETTE[period.donem]?.label ?? period.donem : '',
+    aliases: p.data.name_aliases ?? [],
   };
 });
 
-// --- Kenarlar ---
+const allNodes: GraphNode[] = [...bookNodes, ...personNodes];
 
-// Kitap → kitap (relationships_to_other_books)
-const bookToBookEdges: any[] = [];
+// --- 2) Kenarlar ---
+
+type GraphEdge = {
+  id: string;
+  source: string;
+  target: string;
+  kind: 'book2book' | 'person2person' | 'book2person';
+  relation: string;        // ZOD enum-değeri (örn. 'tematik_tamamlayici')
+  relationLabel: string;   // İnsan-okunur-Türkçe-etiket (örn. 'Tematik tamamlayıcı')
+  // Sağ-panel-bağlantı-listesi için:
+  sourceLabel: string;
+  targetLabel: string;
+  sourceType: 'book' | 'person';
+  targetType: 'book' | 'person';
+};
+
+// Türkçe-relation-etiket-haritası (ZOD enum → insan-okunur)
+const RELATION_LABELS: Record<string, string> = {
+  // Kitap-kitap
+  kismen_celisir: 'Kısmen çelişir',
+  celisir: 'Çelişir',
+  uyumlu: 'Uyumlu',
+  tematik_tamamlayici: 'Tematik tamamlayıcı',
+  teknik_tamamlayici: 'Teknik tamamlayıcı',
+  kurumsal_tamamlayici: 'Kurumsal tamamlayıcı',
+  olcek_karsitligi: 'Ölçek karşıtlığı',
+  ters_yon: 'Ters yön',
+  dogrudan_kaynak: 'Doğrudan kaynak',
+  cogul_revizyon: 'Çoğul revizyon',
+  // Kişi-kişi / Kitap-kişi
+  influenced: 'Etkiledi',
+  mentions: 'Zikrediyor',
+};
+
+const nodeIndex = new Map(allNodes.map((n) => [n.id, n]));
+
+const bookToBookEdges: GraphEdge[] = [];
 for (const b of books) {
   const sourceSlug = b.id.replace(/\.md$/, '');
+  const sourceId = `book:${sourceSlug}`;
+  const sourceNode = nodeIndex.get(sourceId)!;
   for (const rel of b.data.relationships_to_other_books ?? []) {
+    const targetId = `book:${rel.book}`;
+    const targetNode = nodeIndex.get(targetId);
+    if (!targetNode) continue;
     bookToBookEdges.push({
-      data: {
-        id: `e:b2b:${sourceSlug}->${rel.book}:${rel.relation}`,
-        source: `book:${sourceSlug}`,
-        target: `book:${rel.book}`,
-        relation: rel.relation,
-        kind: 'book2book',
-      },
+      id: `e:b2b:${sourceSlug}->${rel.book}:${rel.relation}`,
+      source: sourceId,
+      target: targetId,
+      kind: 'book2book',
+      relation: rel.relation,
+      relationLabel: RELATION_LABELS[rel.relation] ?? rel.relation,
+      sourceLabel: `${sourceNode.author} — ${sourceNode.title}`,
+      targetLabel: `${targetNode.author} — ${targetNode.title}`,
+      sourceType: 'book',
+      targetType: 'book',
     });
   }
 }
 
-// Kişi → kişi (influenced_by, influenced)
-const personSlugs = new Set(personNodes.map((n) => n.data.slug));
-const personToPersonEdges: any[] = [];
+const personSlugs = new Set(personNodes.map((n) => n.slug));
+const personToPersonEdges: GraphEdge[] = [];
 for (const p of people) {
   const sourceSlug = p.id.replace(/\.md$/, '');
+  const sourceId = `person:${sourceSlug}`;
+  const sourceNode = nodeIndex.get(sourceId)!;
   for (const ib of p.data.influenced_by ?? []) {
-    if (personSlugs.has(ib)) {
-      personToPersonEdges.push({
-        data: {
-          id: `e:ib:${ib}->${sourceSlug}`,
-          source: `person:${ib}`,
-          target: `person:${sourceSlug}`,
-          relation: 'influenced',
-          kind: 'person2person',
-        },
-      });
-    }
+    if (!personSlugs.has(ib)) continue;
+    const targetNode = nodeIndex.get(`person:${ib}`);
+    if (!targetNode) continue;
+    personToPersonEdges.push({
+      id: `e:ib:${ib}->${sourceSlug}`,
+      source: `person:${ib}`,
+      target: sourceId,
+      kind: 'person2person',
+      relation: 'influenced',
+      relationLabel: RELATION_LABELS.influenced,
+      sourceLabel: targetNode.label,
+      targetLabel: sourceNode.label,
+      sourceType: 'person',
+      targetType: 'person',
+    });
   }
   for (const inf of p.data.influenced ?? []) {
-    if (personSlugs.has(inf)) {
-      personToPersonEdges.push({
-        data: {
-          id: `e:in:${sourceSlug}->${inf}`,
-          source: `person:${sourceSlug}`,
-          target: `person:${inf}`,
-          relation: 'influenced',
-          kind: 'person2person',
-        },
-      });
-    }
+    if (!personSlugs.has(inf)) continue;
+    const targetNode = nodeIndex.get(`person:${inf}`);
+    if (!targetNode) continue;
+    // Çift-yön çakışmasını önle (X→Y zaten varsa ekleme)
+    const dupKey = `e:ib:${sourceSlug}->${inf}`;
+    if (personToPersonEdges.some((e) => e.id === dupKey)) continue;
+    personToPersonEdges.push({
+      id: `e:in:${sourceSlug}->${inf}`,
+      source: sourceId,
+      target: `person:${inf}`,
+      kind: 'person2person',
+      relation: 'influenced',
+      relationLabel: RELATION_LABELS.influenced,
+      sourceLabel: sourceNode.label,
+      targetLabel: targetNode.label,
+      sourceType: 'person',
+      targetType: 'person',
+    });
   }
 }
 
-// Kitap → kişi (key_people referansları)
-const bookToPersonEdges: any[] = [];
+const bookToPersonEdges: GraphEdge[] = [];
 for (const b of books) {
   const sourceSlug = b.id.replace(/\.md$/, '');
+  const sourceId = `book:${sourceSlug}`;
+  const sourceNode = nodeIndex.get(sourceId)!;
   for (const kp of b.data.key_people ?? []) {
-    if (personSlugs.has(kp.slug)) {
-      bookToPersonEdges.push({
-        data: {
-          id: `e:b2p:${sourceSlug}->${kp.slug}`,
-          source: `book:${sourceSlug}`,
-          target: `person:${kp.slug}`,
-          relation: 'mentions',
-          kind: 'book2person',
-        },
-      });
-    }
+    if (!personSlugs.has(kp.slug)) continue;
+    const targetNode = nodeIndex.get(`person:${kp.slug}`);
+    if (!targetNode) continue;
+    bookToPersonEdges.push({
+      id: `e:b2p:${sourceSlug}->${kp.slug}`,
+      source: sourceId,
+      target: `person:${kp.slug}`,
+      kind: 'book2person',
+      relation: 'mentions',
+      relationLabel: RELATION_LABELS.mentions,
+      sourceLabel: `${sourceNode.author} — ${sourceNode.title}`,
+      targetLabel: targetNode.label,
+      sourceType: 'book',
+      targetType: 'person',
+    });
   }
 }
 
-// Tüm graph datası — tek JSON
+const allEdges = [...bookToBookEdges, ...personToPersonEdges, ...bookToPersonEdges];
+
+// --- 3) Veri-paketleme ---
+
 const graphData = {
-  nodes: [...bookNodes, ...personNodes],
-  edges: [...bookToBookEdges, ...personToPersonEdges, ...bookToPersonEdges],
+  nodes: allNodes,
+  edges: allEdges,
+  baseUrl,
 };
 const graphJson = JSON.stringify(graphData);
 
@@ -142,344 +296,1011 @@ const stats = {
   b2b: bookToBookEdges.length,
   p2p: personToPersonEdges.length,
   b2p: bookToPersonEdges.length,
+  totalEdges: allEdges.length,
 };
+
+// Donem-tab dökümü (filtre paneli için)
+const donemTabs = curriculum
+  .filter((d) => d.donem_tipi !== 'ek')
+  .map((d, i) => {
+    const palette = Object.values(PERIOD_PALETTE)[i];
+    return {
+      key: palette?.key ?? `p${i + 1}`,
+      label: palette?.label ?? d.short,
+      color: palette?.fill ?? '#0e6b5e',
+    };
+  });
 ---
 
-<div class="halka-graph-wrapper">
-  <div class="halka-graph-meta" role="region" aria-label="Etki ağı lejantı">
-    <p class="halka-graph-meta-title">Atomik Atlas — etki ağı katmanı</p>
-    <p class="halka-graph-meta-desc">
-      <strong>{stats.bookCount} kitap</strong> + <strong>{stats.personCount} kişi</strong>
-      düğümü, <strong>{stats.b2b}</strong> kitap-kitap, <strong>{stats.p2p}</strong>
-      kişi-kişi ve <strong>{stats.b2p}</strong> kitap-kişi kenarı. Halka cross-ref
-      ağının graph-visualizasyonu — "Kim kimden etkilendi?" sorusunun atomik atlas
-      cevabı. Düğümlere tıklayın → ilgili sayfaya gidin.
+<div class="ig-wrapper" id="ig-root">
+  {/* === Üst-bar: title + sayaç + filtreler + arama ============ */}
+  <header class="ig-topbar">
+    <div class="ig-topbar-left">
+      <p class="ig-eyebrow">Atomik Atlas — Etki Ağı Katmanı</p>
+      <p class="ig-counter">
+        <span id="ig-edge-counter">{stats.totalEdges}</span>
+        <span class="ig-counter-sep"> / </span>
+        <span class="ig-counter-total">{stats.totalEdges}</span>
+        <span class="ig-counter-label">bağlantı görünür</span>
+      </p>
+    </div>
+    <div class="ig-topbar-right">
+      <label class="ig-control">
+        <span class="ig-control-label">Varlık Tipi</span>
+        <select id="ig-filter-entity" class="ig-select">
+          <option value="all">Tümü ({stats.bookCount + stats.personCount})</option>
+          <option value="book">Kitap ({stats.bookCount})</option>
+          <option value="person">Kişi ({stats.personCount})</option>
+        </select>
+      </label>
+      <label class="ig-control">
+        <span class="ig-control-label">Bağlantı Türü</span>
+        <select id="ig-filter-edge" class="ig-select">
+          <option value="all">Tümü ({stats.totalEdges})</option>
+          <option value="book2book">Kitap-kitap ({stats.b2b})</option>
+          <option value="person2person">Kişi-kişi ({stats.p2p})</option>
+          <option value="book2person">Kitap-kişi ({stats.b2p})</option>
+        </select>
+      </label>
+      <label class="ig-control ig-control-search">
+        <span class="ig-control-label">Düğüm Ara</span>
+        <input type="search" id="ig-search" class="ig-input" placeholder="örn. Newton, Fara…" autocomplete="off" />
+      </label>
+    </div>
+  </header>
+
+  {/* === Dönem-tab'ları (DONEM_COLORS-paralel) ============ */}
+  <div class="ig-period-tabs" role="tablist" aria-label="Dönem-bazlı filtre">
+    <button class="ig-period-tab is-active" data-period="all" type="button" role="tab" aria-selected="true">
+      Tüm Dönemler
+    </button>
+    {donemTabs.map((d) => (
+      <button
+        class="ig-period-tab"
+        data-period={d.key}
+        type="button"
+        role="tab"
+        aria-selected="false"
+        style={`--ig-tab-color: ${d.color};`}
+      >
+        {d.label}
+      </button>
+    ))}
+  </div>
+
+  {/* === Ana-alan: 75% graf + 25% sağ-panel ============ */}
+  <div class="ig-main">
+    <div class="ig-canvas-host" id="ig-canvas-host">
+      <svg id="ig-svg" class="ig-svg" role="img" aria-label="Halka etki ağı: kitaplar ve kişiler arası akademik etkilenme grafı">
+        {/* SVG içeriği D3 tarafından doldurulur */}
+      </svg>
+      <div id="ig-tooltip" class="ig-tooltip" role="tooltip" aria-hidden="true"></div>
+      <button id="ig-fit" class="ig-fit-btn" type="button" aria-label="Görünüme sığdır">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4" stroke-linecap="round"/>
+        </svg>
+        Sığdır
+      </button>
+      <div id="ig-empty" class="ig-empty" hidden>
+        <p>Filtreye uyan düğüm bulunamadı.</p>
+      </div>
+    </div>
+
+    {/* === Sağ-panel: bağlantı-listesi (akademik-disiplin-zincir) ============ */}
+    <aside class="ig-side" aria-label="Bağlantı Listesi">
+      <header class="ig-side-header">
+        <h2 class="ig-side-title">Bağlantı Listesi</h2>
+        <p class="ig-side-sub">
+          Kitap-kitap, kişi-kişi ve kitap-kişi akademik-bağlarının atomik-zincir-listesi.
+          Bir karta tıklayın → grafda ilgili-iki-düğüm vurgulanır.
+        </p>
+      </header>
+      <ol id="ig-edge-list" class="ig-edge-list" aria-live="polite">
+        {/* JS tarafından doldurulur */}
+      </ol>
+    </aside>
+  </div>
+
+  {/* === Lejant + akademik-açıklama (alt) ============ */}
+  <footer class="ig-footer">
+    <div class="ig-legend">
+      <div class="ig-legend-section">
+        <span class="ig-legend-title">Düğümler</span>
+        <span class="ig-legend-item">
+          <svg width="16" height="16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2" fill="var(--halka-emerald, #0e6b5e)"/></svg>
+          Kitap (büyüklük = kitap-kitap-bağ-derinliği)
+        </span>
+        <span class="ig-legend-item">
+          <svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="var(--halka-carmine, #9c2a3b)"/></svg>
+          Kişi (büyüklük = kitap-referans-derinliği)
+        </span>
+      </div>
+      <div class="ig-legend-section">
+        <span class="ig-legend-title">Kenarlar</span>
+        <span class="ig-legend-item">
+          <svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="var(--halka-emerald, #0e6b5e)" stroke-width="2"/></svg>
+          Kitap-kitap
+        </span>
+        <span class="ig-legend-item">
+          <svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="var(--halka-carmine, #9c2a3b)" stroke-width="2"/></svg>
+          Kişi-kişi
+        </span>
+        <span class="ig-legend-item">
+          <svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="#b5ad9a" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+          Kitap-kişi
+        </span>
+      </div>
+    </div>
+    <p class="ig-foot-note">
+      <strong>Pedagojik konum:</strong> Halka'nın "kümülatif bilgi-ağı" tezinin somut göstergesi.
+      Bir düğüme <em>tıklayın</em> → komşuları vurgulanır. <em>Çift-tıklayın</em> → ilgili sayfa açılır.
+      Sağ-paneldeki bir bağlantı-kartına <em>tıklayın</em> → grafda iki-düğüm-arası-bağ izole edilir.
     </p>
-    <div class="halka-graph-controls">
-      <label class="halka-graph-toggle">
-        <input type="checkbox" id="halka-graph-toggle-b2p" checked />
-        Kitap-kişi kenarları
-      </label>
-      <label class="halka-graph-toggle">
-        <input type="checkbox" id="halka-graph-toggle-isolated" />
-        Yalnız düğümleri sakla
-      </label>
-      <button id="halka-graph-fit" class="halka-graph-btn" type="button">Görünüme sığdır</button>
-    </div>
-  </div>
+  </footer>
 
-  <div id="halka-influence-graph" class="halka-graph"></div>
-
-  <div class="halka-graph-legend" role="region" aria-label="Düğüm ve kenar rengi açıklaması">
-    <div class="halka-graph-legend-section">
-      <strong>Düğümler:</strong>
-      <span class="halka-graph-legend-item">
-        <svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="#0e6b5e" /></svg>
-        Kitap (büyüklük = referans-derinliği)
-      </span>
-      <span class="halka-graph-legend-item">
-        <svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="#9c2a3b" /></svg>
-        Kişi
-      </span>
-    </div>
-    <div class="halka-graph-legend-section">
-      <strong>Kenarlar:</strong>
-      <span class="halka-graph-legend-item">
-        <svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke="#0e6b5e" stroke-width="2" /></svg>
-        Kitap-kitap (tematik/tarihyazımı ilişkisi)
-      </span>
-      <span class="halka-graph-legend-item">
-        <svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke="#9c2a3b" stroke-width="2" /></svg>
-        Kişi-kişi (etkilendi)
-      </span>
-      <span class="halka-graph-legend-item">
-        <svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke="#d6cfbb" stroke-width="1.5" stroke-dasharray="3 2" /></svg>
-        Kitap-kişi (zikrediyor)
-      </span>
-    </div>
-  </div>
+  {/* === Veri-aktarımı: Astro-static-build escape-güvenli ============
+       Cytoscape-kullanan v0.14-v0.17 versiyonu <script type="application/json">
+       kullanırdı; Astro escape sorunu nedeniyle production'da bozuluyor olabilirdi.
+       v0.18 turunda data-attribute kullanıyoruz — daha-güvenli. */}
+  <div id="ig-data" data-graph-json={graphJson} hidden></div>
 </div>
 
-<script type="application/json" id="halka-graph-json" set:html={graphJson} is:inline></script>
+{/* D3 v7 — CDN-async-yükleme (tek kaynak: jsdelivr-resmi) ============ */}
+<script is:inline src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 
-<script
-  is:inline
-  src="https://unpkg.com/cytoscape@3.30.1/dist/cytoscape.min.js"
-></script>
+<script is:inline>
+  // ===================================================================
+  // Halka v0.18 — Etki Ağı Client-Side Force-Simulation
+  // ===================================================================
+  (function () {
+    'use strict';
 
-<script is:inline define:vars={{ baseUrl }}>
-  function initHalkaGraph() {
-    if (typeof cytoscape === 'undefined') {
-      setTimeout(initHalkaGraph, 100);
-      return;
+    // -------- Init guard: D3 yüklenmediyse poll-fallback (graceful) --------
+    function bootstrap() {
+      if (typeof window.d3 === 'undefined') {
+        // En fazla 50 deneme (5 saniye) — sonra hata mesajı göster
+        if ((bootstrap.attempts = (bootstrap.attempts || 0) + 1) > 50) {
+          var host = document.getElementById('ig-canvas-host');
+          if (host) host.innerHTML = '<p class="ig-error">D3 kütüphanesi yüklenemedi. Sayfa yenileyin.</p>';
+          return;
+        }
+        return setTimeout(bootstrap, 100);
+      }
+      try { initInfluenceGraph(); }
+      catch (err) {
+        console.error('[Halka:InfluenceGraph]', err);
+        var host = document.getElementById('ig-canvas-host');
+        if (host) host.innerHTML = '<p class="ig-error">Graf başlatılamadı: ' + (err && err.message ? err.message : 'bilinmeyen hata') + '</p>';
+      }
     }
 
-    const dataEl = document.getElementById('halka-graph-json');
-    if (!dataEl) return;
-    const data = JSON.parse(dataEl.textContent);
+    function initInfluenceGraph() {
+      var d3 = window.d3;
+      var dataEl = document.getElementById('ig-data');
+      if (!dataEl) throw new Error('Data div bulunamadı');
+      var dataStr = dataEl.getAttribute('data-graph-json');
+      if (!dataStr) throw new Error('data-graph-json attribute yok');
+      var data = JSON.parse(dataStr);
+      var baseUrl = data.baseUrl || '';
 
-    const cy = cytoscape({
-      container: document.getElementById('halka-influence-graph'),
-      elements: {
-        nodes: data.nodes,
-        edges: data.edges,
-      },
-      style: [
-        // Kitap düğümleri
-        {
-          selector: 'node[type="book"]',
-          style: {
-            'background-color': '#0e6b5e',
-            'border-color': '#191510',
-            'border-width': 1.5,
-            'label': 'data(label)',
-            'color': '#191510',
-            'font-family': 'Inter, sans-serif',
-            'font-size': 11,
-            'font-weight': 600,
-            'text-valign': 'bottom',
-            'text-margin-y': 6,
-            'text-background-color': '#f7f5f0',
-            'text-background-opacity': 0.85,
-            'text-background-padding': 2,
-            'width': 28,
-            'height': 28,
-          },
-        },
-        // Kişi düğümleri (büyüklük referans-derinliğine göre)
-        {
-          selector: 'node[type="person"]',
-          style: {
-            'background-color': '#9c2a3b',
-            'border-color': '#191510',
-            'border-width': 1,
-            'label': 'data(label)',
-            'color': '#191510',
-            'font-family': 'Inter, sans-serif',
-            'font-size': 9,
-            'text-valign': 'bottom',
-            'text-margin-y': 4,
-            'text-background-color': '#f7f5f0',
-            'text-background-opacity': 0.7,
-            'text-background-padding': 2,
-            'width': 'mapData(refCount, 0, 5, 14, 24)',
-            'height': 'mapData(refCount, 0, 5, 14, 24)',
-          },
-        },
-        // Kitap-kitap kenarı
-        {
-          selector: 'edge[kind="book2book"]',
-          style: {
-            'width': 1.5,
-            'line-color': '#0e6b5e',
-            'opacity': 0.55,
-            'curve-style': 'bezier',
-            'target-arrow-color': '#0e6b5e',
-            'target-arrow-shape': 'triangle',
-            'arrow-scale': 0.7,
-          },
-        },
-        // Kişi-kişi kenarı
-        {
-          selector: 'edge[kind="person2person"]',
-          style: {
-            'width': 1.5,
-            'line-color': '#9c2a3b',
-            'opacity': 0.6,
-            'curve-style': 'bezier',
-            'target-arrow-color': '#9c2a3b',
-            'target-arrow-shape': 'triangle',
-            'arrow-scale': 0.7,
-          },
-        },
-        // Kitap-kişi kenarı (varsayılan görünür)
-        {
-          selector: 'edge[kind="book2person"]',
-          style: {
-            'width': 1,
-            'line-color': '#d6cfbb',
-            'line-style': 'dashed',
-            'opacity': 0.45,
-            'curve-style': 'bezier',
-            'target-arrow-shape': 'none',
-          },
-        },
-        // Hover/seçim
-        {
-          selector: 'node:active, node:selected',
-          style: {
-            'border-width': 3,
-            'border-color': '#1d8e7a',
-          },
-        },
-        {
-          selector: '.faded',
-          style: { 'opacity': 0.15 },
-        },
-      ],
-      layout: {
-        name: 'cose',
-        animate: false,
-        idealEdgeLength: 80,
-        nodeOverlap: 20,
-        refresh: 20,
-        fit: true,
-        padding: 30,
-        randomize: false,
-        componentSpacing: 80,
-        nodeRepulsion: 4000000,
-        edgeElasticity: 100,
-        nestingFactor: 5,
-        gravity: 80,
-        numIter: 1000,
-      },
-      minZoom: 0.3,
-      maxZoom: 3,
-      wheelSensitivity: 0.2,
-    });
+      // Mutable copies (D3 force-simulation node-objelerini in-place değiştirir)
+      var nodes = data.nodes.map(function (n) { return Object.assign({}, n); });
+      var edges = data.edges.map(function (e) { return Object.assign({}, e); });
 
-    // Düğüm tıklama → ilgili sayfaya git
-    cy.on('tap', 'node', function (evt) {
-      const node = evt.target;
-      const type = node.data('type');
-      const slug = node.data('slug');
-      const url = type === 'book'
-        ? `${baseUrl}/kitaplar/${slug}`
-        : `${baseUrl}/kisiler/${slug}`;
-      // Yeni sekmede aç (kullanıcı kontekst kaybını engellesin)
-      window.open(url, '_self');
-    });
+      var nodeById = new Map();
+      nodes.forEach(function (n) { nodeById.set(n.id, n); });
 
-    // Düğüm hover → komşuları vurgula (diğerlerini soldur)
-    cy.on('mouseover', 'node', function (evt) {
-      const node = evt.target;
-      const neighborhood = node.closedNeighborhood();
-      cy.elements().not(neighborhood).addClass('faded');
-    });
-    cy.on('mouseout', 'node', function () {
-      cy.elements().removeClass('faded');
-    });
+      // -------- SVG mimarisi --------
+      var host = document.getElementById('ig-canvas-host');
+      var svgEl = document.getElementById('ig-svg');
+      var svg = d3.select(svgEl);
+      var width = host.clientWidth || 800;
+      var height = host.clientHeight || 560;
+      svg.attr('viewBox', '0 0 ' + width + ' ' + height)
+         .attr('preserveAspectRatio', 'xMidYMid meet');
 
-    // Toggle: kitap-kişi kenarları
-    document.getElementById('halka-graph-toggle-b2p')?.addEventListener('change', (e) => {
-      const visible = e.target.checked;
-      cy.edges('[kind="book2person"]').style('display', visible ? 'element' : 'none');
-    });
+      // <defs> — ok-uçları (kitap-kitap ve kişi-kişi için yön-göstergesi)
+      var defs = svg.append('defs');
+      ['arrow-b2b', 'arrow-p2p'].forEach(function (id) {
+        defs.append('marker')
+          .attr('id', id)
+          .attr('viewBox', '0 -5 10 10')
+          .attr('refX', 16)
+          .attr('refY', 0)
+          .attr('markerWidth', 6)
+          .attr('markerHeight', 6)
+          .attr('orient', 'auto')
+          .append('path')
+          .attr('d', 'M0,-4L8,0L0,4')
+          .attr('fill', id === 'arrow-b2b' ? '#0e6b5e' : '#9c2a3b')
+          .attr('opacity', 0.7);
+      });
 
-    // Toggle: yalnız düğümleri sakla
-    document.getElementById('halka-graph-toggle-isolated')?.addEventListener('change', (e) => {
-      const hide = e.target.checked;
-      const isolated = cy.nodes().filter((n) => n.degree(false) === 0);
-      isolated.style('display', hide ? 'none' : 'element');
-    });
+      // SVG ana-katmanlar (zoom-pan için ortak <g>)
+      var rootG = svg.append('g').attr('class', 'ig-root-g');
+      var edgeG = rootG.append('g').attr('class', 'ig-edges');
+      var nodeG = rootG.append('g').attr('class', 'ig-nodes');
 
-    // Görünüme sığdır
-    document.getElementById('halka-graph-fit')?.addEventListener('click', () => {
-      cy.fit(undefined, 30);
-    });
-  }
+      // Zoom-pan
+      var zoom = d3.zoom()
+        .scaleExtent([0.25, 4])
+        .on('zoom', function (ev) { rootG.attr('transform', ev.transform); });
+      svg.call(zoom);
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHalkaGraph);
-  } else {
-    initHalkaGraph();
-  }
+      // -------- Ölçek-fonksiyonları --------
+      var refMax = Math.max(1, d3.max(nodes, function (n) { return n.refCount; }) || 1);
+      function nodeRadius(n) {
+        if (n.type === 'book') return 14 + Math.min(n.refCount, 6) * 1.6;
+        return 6 + Math.sqrt(Math.max(n.refCount, 0)) * 4;
+      }
+
+      // -------- Force-simulation --------
+      var sim = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(edges).id(function (n) { return n.id; }).distance(function (e) {
+          return e.kind === 'book2person' ? 70 : 110;
+        }).strength(function (e) {
+          return e.kind === 'book2person' ? 0.25 : 0.55;
+        }))
+        .force('charge', d3.forceManyBody().strength(-260).distanceMax(420))
+        .force('center', d3.forceCenter(width / 2, height / 2).strength(0.06))
+        .force('collide', d3.forceCollide().radius(function (n) { return nodeRadius(n) + 6; }))
+        .force('x', d3.forceX(width / 2).strength(0.04))
+        .force('y', d3.forceY(height / 2).strength(0.04))
+        .alphaDecay(0.025);
+
+      // -------- Edge-render --------
+      var edgeSel = edgeG.selectAll('line').data(edges, function (d) { return d.id; })
+        .enter().append('line')
+        .attr('class', function (d) { return 'ig-edge ig-edge-' + d.kind; })
+        .attr('data-id', function (d) { return d.id; })
+        .attr('data-kind', function (d) { return d.kind; })
+        .attr('stroke', function (d) {
+          if (d.kind === 'book2book') return '#0e6b5e';
+          if (d.kind === 'person2person') return '#9c2a3b';
+          return '#b5ad9a';
+        })
+        .attr('stroke-width', function (d) { return d.kind === 'book2person' ? 1.1 : 1.7; })
+        .attr('stroke-dasharray', function (d) { return d.kind === 'book2person' ? '4 3' : ''; })
+        .attr('opacity', function (d) { return d.kind === 'book2person' ? 0.45 : 0.6; })
+        .attr('marker-end', function (d) {
+          if (d.kind === 'book2book') return 'url(#arrow-b2b)';
+          if (d.kind === 'person2person') return 'url(#arrow-p2p)';
+          return null;
+        });
+
+      // -------- Node-render --------
+      var nodeSel = nodeG.selectAll('g').data(nodes, function (d) { return d.id; })
+        .enter().append('g')
+        .attr('class', function (d) { return 'ig-node ig-node-' + d.type; })
+        .attr('data-id', function (d) { return d.id; })
+        .attr('data-period', function (d) { return d.periodKey || ''; })
+        .attr('data-type', function (d) { return d.type; })
+        .attr('tabindex', 0)
+        .attr('role', 'button')
+        .attr('aria-label', function (d) {
+          if (d.type === 'book') return d.author + ' — ' + d.title + ' (Halka #' + d.siraNo + ', ' + d.donemLabel + ')';
+          return d.label + (d.dates ? ', ' + d.dates : '') + (d.role ? ', ' + d.role : '');
+        })
+        .call(d3.drag()
+          .on('start', function (ev, d) { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+          .on('drag',  function (ev, d) { d.fx = ev.x; d.fy = ev.y; })
+          .on('end',   function (ev, d) { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+      // Kitap düğümleri — yuvarlatılmış-kare; kişi düğümleri — daire
+      nodeSel.each(function (d) {
+        var g = d3.select(this);
+        var r = nodeRadius(d);
+        if (d.type === 'book') {
+          var s = r * 1.6;
+          g.append('rect')
+            .attr('x', -s / 2).attr('y', -s / 2).attr('width', s).attr('height', s)
+            .attr('rx', 3).attr('ry', 3)
+            .attr('fill', d.color)
+            .attr('stroke', '#1a1714').attr('stroke-width', 1.2)
+            .attr('opacity', 0.92);
+          // Halka-no rozet (sıra-numarası)
+          g.append('text')
+            .attr('class', 'ig-node-num')
+            .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+            .attr('font-size', 10).attr('font-weight', 700).attr('fill', 'white')
+            .attr('y', 0).style('pointer-events', 'none')
+            .text('#' + d.siraNo);
+        } else {
+          g.append('circle')
+            .attr('r', r)
+            .attr('fill', d.color)
+            .attr('stroke', '#1a1714').attr('stroke-width', 1)
+            .attr('opacity', 0.88);
+        }
+        // Etiket
+        g.append('text')
+          .attr('class', 'ig-node-label')
+          .attr('text-anchor', 'middle')
+          .attr('y', d.type === 'book' ? r * 1.6 / 2 + 13 : r + 11)
+          .attr('font-size', d.type === 'book' ? 10.5 : 9.5)
+          .attr('font-weight', d.type === 'book' ? 600 : 500)
+          .attr('fill', '#1a1714')
+          .style('pointer-events', 'none')
+          .style('paint-order', 'stroke')
+          .style('stroke', 'rgba(247, 245, 240, 0.9)')
+          .style('stroke-width', '3px')
+          .text(d.label);
+      });
+
+      // -------- Tick-handler (kritik: önceki bug-vakasında DOM-attribute-yazımı eksikti) --------
+      sim.on('tick', function () {
+        edgeSel
+          .attr('x1', function (d) { return d.source.x; })
+          .attr('y1', function (d) { return d.source.y; })
+          .attr('x2', function (d) { return d.target.x; })
+          .attr('y2', function (d) { return d.target.y; });
+        nodeSel.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      });
+
+      // -------- Tooltip (akademik-zengin) --------
+      var tooltip = d3.select('#ig-tooltip');
+      function showTooltip(d, ev) {
+        var html;
+        if (d.type === 'book') {
+          html = '<div class="ig-tt-eyebrow">Halka #' + d.siraNo + ' · ' + (d.donemLabel || '') + '</div>'
+               + '<div class="ig-tt-title">' + escapeHtml(d.title) + '</div>'
+               + '<div class="ig-tt-sub">' + escapeHtml(d.author) + (d.status ? ' · ' + escapeHtml(d.status) : '') + '</div>'
+               + '<div class="ig-tt-foot">' + (d.refCount || 0) + ' kitap-kitap bağı</div>';
+        } else {
+          html = '<div class="ig-tt-eyebrow">Kişi · Halka atomiği</div>'
+               + '<div class="ig-tt-title">' + escapeHtml(d.label) + '</div>'
+               + (d.dates ? '<div class="ig-tt-sub">' + escapeHtml(d.dates) + '</div>' : '')
+               + (d.role ? '<div class="ig-tt-role">' + escapeHtml(truncate(d.role, 130)) + '</div>' : '')
+               + '<div class="ig-tt-foot">' + (d.refCount || 0) + ' kitap referansı</div>';
+        }
+        tooltip.html(html).style('display', 'block').attr('aria-hidden', 'false');
+        positionTooltip(ev);
+      }
+      function positionTooltip(ev) {
+        var hostBB = host.getBoundingClientRect();
+        var x = ev.clientX - hostBB.left + 14;
+        var y = ev.clientY - hostBB.top + 14;
+        var ttBB = tooltip.node().getBoundingClientRect();
+        if (x + ttBB.width + 12 > host.clientWidth) x = ev.clientX - hostBB.left - ttBB.width - 14;
+        if (y + ttBB.height + 12 > host.clientHeight) y = ev.clientY - hostBB.top - ttBB.height - 14;
+        tooltip.style('left', x + 'px').style('top', y + 'px');
+      }
+      function hideTooltip() { tooltip.style('display', 'none').attr('aria-hidden', 'true'); }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      function truncate(s, n) { s = String(s); return s.length > n ? s.substring(0, n - 1) + '…' : s; }
+
+      // -------- Click-to-focus (komşu-vurgulama) --------
+      var focusedId = null;
+      function neighborSet(id) {
+        var s = new Set([id]);
+        edges.forEach(function (e) {
+          var sId = typeof e.source === 'object' ? e.source.id : e.source;
+          var tId = typeof e.target === 'object' ? e.target.id : e.target;
+          if (sId === id) s.add(tId);
+          if (tId === id) s.add(sId);
+        });
+        return s;
+      }
+      function applyFocus(id) {
+        if (id === null) {
+          nodeSel.classed('is-faded', false).classed('is-focused', false);
+          edgeSel.classed('is-faded', false).classed('is-focused', false);
+          focusedId = null;
+          return;
+        }
+        var nb = neighborSet(id);
+        nodeSel.classed('is-focused', function (d) { return d.id === id; })
+               .classed('is-faded',   function (d) { return !nb.has(d.id); });
+        edgeSel.classed('is-focused', function (d) {
+                  var sId = typeof d.source === 'object' ? d.source.id : d.source;
+                  var tId = typeof d.target === 'object' ? d.target.id : d.target;
+                  return sId === id || tId === id;
+               })
+               .classed('is-faded', function (d) {
+                  var sId = typeof d.source === 'object' ? d.source.id : d.source;
+                  var tId = typeof d.target === 'object' ? d.target.id : d.target;
+                  return !(sId === id || tId === id);
+               });
+        focusedId = id;
+      }
+
+      nodeSel.on('mouseover', function (ev, d) { showTooltip(d, ev); })
+             .on('mousemove', function (ev) { positionTooltip(ev); })
+             .on('mouseout',  function () { hideTooltip(); })
+             .on('click', function (ev, d) {
+                ev.stopPropagation();
+                applyFocus(focusedId === d.id ? null : d.id);
+             })
+             .on('dblclick', function (ev, d) {
+                ev.stopPropagation();
+                var url = d.type === 'book'
+                  ? baseUrl + '/kitaplar/' + d.slug
+                  : baseUrl + '/kisiler/' + d.slug;
+                window.open(url, '_blank', 'noopener');
+             })
+             .on('keydown', function (ev, d) {
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                  ev.preventDefault();
+                  applyFocus(focusedId === d.id ? null : d.id);
+                }
+             });
+
+      svg.on('click', function () { applyFocus(null); });
+
+      // -------- Sağ-panel: bağlantı-listesi --------
+      var listEl = document.getElementById('ig-edge-list');
+      function renderList(filteredEdges) {
+        var html = filteredEdges.map(function (e) {
+          var sId = typeof e.source === 'object' ? e.source.id : e.source;
+          var tId = typeof e.target === 'object' ? e.target.id : e.target;
+          return '<li class="ig-edge-card" data-edge-id="' + escapeHtml(e.id) + '" '
+            + 'data-source="' + escapeHtml(sId) + '" '
+            + 'data-target="' + escapeHtml(tId) + '" '
+            + 'data-kind="' + escapeHtml(e.kind) + '" '
+            + 'tabindex="0" role="button">'
+            + '<div class="ig-edge-card-head">'
+              + '<span class="ig-edge-card-source">' + escapeHtml(truncate(e.sourceLabel, 36)) + '</span>'
+              + '<span class="ig-edge-card-arrow" aria-hidden="true">→</span>'
+              + '<span class="ig-edge-card-target">' + escapeHtml(truncate(e.targetLabel, 36)) + '</span>'
+            + '</div>'
+            + '<div class="ig-edge-card-body">'
+              + '<span class="ig-edge-card-rel ig-edge-card-rel-' + escapeHtml(e.kind) + '">' + escapeHtml(e.relationLabel) + '</span>'
+              + '<span class="ig-edge-card-kind">' + kindLabel(e.kind) + '</span>'
+            + '</div>'
+          + '</li>';
+        }).join('');
+        listEl.innerHTML = html;
+      }
+      function kindLabel(kind) {
+        return kind === 'book2book'      ? 'kitap-kitap'
+             : kind === 'person2person' ? 'kişi-kişi'
+             : 'kitap-kişi';
+      }
+      renderList(edges);
+
+      // Sağ-panel-kart-tıklama → grafda iki düğümü vurgula
+      listEl.addEventListener('click', function (ev) {
+        var card = ev.target.closest('.ig-edge-card');
+        if (!card) return;
+        var sId = card.getAttribute('data-source');
+        var tId = card.getAttribute('data-target');
+        // İki düğümü focused-set olarak işaretle
+        applyFocusPair(sId, tId);
+      });
+      listEl.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Enter' && ev.key !== ' ') return;
+        var card = ev.target.closest('.ig-edge-card');
+        if (!card) return;
+        ev.preventDefault();
+        applyFocusPair(card.getAttribute('data-source'), card.getAttribute('data-target'));
+      });
+      function applyFocusPair(sId, tId) {
+        var pair = new Set([sId, tId]);
+        nodeSel.classed('is-focused', function (d) { return pair.has(d.id); })
+               .classed('is-faded',   function (d) { return !pair.has(d.id); });
+        edgeSel.classed('is-focused', function (d) {
+                  var s = typeof d.source === 'object' ? d.source.id : d.source;
+                  var t = typeof d.target === 'object' ? d.target.id : d.target;
+                  return (s === sId && t === tId) || (s === tId && t === sId);
+               })
+               .classed('is-faded', function (d) {
+                  var s = typeof d.source === 'object' ? d.source.id : d.source;
+                  var t = typeof d.target === 'object' ? d.target.id : d.target;
+                  return !((s === sId && t === tId) || (s === tId && t === sId));
+               });
+        focusedId = sId;
+      }
+
+      // -------- Filtre-state --------
+      var state = {
+        entityFilter: 'all',
+        edgeFilter: 'all',
+        period: 'all',
+        search: '',
+      };
+
+      function applyFilters() {
+        var nodeVisible = new Set();
+        // Önce: dönem ve varlık-tipi filtrelerine göre düğüm-görünürlüğü
+        nodes.forEach(function (n) {
+          var byEntity = state.entityFilter === 'all' || state.entityFilter === n.type;
+          var byPeriod = state.period === 'all' || (n.periodKey && n.periodKey === state.period);
+          var byTerm = state.search === '' || matchesTerm(n, state.search);
+          if (byEntity && byPeriod && byTerm) nodeVisible.add(n.id);
+        });
+
+        // Sonra: edge-filter + her iki ucu görünür mü?
+        var edgeVisibleCount = 0;
+        edgeSel.attr('display', function (e) {
+          var sId = typeof e.source === 'object' ? e.source.id : e.source;
+          var tId = typeof e.target === 'object' ? e.target.id : e.target;
+          var byKind = state.edgeFilter === 'all' || state.edgeFilter === e.kind;
+          var endpointsVisible = nodeVisible.has(sId) && nodeVisible.has(tId);
+          var visible = byKind && endpointsVisible;
+          if (visible) edgeVisibleCount++;
+          return visible ? null : 'none';
+        });
+
+        nodeSel.attr('display', function (n) { return nodeVisible.has(n.id) ? null : 'none'; });
+
+        // Sayaç güncelle
+        document.getElementById('ig-edge-counter').textContent = edgeVisibleCount;
+
+        // Sağ-panel-listesi güncelle
+        var visibleEdges = edges.filter(function (e) {
+          var sId = typeof e.source === 'object' ? e.source.id : e.source;
+          var tId = typeof e.target === 'object' ? e.target.id : e.target;
+          var byKind = state.edgeFilter === 'all' || state.edgeFilter === e.kind;
+          return byKind && nodeVisible.has(sId) && nodeVisible.has(tId);
+        });
+        renderList(visibleEdges);
+
+        // Empty-state
+        var empty = document.getElementById('ig-empty');
+        if (nodeVisible.size === 0) empty.removeAttribute('hidden'); else empty.setAttribute('hidden', '');
+
+        // Simulasyonu yeniden-canlandır (görünür düğümler için)
+        sim.alpha(0.3).restart();
+      }
+      function matchesTerm(n, term) {
+        var t = term.toLowerCase();
+        if (n.label && n.label.toLowerCase().indexOf(t) !== -1) return true;
+        if (n.title && n.title.toLowerCase().indexOf(t) !== -1) return true;
+        if (n.author && n.author.toLowerCase().indexOf(t) !== -1) return true;
+        if (n.aliases) {
+          for (var i = 0; i < n.aliases.length; i++) {
+            if (n.aliases[i].toLowerCase().indexOf(t) !== -1) return true;
+          }
+        }
+        return false;
+      }
+
+      // -------- UI-bağlamaları --------
+      document.getElementById('ig-filter-entity').addEventListener('change', function (e) {
+        state.entityFilter = e.target.value; applyFilters();
+      });
+      document.getElementById('ig-filter-edge').addEventListener('change', function (e) {
+        state.edgeFilter = e.target.value; applyFilters();
+      });
+      var searchInput = document.getElementById('ig-search');
+      var searchT;
+      searchInput.addEventListener('input', function (e) {
+        clearTimeout(searchT);
+        searchT = setTimeout(function () {
+          state.search = e.target.value.trim();
+          applyFilters();
+        }, 180);
+      });
+
+      // Dönem-tab'ları
+      var tabBtns = document.querySelectorAll('.ig-period-tab');
+      tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          tabBtns.forEach(function (b) { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          state.period = btn.getAttribute('data-period');
+          applyFilters();
+        });
+      });
+
+      // Sığdır-butonu
+      document.getElementById('ig-fit').addEventListener('click', function () {
+        // Mevcut görünür düğümlerin bbox'unu hesapla, viewport'a sığdır
+        var visible = nodes.filter(function (n) {
+          return nodeSel.filter(function (d) { return d.id === n.id; }).attr('display') !== 'none';
+        });
+        if (visible.length === 0) return;
+        var xs = visible.map(function (n) { return n.x; });
+        var ys = visible.map(function (n) { return n.y; });
+        var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+        var y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
+        var bw = x1 - x0 + 80, bh = y1 - y0 + 80;
+        var k = Math.min(width / bw, height / bh, 2);
+        var tx = (width - k * (x0 + x1)) / 2;
+        var ty = (height - k * (y0 + y1)) / 2;
+        svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+      });
+
+      // -------- Resize-observer (responsive) --------
+      var ro = new ResizeObserver(function () {
+        var newW = host.clientWidth, newH = host.clientHeight;
+        if (newW > 0 && newH > 0 && (newW !== width || newH !== height)) {
+          width = newW; height = newH;
+          svg.attr('viewBox', '0 0 ' + width + ' ' + height);
+          sim.force('center', d3.forceCenter(width / 2, height / 2).strength(0.06));
+          sim.force('x', d3.forceX(width / 2).strength(0.04));
+          sim.force('y', d3.forceY(height / 2).strength(0.04));
+          sim.alpha(0.3).restart();
+        }
+      });
+      ro.observe(host);
+    } // initInfluenceGraph
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootstrap);
+    } else {
+      bootstrap();
+    }
+  })();
 </script>
 
 <style>
-  .halka-graph-wrapper {
+  /* ===== Wrapper & layout ===== */
+  .ig-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 0;
+    background: #faf8f3;
+    border: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.12));
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* ===== Üst-bar ===== */
+  .ig-topbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
     gap: 1rem;
+    padding: 1rem 1.25rem 0.85rem;
+    border-bottom: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.1));
+    background: rgba(247, 245, 240, 0.6);
   }
-  .halka-graph-meta {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.85rem;
-    padding: 0.75rem 1rem;
-    background-color: rgba(255, 255, 255, 0.6);
-    border: 1px solid var(--halka-rule);
-    border-radius: 2px;
-  }
-  .halka-graph-meta-title {
+  .ig-topbar-left { min-width: 0; }
+  .ig-eyebrow {
+    margin: 0;
+    font-size: 0.7rem;
     font-weight: 600;
-    color: var(--halka-emerald);
-    margin: 0 0 0.4rem;
-    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
+    color: var(--halka-emerald, #0e6b5e);
   }
-  .halka-graph-meta-desc {
-    margin: 0 0 0.7rem;
+  .ig-counter {
+    margin: 0.3rem 0 0;
     font-family: 'Crimson Pro', Georgia, serif;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    color: var(--halka-ink, #1a1714);
   }
-  .halka-graph-controls {
+  .ig-counter #ig-edge-counter { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ig-counter-sep { color: rgba(26, 23, 20, 0.35); padding: 0 0.15em; }
+  .ig-counter-total { font-variant-numeric: tabular-nums; color: rgba(26, 23, 20, 0.55); }
+  .ig-counter-label { margin-left: 0.5em; font-size: 0.85rem; color: rgba(26, 23, 20, 0.55); }
+
+  .ig-topbar-right {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-    align-items: center;
-    font-size: 0.8rem;
+    gap: 0.65rem 1rem;
+    align-items: flex-end;
   }
-  .halka-graph-toggle {
+  .ig-control { display: flex; flex-direction: column; gap: 0.2rem; }
+  .ig-control-label {
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(26, 23, 20, 0.5);
+  }
+  .ig-select, .ig-input {
+    font-family: inherit;
+    font-size: 0.82rem;
+    padding: 0.32rem 0.55rem;
+    border: 1px solid rgba(26, 23, 20, 0.18);
+    border-radius: 3px;
+    background: white;
+    color: var(--halka-ink, #1a1714);
+    min-width: 160px;
+    line-height: 1.4;
+  }
+  .ig-select:focus, .ig-input:focus {
+    outline: 2px solid var(--halka-emerald, #0e6b5e);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  .ig-control-search .ig-input { min-width: 180px; }
+
+  /* ===== Dönem-tab'ları ===== */
+  .ig-period-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0.55rem 1.25rem;
+    background: rgba(247, 245, 240, 0.4);
+    border-bottom: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.08));
+  }
+  .ig-period-tab {
+    --ig-tab-color: rgba(26, 23, 20, 0.4);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    background: transparent;
+    color: rgba(26, 23, 20, 0.65);
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+    white-space: nowrap;
+  }
+  .ig-period-tab:hover { color: var(--halka-ink, #1a1714); background: rgba(255, 255, 255, 0.5); }
+  .ig-period-tab.is-active {
+    color: var(--halka-ink, #1a1714);
+    font-weight: 600;
+    border-bottom-color: var(--ig-tab-color);
+    background: white;
+  }
+  .ig-period-tab[data-period="all"].is-active {
+    border-bottom-color: var(--halka-ink, #1a1714);
+  }
+
+  /* ===== Ana-alan: 75-25 split ===== */
+  .ig-main {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(280px, 1fr);
+    min-height: 580px;
+  }
+  .ig-canvas-host {
+    position: relative;
+    background: #faf8f3;
+    overflow: hidden;
+    height: 580px;
+  }
+  .ig-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+  }
+  .ig-svg:active { cursor: grabbing; }
+
+  .ig-fit-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    font-family: inherit;
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 0.32rem 0.65rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--halka-ink, #1a1714);
+    border: 1px solid rgba(26, 23, 20, 0.15);
+    border-radius: 3px;
     cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 150ms ease, transform 150ms ease;
   }
-  .halka-graph-toggle input { cursor: pointer; }
-  .halka-graph-btn {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.75rem;
-    padding: 0.3rem 0.7rem;
-    background-color: var(--halka-emerald);
+  .ig-fit-btn:hover { background: white; }
+  .ig-fit-btn:active { transform: scale(0.97); }
+
+  .ig-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: rgba(26, 23, 20, 0.5);
+    font-style: italic;
+  }
+  .ig-error {
+    padding: 1rem;
+    color: var(--halka-carmine, #9c2a3b);
+    font-style: italic;
+  }
+
+  /* ===== Tooltip ===== */
+  .ig-tooltip {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    background: rgba(26, 23, 20, 0.96);
     color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background-color 150ms ease;
+    padding: 0.55rem 0.75rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    max-width: 280px;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   }
-  .halka-graph-btn:hover {
-    background-color: var(--halka-emerald-light);
+  .ig-tt-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; }
+  .ig-tt-title { font-weight: 600; font-size: 0.9rem; margin: 2px 0 1px; font-family: 'Crimson Pro', Georgia, serif; }
+  .ig-tt-sub { opacity: 0.85; font-size: 0.78rem; }
+  .ig-tt-role { margin-top: 5px; opacity: 0.85; font-size: 0.74rem; line-height: 1.45; }
+  .ig-tt-foot { margin-top: 5px; padding-top: 4px; border-top: 1px solid rgba(255, 255, 255, 0.18); font-size: 0.7rem; opacity: 0.7; }
+
+  /* ===== Düğüm/Kenar focus-states ===== */
+  .ig-node { cursor: pointer; transition: opacity 200ms ease; }
+  .ig-node.is-faded { opacity: 0.18; }
+  .ig-node.is-focused rect, .ig-node.is-focused circle {
+    stroke: var(--halka-emerald, #0e6b5e);
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 6px rgba(14, 107, 94, 0.4));
+  }
+  .ig-edge { transition: opacity 200ms ease, stroke-width 150ms ease; }
+  .ig-edge.is-faded { opacity: 0.08; }
+  .ig-edge.is-focused {
+    stroke-width: 2.5 !important;
+    opacity: 0.95 !important;
+  }
+  .ig-node:focus { outline: none; }
+  .ig-node:focus-visible rect, .ig-node:focus-visible circle {
+    stroke: var(--halka-emerald, #0e6b5e);
+    stroke-width: 3;
   }
 
-  .halka-graph {
-    height: 640px;
-    width: 100%;
-    border: 1px solid var(--halka-rule);
-    border-radius: 2px;
-    background-color: #faf8f3;
-  }
-
-  .halka-graph-legend {
+  /* ===== Sağ-panel (bağlantı listesi) ===== */
+  .ig-side {
+    border-left: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.1));
+    background: white;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 0;
+    height: 580px;
+  }
+  .ig-side-header {
+    padding: 0.85rem 1rem 0.65rem;
+    border-bottom: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.08));
+    background: rgba(247, 245, 240, 0.4);
+  }
+  .ig-side-title {
+    margin: 0 0 0.25rem;
     font-size: 0.78rem;
-    color: var(--halka-ink);
-    padding: 0.6rem 1rem;
-    background-color: rgba(247, 245, 240, 0.6);
-    border: 1px solid var(--halka-rule);
-    border-radius: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--halka-ink, #1a1714);
   }
-  .halka-graph-legend-section {
+  .ig-side-sub {
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.45;
+    color: rgba(26, 23, 20, 0.62);
+    font-family: 'Crimson Pro', Georgia, serif;
+  }
+  .ig-edge-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0.5rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+  }
+  .ig-edge-card {
+    padding: 0.55rem 0.7rem;
+    margin: 0 0 0.3rem;
+    background: white;
+    border: 1px solid rgba(26, 23, 20, 0.08);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 130ms ease, border-color 130ms ease, box-shadow 130ms ease;
+  }
+  .ig-edge-card:hover {
+    border-color: rgba(26, 23, 20, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translateX(2px);
+  }
+  .ig-edge-card:focus-visible {
+    outline: 2px solid var(--halka-emerald, #0e6b5e);
+    outline-offset: 1px;
+  }
+  .ig-edge-card-head {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    align-items: center;
-  }
-  .halka-graph-legend-section strong {
-    color: var(--halka-emerald);
-    font-weight: 600;
-    min-width: 5rem;
-  }
-  .halka-graph-legend-item {
-    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--halka-ink, #1a1714);
+    line-height: 1.35;
+  }
+  .ig-edge-card-source, .ig-edge-card-target {
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ig-edge-card-arrow {
+    color: rgba(26, 23, 20, 0.4);
+    flex-shrink: 0;
+  }
+  .ig-edge-card-body {
+    margin-top: 0.32rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .ig-edge-card-rel {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1px 6px;
+    border-radius: 2px;
+    color: white;
+  }
+  .ig-edge-card-rel-book2book { background: #0e6b5e; }
+  .ig-edge-card-rel-person2person { background: #9c2a3b; }
+  .ig-edge-card-rel-book2person { background: #7a6a55; }
+  .ig-edge-card-kind {
+    font-size: 0.7rem;
+    color: rgba(26, 23, 20, 0.5);
+    font-style: italic;
+  }
+
+  /* ===== Footer (lejant) ===== */
+  .ig-footer {
+    border-top: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.1));
+    background: rgba(247, 245, 240, 0.5);
+    padding: 0.85rem 1.25rem;
+  }
+  .ig-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .ig-legend-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 1rem;
+    font-size: 0.74rem;
+    color: var(--halka-ink, #1a1714);
+  }
+  .ig-legend-title {
+    font-weight: 700;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(26, 23, 20, 0.6);
+  }
+  .ig-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .ig-foot-note {
+    margin: 0;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: rgba(26, 23, 20, 0.7);
+    max-width: 90ch;
+  }
+  .ig-foot-note strong { color: var(--halka-emerald, #0e6b5e); font-weight: 600; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px) {
+    .ig-main { grid-template-columns: 1fr; }
+    .ig-canvas-host { height: 480px; }
+    .ig-side {
+      border-left: none;
+      border-top: 1px solid var(--halka-rule, rgba(26, 23, 20, 0.1));
+      height: 360px;
+    }
   }
   @media (max-width: 640px) {
-    .halka-graph { height: 480px; }
+    .ig-topbar { flex-direction: column; align-items: stretch; }
+    .ig-topbar-right { flex-direction: column; align-items: stretch; }
+    .ig-control, .ig-select, .ig-input { min-width: 0; width: 100%; }
+    .ig-canvas-host { height: 380px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ig-edge-card, .ig-fit-btn, .ig-period-tab, .ig-edge, .ig-node {
+      transition: none !important;
+    }
   }
 </style>
