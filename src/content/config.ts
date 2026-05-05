@@ -61,6 +61,35 @@ const HistoriographicalPosition = z.object({
 });
 
 // ---------------------------------------------------------------------------
+// Cross-program-zincir-konumlanması — v0.20 (UI-B sofistikleşmesi)
+// ---------------------------------------------------------------------------
+// Bir atomiğin diğer Halka-Türkiye-programıyla akademik-zincir-konumlanması
+// varsa (ör. places/sam ↔ Riyâzu's-Sâlihîn-İmam-Nevevî), bu alan
+// programs.ts'teki kardeş-program-link-tanımlarının atomik-atlas-zeminine
+// yansımasını tutar. CrossProgramBadge.astro bu veriyi okuyup atomik-sayfada
+// minik-rozet ile yan-yana-konumlama somutlaştırır.
+//
+// Doldurma-disiplini:
+//   - program_slug, programs.ts'teki bir HalkaProgram.slug ile birebir
+//     uyumlu olmalı (program_slug-self-doğrulama component'te yapılır)
+//   - thematic_axis kısa-ve-yapısal (1-2 cümle) — uzun-paragraf body'de kalır
+//   - opsiyonel — atomiğin kardeş-program-zincir-konumlanması yoksa boş
+//
+// Books, people, places, concepts koleksiyonlarına eklenir. Claims/discussions
+// için cross-program-link semantiği yapısal-anlamlı değil (claim atomik-iddia,
+// discussion oturum-kaydıdır); şu an dahil edilmez.
+const CrossProgramLink = z.object({
+  /** programs.ts'teki HalkaProgram.slug (ör. 'riyazus-salihin') */
+  program_slug: z.string(),
+  /** Görüntülenecek tam-program-adı (ör. "Halka: Riyâzu's-Sâlihîn") */
+  program_name: z.string(),
+  /** Kardeş-programdaki ilgili eser/figür (ör. "İmam Nevevî — 13. yy Şam") */
+  item: z.string(),
+  /** Akademik-zincir-konumlamasının kısa açıklaması (1-2 cümle) */
+  thematic_axis: z.string().min(20),
+});
+
+// ---------------------------------------------------------------------------
 // 1) BOOKS — birincil birim
 // ---------------------------------------------------------------------------
 
@@ -226,6 +255,9 @@ const books = defineCollection({
       scholarly: z.array(z.string()).optional(),
     }).optional(),
 
+    /** v0.20 — UI-B sofistikleşmesi: kardeş-program-zincir-konumlanması */
+    cross_program_links: z.array(CrossProgramLink).optional(),
+
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -280,6 +312,9 @@ const people = defineCollection({
     influenced_by: z.array(z.string()).optional(),
     influenced: z.array(z.string()).optional(),
 
+    /** v0.20 — UI-B sofistikleşmesi: kardeş-program-zincir-konumlanması */
+    cross_program_links: z.array(CrossProgramLink).optional(),
+
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -317,6 +352,9 @@ const places = defineCollection({
     sep_slug: z.string().regex(/^[a-z0-9-]+$/, 'sep_slug formatı: kebab-case').optional(),
     wikidata_id: z.string().regex(/^Q\d+$/).optional(),
 
+    /** v0.20 — UI-B sofistikleşmesi: kardeş-program-zincir-konumlanması */
+    cross_program_links: z.array(CrossProgramLink).optional(),
+
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -344,6 +382,9 @@ const concepts = defineCollection({
     // kavramlar için (örn. scientific-revolutions, enlightenment).
     sep_slug: z.string().regex(/^[a-z0-9-]+$/, 'sep_slug formatı: kebab-case').optional(),
     wikidata_id: z.string().regex(/^Q\d+$/).optional(),
+
+    /** v0.20 — UI-B sofistikleşmesi: kardeş-program-zincir-konumlanması */
+    cross_program_links: z.array(CrossProgramLink).optional(),
 
     tags: z.array(z.string()).optional(),
   }),

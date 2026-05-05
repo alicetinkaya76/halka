@@ -1,0 +1,209 @@
+---
+// src/components/CrossProgramBadge.astro
+//
+// Halka v0.20 — UI-B sofistikleşmesi: Kardeş-program-zincir-rozeti.
+//
+// Atomik-detail-sayfalarında (book / person / place / concept) atomik-özet
+// sonrasında, akademik-otoritatif-kaynak-rozeti (DİA/SEP) öncesinde render
+// edilir. Bir atomiğin diğer Halka-Türkiye-programıyla akademik-zincir-
+// konumlanması varsa (ör. places/sam ↔ Riyâzu's-Sâlihîn-İmam-Nevevî),
+// kullanıcıya "bu atomik aynı-zamanda şu kardeş-programda da geçer"
+// disiplinli yan-yana-konumlamasını gösterir.
+//
+// Doğrulama-disiplini:
+//   - program_slug, programs.ts'teki bir HalkaProgram.slug'la birebir uyumlu
+//     olmalı; uyumsuzsa o link sessizce atlanır (graceful-degradation), build
+//     kırılmaz, console'a uyarı yazılır.
+//   - links boşsa veya tüm linkler atılırsa rozet hiç render edilmez.
+//
+// Kullanım:
+//   <CrossProgramBadge links={data.cross_program_links ?? []} />
+
+import { programs } from '@/lib/programs';
+
+interface CrossProgramLink {
+  program_slug: string;
+  program_name: string;
+  item: string;
+  thematic_axis: string;
+}
+
+interface Props {
+  links: CrossProgramLink[];
+}
+
+const { links } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+// programs.ts ile self-doğrulama: program_slug uyumsuzsa link sessizce atılır
+const validSlugs = new Set(programs.map((p) => p.slug));
+const validLinks = links.filter((link) => {
+  if (!validSlugs.has(link.program_slug)) {
+    // Build sırasında console'a düşer; build kırılmaz (graceful-degradation)
+    console.warn(
+      `[CrossProgramBadge] Bilinmeyen program_slug: "${link.program_slug}" — programs.ts'te tanımlı değil; link atlandı.`
+    );
+    return false;
+  }
+  return true;
+});
+
+const shouldRender = validLinks.length > 0;
+---
+
+{shouldRender && (
+  <section class="halka-cpb" aria-label="Kardeş-program-zincir-konumlanması">
+    <header class="halka-cpb-header">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        class="halka-cpb-icon"
+        aria-hidden="true"
+      >
+        <circle cx="4" cy="7" r="2.6" />
+        <circle cx="10" cy="7" r="2.6" />
+        <line x1="6.6" y1="7" x2="7.4" y2="7" />
+      </svg>
+      <h2 class="halka-cpb-heading">Kardeş-program-zincirinde</h2>
+    </header>
+    <p class="halka-cpb-context">
+      Bu atomik Halka Türkiye umbrella'sının başka bir okuma-programında
+      da yapısal-akademik-zincir-konumlanmasıyla geçer.
+    </p>
+    <ul class="halka-cpb-list">
+      {validLinks.map((link) => (
+        <li class="halka-cpb-item">
+          <a
+            href={`${baseUrl}/programlar`}
+            class="halka-cpb-link"
+            aria-label={`${link.program_name} — programlar sayfasında oku`}
+          >
+            <span class="halka-cpb-program">{link.program_name}</span>
+            <span class="halka-cpb-arrow" aria-hidden="true">↗</span>
+          </a>
+          <p class="halka-cpb-item-line">{link.item}</p>
+          <p class="halka-cpb-axis">{link.thematic_axis}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .halka-cpb {
+    margin: 2.25rem 0 1.5rem;
+    padding: 1.1rem 1.25rem 1.2rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 107, 94, 0.035),
+      rgba(14, 107, 94, 0.06)
+    );
+    border-left: 3px solid var(--halka-emerald, #0e6b5e);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .halka-cpb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.4rem;
+  }
+  .halka-cpb-icon {
+    color: var(--halka-emerald, #0e6b5e);
+    flex-shrink: 0;
+  }
+  .halka-cpb-heading {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--halka-emerald, #0e6b5e);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin: 0;
+  }
+
+  .halka-cpb-context {
+    font-family: 'Crimson Pro', 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--halka-ink-700, #4a4137);
+    margin: 0 0 0.85rem;
+    max-width: 60ch;
+  }
+
+  .halka-cpb-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .halka-cpb-item {
+    padding: 0.55rem 0 0.05rem;
+    border-top: 1px solid rgba(14, 107, 94, 0.15);
+  }
+  .halka-cpb-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .halka-cpb-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--halka-emerald, #0e6b5e);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .halka-cpb-link:hover {
+    color: var(--halka-emerald-light, #1d8e7a);
+    border-bottom-color: var(--halka-emerald-light, #1d8e7a);
+  }
+  .halka-cpb-link:focus-visible {
+    outline: 2px solid var(--halka-emerald, #0e6b5e);
+    outline-offset: 2px;
+  }
+  .halka-cpb-arrow {
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .halka-cpb-item-line {
+    font-family: 'Crimson Pro', 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--halka-ink, #1a1714);
+    margin: 0.2rem 0 0.35rem;
+  }
+
+  .halka-cpb-axis {
+    font-family: 'Crimson Pro', 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--halka-ink-700, #4a4137);
+    margin: 0;
+    max-width: 65ch;
+  }
+
+  /* Mobile: rozet iç-padding-küçültme */
+  @media (max-width: 640px) {
+    .halka-cpb {
+      padding: 0.95rem 1rem 1.05rem;
+      margin: 1.75rem 0 1.25rem;
+    }
+    .halka-cpb-context {
+      font-size: 0.9rem;
+    }
+  }
+</style>

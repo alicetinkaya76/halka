@@ -79,6 +79,8 @@ type GraphNode = {
   color: string;
   periodKey: string | null;
   refCount: number;
+  // v0.20 — UI-C cross-program-zincir-konumlanması (atomiğin frontmatter'ından)
+  crossPrograms?: string[];
   // Tooltip-zengin alanlar
   title?: string;
   author?: string;
@@ -89,6 +91,28 @@ type GraphNode = {
   role?: string;
   aliases?: string[];
 };
+
+// v0.20 — UI-C kardeş-program-renk-paleti
+// programs.ts'teki HalkaProgram.slug → cross-program dış-halka-renk-eşlemesi.
+// Mevcut tip-ve-dönem-renkleri (halka-emerald, halka-carmine, period-palette)
+// korunur; cross-program rengi düğümün DIŞ HALKAsında ek-katmanlık ek-renk.
+// Renkler design-system-tokens'tan (halka-emerald/carmine) ve 40-Eserde-koyu-
+// yeşil + İdeolojiler-kırmızı + Riyâzu's-Sâlihîn-lila plan-isteği akademik-
+// disiplin-konumlamasıyla seçildi.
+const CROSS_PROGRAM_PALETTE: Record<string, { color: string; label: string }> = {
+  'ideolojiler-ve-toplumsal-devrimler': { color: '#c2410c', label: 'İdeolojiler' },
+  '40-eserde-islam-dusuncesi':          { color: '#15803d', label: '40 Eserde İslam Düşüncesi' },
+  'riyazus-salihin':                    { color: '#7c3aed', label: "Riyâzu's-Sâlihîn" },
+};
+function extractCrossPrograms(
+  links: Array<{ program_slug: string }> | undefined,
+): string[] | undefined {
+  if (!links || links.length === 0) return undefined;
+  const slugs = links
+    .map((l) => l.program_slug)
+    .filter((s) => s in CROSS_PROGRAM_PALETTE);  // sadece tanımlı program-renk-paletindeki slug'lar
+  return slugs.length > 0 ? slugs : undefined;
+}
 
 const bookNodes: GraphNode[] = books.map((b) => {
   const slug = b.id.replace(/\.md$/, '');
@@ -102,6 +126,7 @@ const bookNodes: GraphNode[] = books.map((b) => {
     color: palette?.fill ?? '#0e6b5e',
     periodKey: palette?.key ?? null,
     refCount: (b.data.relationships_to_other_books ?? []).length,
+    crossPrograms: extractCrossPrograms(b.data.cross_program_links),
     title: b.data.title,
     author: b.data.author,
     siraNo: b.data.halka_metadata.sira_no,
@@ -141,6 +166,7 @@ const personNodes: GraphNode[] = people.map((p) => {
     color: period.color,
     periodKey: period.key,
     refCount,
+    crossPrograms: extractCrossPrograms(p.data.cross_program_links),
     dates: p.data.dates ?? '',
     role: p.data.role ?? '',
     donemLabel: period.donem ? PERIOD_PALETTE[period.donem]?.label ?? period.donem : '',
@@ -156,9 +182,11 @@ type GraphEdge = {
   id: string;
   source: string;
   target: string;
-  kind: 'book2book' | 'person2person' | 'book2person';
+  kind: 'book2book' | 'person2person' | 'book2person' | 'cross_program';
   relation: string;        // ZOD enum-değeri (örn. 'tematik_tamamlayici')
   relationLabel: string;   // İnsan-okunur-Türkçe-etiket (örn. 'Tematik tamamlayıcı')
+  // v0.20 — UI-C: cross_program kind'ı için paylaşılan program-slug'ı
+  programSlug?: string;
   // Sağ-panel-bağlantı-listesi için:
   sourceLabel: string;
   targetLabel: string;
@@ -279,7 +307,45 @@ for (const b of books) {
   }
 }
 
-const allEdges = [...bookToBookEdges, ...personToPersonEdges, ...bookToPersonEdges];
+// v0.20 — UI-C: Cross-program-paylaşan-düğümler arasında otomatik kesik-edge.
+// Yapısal-disiplin: aynı kardeş-programa bağlanan iki düğüm (book↔book,
+// person↔person, book↔person) arası bilateral edge. Tek-yönlülük yok —
+// "yan-yana-konumlanma" semantiği. Aynı (a,b,program) için tekrar oluşmasın.
+const crossProgramEdges: GraphEdge[] = [];
+const seenCpEdges = new Set<string>();
+const programLabel = (slug: string): string =>
+  CROSS_PROGRAM_PALETTE[slug]?.label ?? slug;
+for (let i = 0; i < allNodes.length; i++) {
+  const a = allNodes[i];
+  if (!a.crossPrograms || a.crossPrograms.length === 0) continue;
+  for (let j = i + 1; j < allNodes.length; j++) {
+    const b = allNodes[j];
+    if (!b.crossPrograms || b.crossPrograms.length === 0) continue;
+    const shared = a.crossPrograms.filter((s) => b.crossPrograms!.includes(s));
+    for (const programSlug of shared) {
+      const idA = a.id < b.id ? a.id : b.id;
+      const idB = a.id < b.id ? b.id : a.id;
+      const dedup = `${idA}::${idB}::${programSlug}`;
+      if (seenCpEdges.has(dedup)) continue;
+      seenCpEdges.add(dedup);
+      crossProgramEdges.push({
+        id: `e:cp:${dedup}`,
+        source: a.id,
+        target: b.id,
+        kind: 'cross_program',
+        relation: 'cross_program',
+        relationLabel: `Kardeş-program: ${programLabel(programSlug)}`,
+        programSlug,
+        sourceLabel: a.type === 'book' ? `${a.author} — ${a.title}` : a.label,
+        targetLabel: b.type === 'book' ? `${b.author} — ${b.title}` : b.label,
+        sourceType: a.type,
+        targetType: b.type,
+      });
+    }
+  }
+}
+
+const allEdges = [...bookToBookEdges, ...personToPersonEdges, ...bookToPersonEdges, ...crossProgramEdges];
 
 // --- 3) Veri-paketleme ---
 
@@ -287,6 +353,8 @@ const graphData = {
   nodes: allNodes,
   edges: allEdges,
   baseUrl,
+  // v0.20 — UI-C: cross-program-renk-paleti istemciye aktarılır
+  crossProgramPalette: CROSS_PROGRAM_PALETTE,
 };
 const graphJson = JSON.stringify(graphData);
 
@@ -296,8 +364,15 @@ const stats = {
   b2b: bookToBookEdges.length,
   p2p: personToPersonEdges.length,
   b2p: bookToPersonEdges.length,
+  cp: crossProgramEdges.length,
   totalEdges: allEdges.length,
 };
+
+// v0.20 — UI-C: legend için aktif-kullanılan programlar (atomik-frontmatter'larda
+// gerçekten geçen program-slug'ları). Boş-kümeyse legend bölümü hiç-render-etmez.
+const activeCrossProgramSlugs = Array.from(
+  new Set(allNodes.flatMap((n) => n.crossPrograms ?? [])),
+).sort();
 
 // Donem-tab dökümü (filtre paneli için)
 const donemTabs = curriculum
@@ -340,6 +415,9 @@ const donemTabs = curriculum
           <option value="book2book">Kitap-kitap ({stats.b2b})</option>
           <option value="person2person">Kişi-kişi ({stats.p2p})</option>
           <option value="book2person">Kitap-kişi ({stats.b2p})</option>
+          {stats.cp > 0 && (
+            <option value="cross_program">Kardeş-program ({stats.cp})</option>
+          )}
         </select>
       </label>
       <label class="ig-control ig-control-search">
@@ -429,7 +507,30 @@ const donemTabs = curriculum
           <svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="#b5ad9a" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
           Kitap-kişi
         </span>
+        {activeCrossProgramSlugs.length > 0 && (
+          <span class="ig-legend-item">
+            <svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="#7a6a55" stroke-width="1.4" stroke-dasharray="6 4"/></svg>
+            Kardeş-program (kesik)
+          </span>
+        )}
       </div>
+      {activeCrossProgramSlugs.length > 0 && (
+        <div class="ig-legend-section">
+          <span class="ig-legend-title">Kardeş-programlar</span>
+          {activeCrossProgramSlugs.map((slug) => {
+            const meta = CROSS_PROGRAM_PALETTE[slug];
+            if (!meta) return null;
+            return (
+              <span class="ig-legend-item">
+                <svg width="16" height="16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="5" fill="none" stroke={meta.color} stroke-width="2"/>
+                </svg>
+                {meta.label}
+              </span>
+            );
+          })}
+        </div>
+      )}
     </div>
     <p class="ig-foot-note">
       <strong>Pedagojik konum:</strong> Halka'nın "kümülatif bilgi-ağı" tezinin somut göstergesi.
@@ -482,6 +583,11 @@ const donemTabs = curriculum
       if (!dataStr) throw new Error('data-graph-json attribute yok');
       var data = JSON.parse(dataStr);
       var baseUrl = data.baseUrl || '';
+      // v0.20 — UI-C: cross-program-renk-paleti istemcide kullanılabilir
+      var crossProgramPalette = data.crossProgramPalette || {};
+      function cpColor(slug) {
+        return (crossProgramPalette[slug] && crossProgramPalette[slug].color) || '#888';
+      }
 
       // Mutable copies (D3 force-simulation node-objelerini in-place değiştirir)
       var nodes = data.nodes.map(function (n) { return Object.assign({}, n); });
@@ -537,8 +643,10 @@ const donemTabs = curriculum
       // -------- Force-simulation --------
       var sim = d3.forceSimulation(nodes)
         .force('link', d3.forceLink(edges).id(function (n) { return n.id; }).distance(function (e) {
+          if (e.kind === 'cross_program') return 160; // v0.20 UI-C: weak-association → longer
           return e.kind === 'book2person' ? 70 : 110;
         }).strength(function (e) {
+          if (e.kind === 'cross_program') return 0.08; // v0.20 UI-C: zayıf-bağ
           return e.kind === 'book2person' ? 0.25 : 0.55;
         }))
         .force('charge', d3.forceManyBody().strength(-260).distanceMax(420))
@@ -554,17 +662,29 @@ const donemTabs = curriculum
         .attr('class', function (d) { return 'ig-edge ig-edge-' + d.kind; })
         .attr('data-id', function (d) { return d.id; })
         .attr('data-kind', function (d) { return d.kind; })
+        .attr('data-program', function (d) { return d.programSlug || ''; })
         .attr('stroke', function (d) {
           if (d.kind === 'book2book') return '#0e6b5e';
           if (d.kind === 'person2person') return '#9c2a3b';
+          if (d.kind === 'cross_program') return cpColor(d.programSlug);
           return '#b5ad9a';
         })
-        .attr('stroke-width', function (d) { return d.kind === 'book2person' ? 1.1 : 1.7; })
-        .attr('stroke-dasharray', function (d) { return d.kind === 'book2person' ? '4 3' : ''; })
-        .attr('opacity', function (d) { return d.kind === 'book2person' ? 0.45 : 0.6; })
+        .attr('stroke-width', function (d) {
+          if (d.kind === 'cross_program') return 1.4;
+          return d.kind === 'book2person' ? 1.1 : 1.7;
+        })
+        .attr('stroke-dasharray', function (d) {
+          if (d.kind === 'cross_program') return '6 4';   // v0.20 UI-C: kardeş-program kesik-edge
+          return d.kind === 'book2person' ? '4 3' : '';
+        })
+        .attr('opacity', function (d) {
+          if (d.kind === 'cross_program') return 0.55;
+          return d.kind === 'book2person' ? 0.45 : 0.6;
+        })
         .attr('marker-end', function (d) {
           if (d.kind === 'book2book') return 'url(#arrow-b2b)';
           if (d.kind === 'person2person') return 'url(#arrow-p2p)';
+          // cross_program: bilateral, ok-yok
           return null;
         });
 
@@ -611,6 +731,40 @@ const donemTabs = curriculum
             .attr('fill', d.color)
             .attr('stroke', '#1a1714').attr('stroke-width', 1)
             .attr('opacity', 0.88);
+        }
+        // v0.20 — UI-C: cross-program-dış-halkası
+        // Atomiğin cross_program_links'inde kayıtlı program-slug(lar)ı için
+        // şekle göre dış-halka çizilir. Birden-çok program varsa konsantrik
+        // halkalar (her biri kademeli-dış uzaklıkta). Halka ile düğüm-rengi
+        // arasında ufak boşluk, böylece period-rengi ile cross-program-rengi
+        // birbirinden ayırt edilir.
+        if (d.crossPrograms && d.crossPrograms.length > 0) {
+          d.crossPrograms.forEach(function (programSlug, idx) {
+            var color = cpColor(programSlug);
+            var offset = 3 + idx * 3;
+            if (d.type === 'book') {
+              var sOuter = r * 1.6 + offset * 2;
+              g.insert('rect', ':first-child')   // şeklin altına yerleştir → çerçeve etkisi
+                .attr('class', 'ig-node-cp-ring')
+                .attr('data-program', programSlug)
+                .attr('x', -sOuter / 2).attr('y', -sOuter / 2)
+                .attr('width', sOuter).attr('height', sOuter)
+                .attr('rx', 3 + offset).attr('ry', 3 + offset)
+                .attr('fill', 'none')
+                .attr('stroke', color)
+                .attr('stroke-width', 1.8)
+                .attr('opacity', 0.85);
+            } else {
+              g.insert('circle', ':first-child')
+                .attr('class', 'ig-node-cp-ring')
+                .attr('data-program', programSlug)
+                .attr('r', r + offset)
+                .attr('fill', 'none')
+                .attr('stroke', color)
+                .attr('stroke-width', 1.6)
+                .attr('opacity', 0.85);
+            }
+          });
         }
         // Etiket
         g.append('text')

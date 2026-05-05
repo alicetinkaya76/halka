@@ -13,6 +13,12 @@ related_concepts:
   - "mu-tezile"
   - "sasani-pehlevi-ideoloji"
 
+cross_program_links:
+  - program_slug: "40-eserde-islam-dusuncesi"
+    program_name: "Halka: 40 Eserde İslam Düşüncesi"
+    item: "Amin Maalouf — Arapların Gözüyle Haçlı Seferleri (3. Kademe)"
+    thematic_axis: "İslam bilimi tarihsel-zemin: 8.-10. yy tercüme-hareketinin Yunan-Süryânice-Pehlevî-Sanskritçe akademik-aktarımının (Mansur 762 → Memûn 813-833 zirve) sonraki yüzyıllardaki Avrupa-İslam akademik-temas-zemininde-yan-yana-konumlandırılması (Haçlı Seferleri 1095-1291); bilgi-aktarım-zincirinin iki-yön-pencere-okuması."
+
 tags: ["abbasi-baskenti", "bilgi-aktarimi", "yunan-felsefe-bilim", "halka-coklu-kitap-cross-ref", "kagit-tercume-bagi", "halka-5-kitap-ust-dugum"]
 ---
 

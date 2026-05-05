@@ -10,6 +10,12 @@ related_concepts:
   - "kopernik-satir-ay-modeli"
   - "ptoleme-aequans-elestirisi"
 
+cross_program_links:
+  - program_slug: "riyazus-salihin"
+    program_name: "Halka: Riyâzu's-Sâlihîn"
+    item: "İmam Nevevî — 13. yy Şam akademik-disiplin-figürü"
+    thematic_axis: "13. yy Şam-akademik-coğrafyasının yapısal-paraleli: Tûsî-couple-mekanizmasının Maraga-Şâtır-Şam-bilim-zinciri (Tûsî 1201-1274 / Şâtır 1304-1375) ile aynı dönem-aynı-coğrafyada hadis-akademik-disiplini (Nevevî 1233-1277). 13.-14. yy İslam-coğrafyasında akademik-disiplin-zincirin çoğul-konumlamasının teknik-astronomi-tarafından bakım-vakası."
+
 tags: ["maraga-ekibi", "geometrik-mekanizma", "anti-eurocentric-teknik-silah", "kopernik-paraleli", "13yy-astronomi", "halka-sezgin-omurga"]
 ---
 

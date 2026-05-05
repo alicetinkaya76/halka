@@ -52,6 +52,12 @@ influenced:
   - "pierre-simon-laplace"
   - "tüm-modern-fizik"
 
+cross_program_links:
+  - program_slug: "40-eserde-islam-dusuncesi"
+    program_name: "Halka: 40 Eserde İslam Düşüncesi"
+    item: "Muhammed İkbal — İslâm'da Dini Düşüncenin Yeniden Yapılandırılması (4. Kademe)"
+    thematic_axis: "3. Dönem akademik-figür-zincirin yapısal-paraleli: Newton'un matematiksel-aksiyomatik-bilim-figürünün (Principia 1687) Halka 3. dönem-akademik-figür-zincirin (Newton-Humboldt-Franklin-Einstein) Avrupa-uçtaki kanonik-merkez konumunun, modern-İslam-akademik-modernist-konumun kanonik-figürü İkbal'le (1877-1938) yan-yana-konumlandırılması; bilim-felsefe-figür-zincirinin Avrupa-uçtaki ve İslam-uçtaki akademik-modernist-konumlamalarının yapısal-paraleli."
+
 tags: ["bilim-devrimi-merkez-figur", "halka-3-donem-merkez",  "newton-cift-yuz-akademik",  "matematiksel-mekanik-mimar",  "lucasian-chair",  "royal-society-baskan",  "anti-trinitarian-heretik",  "simya-emegi-buyuk",  "westfall-gleick-monografi-figur", "halka-12-merkez-figur"]
 ---
 
