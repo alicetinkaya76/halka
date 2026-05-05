@@ -36,6 +36,7 @@ halka_metadata:
   sira_no: 15
   status: "planlanan"
   onceki_kitap: "isaacson-benjamin-franklin"
+  sonraki_kitap: "isaacson-einstein"
 
 historiographical_position:
   eurocentrism_axis: "Eurocentric"

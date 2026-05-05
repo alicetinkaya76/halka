@@ -12,7 +12,7 @@ flourished: "Akademik-bilim-tarihçiliğinde 1700 (Sosyete der Wissenschaften ku
 
 wikidata_id: "Q700814"
 
-tags: ["humboldt-berlin-akademik-emek-1827-1859", "cosmos-yazim-mekani", "halka-3-donem-dorduncu-akademik-merkez", "prusya-kraliyet-akademik-himaye", "berlin-cosmos-konferans-zinciri", "halka-13-merkez-yer", "ikinci-akademik-yuvasi-humboldt"]
+tags: ["humboldt-berlin-akademik-emek-1827-1859", "cosmos-yazim-mekani", "halka-3-donem-dorduncu-akademik-merkez", "prusya-kraliyet-akademik-himaye", "berlin-cosmos-konferans-zinciri", "halka-13-merkez-yer", "ikinci-akademik-yuvasi-humboldt", "einstein-1914-1932-akademik-zenith", "halka-16-aktivasyon-v0.21"]
 ---
 
 ## Atomik özet
@@ -44,3 +44,10 @@ Berlin Prusya Bilimler Akademisi, Halka'nın atomik-atlasında v0.17 turuyla aç
 - **Burke ek #23 (Bilginin Toplumsal Tarihi):** Berlin-Prusya-Akademisi'nin akademik-cemiyet-mimarisi Burke-bilgi-sosyolojisi-tezinin somut-vakası; Halka ek-kategorisindeki Burke-tartışmasının akademik-coğrafi-anchor'larından biri.
 
 **Atomik graf değeri:** Berlin Prusya Bilimler Akademisi, Halka'nın çoklu-pencere-yaklaşımının dördüncü-akademik-merkez-yer-vakası. Halka 3. dönem-müfredat-tasarımının akademik-coğrafyasının Cambridge-Padova-Paris üçgenine eklenen dördüncü-anchor; Humboldt-akademik-figürünün biyografik-derinliğinin son-aşama-mekânsal-zemini; Halka 1.-2. dönem-akademik-coğrafyasının (Bağdat-Kahire-Şam-Maraga-Buhara-Semerkant) İslam-bilim-cemiyet-mimari-zincirinin yapısal-paraleli olarak Avrupa-19. yy-akademik-cemiyet-mimari-zincirinin Berlin-uçtaki akademik-anchor'ı.
+
+
+## Einstein-akademik-zenith-dönem 1914-1932 (v0.21 turunda aktifleşen)
+
+**Halka v0.21 turuyla açılan Isaacson-Einstein #16 turu** Berlin-Prusya-Bilimler-Akademisi-zincirin **20. yy-akademik-zenith-dönemini** (1914-1932) Halka 3. dönem-müfredat-tasarımının pedagojik-omurgasına yerleştirir. Albert Einstein 1914 Nisan'da Max Planck ve Walther Nernst-akademik-davet-konumlamasının somutlaşmasıyla Berlin'e taşındı; akademik-zincir-konumlaması: **Kaiser-Wilhelm-Fizik-Enstitüsü direktörü** (1914-1932) + **Prusya-Bilimler-Akademisi üyesi** (1914-1933, 1933 Mart akademik-disiplinli-üyelik-bırakma-vakası) + **Berlin-Üniversitesi-akademik-yükümlülüksüz-profesörü** (1914-1932) — Einstein'ın akademik-yaşam-zincirin akademik-zenith-dönemi olarak Berlin-akademik-coğrafyasının yapısal-konumlanması. 1915 Kasım Berlin-Prusya-Bilimler-Akademisi-tutanaklarında genel-görelilik-alan-denklemlerinin yayınlanması (4-haftalık akademik-yayın-tartışma-zinciri 4-25 Kasım 1915) Berlin-akademik-zincirin akademik-disiplinli-zenith-vakasıdır; bkz. `concepts/genel-gorelilik` kavramının atomik-zemini.
+
+1933 Hitler-pogromuyla-Einstein'ın Berlin-akademik-zincirden-koparılmasının akademik-tarihsel-trajedi-vakası Halka 3. dönem-akademik-cemiyet-mimari-zincirin Avrupa→ABD-kayma-vakasının somut-figür-konumlanmasıdır; bkz. `places/princeton-iastudy` (1933-1955 Einstein-yerleşme-akademik-merkezi) atomik-zemini. Berlin-Prusya-Akademisi-zincirin Halka 3. dönem-akademik-cemiyet-mimari-zincirinde (Royal Society 1660 → Académie Royale 1666 → APS 1743 → Berlin-Prusya-Akademisi-Kaiser-Wilhelm-Enstitüsü 1700/1911 → Princeton-IAS 1930) **dördüncü-uçtaki Avrupa-zenith-vakasıdır**; Princeton-IAS bu zincirin ABD-uçtaki 20. yy-yansıma-vakasıdır.
