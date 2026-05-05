@@ -8,7 +8,7 @@ death_year: -348
 birth_place: "Atina (klasik Yunanistan)"
 death_place: "Atina (klasik Yunanistan)"
 place: "Atina → Megara → Mısır → Güney İtalya (Pythagorasçılar) → Sirakuza (Tiran Dionysios sarayı, üç ziyaret) → Atina (Akademi)"
-fields: ["felsefe", "metafizik", "epistemoloji", "etik", "siyaset", "matematik-felsefesi"]
+fields: ["felsefe", "metafizik",  "epistemoloji",  "etik",  "siyaset", "matematik-felsefesi"]
 role: "Antik Yunan filozofu; Klasik Yunan felsefesinin Sokrates-sonrası zirve-figürü, idealist-felsefenin kanonik figürü, Batı felsefesinin tek-figür-rekoru (Whitehead'in 'tüm batı felsefesi Platon'a düşülen dipnotlardır' cümlesinin sahibi). M.Ö. 387 civarında Atina yakınında Akademia adını taşıyan bahçeyi okul olarak kurdu — Akademi, Batı'nın ilk sürekli-yüksek-eğitim kurumu, M.S. 529'a kadar 916 yıl varlığını sürdürdü. Halka müfredatında v0.15 turuyla **ikinci antik-figür-atomiği** olarak açılır; konumu çoklu-katmanlıdır: (1) İslam felsefesi (Fârâbî *El-Cem' beyne re'yeyi'l-hakîmeyn Eflâtun el-İlâhî ve Aristûtâlîs* — 'iki bilge Platon-İlâhî ve Aristoteles'in görüşlerinin uzlaştırılması'), (2) Yenidendoğuş Floransa Platonculuğu (Marsilio Ficino *Theologia Platonica* 1482), (3) Galileo'nun matematiksel-Platonik fiziğinin felsefi temel-figürü — Koyré'nin Cilt 1'in #7 makalesi 'Galileo ile Platon' (s. 151) merkez-figür."
 
 wikidata_id: "Q859"
@@ -41,7 +41,7 @@ influenced:
   - "galileo-galilei"
   - "kepler"
 
-tags: ["antik-yunan-filozofu", "matematiksellestirme-kaynak", "akademi-kurucu", "halka-cok-pencere-figur", "galileo-platon-baglantisi", "halka-ikinci-antik-atomik", "idealist-felsefe-kanonu"]
+tags: ["antik-yunan-filozofu", "matematiksellestirme-kaynak",  "akademi-kurucu",  "halka-cok-pencere-figur",  "galileo-platon-baglantisi",  "halka-ikinci-antik-atomik", "idealist-felsefe-kanonu"]
 ---
 
 ## Atomik özet

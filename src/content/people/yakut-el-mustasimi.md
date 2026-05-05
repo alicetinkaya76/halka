@@ -9,7 +9,7 @@ place: "Bağdat (el-Müstaʿṣim sarayı) → Memlûk-İlhanlı saray güzergâ
 fields: ["hattatlık", "kâtiplik", "saray-bürokrasisi"]
 role: "Abbasî sonu büyük hattat. Son Abbasî halifesi el-Müstaʿṣim'in (ö. 1258) sarayında baş kâtip olarak yetişti — 'el-Müstaʿṣimī' nisbesi buradan. **'Üç ustâz'ın sonuncusu** (İbn Mukla → İbn el-Bevvâb → Yâkût). 1258 Moğol istilası sırasında Bağdat'tan kaçmayı başardı. Memlûk Mısır'ı ve İlhanlı saraylarına Bağdat hat geleneğini taşıdı. Pedersen'in non-declensionist anlatısının **insan-örneği**: yağma kütüphane-yıkar ama hat bilgisini taşıyan elleri durduramaz."
 
-tags: ["uc-ustaz", "1258-sonrasi-sureklilik", "memluk-ilhan-gucergahi", "halka-pedersen-non-declensionism", "13yy-hat"]
+tags: ["uc-ustaz", "1258-sonrasi-sureklilik",  "memluk-ilhan-gucergahi",  "halka-pedersen-non-declensionism", "13yy-hat"]
 ---
 
 ## Atomik özet

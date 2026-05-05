@@ -7,10 +7,10 @@ dates: "272-328 / 886-940"
 birth_year: 886
 death_year: 940
 place: "Bağdat"
-fields: ["hattatlık", "kelam", "siyâset", "vezirlik"]
+fields: ["hattatlık", "kelam",  "siyâset", "vezirlik"]
 role: "10. yy Abbasî vezir-hattat. Üç defa Abbasî veziri (et-Tâî, er-Râzî, el-Müttekî dönemleri). Hat ekollerinin sistematik reformcusu: **el-hat el-mensûb** (oranlı hat) kuralını koydu — harflerin geometrik oranları kalemin nokta-genişliğine endekslenir. Naskhi yazısının olgun biçiminin kurucusu. Politik mücadele sonucu sağ eli kesildi, sonra dili kesildi, sonra hapse atıldı — bu şehâdet hat tarihinde efsaneleşti. Pedersen için 'hat = standartlaştırılabilir bilgi-üretim teknolojisi' tezinin baş figürü."
 
-tags: ["hat-reformu", "oranli-hat", "naskhi-kurucusu", "10yy-bagdat", "vezirlik", "halka-pedersen-omurga"]
+tags: ["hat-reformu", "oranli-hat",  "naskhi-kurucusu",  "10yy-bagdat",  "vezirlik", "halka-pedersen-omurga"]
 ---
 
 ## Atomik özet

@@ -8,7 +8,7 @@ death_year: 1691
 birth_place: "Lismore Castle (Lismore, Waterford County, İrlanda)"
 death_place: "Londra (Pall Mall'da Lady Ranelagh'ın evinde)"
 place: "Lismore Castle İrlanda (1627-1635) → Eton College İngiltere (1635-1639) → Avrupa-grand-tour İtalya-Fransa-İsviçre (1639-1644) → Stalbridge Manor Dorset (1644-1656) → Oxford (1656-1668) → Londra Lady Ranelagh evinde (1668-1691)"
-fields: ["kimya", "fizik", "mekanik-felsefe", "teoloji", "tıp"]
+fields: ["kimya", "fizik",  "mekanik-felsefe",  "teoloji", "tıp"]
 role: "İrlandalı-İngiliz doğa-filozofu ve akademik-cemiyet-kurucusu; Royal Society 1660 kurucu-üyelerinden ve Bilim Devrimi'nin **kimya-deneysel-felsefe** ekseninin kanonik-figürü. *The Sceptical Chymist* (1661) — simyacıların gizli-allegorik-dilinin akademik-eleştirisi ve ölçülmüş-deneysel-kimya-pratiğinin yöntemsel-savunusu; modern-kimya disiplininin akademik-doğum-noktasının kanonik-eseri (Lavoisier'in 1789 *Traité Élémentaire de Chimie* eseri öncesi en-etkili-kimya-akademik-monografi). *New Experiments Physico-Mechanical, Touching the Spring of the Air* (1660) — Hooke ile birlikte tasarladığı hava-pompası deneyleri, vakum-mümkünlüğünün deneysel-doğrulanması ve gaz-basınç-hacim ilişkisi (sonradan 'Boyle yasası' adıyla kanonikleşti). **Newton ile akademik-bağ:** 1675 Mart'ta Newton'un Royal Society'ye ilk-fiziksel-katılımında akademik-tanışma; sonraki yıllarda corpuscular-felsefe ve simya konularında akademik-yazışmalar; Newton'un *Opticks* eserinin atomistik-felsefe-zemini büyük-ölçüde Boyle-corpuscular-felsefe etkisindedir. **Halka için merkezi-kavramsal-rol:** Boyle 17. yy akademik-pratiğinin disipliner-ayrılma-öncesi yapısının somut-örneğidir — Boyle aynı-zamanda kimyacı (modern-kimya doğum-figürü), simyacı (transmutasyon-arayışı, gizli-simya-temaslar), Hıristiyan-teolog (akademik-eserlerinde sürekli-doğa-teolojisi, *The Christian Virtuoso* 1690), Anglikan-Aydınlanma-misyoner (Boyle vasiyetiyle yıllık 'Boyle Lectures' Hıristiyan-bilimle uzlaşma akademik-savunusu için), zenginlik-mirasıyla bağımsız-akademik-emek-yapan aristokrat. Bu çok-yönlü-yapı Newton'un Cambridge-Trinity-fellow yıllarında akademik-modeli olur."
 
 wikidata_id: "Q170607"
@@ -41,7 +41,7 @@ influenced:
   - "john-locke"
   - "robert-hooke"
 
-tags: ["royal-society-kurucu", "modern-kimya-doguş-figur", "newton-akademik-mentor", "halka-3-donem-deneysel-felsefe-figur", "corpuscular-felsefe", "boyle-yasasi", "the-sceptical-chymist", "hiristiyan-doğa-teolojisi", "ariskorat-akademik-bagimsiz-emek"]
+tags: ["royal-society-kurucu", "modern-kimya-doguş-figur",  "newton-akademik-mentor",  "halka-3-donem-deneysel-felsefe-figur",  "corpuscular-felsefe",  "boyle-yasasi",  "the-sceptical-chymist",  "hiristiyan-doğa-teolojisi", "ariskorat-akademik-bagimsiz-emek"]
 ---
 
 ## Atomik özet

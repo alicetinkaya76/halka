@@ -8,7 +8,7 @@ death_year: 1703
 birth_place: "Freshwater (Wight Adası, İngiltere)"
 death_place: "Londra (Gresham College'daki odasında)"
 place: "Wight Adası (1635-1648) → Westminster School Londra (~1648-1653) → Christ Church Oxford (1653-1662, kısa fellowship) → Gresham College ve Royal Society Londra (1662-1703)"
-fields: ["fizik", "mikroskop-biyoloji", "mimari", "mekanik-mühendislik", "astronomi", "jeoloji"]
+fields: ["fizik", "mikroskop-biyoloji",  "mimari",  "mekanik-mühendislik",  "astronomi", "jeoloji"]
 role: "İngiliz çok-yönlü doğa-filozofu ve akademik-cemiyet-kurucusu; Royal Society'nin **Curator of Experiments** pozisyonunun ilk-sahibi (1662-1703, 41 yıl, akademik-tarihteki ilk profesyonel-deneysel-bilim-pozisyonu); haftalık-toplantılarda canlı-deney sergileme akademik-pratiğinin somut-uygulayıcısı. *Micrographia* (1665) — mikroskobik-gözlemlerin akademik-monografisi, 'cell' (hücre) terimini bilim-tarihine kazandırdı; aynı eserde optik-renk teorisi (ışığın titreşim-doğası, ince-tabaka renkleri) Newton'un 1672 prizma-makalesiyle akademik-rakip-konuma geldi. Hooke yasası (esnek-yay deneyleri, *Lectures de Potentia Restitutiva* 1678): bir esnek-cismin uygulanan-kuvvetle uzaması doğru-orantılıdır. **Newton ile akademik-çatışmaların merkez-figürü:** 1672 optik-tartışması (Hooke Newton'un prizma-deneylerini *Micrographia*'sındaki kendi-renk-teorisinin uzantısı saydı), 1679-1680 gravitasyon-yazışmaları (Hooke ters-kare çekim tahminini Newton'a yazdı, Newton'un *Principia* 1687 öncelik-iddiasının akademik-rakip-zemini oldu), 1686 Halley aracılığıyla *Principia* hazırlığında Hooke'un öncelik-talebi ve Newton'un öfke-fışkırması. **Mimari-akademik-emek:** 1666 Büyük Londra Yangını sonrası Christopher Wren ile birlikte Londra-yeniden-inşası, City Surveyor pozisyonu, Bethlehem Royal Hospital (Bedlam) tasarımı, çok-sayıda Londra-binası. Halka için: 17. yy İngiliz-bilim-akademik-cemiyet-pratiğinin somut-figür-örneği; Newton-figürünün akademik-rakip-konumlamasının yapısal-rolü; akademik-kavganın bilim-üretimini hem-tetikleyici hem-engelleyici çift-yüzü."
 
 wikidata_id: "Q170581"
@@ -35,7 +35,7 @@ influenced:
   - "isaac-newton"
   - "edmond-halley"
 
-tags: ["royal-society-curator-experiments", "newton-akademik-rakip", "halka-3-donem-akademik-cemiyet-figur", "micrographia-yazar", "hooke-yasasi", "gresham-college", "mimari-akademik-cift-emek", "bilim-akademik-kavga-figur"]
+tags: ["royal-society-curator-experiments", "newton-akademik-rakip",  "halka-3-donem-akademik-cemiyet-figur",  "micrographia-yazar",  "hooke-yasasi",  "gresham-college",  "mimari-akademik-cift-emek", "bilim-akademik-kavga-figur"]
 ---
 
 ## Atomik özet

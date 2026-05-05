@@ -24,7 +24,7 @@ influenced:
 influenced_by:
   - "tusi"
 
-tags: ["maraga-ekibi", "urdi-lemma", "alet-mühendisi", "anti-eurocentric-teknik-silah", "13yy-astronomi"]
+tags: ["maraga-ekibi", "urdi-lemma",  "alet-mühendisi",  "anti-eurocentric-teknik-silah", "13yy-astronomi"]
 ---
 
 ## Atomik özet

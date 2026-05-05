@@ -1,14 +1,14 @@
 ---
 name: "Gottfried Wilhelm Leibniz"
 name_full: "Gottfried Wilhelm von Leibniz (1700 sonrası baronluk-imtiyazıyla 'von' eki, akademik-yazışmada nadir kullanım)"
-name_aliases: ["Leibniz", "Gottfried Leibniz", "G. W. Leibniz", "Leibnitius (Latin akademik-imza)"]
+name_aliases: ["Leibniz", "Gottfried Leibniz",  "G. W. Leibniz", "Leibnitius (Latin akademik-imza)"]
 dates: "1646-1716"
 birth_year: 1646
 death_year: 1716
 birth_place: "Leipzig (Saksonya, Kutsal Roma İmparatorluğu)"
 death_place: "Hannover (Hannover Elektörlüğü, Kutsal Roma İmparatorluğu)"
 place: "Leipzig (1646-1666) → Altdorf doktora (1666-1667) → Mainz hukuk-akademik-emek (1668-1672) → Paris diplomatik-akademik dönem (1672-1676) → Londra ziyaretleri (1673, 1676) → Hannover Sarayı kütüphane-tarih-yazıcısı ve akademik-yönetici (1676-1716)"
-fields: ["matematik", "felsefe", "diplomasi", "tarih-yazımı", "hukuk", "mühendislik", "teoloji", "akademik-cemiyet-organizasyonu"]
+fields: ["matematik", "felsefe",  "diplomasi",  "tarih-yazımı",  "hukuk",  "mühendislik",  "teoloji", "akademik-cemiyet-organizasyonu"]
 role: "Alman matematikçi-filozof-diplomat; 17. yüzyıl sonu Avrupa'sının çoğul-akademik-disiplinlerinde ('polymath'in kanonik-örneği) eş-zamanlı-akademik-konum sahibi figür. **Calculus'un Newton'dan bağımsız ikinci-keşfedeni**: 1675-1676 Paris-döneminde differansiyel-analiz aksiyomatiklerini geliştirdi, 1684 Ekim'inde *Acta Eruditorum*'da (Leipzig) ilk-yayınını yaptı (Newton'un yayını 1693 elyazma-dolaşımı, 1704 *Opticks*-eki); günümüzde matematikte kullanılan dx/dy notasyonu, integral işareti ∫ (Latin 'summa' kelimesinin S-harfi uzatılmış formu) ve 'differential' terimi Leibniz'in akademik-mirasıdır. **Newton ile öncelik-tartışması (1711-1722):** Royal Society'nin 'tarafsız' komitesinin 1712 *Commercium Epistolicum* yayınında Leibniz aleyhine kararı (Newton arkaplan-yöneticiliğiyle); akademik-tarihinin en-büyük öncelik-skandali ve Avrupa-İngiltere matematik-okullarının 18. yy boyunca ayrı-akademik-gelenekler oluşturmasının zemini. Akademik-emeği matematik dışında: monadoloji metafiziği (*Monadologie* 1714), olası-dünyaların-en-iyisi teodisesi (*Théodicée* 1710), Brunswick-Hanover hanedanının resmî-tarih-yazımı, Berlin Bilim Akademisi'nin kuruluşu (1700, ilk-başkanı), evrensel-yazı (*characteristica universalis*) ve mantıksal-hesap projesi (modern-mantığın öncülü), ikili-sayı-sistemi (1703) yayını. Hannover Sarayı'nda Brunswick hanedanının kütüphane-tarih-yazıcısı olarak 40 yıl akademik-konum (Saray-himayesinin akademik-emek modelinin kanonik-örneği)."
 
 wikidata_id: "Q9047"
@@ -46,7 +46,7 @@ influenced:
   - "kant"
   - "russell"
 
-tags: ["calculus-bagimsiz-icad", "newton-leibniz-oncelik-tartisma", "polymath-kanon", "hannover-saray-akademik-emek", "berlin-akademisi-kurucu", "halka-3-donem-figur", "akademik-yazisma-aglarinin-omurgasi"]
+tags: ["calculus-bagimsiz-icad", "newton-leibniz-oncelik-tartisma",  "polymath-kanon",  "hannover-saray-akademik-emek",  "berlin-akademisi-kurucu",  "halka-3-donem-figur", "akademik-yazisma-aglarinin-omurgasi"]
 ---
 
 ## Atomik özet

@@ -9,7 +9,7 @@ death_year: 1039
 birth_place: "Basra"
 death_place: "Kâhire"
 place: "Basra → Kâhire"
-fields: ["optik", "matematik", "fizik", "astronomi"]
+fields: ["optik", "matematik",  "fizik", "astronomi"]
 role: "10.-11. yy Basralı matematikçi-fizikçi. Kâhire'de Fâtımî Halifesi el-Hâkim döneminde uzun süre çalıştı. Kitâbü'l-Menâzir (7 ciltlik Optik) modern optiğin temeli; deney-ölçüm-matematik üçlüsünü disiplinli biçimde birleştiren ilk büyük çalışma. Ptoleme'nin Megale Suntaxis'ine yönelik Şükûk ʿalâ Batlamyûs (Doubts on Ptolemy) eseri Tûsî-Urdî-Şâtır zincirinin teorik doğuş noktasıdır. Sezgin Cilt III Bölüm 6 (Optik) ana figürü; Risner'in 1572 Bâle edisyonu Avrupa optiğinin (Kepler, Snell) doğrudan kaynağı."
 
 works:
@@ -28,7 +28,7 @@ influenced:
   - "tusi"
   - "kemaleddin-el-farisi"
 
-tags: ["basra-kahire", "optik-kurucusu", "deneysel-yontem", "ptoleme-elestirisi", "11yy-bilim", "halka-coklu-kitap-kesisimi-gelecek"]
+tags: ["basra-kahire", "optik-kurucusu",  "deneysel-yontem",  "ptoleme-elestirisi",  "11yy-bilim", "halka-coklu-kitap-kesisimi-gelecek"]
 ---
 
 ## Atomik özet

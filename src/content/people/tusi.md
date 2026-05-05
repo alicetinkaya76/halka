@@ -9,7 +9,7 @@ death_year: 1274
 birth_place: "Tûs (Horasan)"
 death_place: "Bağdat"
 place: "Tûs → Alamut → Bağdat → Maraga"
-fields: ["matematik", "astronomi", "felsefe", "kelam", "etik"]
+fields: ["matematik", "astronomi",  "felsefe",  "kelam", "etik"]
 role: "13. yy Pers polymath. İlhanlı Hülagü Han'ın izniyle 1259'da Maraga'da rasathane + kütüphane kompleksini kurdu. Tezkire fî İlmü'l-Heyʾa eserinde Ptoleme aequans'ını çürüten 'çift daire' (Tūsī couple) prensibini geliştirdi. Sezgin'in Cilt I'de 5 noktalı Kopernik-paraleli vurgusunun ilk halkası. Maraga ekibinin (Tûsî + el-Urdî + el-Mağribî + Şîrâzî) lideri ve 13. yy küresel astronomisinin merkezî figürü."
 
 works:
@@ -34,7 +34,7 @@ influenced:
   - "kutbeddin-sirazi"
   - "ali-kuscu"
 
-tags: ["maraga-ekibi", "tusi-couple", "anti-eurocentric-teknik-silah", "13yy-astronomi", "pers-polymath"]
+tags: ["maraga-ekibi", "tusi-couple",  "anti-eurocentric-teknik-silah",  "13yy-astronomi", "pers-polymath"]
 ---
 
 ## Atomik özet

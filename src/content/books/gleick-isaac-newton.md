@@ -36,6 +36,7 @@ halka_metadata:
   sira_no: 12
   status: "sirada"
   onceki_kitap: "berkey-ortacag-kahirede-bilgi-intikali"
+  sonraki_kitap: "wulf-doganin-icadi"
 
 historiographical_position:
   eurocentrism_axis: "Eurocentric"

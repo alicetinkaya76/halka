@@ -21,7 +21,7 @@ influenced_by:
   - "tusi"
   - "urdi-muayyededdin"
 
-tags: ["sam", "muvakkithane", "satir-ay-modeli", "anti-eurocentric-teknik-silah", "14yy-astronomi", "kopernik-paraleli"]
+tags: ["sam", "muvakkithane",  "satir-ay-modeli",  "anti-eurocentric-teknik-silah",  "14yy-astronomi", "kopernik-paraleli"]
 ---
 
 ## Atomik özet
