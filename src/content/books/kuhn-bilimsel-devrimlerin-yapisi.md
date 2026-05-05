@@ -36,6 +36,7 @@ halka_metadata:
   sira_no: 17
   status: "planlanan"
   onceki_kitap: "isaacson-einstein"
+  sonraki_kitap: "wootton-bilimin-icadi"
 
 historiographical_position:
   eurocentrism_axis: "Eurocentric"
@@ -243,6 +244,9 @@ relationships_to_other_books:
   - book: "isaacson-benjamin-franklin"
     relation: "kismen_celisir"
     note: "Halka #14 Isaacson-Franklin Aydınlanma-rasyonalist-akademik-bilim-akademik-konumlaması (Aydınlanma-pozitivist-akademik-zemini) ile Halka #17 Kuhn-akademik-paradigma-değişim-akademik-konumlaması (akademik-pozitivist-akademik-eleştirel-yan) akademik-felsefi-konum-tartışma-konumunda. Aydınlanma-akademik-bilim-zemininin akademik-rasyonel-akümülativist-akademik-anlatısı Kuhn-akademik-konumlamasının akademik-eleştirel-akademik-zemini — akademik-bilim-tarihinin akademik-disiplinli-yenidoğuşunun akademik-yapısal-tartışma-vakası."
+  - book: "wootton-bilimin-icadi"
+    relation: "tematik_tamamlayici"
+    note: "Halka #18 Wootton-tarihçi-yenidoğuş (2015) ile Halka #17 Kuhn-meta-felsefe-yapılaşması (1962-1969) yan-yana-okunmasında çift-konum: Kuhn-paradigma-değişim-yöntemi Halka 3. dönem-meta-katmanın felsefi yan'ı, Wootton-tarihçi-anatomi-konumlaması meta-katmanın tarihçi yan'ı. Wootton-akademik-konumlaması Kuhn-paradigma-değişim-örneklik-vakasının (Bilim Devrimi) tarihçi-disiplinli derinlik-yenidoğuşudur — Kuhn-paradigma-yöntemini tarih-disiplin-zemininde rafine eder. Wootton'un *The Invention of Science*'ta Kuhn-paradigma-konumlamasıyla disiplinli iç-tartışma yan-zemini (Bazı Uzunca Notlar §5 paradigma-akademik-konvansiyonun disiplinli iç-anatomi-vakası): Kuhn-akademik-yan-anlamlı paradigma-kavramı Wootton-akademik-anlatımındaki yan-anlam-yenidoğuş-zincirin (olgu/deney/hipotez/yasa/bulgu) tarihçi-anatomi-konumlamasıyla yapısal yan-yana okunur. Halka grup-okumasında Kuhn-Wootton-yan-yana-okunması meta-felsefe × tarihçi-disiplin yapısal yan-yana-konumlamasının disiplinli yapılaşması."
 
 discussion_questions:
   - "Kuhn'un 'paradigma' kavramının iki-yan-anlamı (disipliner-matris akademik-cemiyet-disipliner-yan × paylaşılan-örneklik akademik-uygulama-yan; Sonsöz §2-3 akademik-rafinasyonu) Halka grup-okumasının akademik-tartışma-zemininde nasıl yapısal-akademik-disiplinli-yan-yana-okunmalıdır?"
