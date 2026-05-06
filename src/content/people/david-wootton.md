@@ -7,7 +7,7 @@ birth_year: 1952
 birth_place: "Birleşik Krallık"
 place: "Birleşik Krallık (öğrenim ve akademik üretim) → Kanada (Dalhousie University-Halifax 1980-1991, Queen's University-Kingston 1991-1996) → Birleşik Krallık (University of York Anniversary Professor of History, 1996-2018 emekli)"
 fields: ["bilim tarihi", "Erken-Modern Avrupa tarihi", "tıp tarihi", "düşünce tarihi", "Galileo-akademik-zincir-uzmanlığı", "Bilim Devrimi-tarihyazımı"]
-role: "İngiliz bilim tarihçisi ve düşünce tarihçisi; 21. yy bilim-tarihi-akademik-yenidoğuş-konumlamasının disiplinli mimarı, Halka 3. dönem-tarihçi-zincirin (Koyré-Westfall-Kuhn-Wootton) yenidoğuş-figürü. Halka #18 *Bilimin İcadı* (2015) yazarı; Halka 3. dönem-akademik-tarihçi-yenidoğuş-katmanın merkez-figürü ve Halka #17 Kuhn-meta-felsefe-yapılaşmasıyla çift-konumdaki 3. dönem-yapısal-kapanış-vakasının figürü."
+role: "İngiliz bilim tarihçisi ve düşünce tarihçisi; 21. yy bilim-tarihi-akademik-yenidoğuş-konumlamasının disiplinli mimarı, Wootton'un akademik-soykütük-zinciri Koyré-Westfall-Kuhn yenidoğuş-mirasçısı. Halka #17 *Bilimin İcadı* (2015) yazarı; Halka 3. dönem-akademik-tarihçi-disiplinli-derinlik-yenidoğuş-katmanın merkez-figürü ve Halka 3. dönem-akademik-yapısal-kapanış-vakasının figürü — Halka 4. dönem-akademik-meta-yöntem-felsefe-yapılaşmasının (#18 Kuhn-açılış-vakası) yapısal-açılış-zemini."
 wikidata_id: "Q5236680"
 
 works:
@@ -26,7 +26,7 @@ works:
   - title: "Galileo: Watcher of the Skies"
     type: "akademik-derinlik-monografi (Halka #18 zemin-vakası)"
     year: 2010
-    note: "Galileo-derinlik-uzmanlığının disiplinli formülasyonu; *The Invention of Science*'ın akademik-zemininin somut vakası — 25-yıllık Galileo-disiplinli-akademik-zincir-konumun yapısal yansıması. Halka için kritik vaka: Halka #15 Westfall-Galileo-akademik-anlatımıyla yapısal yan-yana-okunmasının disiplinli zemini, Halka #18 Wootton-akademik-tezin Galileo-merkez-figür-konumlamasının uzmanlık-arka-planı. Yale University Press."
+    note: "Galileo-derinlik-uzmanlığının disiplinli formülasyonu; *The Invention of Science*'ın akademik-zemininin somut vakası — 25-yıllık Galileo-disiplinli-akademik-zincir-konumun yapısal yansıması. Halka için kritik vaka: Halka #15 Westfall-Galileo-akademik-anlatımıyla yapısal yan-yana-okunmasının disiplinli zemini, Halka #17 Wootton-akademik-tezin Galileo-merkez-figür-konumlamasının uzmanlık-arka-planı. Yale University Press."
   - title: "The Invention of Science: A New History of the Scientific Revolution"
     type: "akademik-bilim-tarihi-yenidoğuş-monografi (Halka #18)"
     year: 2015
@@ -66,7 +66,7 @@ tags:
 
 ## Atomik özet
 
-**David Wootton** (1952-, İngiliz bilim tarihçisi ve düşünce tarihçisi) Halka müfredatında **Halka #18 yazarı** olarak işlenir: *The Invention of Science: A New History of the Scientific Revolution* (2015, Türkçe *Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi*) Halka 3. dönem-(Batı Bilim Devrimi: Yöntem ve Kuramlar)-akademik-tarihçi-yenidoğuş-katmanın merkez-vakasıdır ve Halka #17 Kuhn-meta-felsefe-yapılaşmasıyla çift-konumda 3. dönem-yapısal-kapanış-vakasının figürüdür.
+**David Wootton** (1952-, İngiliz bilim tarihçisi ve düşünce tarihçisi) Halka müfredatında **Halka #17 yazarı** olarak işlenir: *The Invention of Science: A New History of the Scientific Revolution* (2015, Türkçe *Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi*) Halka 3. dönem-(Batı Bilim Devrimi: Yöntem ve Kuramlar)-akademik-tarihçi-disiplinli-derinlik-yenidoğuş-katmanın merkez-vakasıdır ve Halka 3. dönem-akademik-yapısal-kapanış-vakasının figürüdür — Halka 4. dönem-akademik-meta-yöntem-felsefe-yapılaşmasının (#18 Kuhn-açılış-vakası) yapısal-açılış-zemini.
 
 ## Akademik-trajektori
 
@@ -82,13 +82,13 @@ Wootton'un akademik-yöntem-zemini **Cambridge-Pocock-Skinner-akademik-düşünc
 
 ## Halka 3. dönem-akademik-omurgada Wootton'un yapısal-konumu
 
-Wootton Halka 3. dönem-müfredat-tasarımının **akademik-tarihçi-yenidoğuş-katmanın merkez-figürüdür**. Halka 3. dönem-figür-zincirin (#12 Gleick-Newton, #13 Wulf-Humboldt, #14 Isaacson-Franklin, #15 Westfall-Newton-derinlik, #16 Isaacson-Einstein) figür-merkezli-popüler-biyografi-katmanın × Halka #17 Kuhn-meta-felsefe-yapılaşma-katmanın **tarihçi-disiplinli derinlik-yenidoğuşuna** geçişin somut vakası — Halka 3. dönem-tarihçi-zincirin (Koyré 1939, Westfall 1980, Kuhn 1962-1969, **Wootton 2015**) 76-yıllık akademik-yenidoğuş-figürünün disiplinli yapılaşmasıdır.
+Wootton Halka 3. dönem-müfredat-tasarımının **akademik-tarihçi-yenidoğuş-katmanın merkez-figürüdür**. Halka 3. dönem-figür-zincirin (#12 Gleick-Newton, #13 Wulf-Humboldt, #14 Isaacson-Franklin, #15 Westfall-Newton-derinlik, #16 Isaacson-Einstein) figür-merkezli-popüler-biyografi-katmanın × Halka #18 Kuhn-meta-felsefe-yapılaşma-katmanın **tarihçi-disiplinli derinlik-yenidoğuşuna** geçişin somut vakası — Halka 3. dönem-tarihçi-zincirin (Koyré 1939, Westfall 1980, Kuhn 1962-1969, **Wootton 2015**) 76-yıllık akademik-yenidoğuş-figürünün disiplinli yapılaşmasıdır.
 
-Wootton'un Halka 3. dönem-akademik-zenginleşme-vakası: dört-figür-katman-anatomisi (şehitler-kahramanlar-propagandacılar-emekçiler) Halka 3. dönem-figür-zincirin (#12-#18) yapısal yan-yana-okunmasının disiplinli zeminini sağlar — popüler-biyografi-katmanın (Gleick-Newton, Wulf-Humboldt, Isaacson-Franklin, Isaacson-Einstein) figür-zenith-konumlamaları Wootton'un kahraman-katmanın (Kepler, Boyle) yapısal paraleli; derinlik-monografi-katmanın (Westfall-Newton) tarihçi-anatomi-zemini Wootton'un dört-katmanlı anatomi-yapılaşmasında yenidoğar.
+Wootton'un Halka 3. dönem-akademik-zenginleşme-vakası: dört-figür-katman-anatomisi (şehitler-kahramanlar-propagandacılar-emekçiler) Halka 3. dönem-figür-zincirin (#12-#17, Wootton 3. dönem-kapanışı dahil) yapısal yan-yana-okunmasının disiplinli zeminini sağlar — popüler-biyografi-katmanın (Gleick-Newton, Wulf-Humboldt, Isaacson-Franklin, Isaacson-Einstein) figür-zenith-konumlamaları Wootton'un kahraman-katmanın (Kepler, Boyle) yapısal paraleli; derinlik-monografi-katmanın (Westfall-Newton) tarihçi-anatomi-zemini Wootton'un dört-katmanlı anatomi-yapılaşmasında yenidoğar.
 
 ## Halka 4. dönem-meta-konum-açıklığının yapısal yan'ı
 
-Wootton-akademik-konumlamasının **disiplinli iç-yan-açıklığı** (claim-007 yorumsal-sentez): 'aynı tarihlerde dünyanın geri kalanında benzeri bir değişimin neden yaşanmadığı sorusu' Halka 1.-2. dönem-Doğu-bilim-zincirin (Hobson #4 küresel-tarih-konumlaması, Sezgin #9 Tusi-couple-İslam-astronomi-aksiyomatik-aktarım-zinciri) yapısal tartışma-zemininin disiplinli açılımıdır. Wootton-anlatımında Tusi-zincirin (Maraga-Buhara-Semerkant-Kahire-coğrafyası) konum-eksende yer-almaması Eurocentric-yapısal-eksiktir, ancak Wootton'un iç-yan-açıklığı Halka #17 Kuhn-Eurocentric-konumlamasının kapalı-içselliğiyle yapısal-fark sunar — bu açıklık Halka 4. dönem-(Karşılaştırmalı Sentezler)-meta-konum-zemininin somut vakası, Halka grup-okumasında Wootton-Hobson-Sezgin-yan-yana-okunmasının disiplinli zemini.
+Wootton-akademik-konumlamasının **disiplinli iç-yan-açıklığı** (claim-007 yorumsal-sentez): 'aynı tarihlerde dünyanın geri kalanında benzeri bir değişimin neden yaşanmadığı sorusu' Halka 1.-2. dönem-Doğu-bilim-zincirin (Hobson #4 küresel-tarih-konumlaması, Sezgin #9 Tusi-couple-İslam-astronomi-aksiyomatik-aktarım-zinciri) yapısal tartışma-zemininin disiplinli açılımıdır. Wootton-anlatımında Tusi-zincirin (Maraga-Buhara-Semerkant-Kahire-coğrafyası) konum-eksende yer-almaması Eurocentric-yapısal-eksiktir, ancak Wootton'un iç-yan-açıklığı Halka #18 Kuhn-Eurocentric-konumlamasının kapalı-içselliğiyle yapısal-fark sunar — bu açıklık Halka 4. dönem-(Karşılaştırmalı Sentezler)-meta-konum-zemininin somut vakası, Halka grup-okumasında Wootton-Hobson-Sezgin-yan-yana-okunmasının disiplinli zemini.
 
 ## Wootton'un akademik-rakip-konumu: Steven Shapin
 

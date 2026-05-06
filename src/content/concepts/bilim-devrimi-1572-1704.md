@@ -1,7 +1,7 @@
 ---
 name: "Bilim Devrimi (1572-1704 / Wootton-paranı)"
 name_aliases: ["1572-1704 Wootton-paranı", "Bilim Devrimi-revizyonist okuma", "scientific revolution 1572-1704", "Wootton-tezin tarih-paranı"]
-short_description: "David Wootton'un *The Invention of Science* (2015, Halka #18) eserinde formüle edilmiş Bilim Devrimi-akademik-tarih-paranı: çağdaş bilimin disiplinli icat-momenti 1572 (Tycho Brahe-nova-açılışı, Aristotelesçi-değişmez-sema-paradigmasının iç-tutarsızlık-tetik-vakası) ile 1704 (Newton *Opticks* deneysel-yöntem-yapılaşma-zenith-vakası) arasındadır. Halka 3. dönem-tarihçi-zincirin (Koyré 1543-1687 paranı, Westfall 17. yy konsantrasyon-derinliği, Kuhn-meta-felsefe-yapılaşması) 21. yy-yenidoğuş-konumlamasının tarih-paranı. Mevcut Halka v0.X-`bilim-devrimi.md` Halka-genel-konum-atomiği; bu atomik Wootton-spesifik konum-rafinasyonu (revizyonist okumada disiplinli yan-yenidoğuş)."
+short_description: "David Wootton'un *The Invention of Science* (2015, Halka #17) eserinde formüle edilmiş Bilim Devrimi-akademik-tarih-paranı: çağdaş bilimin disiplinli icat-momenti 1572 (Tycho Brahe-nova-açılışı, Aristotelesçi-değişmez-sema-paradigmasının iç-tutarsızlık-tetik-vakası) ile 1704 (Newton *Opticks* deneysel-yöntem-yapılaşma-zenith-vakası) arasındadır. Halka 3. dönem-tarihçi-zincirin (Koyré 1543-1687 paranı, Westfall 17. yy konsantrasyon-derinliği, Kuhn-meta-felsefe-yapılaşması) 21. yy-yenidoğuş-konumlamasının tarih-paranı. Mevcut Halka v0.X-`bilim-devrimi.md` Halka-genel-konum-atomiği; bu atomik Wootton-spesifik konum-rafinasyonu (revizyonist okumada disiplinli yan-yenidoğuş)."
 period: "1572 (Tycho-nova-açılış-momenti) → 1704 (Newton *Opticks*-deneysel-zenith-momenti); akademik-zemin-tetik-vakası 1492 Yenidünya keşfi (Avrupa-bilgi-konvansiyonunun coğrafi tetik-iç-eleştiri-zemini)"
 geography: "Avrupa-merkezli akademik-coğrafya: 16. yy Polonya-Frauenburg (Kopernik), Danimarka-Hven-Uraniborg (Tycho), Almanya-Wittenberg/Tübingen/Linz/Prag (Kepler); 17. yy İtalya-Padova/Floransa/Pisa/Roma (Galileo + 1633-yargılama), İngiltere-Cambridge/Londra-Royal Society (Boyle-Hooke-Newton), Fransa-Paris (Descartes-Gassendi), Hollanda-Leiden/Amsterdam (yayıncılık)"
 related_concepts:
@@ -29,7 +29,7 @@ tags:
 
 ## Atomik özet
 
-**1572-1704 Bilim Devrimi (Wootton-paranı)**, David Wootton'un *Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi* (2015, Halka #18) eserinde disiplinli formüle edilmiş Bilim Devrimi-akademik-tarih-paranıdır. Halka müfredatında **Halka #18 merkez-kavramı** ve Halka 3. dönem-tarihçi-zincirin (Koyré-Westfall-Kuhn-Wootton) 21. yy-yenidoğuş-konumlamasının tarih-paranı.
+**1572-1704 Bilim Devrimi (Wootton-paranı)**, David Wootton'un *Bilimin İcadı: Bilim Devrimi'nin Yeni Bir Tarihi* (2015, Halka #17) eserinde disiplinli formüle edilmiş Bilim Devrimi-akademik-tarih-paranıdır. Halka müfredatında **Halka #17 merkez-kavramı** ve Halka 3. dönem-tarihçi-zincirin (Koyré-Westfall-Kuhn-Wootton) 21. yy-yenidoğuş-konumlamasının tarih-paranı.
 
 ## Wootton-akademik-konumlaması: paranın yapısal-mimarisi
 
@@ -60,8 +60,8 @@ Bu yapısal-fark Wootton-akademik-konumlamasının disiplinli revizyonist-yenido
 
 - **Koyré 1543-1687 (1939 *Études galiléennes*)** — kavramsal-felsefi-içselci-zincirin disiplinli açılış-momenti.
 - **Westfall 17. yy-konsantrasyon (1980 *Never at Rest*, Halka #15)** — derinlik-monografi-vakası, içselci-zincirin akademik-zenith-konumu.
-- **Kuhn-paradigma-değişim-akademik-örnek-zinciri (1962/1969 Halka #17)** — meta-felsefe-yapılaşması, Bilim Devrimi-vakası paradigma-değişim-örneklik-konumunda.
-- **Wootton 1572-1704 (2015 Halka #18)** — tarihçi-disiplinli yenidoğuş, paranın disiplinli yapısal-genişlemesi + yan-anlam-yenidoğuş-zincirin tarihçi-anatomisi + dört-figür-katman-anatomisi.
+- **Kuhn-paradigma-değişim-akademik-örnek-zinciri (1962/1969 Halka #18, 4. dönem-açılış)** — meta-felsefe-yapılaşması, Bilim Devrimi-vakası paradigma-değişim-örneklik-konumunda.
+- **Wootton 1572-1704 (2015 Halka #17, 3. dönem-kapanışı)** — tarihçi-disiplinli yenidoğuş, paranın disiplinli yapısal-genişlemesi + yan-anlam-yenidoğuş-zincirin tarihçi-anatomisi + dört-figür-katman-anatomisi.
 
 Halka grup-okumasında bu zincirin yan-yana-okunması meta-konum-vakası — tarihçi-disiplinli akademik-paranın disiplinli yenidoğuşunun yapısal yan-yan-konumlamasının somut akademik-vakası.
 

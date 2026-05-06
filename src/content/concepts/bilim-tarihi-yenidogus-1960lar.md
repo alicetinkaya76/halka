@@ -31,7 +31,7 @@ tags:
 
 **Norwood Russell Hanson (1924-1967)** — *Patterns of Discovery* (1958) akademik-paradigma-yüklü-akademik-gözlem-konumlamasının akademik-yapısal-zemini ('theory-laden observation' akademik-formülasyonu). Kuhn-akademik-konumlamasındaki akademik-gözlemsel-eş-ölçülemezlik-konumunun akademik-yapısal-akademik-zemini.
 
-**Thomas Kuhn (1922-1996)** — *Bilimsel Devrimlerin Yapısı* (1962) + Sonsöz: 1969 akademik-paradigma-değişim-felsefesinin akademik-merkez-vakası. Halka #17-akademik-merkez-figürü.
+**Thomas Kuhn (1922-1996)** — *Bilimsel Devrimlerin Yapısı* (1962) + Sonsöz: 1969 akademik-paradigma-değişim-felsefesinin akademik-merkez-vakası. Halka #18-akademik-merkez-figürü ve Halka 4. dönem-akademik-meta-yöntem-felsefe-yapılaşmasının akademik-açılış-vakası.
 
 **Imre Lakatos (1922-1974)** — *Proofs and Refutations* (1976, postumen) akademik-matematik-felsefesi-akademik-zemini + 1965 Bedford Konferansı + 1970 *Criticism and the Growth of Knowledge*-derlemesi 'bilimsel-araştırma-programları' akademik-konumlamasının akademik-zemini. Kuhn-Popper-akademik-akademik-iç-tartışma-zincirin akademik-merkez-figürü.
 
@@ -57,4 +57,15 @@ Bilim-tarihi-akademik-yenidoğuş-1960lar-akademik-zincir Halka 4. dönem-(Karş
 
 ## Halka 3. dönem-akademik-meta-konum-köprüsü
 
-Bilim-tarihi-yenidoğuş-1960lar-akademik-zincir Halka 3. dönem-akademik-meta-konum-köprüsünün akademik-yapısal-akademik-zeminidir — Halka 3. dönem-akademik-figür-zincirin (#12 Gleick-Newton, #13 Wulf-Humboldt, #14 Isaacson-Franklin, #15 Westfall-Newton-derinlik, #16 Isaacson-Einstein) figür-merkezli-popüler-akademik-biyografi katmanından akademik-meta-yöntem-felsefesi-katmanına (#17 Kuhn) geçişin akademik-yapısal-akademik-zemini. Halka 4. dönem-akademik-zemini Halka #17 Kuhn'da akademik-disiplinli-akademik-açılış-vakasıyla yapılaşır.
+Bilim-tarihi-yenidoğuş-1960lar-akademik-zincir Halka 3. dönem-akademik-meta-konum-köprüsünün akademik-yapısal-akademik-zeminidir — Halka 3. dönem-akademik-figür-zincirin (#12 Gleick-Newton, #13 Wulf-Humboldt, #14 Isaacson-Franklin, #15 Westfall-Newton-derinlik, #16 Isaacson-Einstein) figür-merkezli-popüler-akademik-biyografi katmanından akademik-meta-yöntem-felsefesi-katmanına (#18 Kuhn) geçişin akademik-yapısal-akademik-zemini. Halka 4. dönem-akademik-zemini Halka #18 Kuhn'da akademik-disiplinli-akademik-açılış-vakasıyla yapılaşır.
+
+## Sarton-pre-1960lar akademik-disiplin-formülasyon-zemini — Halka 4. dönem-yan-zincir-vakası
+
+Bilim-tarihi-yenidoğuş-1960lar-akademik-zincirin **akademik-pre-zemini** Sarton-akademik-disiplin-formülasyon-vakasında (1913-1956) yapısal yan-yapılaşmadır. **George Sarton (1884-1956, Halka #19 yazarı)** bilim-tarihçilik-akademik-disiplinin Amerikan-kurucu-formülasyonunun akademik-mimarıdır: 1913 *Isis* dergisi-akademik-cemiyet-mimari-açılış-vakası + 1924 History of Science Society-akademik-cemiyet-mimari-zincirin yapısal yan-yana-yapılaşması + *Introduction to the History of Science* 5-cilt-akademik-derinlik-monografi-vakası (1927-1948). Bu yapısal akademik-disiplin-formülasyon 1960lar-yenidoğuş-zincirin akademik-disiplinli akademik-pre-zemininin yapısal yan-yapılaşmasıdır — Kuhn-Lakatos-Feyerabend-Hanson akademik-zincirinin akademik-meta-felsefe-yapılaşması bu pre-zeminden yapısal yan-yapılaşmasına geçer.
+
+Sarton-pre-1960lar akademik-disiplin-formülasyon-zemininin Halka 4. dönem-akademik-zincir-yapısal-yan'ı:
+
+- **Sarton (Halka #19, 1916-1956 akademik-üretim-vakaları, Doruk 1997 Türkçe derleme)** — bilim-tarihçilik-akademik-disiplinin Amerikan-kurucu-formülasyonu; akademik-evrensel-hümanist-zemininde formüle edilmiş akademik-disiplin-formülasyonu (anti-Whig-tarihçilik akademik-yöntem-disiplini, anti-Greek-mucize-konumlaması). 1942 Aydın Sayılı-Harvard-Sarton-doktora-tez-danışmanlık-vakası → 1952 Ankara DTCF Bilim Tarihi Kürsüsü-kuruluş — Türkiye-bilim-tarihçilik-akademik-zincirin yapısal-yan-zemini.
+- **Kuhn (Halka #18, 1962/1969 *Bilimsel Devrimlerin Yapısı*)** — Sarton-akademik-disiplin-formülasyon-zemini üzerinde akademik-paradigma-değişim-meta-felsefe-yapılaşması.
+
+Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin yapısal-pedagojik-okuma-sırası kronolojik-yön ile ters yapılaşmıştır (önce 1962/1969-Kuhn-meta-felsefe-açılışı, sonra 1916-1956-Sarton-akademik-disiplin-formülasyon-vakası) — bu disiplinli pedagojik yan-tasarım Halka 4. dönem-müfredat-tasarımının akademik-meta-yan-yana-okuma-zemininin yapısal yan'ıdır.
