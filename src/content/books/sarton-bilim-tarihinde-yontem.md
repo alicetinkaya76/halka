@@ -13,7 +13,7 @@ isbn: "975-553-165-3"
 pages: 134
 chapters_count: 5
 
-reading_level: "orta"
+reading_level: "zor"
 accessibility_note: "Halka 4. dönem-müfredat-tasarımının (Karşılaştırmalı Sentezler / Modern Bilim ve Bilim Tarihçiliği akademik-yan-konum) on-dokuzuncu kitabı; Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin (Kuhn #18 → Sarton #19 → Gavroglu #20 → Ronan #21) **ikinci-vakası** ve bilim-tarihçilik-akademik-disiplinin Amerikan-kurucu-formülasyonun somutlaşması. Halka #18 Kuhn-paradigma-değişim-meta-felsefe-yapılaşmasının (1962/1969) ardından Halka 4. dönem-akademik-meta-zincirin tarihçi-disiplin-formülasyon-yan'ına geçişin disiplinli vakası — Kuhn-meta-felsefe-yapılaşması × Sarton-bilim-tarihçilik-akademik-disiplin-formülasyon yan-yana-konumlamada akademik-disiplinli yapılaşır. Türkçe çevirisi kolektif (Remzi Demir derleyen + çevirmen, Melek Dosay, Yavuz Unat, Güldeniz Can; Doruk Yayımcılık, 1. Basım Şubat 1997, Ankara); akademik-disiplinli-titiz-aktarım yapısal-iyi, Sarton'un akademik-erudit-üslubunun (Latince-Yunanca-İslâm-bilim-zincir-terminolojisi yoğun) Türkçe-aktarımında akademik-tutarlılık-disiplini gözetilmiştir. Derleyici Remzi Demir'in Sunuşu (basılı s.7-18, ~12 sayfa) **Aydın Sayılı-Sarton-Harvard akademik-doktora-zinciri 1942 + Türkiye-bilim-tarihçilik-akademik-zincirin Sarton-Sayılı-DTCF-1952-akademik-kurumsal-zemini**ni yapısal akademik-yan-zemin olarak yapılaştırır — bu Sunuş Halka 4. dönem-akademik-zincirin Türkçe-yansıma-akademik-vakasının disiplinli yapısal-yan'ıdır. İçerik: Sunuş + 4 makale + 1 kitapçık (Bilim Tarihi Üzerine Bir İnceleme, basılı s.78-120, ~43 sayfa, ana-yöntem-formülasyon-konumu). Halka grup-okumasında 4-5 oturum tavsiye edilir: ilk oturum Sunuş + Bilim Tarihi makalesi (akademik-disiplin-tanım-vakası); ikinci oturum Acta Atque Agenda makalesi (bilim-tarihçilik-akademik-disiplinin doğuşu + altı büyük tarihçi-formülasyonu); üçüncü oturum Bilim Tarihinin Bilimsel Temelleri makalesi (akademik-yöntem-felsefe-zemini); dördüncü oturum Bilim Tarihi Üzerine Bir İnceleme kitapçığı (ana-yöntem-formülasyon-monografi); beşinci oturum Bilim Tarihi'ne Önsöz makalesi (Sarton'un *A History of Science* eserinin özgün-önsözü, akademik-yapısal-pozitif-konumlama)."
 
 cover_image: "/halka/covers/sarton-bilim-tarihinde-yontem.jpg"
@@ -71,32 +71,32 @@ key_people:
     author_emphasis: "Sarton'un akademik-konumlamasının akademik-iç-tartışma-zemini Hessen-Marksist-dışsalcı-konumlamasıyla yapısal yan-yana-okunur. Sarton-mixed-akademik-konum bilim-iç akademik-yapılaşmanın akademik-yöntem-felsefe-zeminini koruyarak akademik-cemiyet-disipliner-akademik-yan-zemini de işler — Hessen-tam-dışsalcı-konumun akademik-disiplinli-yan-eleştirisi."
 
 key_places:
-  - name: "Harvard, Cambridge"
-    slug: "harvard-cambridge"
+  - slug: "harvard-cambridge"
+    name: "Harvard - Cambridge, Massachusetts"
     role: "Sarton'un akademik-zenith-konumun (1916 lecturer-açılış → 1940-1956 tam-profesörlük) akademik-üretim-zemini; *Introduction to the History of Science* 5-cilt-akademik-monografi-zenith-üretim-yeri (1927-1948); Aydın Sayılı'nın 1942 doktora-tez-akademik-zinciri-açılış-yeri."
-  - name: "Wondelgem, Mons, Belçika"
-    slug: "wondelgem-mons-belcika"
+  - slug: "wondelgem-mons-belcika"
+    name: "Wondelgem-Mons (Belçika)"
     role: "Sarton'un akademik-açılış-zemini (1884-1915): doğum-yer + Ghent Üniversitesi-akademik-formasyon (1903-1911 doktora) + 1913 *Isis*-dergi-akademik-cemiyet-mimari-açılış-yeri."
 
 key_concepts:
-  - name: "Bilim-tarihçilik akademik-disiplinin Amerikan-kuruluş-vakası"
-    slug: "bilim-tarihcilik-akademik-disiplin-amerikan-kurulus"
+  - slug: "bilim-tarihcilik-akademik-disiplin-amerikan-kurulus"
+    name: "Bilim-tarihçilik akademik-disiplinin Amerikan-kuruluş-vakası"
     description: "Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin Sarton-akademik-disiplin-formülasyon-vakasının ana-formülasyonu: 1913 *Isis* + 1924 History of Science Society + *Introduction* 5-cilt akademik-derinlik-monografi-vakasının yapısal yan-yana-yapılaşmasının akademik-mimarisi (yeni atomik)."
     note: "1. makale 'Bilim Tarihi' ve 2. makale 'Acta Atque Agenda' ana-formülasyon-zemini. Halka 4. dönem-akademik-disiplin-formülasyon-zincirin (Kuhn-meta-felsefe → Sarton-akademik-disiplin-formülasyon → Gavroglu-eleştirel-eklemlenme) açılış-vakasının somut-konumlamasıdır."
-  - name: "Isis dergisi akademik-konumlaması"
-    slug: "isis-dergisi-akademik-konum"
+  - slug: "isis-dergisi-akademik-konum"
+    name: "Isis dergisi akademik-konum (1913+)"
     description: "1913'te Sarton tarafından Belçika-Wondelgem-Mons'ta kurulan bilim-tarihçilik-akademik-yayıncılık-zincirin disiplinli-açılış-vakası (yeni atomik). I. Dünya Savaşı + Belçika-pogromuyla 1916-1922 yayın-kesintisi yan-vakası, 1924 History of Science Society-akademik-cemiyet-mimari-zincirin yayıncılık-zemini olarak yapısal yan-konumlanması."
     note: "2. makale 'Acta Atque Agenda' (s.33-59) bilim-tarihçilik-akademik-disiplinin doğuşu konumlamasında merkez-formülasyon-vakası — *Isis* dergisinin akademik-disiplinli yapılaşmasının somut-akademik-yan'ının yapısal-zemini."
-  - name: "Hümanist bilim-tarihi konumlaması"
-    slug: "humanist-bilim-tarihi-konum"
+  - slug: "humanist-bilim-tarihi-konum"
+    name: "Hümanist bilim-tarihi akademik-konumu"
     description: "Sarton-akademik-disiplinin merkez-tezsel-konumlaması (yeni atomik): bilim-tarihçilik bilim-yöntem ve hümanist-tarih akademik-eklemlenme-konumlamasının disiplinli formülasyonu — 'bilimsel ruh, bilimsel yöntemlerin oluşturulmasıyla olduğu kadar tarihsel düşüncelerin eklenmesiyle de geliştirilmiş ve arındırılmış bir hümanizmdir' (Sarton-merkez-formülasyon)."
     note: "1. makale 'Bilim Tarihi' (s.19-32) ve 5. makale 'Bilim Tarihi'ne Önsöz' (s.121-) ana-formülasyon-zemini. Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin akademik-evrensel-pozitif-zemini olarak yapısal yan-yana-yapılaşır."
-  - name: "Anti-Whig tarihçilik disiplini"
-    slug: "anti-whig-tarihcilik-disiplini"
+  - slug: "anti-whig-tarihcilik-disiplini"
+    name: "Anti-Whig tarihçilik akademik-disiplini"
     description: "Whig-tipi-doğrusal-ilerleme-tarihçilik-akademik-konumlamasının akademik-eleştirisi-zincirin yapısal-yan'ı (yeni atomik): Sarton-Koyré-akademik-yöntemsel-akrabalık-zincirin merkez-yan'ı, mevcut Halka v0.X-`icselci-tarihyazimi`-atomiğiyle akademik yapısal yan-yana-konumlanması. Sarton'un anti-Greek-mucize-konumlamasının (5. makale s.124-125) Whig-Greek-merkez-tarihçilik-akademik-konumlamasıyla yapısal-fark-disiplini."
     note: "5. makale 'Bilim Tarihi'ne Önsöz' (s.121-) merkez-formülasyon-konumu: 'Bilimin Yunanistan'da başladığını varsaymak çocukça bir yaklaşımdır.' + 4. kitapçık 'Bilim Tarihi Üzerine Bir İnceleme' (s.78-120) yöntem-zincirin yapısal-yan'ı."
-  - name: "Bilim-tarihçilik akademik-meta-disiplini"
-    slug: "bilim-tarihcilik-akademik-meta-disiplin"
+  - slug: "bilim-tarihcilik-akademik-meta-disiplin"
+    name: "Bilim-tarihçilik akademik-meta-disiplini"
     description: "Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin (Kuhn → Sarton → Gavroglu → Ronan) somut-meta-konumlamasının yapısal-zemini (yeni atomik). Halka 4. dönem-müfredat-tasarımının akademik-meta-akademik-konumlamasının disiplinli yapılaşması — bilim-tarihçilik-akademik-disiplinin akademik-meta-zincir-konum-yapılaşmasının somutlaşması."
     note: "Halka 4. dönem-müfredat-tasarımının akademik-meta-yöntem-felsefe-disiplin-zincirin (Kuhn 1962-1969 meta-felsefe-yapılaşma → Sarton 1916-1956 disiplin-formülasyon → Gavroglu eleştirel-eklemlenme-rafinasyonu → Ronan panoramik-bilim-kültür-anlatımı-kapanış) yapısal yan-yana-konumlamasının somutlaşmasıdır. Sarton-akademik-konumlamasında 4 makale + 1 kitapçık ana-formülasyon-zemini."
 
@@ -164,6 +164,9 @@ relationships_to_other_books:
   - book: "hobson-bati-medeniyetinin-dogulu-kokenleri"
     relation: "uyumlu"
     note: "Halka #4 Hobson-küresel-tarih-anti-Eurocentric-konumlaması ile Halka #19 Sarton-akademik-bilim-tarihçilik-disiplin-formülasyon yan-yana-okunmasında akademik-yöntemsel-akrabalık-zincirin yapısal yan-zemininde: ikisi de Antik-Yunan-mucize-akademik-konumlamasının akademik-eleştirisi-zincirin disiplinli yan-yapılaşmasındadır. Sarton 5. makale 'Bilim Tarihi'ne Önsöz' s.124-125 ('Bilimin Yunanistan'da başladığını varsaymak çocukça bir yaklaşımdır') Hobson-küresel-tarih-Doğu-medeniyetlerin-küresel-tarih-üreticiliği-konumlamasının akademik-disiplinli akademik-öncülüdür."
+  - book: "gavroglu-bilimlerin-gecmisinden-tarih-uretmek"
+    relation: "tematik_tamamlayici"
+    note: "Halka #19 Sarton-bilim-tarihçilik-akademik-disiplin-formülasyon-vakası (1916-1956 zinciri, Doruk 1997 Türkçe derleme) × Halka #20 Gavroglu-akademik-eleştirel-eklemlenme-rafinasyon (özgün Yunanca 2004, Türkçe İletişim 2006) **doğrudan-yan-yana-akademik-iç-tartışma-zemini**. Gavroglu Bölüm 1 ilk-dönem-akademik-zincirin merkez-figürlerinden biri olarak Sarton'u doğrudan-konumlandırır (alt-bölüm 'Ülküler Peşinde Koşmayı Meslek Edinmek: George Sarton', s.~48). Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin (Kuhn → Sarton → Gavroglu → Ronan) yapısal-anatomisinde Sarton-akademik-pozitif-konumlama × Gavroglu-akademik-eleştirel-eklemlenme-rafinasyon yan-yan-konum-rafinasyonu disiplinli yapılaşır. Sarton-akademik-pozitif-konumlamasının Gavroglu-akademik-eleştirel-eklemlenme-tezsel-mimarisindeki yapısal-akademik-iç-eleştiri-zemini: Gavroglu Sarton-Tannery-Duhem ilk-dönem-akademik-zincirinin Comte-pozitivist-felsefe-doğrudan-mirasçılığını akademik-disiplinli-takdir-konumda yapılaştırır ama saf-pozitivist-vakanüvislik-yan-yetersizliğini eleştirel-eklemlenme-tezsel-formülasyonun akademik-zemini olarak işler. Yöntemsel-akrabalık: ikisi de anti-Whig-tarihçilik-akademik-disiplinli-konumlama yapılaştırır + ikisi de akademik-evrensel-bilim-tarihi-konumlamada disiplinli-akademik-yöntem-zincirde durur. Halka grup-okumasında Halka #19 Sarton × Halka #20 Gavroglu yan-yan-okuma-vakası akademik-pozitif × akademik-eleştirel yan-yan-konum-rafinasyonun disiplinli yapılaşmasıdır."
 
 discussion_questions:
   - "Sarton-akademik-disiplin-formülasyonun (1913 *Isis* + 1924 History of Science Society + *Introduction* 5-cilt) Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin (Kuhn-Sarton-Gavroglu-Ronan) ikinci-vakasındaki yapısal akademik-yan'ı nasıl somutlaşır? Kuhn-meta-felsefe-yapılaşması × Sarton-akademik-disiplin-formülasyon yan-yan-konum-rafinasyonu nasıl açılır?"

@@ -6,10 +6,13 @@ period: "1931-1949 (Whig-tarihçilik-akademik-konumun akademik-eleştiri-zinciri
 geography: "Birleşik Krallık-Cambridge-akademik-zinciri (Butterfield-akademik-mimari-zemini) + Fransa-Mısır-Princeton-akademik-zinciri (Koyré-akademik-formasyon-yan-zemini) + ABD-Harvard-akademik-zinciri (Sarton-akademik-zenith-konum)"
 related_concepts:
   - "icselci-tarihyazimi"
+  - "dissalci-tarihyazimi"
   - "humanist-bilim-tarihi-konum"
   - "bilim-tarihcilik-akademik-disiplin-amerikan-kurulus"
   - "bilim-tarihcilik-akademik-meta-disiplin"
   - "bilim-devrimi"
+  - "elestirel-eklemlenme-tezi"
+  - "bilim-tarihciligi-uc-evreli-akademik-mimari"
 
 cross_program_links: []
 
@@ -52,5 +55,5 @@ Anti-Whig-tarihçilik-akademik-disiplini Halka 1.-2. dönem-Doğu-bilim-zincirin
 
 - **Kuhn (Halka #18)** — paradigma-içi-akademik-rasyonalite-konumun yapısal-akademik-yan-zemini Whig-tarihçilik-akademik-konumlamasının yan-eleştirisi olarak yapılaşır (paradigmalar-arası eş-ölçülemezlik-akademik-konumun akademik-yan'ı)
 - **Sarton (Halka #19)** — anti-Greek-mucize-formülasyon merkez-akademik-konum
-- **Gavroglu (Halka #20)** — eleştirel-eklemlenme-tezin akademik-derinleştirme-yan'ı
+- **Gavroglu (*Bilimlerin Geçmişinden Tarih Üretmek*, İletişim 2006, Halka #20 — v0.25 turuyla AKTİF)** — eleştirel-eklemlenme-tezin akademik-derinleştirme-yan'ı + Bölüm 2 'Anakronik Yaklaşımın Çıkmazları' (s.~88) anti-Whig-tarihçilik-akademik-disiplinin somut-formülasyon-vakası. Gavroglu'nun anakronizm-akademik-yan-eleştirisi anti-Whig-tarihçilik-akademik-mirasçı-disiplinli-rafinasyon-yan'ı: bugünün bilim-akademik-disiplinli-yapısal-yan'ından geçmişin bilim-akademik-yapılaşmasını okumak akademik-disiplinli-yan-engel-vakasıdır. Bölüm 1 mit-kategorileri açılış-formülasyonu (zararsız mitler + zararlı mitler + tarihçi mitleri) anti-Whig-tarihçilik-akademik-disiplinin disiplinli-akademik-yapılaşmasının somutlaşması.
 - **Ronan (Halka #21)** — panoramik-bilim-kültür-anlatımın akademik-popüler-yan-yapılaşması

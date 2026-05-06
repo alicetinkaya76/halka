@@ -11,6 +11,9 @@ related_concepts:
   - "bilim-tarihcilik-akademik-meta-disiplin"
   - "bilim-tarihi-yenidogus-1960lar"
   - "icselci-tarihyazimi"
+  - "dissalci-tarihyazimi"
+  - "elestirel-eklemlenme-tezi"
+  - "bilim-tarihciligi-uc-evreli-akademik-mimari"
 
 cross_program_links: []
 
@@ -50,5 +53,5 @@ Bilim-tarihçilik-akademik-disiplinin Amerikan-kuruluş-vakası Halka 4. dönem-
 
 - **Kuhn (1962/1969 paradigma-değişim-meta-felsefe-yapılaşması, Halka #18)** — akademik-meta-felsefe-yan'ı; bilim-tarihçilik-akademik-disiplini paradigma-değişim-akademik-örneklik-zincirin yapısal yan-zemini olarak kullanır
 - **Sarton (1913-1956 akademik-disiplin-formülasyon, Halka #19)** — akademik-disiplin-formülasyon-yan'ı; bilim-tarihçilik-akademik-disiplini akademik-evrensel-hümanist-zemininde formüle eder
-- **Gavroglu (eleştirel-eklemlenme-tezi, Halka #20)** — akademik-eleştirel-yan; Sarton-akademik-pozitif-konumlamasının disiplinli akademik-iç-eleştirisinin yapılaşması
+- **Gavroglu (*Bilimlerin Geçmişinden Tarih Üretmek*, özgün Yunanca 2004, Türkçe İletişim 2006, Halka #20 — v0.25 turuyla AKTİF)** — akademik-eleştirel-yan; Sarton-akademik-pozitif-konumlamasının disiplinli akademik-iç-eleştirisinin yapılaşması. Gavroglu Bölüm 1'de Sarton'u doğrudan-konumlandırır (alt-bölüm 'Ülküler Peşinde Koşmayı Meslek Edinmek: George Sarton', s.~48); bu yan-yan-konumlamada **akademik-pozitif-Sarton × akademik-eleştirel-Gavroglu** rafinasyon-vakası Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin disiplinli iç-tartışma-zeminidir. Gavroglu için saf-pozitivist-vakanüvislik (Tannery-Duhem-Sarton ilk-dönem-akademik-zincirin Comte-pozitivist-felsefe-doğrudan-mirasçılığı) yapısal-yetersiz; eleştirel-eklemlenme-tezsel-mimarinin (`elestirel-eklemlenme-tezi`-atomik) akademik-zemini Sarton-akademik-pozitif-formülasyonun akademik-iç-eleştiri-rafinasyonudur.
 - **Ronan (panoramik-bilim-kültür-anlatımı, Halka #21)** — akademik-kapanış-yan'ı; bilim-tarihçilik-akademik-disiplinin panoramik-popüler-akademik-yansıması

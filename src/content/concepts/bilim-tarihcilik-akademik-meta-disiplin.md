@@ -2,12 +2,16 @@
 name: "Bilim-tarihçilik akademik-meta-disiplini"
 name_aliases: ["Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin yapısal-mimarisi", "akademik-meta-disiplin-Karşılaştırmalı-Sentezler", "Kuhn-Sarton-Gavroglu-Ronan-akademik-meta-zinciri"]
 short_description: "Halka 4. dönem-müfredat-tasarımının (Karşılaştırmalı Sentezler / Modern Bilim ve Bilim Tarihçiliği akademik-yan-konum) akademik-meta-zemininin somutlaşmasının yapısal yan-yapılaşması: Halka 4. dönem-akademik-zincirin (#18 Kuhn → #19 Sarton → #20 Gavroglu → #21 Ronan) akademik-meta-yöntem-felsefe-zincirin disiplinli akademik-yapılaşması — bilim-tarihçilik-akademik-meta-disiplin-zincir-akademik-formülasyonun yapısal yan-yapılaşması. Halka 1.-3. dönem-akademik-zincirinin (genel-bilim-tarihi + Doğu-bilim-İslâm-zincir + Batı-Bilim-Devrimi) akademik-meta-yapılaşmasının disiplinli yansımasıdır."
-period: "1962/1969 (Kuhn-paradigma-değişim-meta-felsefe-yapılaşması, Halka 4. dönem-açılış-vakası) → 1916-1956 (Sarton-akademik-disiplin-formülasyon, Halka #19 ikinci-vakası) → 1980'ler-1990'lar (Gavroglu-eleştirel-eklemlenme-tezi, Halka #20) → 1980'ler-2000'ler (Ronan-panoramik-bilim-kültür-anlatımı, Halka #21 kapanış-vakası)"
+period: "1962/1969 (Kuhn-paradigma-değişim-meta-felsefe-yapılaşması, Halka 4. dönem-açılış-vakası) → 1916-1956 (Sarton-akademik-disiplin-formülasyon, Halka #19 ikinci-vakası) → **2004/2006 (Gavroglu-eleştirel-eklemlenme-tezi: özgün Yunanca *Το Παρελθον των Επιστημών ως Ιστορία* 2004, Türkçe çev. Ari Çokona, İletişim Yayınları 1. Baskı 2006, Halka #20)** → 1980'ler-2000'ler (Ronan-panoramik-bilim-kültür-anlatımı, Halka #21 kapanış-vakası)"
 geography: "Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin akademik-coğrafi-yapılaşması: ABD-Harvard-Berkeley-Princeton-MIT-akademik-zinciri (Kuhn) + ABD-Carnegie-Harvard-akademik-zincir (Sarton) + Yunanistan-Atina-akademik-zinciri (Gavroglu) + Birleşik Krallık-Cambridge-akademik-zinciri (Ronan); Türkçe-yan-zemin: Türkiye-Ankara-DTCF-akademik-zinciri (Sarton-Sayılı-akademik-mirasçı-yan-zemin)"
 related_concepts:
   - "bilim-tarihcilik-akademik-disiplin-amerikan-kurulus"
   - "isis-dergisi-akademik-konum"
   - "humanist-bilim-tarihi-konum"
+  - "elestirel-eklemlenme-tezi"
+  - "bilim-tarihciligi-uc-evreli-akademik-mimari"
+  - "icselci-tarihyazimi"
+  - "dissalci-tarihyazimi"
   - "anti-whig-tarihcilik-disiplini"
   - "bilim-tarihi-yenidogus-1960lar"
   - "bilim-devrimi-1572-1704"
