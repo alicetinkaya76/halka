@@ -56,10 +56,10 @@ export const curriculum: CurriculumDonem[] = [
       'Avrupa\'nın bilim devrimi merkez-figürleri ve doğa bilimlerindeki kuramsal dönüşüm: Newton-Humboldt-Franklin biyografileri, Westfall\'ın klasik anlatısı, Einstein-modern fizik kopuşu, Wootton\'ın revizyonist Bilim Devrimi okuması.',
     books: [
       { slug: 'gleick-isaac-newton', title: 'Isaac Newton', author: 'James Gleick', status: 'planlanan', sira_no: 12 },
-      { slug: 'wulf-doganin-kesfi-humboldt', title: 'Doğanın Keşfi: Alexander Von Humboldt\'un Yeni Dünyası', author: 'Andrea Wulf', status: 'planlanan', sira_no: 13 },
+      { slug: 'wulf-doganin-icadi', title: 'Doğanın İcadı: Alexander Von Humboldt\'un Yeni Dünyası', author: 'Andrea Wulf', status: 'planlanan', sira_no: 13 },
       { slug: 'isaacson-benjamin-franklin', title: 'Benjamin Franklin', author: 'Walter Isaacson', status: 'planlanan', sira_no: 14 },
       { slug: 'westfall-modern-bilimin-olusumu', title: 'Modern Bilimin Oluşumu', author: 'Richard S. Westfall', status: 'planlanan', sira_no: 15 },
-      { slug: 'isaacson-einstein-yasami-ve-evreni', title: 'Einstein: Yaşamı ve Evreni', author: 'Walter Isaacson', status: 'planlanan', sira_no: 16 },
+      { slug: 'isaacson-einstein', title: 'Einstein: Yaşamı ve Evreni', author: 'Walter Isaacson', status: 'planlanan', sira_no: 16 },
       { slug: 'wootton-bilimin-icadi', title: 'Bilimin İcadı: Bilim Devrimi\'nin Yeni Bir Tarihi', author: 'David Wootton', status: 'planlanan', sira_no: 17 },
     ],
   },
@@ -70,7 +70,7 @@ export const curriculum: CurriculumDonem[] = [
       'Bilim tarihinin yöntem-disiplini ve modern bilim tarih-yazımının yeniden-değerlendirilmesi: Kuhn\'un paradigma-değişimi, Sarton\'ın kurucu-metodolojisi, Gavroglu\'nun eleştirel tarih-üretmek tezi, Ronan\'ın panoramik bilim-kültür serüveni.',
     books: [
       { slug: 'kuhn-bilimsel-devrimlerin-yapisi', title: 'Bilimsel Devrimlerin Yapısı', author: 'Thomas S. Kuhn', status: 'planlanan', sira_no: 18 },
-      { slug: 'sarton-bilim-tarihi-arastirmalarinda-yontem', title: 'Bilim Tarihi Araştırmalarında Yöntem', author: 'George Sarton', status: 'planlanan', sira_no: 19 },
+      { slug: 'sarton-bilim-tarihinde-yontem', title: 'Bilim Tarihinde Yöntem', author: 'George Sarton', status: 'planlanan', sira_no: 19 },
       { slug: 'gavroglu-bilimlerin-gecmisinden-tarih-uretmek', title: 'Bilimlerin Geçmişinden Tarih Üretmek', author: 'Kostas Gavroglu', status: 'planlanan', sira_no: 20 },
       { slug: 'ronan-bilim-tarihi', title: 'Bilim Tarihi', author: 'Colin A. Ronan', status: 'planlanan', sira_no: 21 },
     ],
