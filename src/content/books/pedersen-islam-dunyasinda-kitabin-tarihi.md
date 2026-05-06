@@ -415,6 +415,9 @@ relationships_to_other_books:
   - book: "berkey-ortacag-kahirede-bilgi-intikali"
     relation: "kurumsal_tamamlayici"
     note: "Halka'da Johannes Pedersen #7'nin Berkey #11 ile ileri-cross-ref ilişkisi: Berkey ortaçağ Kâhire'de bilgi intikalini (sema-icaze sisteminin kurumsal-eğitim ucu) detaylandırır; Pedersen aynı sistemin kitap-üretim altyapısı tarafıdır. Memlûk Kâhire vakası bu ikili çerçevenin ortak laboratuvarıdır — Suyûtî, Sehâvî, İbn Hacer örnekleri her iki kitabın da kanıt dağarcığında ortaktır."
+  - book: "ronan-bilim-tarihi"
+    relation: "uyumlu"
+    note: "Halka #7 Pedersen-İslâm-dünyasında-kitap-akademik-zincir (1946 Danimarka / Türkçe-baskı) ile Halka #21 Ronan-Bölüm V (İslam Medeniyetinde Bilim, s.223) yan-yan-konum-rafinasyonunda akademik-yöntemsel-akrabalık-zincirin yapısal-yan-zemininde: Pedersen-İslâm-kitap-akademik-disiplini × Ronan-akademik-popüler-pedagojik-genişlik yan-yan-konumlamada İslâm-bilim-akademik-yazma-kitap-akademik-zincirin disiplinli-yan-yapılaşması somutlaşır. Pedersen'in *Den Arabiske Bog* (1946) akademik-derinlik-monografi-vakasının Ronan-akademik-popüler-pedagojik-yan-mirasçı-yan-yapılaşması — İslâm-bilim-akademik-yazma-kitap-altyapı-zincirin Ronan-akademik-popüler-yan-konum-yapılaşmasında yansıması."
 
 discussion_questions:
   - "Pedersen'in kâğıt devrimi + warraqun ekonomisi tezi, Freely'nin Bağdat-Beytü'l-Hikme-Kopernik linear zincirinin teknik temeli olarak okunabilir mi? İki yazarın aynı Bağdat sahnesini iki farklı katmandan (Freely fikirler + Pedersen maddi altyapı) anlatması, Halka müfredatında 'aynı vakanın çoklu okuma' uygulamasının prototipi midir? Hangi soruları yalnızca birlikte okuyarak yanıtlayabiliriz?"

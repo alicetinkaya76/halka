@@ -383,6 +383,9 @@ relationships_to_other_books:
   - book: "lyons-hikmet-evi"
     relation: "tematik_tamamlayici"
     note: "Lyons Müslüman bilim mirasının Avrupa'ya transferini anlatır (transfer mekanizması). Hobson aynı transferi daha geniş ekonomik+teknolojik+kurumsal çerçevede konumlar. Lyons mikro, Hobson makro."
+  - book: "ronan-bilim-tarihi"
+    relation: "uyumlu"
+    note: "Halka #4 Hobson-küresel-tarih-anti-Eurocentric-konumlaması (2004) ile Halka #21 Ronan-panoramik-bilim-kültür-anlatımı (1982/TÜBİTAK 2003) yan-yan-konum-rafinasyonunda akademik-yöntemsel-akrabalık-zincirin yapısal-yan-zemininde: Ronan'ın **'bilim, dünya üzerindeki bütün uygarlıklarda ortaya çıkmıştır'** akademik-merkez-tezsel-formülasyonu (Giriş s.~3) Hobson-küresel-tarih-Doğu-medeniyetlerin-küresel-tarih-üreticiliği-konumlamasının akademik-popüler-pedagojik-mirasçı-yan-zemini olarak yapısal-yan'da somutlaşır. Bölüm III (Eski Çin'de Bilim) + Bölüm IV (Hindistan'da Bilim) + Bölüm V (İslam Medeniyetinde Bilim) yan-yan-yan-konumlaması Halka 1. dönem-Hobson-akademik-konumlamasının akademik-popüler-pedagojik-yan-mirasçı-yan-yapılaşması — Hobson'un akademik-küresel-tarih-derinlik-monografi-vakası × Ronan-akademik-popüler-pedagojik-genişlik yan-yan-konumlamada anti-Eurocentric-noteurocentric-but-comparative-akademik-zincirin disiplinli-yan-yapılaşmasının somutlaşması."
 
 discussion_questions:
   - "Hobson 'yapısal Avrupamerkezcilik' kavramıyla Marx'ı bile Oryantalist kategoriye yerleştiriyor. Bu kapsam genişlemesi haklı mı, yoksa eleştirinin gücünü zayıflatan bir aşırı genelleme mi? Marksizm'in sömürgecilik eleştirisi Avrupamerkezciliğin bir karşıtı olarak okunamaz mı?"

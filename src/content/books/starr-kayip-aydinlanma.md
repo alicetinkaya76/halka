@@ -368,6 +368,9 @@ relationships_to_other_books:
   - book: "pedersen-islam-dunyasinda-kitabin-tarihi"
     relation: "kurumsal_tamamlayici"
     note: "Halka'da Starr'dan sonra okunacak. Pedersen kitap-üretim altyapısını anlatır; Starr o altyapının Orta Asya ucunu coğrafi olarak somutlaştırmıştır."
+  - book: "ronan-bilim-tarihi"
+    relation: "uyumlu"
+    note: "Halka #5 Starr-Orta-Asya-kayıp-aydınlanma-akademik-zincir (2013) ile Halka #21 Ronan-Bölüm V (İslam Medeniyetinde Bilim, Buhara-Semerkant-akademik-yan-zincir, s.223) yan-yan-konum-rafinasyonunda akademik-yöntemsel-akrabalık-zincirin yapısal-yan-zemininde: **Starr-Orta-Asya-akademik-zincir-akademik-derinlik-monografi × Ronan-İslâm-bilim-akademik-coğrafyası-genişlik** (Buhara-Semerkant-Tusi-akademik-zincir-yan) yan-yan-konum-rafinasyonu. Starr'ın 'Orta Asya'nın altın çağı' akademik-derinlik-monografi-vakasının (800-1200, İbn Sina-Biruni-Harezmi-Farabi-Maturidi-Kâşgarî-akademik-zincir-yan-yapılaşması) Ronan-Bölüm V Buhara-Semerkant-akademik-yan-konumlamasının akademik-popüler-pedagojik-mirasçı-yan-rafinasyonunda yan-yan-yapısal-yapılaşmada durur."
 
 discussion_questions:
   - "Starr'ın 'Aydınlanma'nın merkezi Bağdat değil Orta Asya'ydı' tezi, kendi anti-merkezci eleştirisinden kurtulabiliyor mu — yoksa Bağdat-merkezciliği yeni bir Orta Asya-merkezciliği ile mi değiştiriyor?"

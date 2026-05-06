@@ -35,7 +35,7 @@ halka_metadata:
   sira_no: 20
   status: "planlanan"
   onceki_kitap: "sarton-bilim-tarihinde-yontem"
-  sonraki_kitap: ""
+  sonraki_kitap: "ronan-bilim-tarihi"
 
 historiographical_position:
   thesis_one_liner: "Bilim-tarihçilik akademik-disiplini üç-evreli akademik-mimaride yapılaşır (1880-1930 pozitivist-vakanüvislik / 1930-1960 sosyolojik+içselci / 1960+ akademik-disiplinli-bilişsel-kimlik) ve eleştirel-eklemlenme-tezi içselci × dışsalcı yan-yana-yapılaştırılmasının disiplinli akademik-meta-rafinasyon-konumudur — Kuhn-akademik-mirasçı-zincirinde bilim-camiasının gündelik-pratiklerine odaklanma akademik-yan-yapılaşmasının yapısal-disiplinli somutlaşmasıdır."
@@ -215,6 +215,9 @@ relationships_to_other_books:
   - book: "hobson-bati-medeniyetinin-dogulu-kokenleri"
     relation: "uyumlu"
     note: "Halka #4 Hobson-küresel-tarih-anti-Eurocentric-konumlaması ile Halka #20 Gavroglu-akademik-meta-eleştirel-konum yapısal yan-yan-konumlamada akademik-yöntemsel-akrabalık-zincirin disiplinli yan-zemininde: ikisi de akademik-Avrupa-merkezli-akademik-konvansiyonun akademik-eleştiri-zincirin disiplinli yan-yapılaşmasındadır. Gavroglu'nun 'merkez-çevre yapılaşması'-akademik-tezsel-formülasyonu Hobson-küresel-tarih-Doğu-medeniyetlerin-küresel-tarih-üreticiliği-konumlamasının akademik-meta-disiplinli akademik-yan-konumlamasıdır."
+  - book: "ronan-bilim-tarihi"
+    relation: "tematik_tamamlayici"
+    note: "Halka #20 Gavroglu-akademik-eleştirel-eklemlenme-rafinasyon-vakası (2004/İletişim 2006) ile Halka #21 Ronan-akademik-popüler-panoramik-anlatım-vakası (1982/TÜBİTAK 2003) yan-yan-yan-konum-rafinasyonunda akademik-meta-yan-akrabalık-zincirin yapısal-yan-doğrudan-yan-yana-konum-zemininde: Halka 4. dönem-akademik-meta-yöntem-felsefe-zincirin son-iki-vakası, Gavroglu-akademik-meta-eleştirel-konum × Ronan-akademik-popüler-panoramik-anlatım yan-yan-yapısal-akademik-meta-yan-konum-rafinasyonunda durur. Gavroglu'nun **'merkez-çevre yapılaşması'** akademik-merkez-tezsel-formülasyonu (Gürol Irzık önsöz s.10, İletişim 2006) ile Ronan'ın panoramik-bilim-kültür-anlatım-zincir-formülasyonu ('bilim, dünya üzerindeki bütün uygarlıklarda ortaya çıkmıştır', Giriş s.~3) yan-yan-yapısal-akademik-meta-yan-konum-rafinasyonunda durur — Gavroglu-akademik-eleştirel-eklemlenme-rafinasyon × Ronan-akademik-popüler-panoramik-anlatım yan-yan-yapısal-akademik-meta-yan-zincir-yapılaşmasında somutlaşır. Türkçe-akademik-zincir-yan: Ronan-TÜBİTAK-2003 (TÜBİTAK Akademik Dizi 1, AÇILIŞ-vakası) + Gavroglu-İletişim-2006 yan-yan-konumlamada Halka 4. dönem-Türkçe-yansıma-akademik-vakasının disiplinli-yan-yan-yapılaşması."
 
 discussion_questions:
   - "Gavroglu'nun bilim-tarihçilik-akademik-disiplinin **üç-evreli akademik-mimari-formülasyonu** (Bölüm 1: ilk-dönem 1880-1930 [Tannery+Duhem+Sarton] / ikinci-dönem 1930-1960 [Merton-Zilsel-Hessen-Bernal+Koyré] / üçüncü-dönem 1960+ [Kuhn]) Halka 4. dönem-müfredat-tasarımının (#18 Kuhn → #19 Sarton → #20 Gavroglu → #21 Ronan) yapısal-anatomisiyle nasıl doğrudan-uyum-yapısallaşır? Bu yapısal-uyum-vakasının Halka için akademik-meta-pedagojik-yan'ı nasıl somutlaşır?"

@@ -291,6 +291,9 @@ relationships_to_other_books:
   - book: "sezgin-islamda-bilim-ve-teknik"
     relation: "kismen_celisir"
     note: "Halka #9 Sezgin anti-Eurocentric-konumlamasıyla (Tusi-couple, 5-noktalı-Kopernik-paraleli, İslam-astronomi-aksiyomatik-zincirin Avrupa-aktarım-vakası) Halka #17 Wootton-konumlamasının yan-konum-tartışması: Wootton-anlatımında Tusi-zincirin (Maraga-Buhara-Semerkant-coğrafyası) disiplinli yan-zemini konum-eksende yer-almıyor — Halka çerçevesinde disiplinli yan-yana-tartışma-vakası. Halka 4. dönem-(Karşılaştırmalı Sentezler) meta-konum-zemini Wootton-Sezgin-yan-yana-okumasının disiplinli yapısal-vakası."
+  - book: "ronan-bilim-tarihi"
+    relation: "uyumlu"
+    note: "Halka #17 Wootton-tarihçi-disiplinli-derinlik-yenidoğuş-vakası (2015) ile Halka #21 Ronan-Bölüm VII (Rönesans'tan Bilim Devrimi'ne, s.301) yan-yan-konum-rafinasyonunda akademik-yöntemsel-akrabalık-zincirin yapısal-yan-zemininde: **Wootton-1572-1704-revizyonist-yenidoğuş-derinlik × Ronan-akademik-popüler-pedagojik-1500-1700-genişlik** yan-yan-konumlamada Bilim Devrimi-akademik-zincirin disiplinli-yan-yapılaşması somutlaşır. Wootton'ın dört-figür-katman-anatomisinin (şehitler-kahramanlar-propagandacılar-emekçiler) Ronan-Bölüm VII akademik-popüler-pedagojik-genişlik-yan-yapılaşmasında yan-yana-konum-rafinasyonu. Ronan'ın Kuhn-paradigma-zincirin disiplinli-yan-akademik-popüler-pedagojik-mirasçı-yan-yapılaşması (Bölüm VII açılışı: 'evrenin işleyişini anlamak için benimsenen paradigmalarda da birçok değişiklik meydana gelmiştir') Wootton'ın Kuhn-eleştiri-akademik-konumlamasının yan-yan-konum-rafinasyonunda durur — iki-yan-yapısal-Bilim-Devrimi-akademik-konumlama-vakası."
 
 discussion_questions:
   - "Wootton'un 1572-1704 paranı Koyré'nin 1543-1687 paranıyla yapısal-fark-konumlamasında nasıl yenidoğar? Halka 3. dönem-tarihçi-zincirin (Koyré-Westfall-Kuhn-Wootton) yenidoğuş-zincirinin disiplinli rafinasyon-konumun yapısal anatomi-zemini nedir?"

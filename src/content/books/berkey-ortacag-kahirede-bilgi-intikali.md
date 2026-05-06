@@ -380,6 +380,9 @@ relationships_to_other_books:
   - book: "fara-bilim-dort-bin-yillik"
     relation: "olcek_karsitligi"
     note: "Halka'da Berkey #11'in Fara #1 ile ölçek karşıtlığı. Fara 4000 yıllık panoramik-generalist bilim tarihi (yatay-makro); Berkey 250 yıllık (1250-1517) odaklı-mikro Memlûk-eğitim-prosopografisi (dikey-mikro). Birlikte okunduğunda Halka'nın atomik-atlas makro-mikro çift-katmanı görülür"
+  - book: "ronan-bilim-tarihi"
+    relation: "uyumlu"
+    note: "Halka #11 Berkey-Ortaçağ-Kahire-bilgi-intikali-akademik-zincir (1992) ile Halka #21 Ronan-Bölüm V (İslam Medeniyetinde Bilim) + Bölüm VI (Roma'da ve Ortaçağda Bilim) yan-yan-konum-rafinasyonunda akademik-yöntemsel-akrabalık-zincirin yapısal-yan-zemininde: **Berkey-Ortaçağ-Kahire-merkez-yan × Ronan-İslâm-bilim-akademik-coğrafyası-genişlik** yan-yan-konum-rafinasyonu — Memlüklü-Kahire-akademik-zincirin akademik-popüler-pedagojik-yan-mirasçı-yan-yapılaşması. Berkey'in akademik-mikro-prosopografi-derinlik-monografi-vakası (1250-1517 Memlûk-Kâhire-eğitim-akademik-zincir) Ronan-akademik-popüler-pedagojik-genişlik-yan-yapılaşmasında akademik-popüler-mirasçı-yan-rafinasyonunda yan-yan-yapısal-yapılaşmada durur."
 
 discussion_questions:
   - "Berkey'in temel tezi — 'kurumlar (medrese, hânkâh, ribat) eğitim-aktarımına destek sağlar ama eğitimi kapatmaz; aktarımın özü hoca-talebe arasındaki kişisel ilişki, sema-icâze sistemidir' — Halka'nın daha önce okuduğu kurumsal-yapı-ağırlıklı kitaplardan (özellikle Pedersen #7 'kitap-mimari-altyapı', Sezgin #8 'kurumsal-bilim-ansiklopedik-döküm') ne ölçüde farklılaşıyor? Berkey'in 'pedagojik akış kurumsal yapıdan önce gelir' tezi diğer Halka kitaplarının kurumsal-altyapı-tezleriyle uyumlu mudur, yoksa örtük-gerilim mi vardır? Pedersen'in kâğıt-warraqun-kütüphane mimari-tezi Berkey'in pedagojik-akış-tezi ile birleştirildiğinde 'İslam-eğitim-yapısı'nın hangi katmanı daha temeldir?"
