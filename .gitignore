@@ -42,3 +42,8 @@ dist/
 src/content/books.zip
 src.zip
 src.*-backup/
+
+# Backup ve geçici dosyalar
+src_*_backup/
+*.zip
+....
